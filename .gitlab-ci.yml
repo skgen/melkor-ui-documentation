@@ -32,7 +32,7 @@ build:app:
     - >
       yarn install --production=false &&
       yarn build
-artifacts:
+  artifacts:
     expire_in: "30 days"
     paths:
       - "dist"
