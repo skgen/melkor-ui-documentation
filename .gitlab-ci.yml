@@ -29,6 +29,20 @@ build:app:
       - tags
   script:
     - vault kv get -field=.env.local "projects/${APP_PROJECT}/${APP_NAME}/${APP_INSTANCE}" > "./.env.local"
+    - |
+      if [[ ! -f .npmrc ]]; then
+        echo "No .npmrc found, creating one for the job."
+      else
+        echo "Adding credentials to existing .npmrc."
+        echo "" >> .npmrc
+      fi
+      {
+        echo "@${CI_PROJECT_ROOT_NAMESPACE}:registry=${CI_API_V4_URL}/packages/npm/"
+        echo "${CI_API_V4_URL#http*:}/packages/npm/:_authToken=\${CI_JOB_TOKEN}"
+        echo "${CI_API_V4_URL#http*:}/projects/:_authToken=\${CI_JOB_TOKEN}"
+      } >> .npmrc
+      echo "Final .npmrc :";
+      cat .npmrc
     - >
       yarn install --production=false &&
       yarn build
