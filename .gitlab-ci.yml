@@ -38,8 +38,8 @@ build:app:
       fi
       {
         echo "@${CI_PROJECT_ROOT_NAMESPACE}:registry=${CI_API_V4_URL}/packages/npm/"
-        echo "${CI_API_V4_URL#http*:}/packages/npm/:_authToken=\${CI_JOB_TOKEN}"
-        echo "${CI_API_V4_URL#http*:}/projects/:_authToken=\${CI_JOB_TOKEN}"
+        echo "${CI_API_V4_URL#http*:}/packages/npm/:_authToken=${CI_JOB_TOKEN}"
+        echo "${CI_API_V4_URL#http*:}/projects/:_authToken=${CI_JOB_TOKEN}"
       } >> .npmrc
       echo "Final .npmrc :";
       cat .npmrc
