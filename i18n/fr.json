@@ -1,0 +1,71 @@
+{
+    "app": {
+        "welcome": "Bienvenue sur {appName} !",
+        "theme": {
+            "auto": "Thème système",
+            "light": "Thème clair",
+            "dark": "Thème sombre"
+        },
+        "i18n": {
+            "fr": "Français",
+            "en": "Anglais"
+        },
+        "components": "Composants",
+        "cta": "Interaction",
+        "typography": "Typographie",
+        "layout": "Layout",
+        "dataInputs": "Saisie de données",
+        "inputs": "Les différents inputs",
+        "modals": "Les vues alternatives"
+    },
+    "component": {
+        "button": {
+            "name": "Bouton"
+        },
+        "link": {
+            "name": "Lien"
+        },
+        "themeSelector": {
+            "name": "Sélecteur de thème"
+        },
+        "localeSelector": {
+            "name": "Sélecteur de langue"
+        },
+        "heading": {
+            "name": "Titrage"
+        },
+        "tabs": {
+            "name": "Onglets"
+        },
+        "table": {
+            "name": "Tableau"
+        },
+        "form": {
+            "name": "Formulaire"
+        },
+        "textInput": {
+            "name": "Input de texte"
+        },
+        "view": {
+            "name": "Vue"
+        }
+    },
+    "view": {
+        "inputs": {
+            "inputType": "Input type {inputType}",
+            "components": {
+                "text": "texte",
+                "number": "number",
+                "password": "password",
+                "textarea": "textarea",
+                "checkbox": "checkbox",
+                "radio": "radio",
+                "toggle": "toggle",
+                "range": "range",
+                "file": "file",
+                "color": "color",
+                "select": "select"
+            }
+        }
+    }
+}

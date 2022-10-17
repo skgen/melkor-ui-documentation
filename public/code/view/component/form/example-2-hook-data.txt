@@ -1,0 +1,3 @@
+<script setup>
+const { data } = useForm({ ... });
+</script>

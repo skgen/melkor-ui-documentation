@@ -1,0 +1,115 @@
+{
+    "app": {
+        "welcome": "Welcome on {appName} !",
+        "theme": {
+            "auto": "Sys-Theme",
+            "light": "Light Theme",
+            "dark": "Dark Theme"
+        },
+        "i18n": {
+            "fr": "French",
+            "en": "English"
+        },
+        "components": "Components",
+        "cta": "Interaction",
+        "typography": "Typography",
+        "layout": "Layout",
+        "global": "Global",
+        "dataInputs": "I/O Data",
+        "inputs": "Input list",
+        "modals": "Alternative views",
+        "interactiveView": "Interactive view",
+        "examples": "Examples",
+        "colors": "Colors"
+    },
+    "component": {
+        "button": {
+            "name": "Button"
+        },
+        "link": {
+            "name": "Link"
+        },
+        "themeSelector": {
+            "name": "Theme selector"
+        },
+        "localeSelector": {
+            "name": "Locale selector"
+        },
+        "heading": {
+            "name": "Heading"
+        },
+        "tabs": {
+            "name": "Tabs"
+        },
+        "table": {
+            "name": "Table"
+        },
+        "form": {
+            "name": "Form"
+        },
+        "textInput": {
+            "name": "Text input"
+        },
+        "view": {
+            "name": "View"
+        },
+        "modal": {
+            "name": "Modal"
+        },
+        "skeleton": {
+            "name": "Skeleton"
+        },
+        "alert": {
+            "name": "Alert"
+        },
+        "image": {
+            "name": "Image"
+        },
+        "tooltip": {
+            "name": "Tooltip"
+        },
+        "icon": {
+            "name": "Icon"
+        }
+    },
+    "view": {
+        "input": {
+            "inputType": "{inputType} input type ",
+            "component": {
+                "text": "text",
+                "number": "number",
+                "password": "password",
+                "textarea": "textarea",
+                "checkbox": "checkbox",
+                "radio": "radio",
+                "toggle": "toggle",
+                "range": "range",
+                "file": "file",
+                "color": "color",
+                "select": "select"
+            }
+        },
+        "heading": {
+            "h1": "Level 1 heading",
+            "h2": "Level 2 heading",
+            "h3": "Level 3 heading",
+            "h4": "Level 4 heading"
+        },
+        "image": {
+            "default": "Default Image",
+            "description": {
+                "ratio": "Image with ratio of {ratio}",
+                "ratioAndFit": "Image with ratio of {ratio} and {fit}"
+            }
+        },
+        "icon": {
+            "sourceName": "Material Symbols",
+            "description": "Icons are {sourceName} from Google you can retreive here: {url}",
+            "default": "Default icon based on default font size",
+            "sized": "Icon set to {size}",
+            "dynamic": "Dynamic icon size",
+            "simpleLabel": "Simple label",
+            "withButton": "Icon + Text inlined in a button"
+        }
+    }
+}

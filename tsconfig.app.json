@@ -1,0 +1,31 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+    "strict": true,
+    "composite": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@style": ["./src/assets/scss/*"],
+      "@patriarche/melkor": ["../melkor-ui-package/dist/@types/index.d.ts"],
+      "@patriarche/melkor/style": ["../melkor-ui-package/dist/style.css"],
+      "@patriarche/melkor/style/*": ["../melkor-ui-package/dist/scss/*"],
+    },
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext",
+    ],
+  },
+  "include": [
+    "env.d.ts", 
+    "src/**/*.ts", 
+    "src/**/*.d.ts", 
+    "src/**/*.vue",
+  ],
+  "exclude": [
+    "src/**/__tests__/*",
+    "public/code"
+  ],
+}

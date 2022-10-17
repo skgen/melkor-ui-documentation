@@ -1,0 +1,23 @@
+const state: {
+  firstName: FormInput<string>;
+  lastName: FormInput<string>;
+} = reactive({
+  firstName: {
+    state: {
+      value: '',
+      valid: false,
+      touched: false,
+      error: null,
+    },
+    validate: (value) => (value.length === 0 ? 'Lastname is required' : null),
+  },
+  lastName: {
+    state: {
+      value: '',
+      valid: false,
+      touched: false,
+      error: null,
+    },
+    validate: (value) => (value.length === 0 ? 'Firstname is required' : null),
+  },
+});

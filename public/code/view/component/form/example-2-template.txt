@@ -1,0 +1,16 @@
+<p>
+  <strong>Firstname</strong>
+  <AppInputText
+    v-model="example2State.firstName.state"
+    name="firstName"
+    :validate="example2State.firstName.validate"
+  />
+</p>
+<p>
+  <strong>Lastname</strong>
+  <AppInputText
+    v-model="example2State.lastName.state"
+    name="lastName"
+    :validate="example2State.lastName.validate"
+  />
+</p>

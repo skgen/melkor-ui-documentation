@@ -1,0 +1,14 @@
+/* we will explain what these classes do next! */
+
+.view-fade {
+    &-enter-active,
+    &-leave-active, {
+        transition: opacity 500ms, transform 500ms;
+    }
+
+    &-enter-from,
+    &-leave-to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}

@@ -1,0 +1,75 @@
+image: docker:stable
+
+stages:
+  #- .pre
+  #- review
+  - build
+  - push
+  - deploy
+
+# ------------------------------------------------------------------------------
+# BUILD >>
+# ------------------------------------------------------------------------------
+
+.log-vault:
+  before_script:
+    - export APP_INSTANCE=$(if [[ 'staging' == "${CI_COMMIT_REF_NAME}" ]]; then echo 'staging'; else echo 'live'; fi)
+    - export VAULT_TOKEN="$(vault write -field=token auth/jwt/login role=gitlab-${APP_INSTANCE} jwt=${CI_JOB_JWT})"
+
+.build:
+  image: registry.gitlab.com/patriarche/devops/controller/node-build:latest
+  extends: .log-vault
+
+build:app:
+  extends: .build
+  stage: build
+  only:
+    refs:
+      - staging
+      - tags
+  script:
+    - vault kv get -field=.env.local "projects/${APP_PROJECT}/${APP_NAME}/${APP_INSTANCE}" > "./.env.local"
+    - >
+      yarn install --production=false &&
+      yarn build
+artifacts:
+    expire_in: "30 days"
+    paths:
+      - "dist"
+
+.s3:
+  image: registry.gitlab.com/patriarche/devops/controller/s3-deploy:latest
+  before_script:
+    - export APP_INSTANCE=$(if [[ 'staging' == "${CI_COMMIT_REF_NAME}" ]]; then echo 'staging'; else echo 'live'; fi)
+    - export VAULT_TOKEN="$(vault write -field=token auth/jwt/login role=gitlab-${APP_INSTANCE} jwt=${CI_JOB_JWT})"
+    - export AWS_PATH="${HOME}/.aws"
+    - export AWS_CREDENTIALS="${AWS_PATH}/credentials"
+    - mkdir -p "${AWS_PATH}"
+    - vault kv get -field=credentials "devops/aws/deployer" > "${AWS_CREDENTIALS}"
+
+.push:
+  stage: push
+  extends: .s3
+
+push:app:
+  extends: .push
+  only:
+    refs:
+      - staging
+      - tags
+  script:
+    - export S3_BUCKET=${APP_PROJECT}-${APP_NAME}-${APP_INSTANCE}
+    - aws s3 cp dist/. s3://${S3_BUCKET} --recursive
+
+.deploy:
+  stage: deploy
+  extends: .s3
+
+deploy:app:
+  extends: .deploy
+  only:
+    refs:
+      - staging
+      - tags
+  script:
+    - aws cloudfront create-invalidation --distribution-id ${CDN_DISTRIBUTION_ID} --paths '/*'
