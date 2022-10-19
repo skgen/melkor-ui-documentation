@@ -42,7 +42,8 @@
 import { ref, useSlots } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { InputModel } from '@patriarche/melkor';
-import AppCodeBlock, { CodeLanguage } from '@/components/AppCodeBlock.vue';
+import AppCodeBlock from '@/components/AppCodeBlock.vue';
+import { CodeLanguage } from '@/lib/definition';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 

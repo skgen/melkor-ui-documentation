@@ -68,7 +68,8 @@ import {
 } from '@patriarche/melkor';
 import AppDocLayout from '@/components/layout/AppDocLayout.vue';
 import AppColorPreview from '@/components/AppColorPreview.vue';
-import AppCodeBlock, { CodeLanguage } from '@/components/AppCodeBlock.vue';
+import AppCodeBlock from '@/components/AppCodeBlock.vue';
+import { CodeLanguage } from '@/lib/definition';
 
 const { t } = useI18n();
 

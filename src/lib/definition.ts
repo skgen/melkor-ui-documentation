@@ -3,6 +3,8 @@ export enum PropType {
   number,
   boolean,
   hidden,
+  reference,
+  function,
 }
 
 export type PropDefinition = {
@@ -14,3 +16,13 @@ export type PropDefinition = {
 export type PropsDefinition = {
   [key: string]: PropDefinition;
 };
+
+export type ComponentProps = Record<string, string | number | boolean>;
+
+export enum CodeLanguage {
+  typescript = 'typescript',
+  json = 'json',
+  template = 'template',
+  vue = 'vue',
+  scss = 'scss',
+}

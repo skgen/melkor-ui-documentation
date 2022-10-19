@@ -38,6 +38,7 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-scss';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
 import { copyToClipboard, isValue, ThemeScheme } from '@patriarche/melkor';
+import { CodeLanguage } from '@/lib/definition';
 
 type Props = {
   code: string;
@@ -51,52 +52,7 @@ const props = withDefaults(defineProps<Props>(), {
   variables: undefined,
 });
 
-const code = computed(() => {
-  if (!props.variables) {
-    return props.code;
-  }
-
-  let newCode = props.code;
-  const keys = Object.keys(props.variables);
-  for (const key of keys) {
-    if (isValue(props.variables[key])) {
-      const search = `{${key}}`;
-      const replace = props.variables[key].toString();
-      newCode = newCode.replaceAll(search, replace);
-    }
-  }
-
-  return newCode;
-});
-
-const copied = ref<ReturnType<typeof setTimeout> | null>(null);
-
-function handleHighlight(code: string) {
-  return highlight(code, languages[mapping[props.language].prisma], mapping[props.language].prisma);
-}
-
-function handleCopy() {
-  copyToClipboard(code.value);
-  if (copied.value) {
-    clearTimeout(copied.value);
-  }
-  copied.value = setTimeout(() => {
-    copied.value = null;
-  }, 2000);
-}
-</script>
-
-<script lang="ts">
-// eslint-disable-next-line import/prefer-default-export
-export enum CodeLanguage {
-  typescript = 'typescript',
-  json = 'json',
-  template = 'template',
-  vue = 'vue',
-  scss = 'scss',
-}
-
-export const mapping:
+const mapping:
 { [key in CodeLanguage]: { lang:string; prisma: string } } = {
   typescript: {
     lang: 'ts',
@@ -119,6 +75,40 @@ export const mapping:
     prisma: 'scss',
   },
 };
+
+const code = computed(() => {
+  if (!props.variables) {
+    return props.code;
+  }
+
+  let newCode = props.code;
+  const keys = Object.keys(props.variables);
+  for (const key of keys) {
+    if (isValue(props.variables[key])) {
+      const search = `{${key}}`;
+      const replace = props.variables[key].toString();
+      newCode = newCode.replaceAll(search, replace);
+    }
+  }
+
+  return newCode;
+});
+
+const copied = ref<ReturnType<typeof setTimeout> | null>(null);
+
+function handleHighlight(codeToHighlight: string) {
+  return highlight(codeToHighlight, languages[mapping[props.language].prisma], mapping[props.language].prisma);
+}
+
+function handleCopy() {
+  copyToClipboard(code.value);
+  if (copied.value) {
+    clearTimeout(copied.value);
+  }
+  copied.value = setTimeout(() => {
+    copied.value = null;
+  }, 2000);
+}
 </script>
 
 <style lang="scss">

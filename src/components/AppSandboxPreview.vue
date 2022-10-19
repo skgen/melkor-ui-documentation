@@ -6,18 +6,20 @@
           <h3>Props</h3>
         </mk-wysiwyg-preview>
         <ul>
-          <li
+          <template
             v-for="(controller, index) in controllers"
             :key="index"
           >
-            <component
-              :is="resolveInputName(controller.type)"
-              :label="controller.key"
-              :model-value="controller.input"
-              fill
-              @update:model-value="(state: any) => handleValueChange(controller.key, state)"
-            />
-          </li>
+            <li v-if="!!resolveInputName(controller.type)">
+              <component
+                :is="resolveInputName(controller.type)"
+                :label="controller.key"
+                :model-value="controller.input"
+                fill
+                @update:model-value="(state: any) => handleValueChange(controller.key, state)"
+              />
+            </li>
+          </template>
         </ul>
       </div>
       <div class="mk-AppSandboxPreview-preview">
@@ -25,66 +27,53 @@
           <h3>Render</h3>
         </mk-wysiwyg-preview>
         <div class="mk-AppSandboxPreview-component">
-          <slot
-            name="component"
-            v-bind="cProps"
-          />
-        </div>
-        <mk-wysiwyg-preview>
-          <h3>Code</h3>
-        </mk-wysiwyg-preview>
-        <div class="mk-AppSandboxPreview-code">
-          <AppAsyncCodeBlock
-            :file-path="props.template"
-            :language="CodeLanguage.template"
-            :variables="getTemplateProps()"
-          />
+          <slot />
         </div>
       </div>
+    </div>
+    <div class="mk-AppSandboxPreview-code">
+      <mk-wysiwyg-preview>
+        <h3>Code</h3>
+      </mk-wysiwyg-preview>
+      <slot name="code-before" />
+      <AppAsyncCodeBlock
+        :file-path="props.template"
+        :language="CodeLanguage.template"
+        :variables="templateVars"
+      />
+      <slot name="code-after" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive, watch } from 'vue';
+import {
+  computed, onMounted, reactive, watch,
+} from 'vue';
 import {
   createInputState, isString, isValue, type InputState,
 } from '@patriarche/melkor';
 import isBoolean from 'lodash/isBoolean';
 import isNumber from 'lodash/isNumber';
-import { type PropsDefinition, PropType, type PropDefinition } from '@/lib/definition';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
-import { CodeLanguage } from '@/components/AppCodeBlock.vue';
+import {
+  PropType, type ComponentProps, type PropsDefinition, CodeLanguage, type PropDefinition,
+} from '@/lib/definition';
 
 type Props = {
-  propsDefinition: PropsDefinition;
+  componentProps: ComponentProps;
+  definition: PropsDefinition;
   template: string;
   templateVariables?: Record<string, any>;
 };
 
+type Emits = {
+  (event: 'propsChange', value: ComponentProps): void;
+};
+
 const props = defineProps<Props>();
 
-function createProps() {
-  const o: Record<string, unknown> = {};
-  const keys = Object.keys(props.propsDefinition);
-  for (const key of keys) {
-    o[key] = props.propsDefinition[key].default;
-  }
-  return o;
-}
-
-function createControllers() {
-  const o: Record<string, PropDefinition & { key: string; input: InputState<any> }> = {};
-  const keys = Object.keys(props.propsDefinition);
-  for (const key of keys) {
-    o[key] = {
-      ...props.propsDefinition[key],
-      key,
-      input: createInputState({ value: props.propsDefinition[key].default }),
-    };
-  }
-  return o;
-}
+const emit = defineEmits<Emits>();
 
 function resolveInputName(type: PropType) {
   if (type === PropType.string) {
@@ -96,11 +85,23 @@ function resolveInputName(type: PropType) {
   if (type === PropType.boolean) {
     return 'mk-input-toggle';
   }
-  throw new Error('No input match');
+  return false;
 }
 
-const cProps = reactive(createProps());
-const controllers = reactive(createControllers());
+function createControllers(def: PropsDefinition) {
+  const o: { [key:string]: PropDefinition & { key: string; input: InputState<any> } } = {};
+  const keys = Object.keys(def);
+  for (const key of keys) {
+    o[key] = {
+      ...def[key],
+      key,
+      input: createInputState({ value: def[key].default }),
+    };
+  }
+  return o;
+}
+
+const controllers = reactive(createControllers(props.definition));
 
 function handleValueChange(key: string, newState: InputState<any>) {
   controllers[key].input = newState;
@@ -112,18 +113,20 @@ function isRealValue<T>(value: T) {
   && (isBoolean(value) ? value : true);
 }
 
-function getTemplateProps() {
+const templateVars = computed(() => {
   const variables = { ...props.templateVariables };
   const tProps = [];
-  const keys = Object.keys(props.propsDefinition);
+  const keys = Object.keys(controllers);
   for (const key of keys) {
     const controller = controllers[key];
-    const value = cProps[key];
+    const { value } = controller.input;
     if (!(!isRealValue(value) && !controller.required)) {
       if (isBoolean(value)) {
         tProps.push(key);
       } else if (isNumber(value)) {
         tProps.push(`:${key}="${value}"`);
+      } else if (controller.type === PropType.reference) {
+        tProps.push(`:${key}="${key}"`);
       } else {
         tProps.push(`${key}="${value}"`);
       }
@@ -138,26 +141,39 @@ function getTemplateProps() {
   }
 
   return variables;
-}
+});
 
-watch(controllers, (newControllers) => {
-  const keys = Object.keys(props.propsDefinition);
+const componentProps = computed(() => {
+  const o: ComponentProps = {};
+  const keys = Object.keys(controllers);
   for (const key of keys) {
-    cProps[key] = newControllers[key].input.value;
+    o[key] = controllers[key].input.value;
   }
+  return o;
+});
+
+watch(componentProps, (newComponentProps) => {
+  emit('propsChange', newComponentProps);
+});
+
+onMounted(() => {
+  emit('propsChange', componentProps.value);
 });
 
 </script>
 
 <style lang="scss">
 .mk-AppSandboxPreview {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-m-4);
     padding: var(--app-m-2);
     background-color: var(--app-background-color-soft);
     border-radius: var(--app-border-radius);
 
     &-content {
         display: flex;
-        gap: var(--app-m-6);
+        gap: var(--app-m-4);
     }
 
     &-controllers {
@@ -168,6 +184,7 @@ watch(controllers, (newControllers) => {
 
         ul {
             display: flex;
+            flex: 1;
             flex-direction: column;
             gap: var(--app-m-2);
             padding: var(--app-m-3) var(--app-m-4);
@@ -185,10 +202,17 @@ watch(controllers, (newControllers) => {
     }
 
     &-component {
+        flex: 1;
         padding: var(--app-m-3) var(--app-m-4);
         background-color: var(--app-background-color);
         border: 3px dashed var(--app-border-color);
         border-radius: 8px;
+    }
+
+    &-code {
+        display: flex;
+        flex-direction: column;
+        gap: var(--app-m-1);
     }
 }
 </style>

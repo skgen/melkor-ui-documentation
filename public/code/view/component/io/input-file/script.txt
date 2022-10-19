@@ -1,0 +1,15 @@
+function validate(value: FileModel[]) {
+  return value.length <= 0 ? 'Required' : null;
+}
+
+const state = ref<InputState<FileModel[]>>(createInputState({
+  value: [
+    {
+      name: 'Yuri',
+      url: 'https://patriarche-ux.fr/wp-content/uploads/2022/01/yuri-patriarche-ux-official.jpg',
+      size: null,
+      type: 0,
+      file: null,
+    },
+  ],
+}));

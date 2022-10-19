@@ -29,7 +29,8 @@
         "interactiveView": "Interactive view",
         "examples": "Examples",
         "colors": "Colors",
-        "translations": "Translations"
+        "translations": "Translations",
+        "viewState": "View State"
     },
     "component": {
         "button": {

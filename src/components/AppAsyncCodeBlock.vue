@@ -10,7 +10,8 @@
 
 <script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue';
-import AppCodeBlock, { CodeLanguage } from '@/components/AppCodeBlock.vue';
+import AppCodeBlock from '@/components/AppCodeBlock.vue';
+import type { CodeLanguage } from '@/lib/definition';
 
 type Props = {
   filePath: string;
