@@ -1,4 +1,12 @@
 {
+    "melkor": {
+        "component": {
+            "inputFile": {
+                "dragdrop": "Drag & drop or {search}",
+                "search": "browse"
+            }
+        }
+    },
     "app": {
         "welcome": "Welcome on {appName} !",
         "theme": {
@@ -10,7 +18,7 @@
             "fr": "French",
             "en": "English"
         },
-        "components": "Components",
+        "setup": "Setup",
         "cta": "Interaction",
         "typography": "Typography",
         "layout": "Layout",
@@ -20,7 +28,8 @@
         "modals": "Alternative views",
         "interactiveView": "Interactive view",
         "examples": "Examples",
-        "colors": "Colors"
+        "colors": "Colors",
+        "translations": "Translations"
     },
     "component": {
         "button": {
@@ -70,6 +79,10 @@
         },
         "icon": {
             "name": "Icon"
+        },
+        "input-file": {
+            "name": "File input",
+            "type": "file"
         }
     },
     "view": {

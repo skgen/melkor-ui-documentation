@@ -40,17 +40,14 @@ const props = withDefaults(defineProps<Props>(), {
     flex-direction: column;
 
     &-children {
-        padding-top: 5px;
-    }
-
-    &[data-group="true"][data-deep="0"] {
-        & + & {
-            padding-top: 15px;
-        }
+        display: flex;
+        flex-direction: column;
+        gap: var(--app-m-1);
+        padding-top: var(--app-m-2);
     }
 
     &[data-group="true"] + & {
-        padding-top: 5px;
+        padding-top: var(--app-m-3);
     }
 
     svg {
@@ -59,20 +56,14 @@ const props = withDefaults(defineProps<Props>(), {
 
     &[data-deep="0"] {
         .mk-AppLink {
-            font-size: 1.2rem;
+            font-size: 0.875rem;
+            font-weight: 400;
         }
     }
 
     &[data-deep="1"] {
         .mk-AppLink {
-            font-size: 1rem;
-            font-weight: 700;
-        }
-    }
-
-    &[data-deep="2"] {
-        .mk-AppLink {
-            font-weight: 400;
+            font-weight: 300;
 
             --mk-link-text-color: var(--app-text-color-soft);
         }

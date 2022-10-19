@@ -178,7 +178,7 @@ function handleResetSettings() {
 <style lang="scss">
 .pux-TableView {
     &-pin {
-        --pux-table-view-pin-background-color: var(--app-primary-color) / 0.6;
+        --pux-table-view-pin-background-color: var(--app-primary-color);
 
         display: inline-block;
         min-width: 50px;
@@ -191,7 +191,7 @@ function handleResetSettings() {
 
     [data-target="true"] {
         .pux-TableView-pin {
-            --pux-table-view-pin-background-color: var(--app-primary-color);
+            // --pux-table-view-pin-background-color: var(--app-primary-color);
         }
     }
 }

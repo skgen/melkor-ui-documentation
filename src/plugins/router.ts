@@ -9,6 +9,14 @@ const router = createRouter({
       component: () => import('@/views/HomeView.vue'),
     },
     {
+      path: '/colors',
+      component: () => import('@/views/ColorsView.vue'),
+    },
+    {
+      path: '/translations',
+      component: () => import('@/views/TranslationsView.vue'),
+    },
+    {
       path: '/component',
       component: () => import('@/views/ComponentView.vue'),
       children: [
@@ -27,11 +35,8 @@ const router = createRouter({
         { path: 'image', component: () => import('@/views/components/ImageView.vue') },
         { path: 'tooltip', component: () => import('@/views/components/TooltipView.vue') },
         { path: 'icon', component: () => import('@/views/components/IconView.vue') },
+        { path: 'input-file', component: () => import('@/views/components/InputFileView.vue') },
       ],
-    },
-    {
-      path: '/colors',
-      component: () => import('@/views/ColorsView.vue'),
     },
     {
       path: '/:pathMatch(.*)*',

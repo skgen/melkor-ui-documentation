@@ -1,0 +1,10 @@
+{
+    "melkor": {
+        "component": {
+            "inputFile": {
+                "dragdrop": "Drag & drop or {search}",
+                "search": "browse"
+            }
+        }
+    }
+}

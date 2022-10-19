@@ -2,6 +2,7 @@ export enum PropType {
   string,
   number,
   boolean,
+  hidden,
 }
 
 export type PropDefinition = {
