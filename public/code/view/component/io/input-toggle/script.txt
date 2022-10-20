@@ -1,0 +1,11 @@
+function validate(value: string) {
+  return value === 'Not toggled' ? 'Must be toggled' : null;
+}
+
+const inputState = ref<InputState<{ iAm: 'toggled' } | 'Not toggled'>>(
+  createInputState({ value: { iAm: 'toggled' } }),
+);
+
+const checked = { iAm: 'toggled' };
+
+const unchecked = 'Not toggled';

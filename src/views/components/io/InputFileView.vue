@@ -1,11 +1,10 @@
 <template>
-  <div class="pux-InputFileView">
+  <div>
     <AppInputTitlePreview
       i18n-key="input-file"
       :state="inputState"
     />
     <AppSandboxPreview
-      v-model:componentProps="componentProps"
       :definition="definition"
       template="/code/view/component/io/input-file/template.txt"
       @props-change="handlePropsChange"
@@ -28,19 +27,21 @@
 import { ref } from 'vue';
 import {
   createInputState,
-  type FileModel,
   type InputState,
+  type FileInputValue,
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
-import { PropType, type ComponentProps, CodeLanguage } from '@/lib/definition';
+import {
+  PropType, type ComponentProps, CodeLanguage, type PropsDefinition,
+} from '@/lib/definition';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
 
-function validate(value: FileModel[]) {
+function validate(value: FileInputValue) {
   return value.length <= 0 ? 'Required' : null;
 }
 
-const inputState = ref<InputState<FileModel[]>>(createInputState({
+const inputState = ref<InputState<FileInputValue>>(createInputState({
   value: [
     {
       name: 'Yuri',
@@ -52,21 +53,11 @@ const inputState = ref<InputState<FileModel[]>>(createInputState({
   ],
 }));
 
-const definition = {
+const definition: PropsDefinition = {
   state: {
-    type: PropType.reference,
+    type: PropType.vModel,
     required: true,
-    default: createInputState({
-      value: [
-        {
-          name: 'Yuri',
-          url: 'https://patriarche-ux.fr/wp-content/uploads/2022/01/yuri-patriarche-ux-official.jpg',
-          size: null,
-          type: 0,
-          file: null,
-        },
-      ],
-    }),
+    default: inputState.value,
   },
   validate: {
     type: PropType.reference,
@@ -76,7 +67,7 @@ const definition = {
   name: {
     type: PropType.string,
     required: false,
-    default: 'file-demo',
+    default: 'file',
   },
   label: {
     type: PropType.string,

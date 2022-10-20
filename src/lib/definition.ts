@@ -5,6 +5,7 @@ export enum PropType {
   hidden,
   reference,
   function,
+  vModel,
 }
 
 export type PropDefinition = {

@@ -53,13 +53,33 @@ export const sidebar: NavigationLevel[] = [
         to: '/component/inputs',
       },
       {
+        title: t('component.input-text.name'),
+        to: '/component/input-text',
+      },
+      {
+        title: t('component.input-number.name'),
+        to: '/component/input-number',
+      },
+      {
+        title: t('component.input-password.name'),
+        to: '/component/input-password',
+      },
+      {
+        title: t('component.input-textarea.name'),
+        to: '/component/input-textarea',
+      },
+      {
+        title: t('component.input-toggle.name'),
+        to: '/component/input-toggle',
+      },
+      {
         title: t('component.input-file.name'),
         to: '/component/input-file',
       },
-      {
-        title: t('component.form.name'),
-        to: '/component/form',
-      },
+      // {
+      //   title: t('component.form.name'),
+      //   to: '/component/form',
+      // },
     ],
   },
   {

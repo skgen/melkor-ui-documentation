@@ -9,24 +9,23 @@
     </mk-wysiwyg-preview>
 
     <AppSandboxPreview
-      :props-definition="def"
+      :definition="definition"
       template="/code/view/component/link.txt"
       :template-variables="variables"
+      @props-change="handlePropsChange"
     >
-      <template #component="props">
-        <mk-link v-bind="props">
-          {{ variables.label }}
-        </mk-link>
-      </template>
+      <mk-link v-bind="componentProps">
+        {{ variables.label }}
+      </mk-link>
     </AppSandboxPreview>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
-import { PropType, type PropsDefinition } from '@/lib/definition';
+import { PropType, type ComponentProps, type PropsDefinition } from '@/lib/definition';
 
 const { t } = useI18n();
 
@@ -34,7 +33,7 @@ const variables = {
   label: 'Link label',
 };
 
-const def: PropsDefinition = reactive({
+const definition: PropsDefinition = reactive({
   to: {
     type: PropType.string,
     required: false,
@@ -51,5 +50,11 @@ const def: PropsDefinition = reactive({
     default: false,
   },
 });
+
+const componentProps = ref({});
+
+function handlePropsChange(newProps: ComponentProps) {
+  componentProps.value = newProps;
+}
 
 </script>

@@ -64,7 +64,7 @@ import {
   computed, reactive, ref, watch,
 } from 'vue';
 import {
-  isValue, type NumInputModel, type StrInputModel, createInputState,
+  isValue, type NumberInputModel, type TextInputModel, createInputState,
 } from '@patriarche/melkor';
 import AppDocLayout from '@/components/layout/AppDocLayout.vue';
 import AppColorPreview from '@/components/AppColorPreview.vue';
@@ -79,7 +79,7 @@ function map(value: number, fromStart: number, fromEnd: number, toStart: number,
 
 const colorExample = ref<HTMLElement | null>(null);
 
-const toneInput = reactive<StrInputModel>({
+const toneInput = reactive<TextInputModel>({
   state: createInputState({ value: '257 90%' }),
   options: {
     name: 'tone',
@@ -87,7 +87,7 @@ const toneInput = reactive<StrInputModel>({
   },
 });
 
-const toneNameInput = reactive<StrInputModel>({
+const toneNameInput = reactive<TextInputModel>({
   state: createInputState({ value: '--t-primary' }),
   options: {
     name: 'tone-name',
@@ -95,7 +95,7 @@ const toneNameInput = reactive<StrInputModel>({
   },
 });
 
-const nameInput = reactive<StrInputModel>({
+const nameInput = reactive<TextInputModel>({
   state: createInputState({ value: '--test-color' }),
   options: {
     name: 'name',
@@ -103,7 +103,7 @@ const nameInput = reactive<StrInputModel>({
   },
 });
 
-const lightInput = reactive<NumInputModel>({
+const lightInput = reactive<NumberInputModel>({
   state: createInputState({ value: 0 }),
   options: {
     name: 'light',

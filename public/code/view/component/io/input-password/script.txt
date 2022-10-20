@@ -1,0 +1,7 @@
+function validate(value: PasswordInputValue) {
+  return value === null ? 'Required' : null;
+}
+
+const inputState = ref<InputState<PasswordInputValue>>(createInputState({
+  value: '@superSecretPass#',
+}));

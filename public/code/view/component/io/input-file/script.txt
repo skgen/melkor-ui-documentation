@@ -1,8 +1,8 @@
-function validate(value: FileModel[]) {
+function validate(value: FileInputValue) {
   return value.length <= 0 ? 'Required' : null;
 }
 
-const state = ref<InputState<FileModel[]>>(createInputState({
+const inputState = ref<InputState<FileInputValue>>(createInputState({
   value: [
     {
       name: 'Yuri',

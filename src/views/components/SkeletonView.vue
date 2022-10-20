@@ -9,12 +9,11 @@
     </mk-wysiwyg-preview>
 
     <AppSandboxPreview
-      :props-definition="def"
+      :definition="definition"
       template="/code/view/component/skeleton.txt"
+      @props-change="handlePropsChange"
     >
-      <template #component="props">
-        <mk-skeleton v-bind="props" />
-      </template>
+      <mk-skeleton v-bind="componentProps" />
     </AppSandboxPreview>
 
     <mk-wysiwyg-preview>
@@ -211,15 +210,15 @@
 
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 
-import { type PropsDefinition, PropType } from '@/lib/definition';
+import { type PropsDefinition, PropType, type ComponentProps } from '@/lib/definition';
 
 const { t } = useI18n();
 
-const def: PropsDefinition = reactive({
+const definition: PropsDefinition = reactive({
   circle: {
     type: PropType.boolean,
     required: false,
@@ -241,6 +240,12 @@ const def: PropsDefinition = reactive({
     default: '',
   },
 });
+
+const componentProps = ref({});
+
+function handlePropsChange(newProps: ComponentProps) {
+  componentProps.value = newProps;
+}
 </script>
 
 <style lang="scss">

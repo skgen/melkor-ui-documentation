@@ -3,6 +3,7 @@
     <mk-wysiwyg-preview>
       <h1>{{ t('app.welcome', { appName }) }}</h1>
     </mk-wysiwyg-preview>
+    <section />
   </div>
 </template>
 

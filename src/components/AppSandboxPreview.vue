@@ -26,7 +26,10 @@
         <mk-wysiwyg-preview>
           <h3>Render</h3>
         </mk-wysiwyg-preview>
-        <div class="mk-AppSandboxPreview-component">
+        <div
+          class="mk-AppSandboxPreview-component"
+          :data-primary="props.primaryMode || undefined"
+        >
           <slot />
         </div>
       </div>
@@ -54,17 +57,16 @@ import {
   createInputState, isString, isValue, type InputState,
 } from '@patriarche/melkor';
 import isBoolean from 'lodash/isBoolean';
-import isNumber from 'lodash/isNumber';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import {
   PropType, type ComponentProps, type PropsDefinition, CodeLanguage, type PropDefinition,
 } from '@/lib/definition';
 
 type Props = {
-  componentProps: ComponentProps;
   definition: PropsDefinition;
   template: string;
   templateVariables?: Record<string, any>;
+  primaryMode?: boolean;
 };
 
 type Emits = {
@@ -121,12 +123,14 @@ const templateVars = computed(() => {
     const controller = controllers[key];
     const { value } = controller.input;
     if (!(!isRealValue(value) && !controller.required)) {
-      if (isBoolean(value)) {
-        tProps.push(key);
-      } else if (isNumber(value)) {
-        tProps.push(`:${key}="${value}"`);
+      if (controller.type === PropType.vModel) {
+        tProps.push(`v-model="${key}"`);
       } else if (controller.type === PropType.reference) {
         tProps.push(`:${key}="${key}"`);
+      } else if (controller.type === PropType.boolean) {
+        tProps.push(key);
+      } else if (controller.type === PropType.number) {
+        tProps.push(`:${key}="${value}"`);
       } else {
         tProps.push(`${key}="${value}"`);
       }
@@ -191,6 +195,13 @@ onMounted(() => {
             background-color: var(--app-background-color);
             border: 3px dashed var(--app-border-color);
             border-radius: 8px;
+            transition: border-color var(--app-transition-duration-border);
+        }
+
+        &:hover {
+            ul {
+                border-color: var(--app-primary-color);
+            }
         }
     }
 
@@ -207,6 +218,20 @@ onMounted(() => {
         background-color: var(--app-background-color);
         border: 3px dashed var(--app-border-color);
         border-radius: 8px;
+        transition: border-color var(--app-transition-duration-border);
+
+        &:hover {
+            border-color: var(--app-primary-color);
+        }
+
+        &[data-primary="true"] {
+            background-color: var(--app-primary-color);
+            border-color: var(--app-primary-color-60);
+
+            &:hover {
+                border-color: var(--app-border-color);
+            }
+        }
     }
 
     &-code {

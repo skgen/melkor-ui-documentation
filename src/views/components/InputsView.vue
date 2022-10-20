@@ -163,8 +163,8 @@ import { reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 import {
   createInputState,
-  type StrInputModel,
-  type NumInputModel,
+  type TextInputModel,
+  type NumberInputModel,
   type RadioInputModel,
   type CheckableInputModel,
   type RangeInputModel,
@@ -194,7 +194,7 @@ function validateNumberInput(value: number) {
   return null;
 }
 
-const textInput = reactive<StrInputModel>({
+const textInput = reactive<TextInputModel>({
   state: createInputState({ value: '' }),
   options: {
     name: 'text-demo',
@@ -204,7 +204,7 @@ const textInput = reactive<StrInputModel>({
   },
 });
 
-const numberInput = reactive<NumInputModel>({
+const numberInput = reactive<NumberInputModel>({
   state: createInputState({ value: 0 }),
   options: {
     name: 'number-demo',
@@ -214,7 +214,7 @@ const numberInput = reactive<NumInputModel>({
   },
 });
 
-const passwordInput = reactive<StrInputModel>({
+const passwordInput = reactive<TextInputModel>({
   state: createInputState({ value: '' }),
   options: {
     name: 'password-demo',
@@ -223,7 +223,7 @@ const passwordInput = reactive<StrInputModel>({
   },
 });
 
-const textareaInput = reactive<StrInputModel>({
+const textareaInput = reactive<TextInputModel>({
   state: createInputState({ value: '' }),
   options: {
     name: 'textarea-demo',
@@ -289,7 +289,7 @@ const fileInput = reactive<FileInputModel>({
   },
 });
 
-const colorInput = reactive<StrInputModel>({
+const colorInput = reactive<TextInputModel>({
   state: createInputState({
     value: '#ff0000',
   }),

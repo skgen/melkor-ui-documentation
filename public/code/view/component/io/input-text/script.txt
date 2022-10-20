@@ -1,0 +1,7 @@
+function validate(value: TextInputValue) {
+  return value === null ? 'Required' : null;
+}
+
+const inputState = ref<InputState<TextInputValue>>(createInputState({
+  value: 'Hello world',
+}));

@@ -35,7 +35,12 @@ const router = createRouter({
         { path: 'image', component: () => import('@/views/components/ImageView.vue') },
         { path: 'tooltip', component: () => import('@/views/components/TooltipView.vue') },
         { path: 'icon', component: () => import('@/views/components/IconView.vue') },
-        { path: 'input-file', component: () => import('@/views/components/InputFileView.vue') },
+        { path: 'input-text', component: () => import('@/views/components/io/InputTextView.vue') },
+        { path: 'input-number', component: () => import('@/views/components/io/InputNumberView.vue') },
+        { path: 'input-password', component: () => import('@/views/components/io/InputPasswordView.vue') },
+        { path: 'input-textarea', component: () => import('@/views/components/io/InputTextareaView.vue') },
+        { path: 'input-toggle', component: () => import('@/views/components/io/InputToggleView.vue') },
+        { path: 'input-file', component: () => import('@/views/components/io/InputFileView.vue') },
       ],
     },
     {

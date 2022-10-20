@@ -10,15 +10,14 @@
     </mk-wysiwyg-preview>
 
     <AppSandboxPreview
-      :props-definition="def"
+      :definition="definition"
       template="/code/view/component/image.txt"
+      @props-change="handlePropsChange"
     >
-      <template #component="props">
-        <mk-image
-          v-bind="props"
-          :ratio="[1,1]"
-        />
-      </template>
+      <mk-image
+        v-bind="componentProps"
+        :ratio="[1,1]"
+      />
     </AppSandboxPreview>
 
     <mk-wysiwyg-preview>
@@ -72,8 +71,8 @@
 
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
-import { reactive } from 'vue';
-import { PropType, type PropsDefinition } from '@/lib/definition';
+import { reactive, ref } from 'vue';
+import { PropType, type ComponentProps, type PropsDefinition } from '@/lib/definition';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 
@@ -82,7 +81,7 @@ const { t } = useI18n();
 const imageSource = '/images/landscape.jpeg';
 
 // @todo Add ratio prop with array
-const def: PropsDefinition = reactive({
+const definition: PropsDefinition = reactive({
   src: {
     type: PropType.string,
     required: false,
@@ -109,6 +108,12 @@ const def: PropsDefinition = reactive({
     default: false,
   },
 });
+
+const componentProps = ref({});
+
+function handlePropsChange(newProps: ComponentProps) {
+  componentProps.value = newProps;
+}
 
 const cells = [
   {

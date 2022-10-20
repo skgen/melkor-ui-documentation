@@ -119,21 +119,13 @@ import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
-import { CodeLanguage } from '@/components/AppCodeBlock.vue';
+import { CodeLanguage } from '@/lib/definition';
 
 const { t } = useI18n();
 
 const iconPath = 'https://fonts.google.com/icons';
 
 const size = ref(createInputState({ value: 30 }));
-
-// const numberInput = reactive<NumInputModel>({
-//   state: ,
-//   options: {
-//     name: 'number-demo',
-//     validate: validateNumberInput,
-//   },
-// });
 
 const sizeInPx = computed(() => `${size.value.value}px`);
 </script>

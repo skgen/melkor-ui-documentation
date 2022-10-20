@@ -9,29 +9,34 @@
     </mk-wysiwyg-preview>
 
     <AppSandboxPreview
-      :props-definition="def"
+      :definition="definition"
       template="/code/view/component/button.txt"
+      :primary-mode="componentProps.onPrimary === true"
+      :template-variables="variables"
+      @props-change="handlePropsChange"
     >
-      <template #component="props">
-        <mk-button v-bind="props">
-          <mk-icon icon="desktop_windows" />
-          Bouton
-          <mk-icon icon="arrow_forward" />
-        </mk-button>
-      </template>
+      <mk-button v-bind="componentProps">
+        <mk-icon icon="desktop_windows" />
+        {{ variables.label }}
+        <mk-icon icon="arrow_forward" />
+      </mk-button>
     </AppSandboxPreview>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
-import { PropType, type PropsDefinition } from '@/lib/definition';
+import { PropType, type ComponentProps, type PropsDefinition } from '@/lib/definition';
 
 const { t } = useI18n();
 
-const def: PropsDefinition = reactive({
+const variables = {
+  label: 'Button',
+};
+
+const definition: PropsDefinition = reactive({
   outlined: {
     type: PropType.boolean,
     required: false,
@@ -53,6 +58,12 @@ const def: PropsDefinition = reactive({
     default: false,
   },
 });
+
+const componentProps = ref<ComponentProps>({});
+
+function handlePropsChange(newProps: ComponentProps) {
+  componentProps.value = newProps;
+}
 
 </script>
 

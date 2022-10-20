@@ -81,9 +81,29 @@
         "icon": {
             "name": "Icon"
         },
+        "input-text": {
+            "name": "Text input",
+            "type": "file"
+        },
+        "input-number": {
+            "name": "Number input",
+            "type": "number"
+        },
+        "input-password": {
+            "name": "Password input",
+            "type": "password"
+        },
         "input-file": {
             "name": "File input",
             "type": "file"
+        },
+        "input-textarea": {
+            "name": "Textarea input",
+            "type": "textarea"
+        },
+        "input-toggle": {
+            "name": "Toggle input",
+            "type": "toggle"
         }
     },
     "view": {

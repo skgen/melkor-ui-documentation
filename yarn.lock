@@ -517,16 +517,15 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@patriarche/melkor@^0.1.0":
-  version "0.1.0"
-  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-0.1.0.tgz#9b95b80d0889efebb87dd774084107949f887e95"
-  integrity sha1-m5W4DQiJ7+u4fdd0CEEHlJ+IfpU=
+"@patriarche/melkor@^0.x":
+  version "0.4.1"
+  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-0.4.1.tgz#b5c6963bb47537a972faeded831646a829e064c3"
+  integrity sha1-tcaWO7R1N6ly+u3tgxZGqCngZMM=
   dependencies:
     change-case "^4.1.2"
     date-fns "^2.29.2"
     filesize "^9.0.11"
     floating-vue "^2.0.0-beta.20"
-    github-markdown-css "^5.1.0"
     lodash "^4.17.21"
     normalize.css "^8.0.1"
     pinia "^2.0.16"
@@ -2308,11 +2307,6 @@ get-symbol-description@^1.0.0:
   dependencies:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
-
-github-markdown-css@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/github-markdown-css/-/github-markdown-css-5.1.0.tgz#a96281cd90a8969e3c13b9d3ca6a733a523a00a6"
-  integrity sha512-QLtORwHHtUHhPMHu7i4GKfP6Vx5CWZn+NKQXe+cBhslY1HEt0CTEkP4d/vSROKV0iIJSpl4UtlQ16AD8C6lMug==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"

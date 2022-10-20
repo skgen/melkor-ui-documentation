@@ -10,7 +10,7 @@
 import { reactive } from 'vue';
 import AppInputText from '@core/form/AppInputText.vue';
 import { createInputState } from '@/composables/useInput';
-import type { StrInputModel } from '@types';
+import type { TextInputModel } from '@types';
 
 function validateTextInput(value: string) {
   if (value.length === 0) {
@@ -19,7 +19,7 @@ function validateTextInput(value: string) {
   return null;
 }
 
-const input = reactive<StrInputModel>({
+const input = reactive<TextInputModel>({
   state: createInputState({ value: '' }),
   validate: validateTextInput,
 });
