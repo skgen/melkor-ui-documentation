@@ -4,7 +4,7 @@
       to="/"
       class="pux-AppBreadcrumb-app"
     >
-      {{ appName }}
+      {{ appName }}<small>{{ appVersion }}</small>
     </mk-link>
     <mk-link
       v-for="link in props.navigation"
@@ -30,6 +30,10 @@ type Props = {
 const props = defineProps<Props>();
 
 const appName = import.meta.env.VITE_APP_NAME;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line no-undef
+const appVersion = `v${__APP__.version}`;
 
 </script>
 
@@ -52,7 +56,12 @@ export type BreadcrumbEntry = {
     }
 
     &-app {
+        small {
+            font-size: 1.2rem;
+        }
+
         &.mk-AppLink {
+            align-items: baseline;
             font-size: 2rem;
             font-weight: 700;
         }

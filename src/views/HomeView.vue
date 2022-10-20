@@ -3,17 +3,15 @@
     <mk-wysiwyg-preview>
       <h1>{{ t('app.welcome', { appName }) }}</h1>
     </mk-wysiwyg-preview>
-    <section />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
-import { computed } from 'vue';
 
 const { t } = useI18n();
 
-const appName = computed(() => import.meta.env.VITE_APP_NAME);
+const appName = import.meta.env.VITE_APP_NAME;
 
 </script>
 
