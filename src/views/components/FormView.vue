@@ -78,7 +78,7 @@
 
 <script lang="ts" setup>
 // import { computed, reactive } from 'vue';
-// import { useI18n } from 'vue-i18n';
+//
 // import { AppInputText, type FormInput, useForm } from '@patriarche/melkor';
 // import AppDemoBlock from '@/components/AppDemoBlock.vue';
 // import AppCmsLayout from '@/components/layout/AppCmsLayout.vue';
@@ -86,7 +86,7 @@
 // import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 // import AppCodeShowHide from '@/components/AppCodeShowHide.vue';
 
-// const { t } = useI18n();
+//
 
 // Example 2
 

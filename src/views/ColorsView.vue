@@ -2,7 +2,7 @@
   <div class="pux-ColorsView">
     <AppDocLayout>
       <mk-wysiwyg-preview>
-        <h1>{{ t('app.colors') }}</h1>
+        <h1>{{ $t('app.colors') }}</h1>
       </mk-wysiwyg-preview>
       <div
         ref="colorExample"
@@ -59,7 +59,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
 import {
   computed, reactive, ref, watch,
 } from 'vue';
@@ -70,8 +69,6 @@ import AppDocLayout from '@/components/layout/AppDocLayout.vue';
 import AppColorPreview from '@/components/AppColorPreview.vue';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import { CodeLanguage } from '@/lib/definition';
-
-const { t } = useI18n();
 
 function map(value: number, fromStart: number, fromEnd: number, toStart: number, toEnd: number) {
   return toStart + (toEnd - toStart) * (value / (fromEnd - fromStart));

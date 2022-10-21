@@ -1,23 +1,19 @@
 <template>
   <div class="mk-SkeletonView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.skeleton.name') }}</h1>
-    </mk-wysiwyg-preview>
-
-    <mk-wysiwyg-preview>
-      <h2>{{ t('app.interactiveView') }}</h2>
+      <h1>{{ $t('component.skeleton.name') }}</h1>
     </mk-wysiwyg-preview>
 
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/skeleton.txt"
-      @props-change="handlePropsChange"
+      @change="handlePreviewChange"
     >
-      <mk-skeleton v-bind="componentProps" />
+      <mk-skeleton v-bind="attributes.props" />
     </AppSandboxPreview>
 
     <mk-wysiwyg-preview>
-      <h2>{{ t('app.examples') }}</h2>
+      <h2>{{ $t('app.examples') }}</h2>
     </mk-wysiwyg-preview>
 
     <AppDemoBlock>
@@ -209,42 +205,47 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
+
 import { reactive, ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 
-import { type PropsDefinition, PropType, type ComponentProps } from '@/lib/definition';
+import {
+  AttributeType, type ComponentAttributes, type ComponentDefinition,
+} from '@/lib/definition';
 
-const { t } = useI18n();
-
-const definition: PropsDefinition = reactive({
-  circle: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
-  },
-  width: {
-    type: PropType.string,
-    required: false,
-    default: '200px',
-  },
-  height: {
-    type: PropType.string,
-    required: false,
-    default: '50px',
-  },
-  size: {
-    type: PropType.string,
-    required: false,
-    default: '',
+const definition: ComponentDefinition = reactive({
+  props: {
+    circle: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    width: {
+      type: AttributeType.string,
+      required: false,
+      default: '200px',
+    },
+    height: {
+      type: AttributeType.string,
+      required: false,
+      default: '50px',
+    },
+    size: {
+      type: AttributeType.string,
+      required: false,
+      default: '',
+    },
   },
 });
 
-const componentProps = ref({});
+const attributes = ref<ComponentAttributes>({
+  props: {},
+  scss: {},
+});
 
-function handlePropsChange(newProps: ComponentProps) {
-  componentProps.value = newProps;
+function handlePreviewChange(newAttributes: ComponentAttributes) {
+  attributes.value = newAttributes;
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="pux-InputsView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('app.inputs') }}</h1>
+      <h1>{{ $t('app.inputs') }}</h1>
     </mk-wysiwyg-preview>
     <AppInputDemo
       i18n-key="text"
@@ -160,7 +160,7 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { useI18n } from 'vue-i18n';
+
 import {
   createInputState,
   type TextInputModel,
@@ -174,8 +174,6 @@ import {
   type ToggleInputModel,
 } from '@patriarche/melkor';
 import AppInputDemo from '@/components/AppInputDemo.vue';
-
-const { t } = useI18n();
 
 function validateTextInput(value: string) {
   if (value.length === 0) {

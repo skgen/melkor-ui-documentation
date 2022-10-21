@@ -4,14 +4,15 @@
       i18n-key="input-file"
       :state="inputState"
     />
+
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/io/input-file/template.txt"
-      @props-change="handlePropsChange"
+      @change="handlePreviewChange"
     >
       <mk-input-file
         v-model="inputState"
-        v-bind="componentProps"
+        v-bind="attributes.props"
       />
       <template #code-after>
         <AppAsyncCodeBlock
@@ -32,7 +33,7 @@ import {
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
-  PropType, type ComponentProps, CodeLanguage, type PropsDefinition,
+  AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
@@ -53,39 +54,48 @@ const inputState = ref<InputState<FileInputValue>>(createInputState({
   ],
 }));
 
-const definition: PropsDefinition = {
-  state: {
-    type: PropType.vModel,
-    required: true,
-    default: inputState.value,
-  },
-  validate: {
-    type: PropType.reference,
-    required: false,
-    default: validate,
-  },
-  name: {
-    type: PropType.string,
-    required: false,
-    default: 'file',
-  },
-  label: {
-    type: PropType.string,
-    required: false,
-    default: 'Input file',
-  },
-  hint: {
-    type: PropType.string,
-    required: false,
-    default: 'JPG, PNG, PDF - 3 Mo max.',
+const definition: ComponentDefinition = {
+  props: {
+    state: {
+      type: AttributeType.vModel,
+      required: true,
+      default: inputState.value,
+    },
+    validate: {
+      type: AttributeType.reference,
+      required: false,
+      default: validate,
+    },
+    name: {
+      type: AttributeType.string,
+      required: false,
+      default: 'file',
+    },
+    label: {
+      type: AttributeType.string,
+      required: false,
+      default: 'Input file',
+    },
+    hint: {
+      type: AttributeType.string,
+      required: false,
+      default: 'JPG, PNG, PDF - 3 Mo max.',
+    },
   },
 };
 
-const componentProps = ref({});
+const attributes = ref<ComponentAttributes>({
+  props: {},
+  scss: {},
+});
 
-function handlePropsChange(newProps: ComponentProps) {
+function handlePreviewChange(newAttributes: ComponentAttributes) {
+  const newProps = newAttributes.props;
   const { state, ...otherProps } = newProps;
-  componentProps.value = otherProps;
+  attributes.value = {
+    scss: newAttributes.scss,
+    props: otherProps,
+  };
 }
 
 </script>

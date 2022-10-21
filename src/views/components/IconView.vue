@@ -1,14 +1,14 @@
 <template>
   <div class="mk-IconView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.icon.name') }}</h1>
+      <h1>{{ $t('component.icon.name') }}</h1>
       <blockquote>
         <i18n-t
           keypath="view.icon.description"
           scope="global"
         >
           <template #sourceName>
-            <code><strong>{{ t('view.icon.sourceName') }}</strong></code>
+            <code><strong>{{ $t('view.icon.sourceName') }}</strong></code>
           </template>
           <template #url>
             <a
@@ -18,25 +18,40 @@
           </template>
         </i18n-t>
       </blockquote>
-      <h2>{{ t('view.icon.default') }}</h2>
+    </mk-wysiwyg-preview>
+
+    <AppSandboxPreview
+      :definition="definition"
+      template="/code/view/component/icon/template.txt"
+      scss="/code/view/component/icon/scss.txt"
+      @change="handlePreviewChange"
+    >
+      <template #default="{ style }">
+        <mk-icon
+          v-bind="attributes.props"
+          :style="style"
+        />
+      </template>
+    </AppSandboxPreview>
+
+    <mk-wysiwyg-preview>
+      <h2>{{ $t('app.examples') }}</h2>
     </mk-wysiwyg-preview>
 
     <mk-wysiwyg-preview>
-      <p>{{ t('view.icon.simpleLabel') }}</p>
+      <p>{{ $t('view.icon.default') }}</p>
     </mk-wysiwyg-preview>
     <AppAsyncCodeBlock
-      file-path="/code/view/component/icon/label.txt"
+      file-path="/code/view/component/icon/default.txt"
       :language="CodeLanguage.vue"
-      :variables="{ label: 'Headphones recommended' }"
+      :variables="{ label: 'Save to disk' }"
     />
     <AppDemoBlock>
-      <span class="mk-IconView-label">
-        <mk-icon icon="headphones" /> Headphones recommended
-      </span>
+      <mk-icon icon="save" />
     </AppDemoBlock>
 
     <mk-wysiwyg-preview>
-      <p>{{ t('view.icon.withButton') }}</p>
+      <p>{{ $t('view.icon.withButton') }}</p>
     </mk-wysiwyg-preview>
     <AppAsyncCodeBlock
       file-path="/code/view/component/icon/button.txt"
@@ -48,114 +63,59 @@
         <mk-icon icon="save" /> Save to disk
       </mk-button>
     </AppDemoBlock>
-
-    <mk-wysiwyg-preview>
-      <h2>
-        {{ t("view.icon.sized", { size: '30px' }) }}
-      </h2>
-    </mk-wysiwyg-preview>
-    <AppAsyncCodeBlock
-      file-path="/code/view/component/icon/30px.txt"
-      :language="CodeLanguage.scss"
-    />
-
-    <AppDemoBlock>
-      <span
-        class="mk-IconView-label"
-        data-size="30"
-      >
-        <mk-icon icon="desktop_windows" />
-      </span>
-    </AppDemoBlock>
-
-    <mk-wysiwyg-preview>
-      <h2>
-        {{ t("view.icon.sized", { size: '50px' }) }}
-      </h2>
-    </mk-wysiwyg-preview>
-    <AppAsyncCodeBlock
-      file-path="/code/view/component/icon/50px.txt"
-      :language="CodeLanguage.scss"
-    />
-
-    <AppDemoBlock>
-      <span
-        class="mk-IconView-label"
-        data-size="50"
-      >
-        <mk-icon icon="desktop_windows" />
-      </span>
-    </AppDemoBlock>
-
-    <mk-wysiwyg-preview>
-      <h2>
-        {{ t("view.icon.dynamic") }}
-      </h2>
-    </mk-wysiwyg-preview>
-    <div class="mk-IconView-binding">
-      <mk-input-number
-        v-model="size"
-      />
-    </div>
-    <AppAsyncCodeBlock
-      file-path="/code/view/component/icon/dynamicPx.txt"
-      :language="CodeLanguage.scss"
-      :variables="{ value: size.value }"
-    />
-    <AppDemoBlock>
-      <span
-        class="mk-IconView-label"
-        data-size="dynamic"
-      >
-        <mk-icon icon="desktop_windows" />
-      </span>
-    </AppDemoBlock>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { createInputState } from '@patriarche/melkor';
-import { computed, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import AppDemoBlock from '@/components/AppDemoBlock.vue';
-import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
-import { CodeLanguage } from '@/lib/definition';
+import { reactive, ref } from 'vue';
 
-const { t } = useI18n();
+import AppDemoBlock from '@/components/AppDemoBlock.vue';
+import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
+import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
+import {
+  CodeLanguage, AttributeType, type ComponentDefinition, type ComponentAttributes,
+} from '@/lib/definition';
 
 const iconPath = 'https://fonts.google.com/icons';
 
-const size = ref(createInputState({ value: 30 }));
+const definition: ComponentDefinition = reactive({
+  props: {
+    icon: {
+      type: AttributeType.string,
+      required: true,
+      default: 'menu',
+    },
+  },
+  scss: {
+    '--mk-icon-size': {
+      type: AttributeType.string,
+      required: false,
+      default: 'inherit',
+    },
+    '--mk-icon-color': {
+      type: AttributeType.string,
+      required: false,
+      default: 'currentColor',
+    },
+  },
+});
 
-const sizeInPx = computed(() => `${size.value.value}px`);
+const attributes = ref<ComponentAttributes>({
+  props: {},
+  scss: {},
+});
+
+function handlePreviewChange(newAttributes: ComponentAttributes) {
+  attributes.value = newAttributes;
+}
 </script>
 
 <style lang="scss">
 .mk-IconView {
-    --icon-view-dynamic-size: v-bind(sizeInPx);
-
     &-binding {
         display: flex;
         gap: 8px;
         align-items: center;
-    }
-
-    &-label {
-        display: inline-flex;
-        gap: 8px;
-        align-items: center;
-
-        &[data-size="30"] {
-            --mk-icon-size: 30px;
-        }
-
-        &[data-size="50"] {
-            --mk-icon-size: 50px;
-        }
-
-        &[data-size="dynamic"] {
-            --mk-icon-size: var(--icon-view-dynamic-size);
-        }
     }
 }
 </style>

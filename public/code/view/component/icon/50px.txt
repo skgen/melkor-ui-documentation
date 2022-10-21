@@ -1,3 +1,0 @@
-.mk-AppIcon {
-    --mk-icon-size: 50px;
-}

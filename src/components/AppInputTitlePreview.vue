@@ -2,10 +2,10 @@
   <div class="pux-AppInputTitlePreview">
     <mk-wysiwyg-preview>
       <h1>
-        {{ t(`component.${props.i18nKey}.name`) }}
+        {{ $t(`component.${props.i18nKey}.name`) }}
       </h1>
       <mk-button @click="() => { modal = !modal; }">
-        {{ t('app.viewState') }}
+        {{ $t('app.viewState') }}
       </mk-button>
     </mk-wysiwyg-preview>
 
@@ -28,7 +28,7 @@
 
 <script lang="ts" setup>import type { InputState } from '@patriarche/melkor';
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
+
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import { CodeLanguage } from '@/lib/definition';
 
@@ -38,8 +38,6 @@ type Props = {
 };
 
 const props = defineProps<Props>();
-
-const { t } = useI18n();
 
 const modal = ref(false);
 </script>

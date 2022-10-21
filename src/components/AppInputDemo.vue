@@ -6,7 +6,7 @@
         scope="global"
       >
         <template #inputType>
-          <code>{{ t(`view.input.component.${props.i18nKey}`) }}</code>
+          <code>{{ $t(`view.input.component.${props.i18nKey}`) }}</code>
         </template>
       </i18n-t>
     </h3>
@@ -40,7 +40,7 @@
 
 <script lang="ts" setup>
 import { ref, useSlots } from 'vue';
-import { useI18n } from 'vue-i18n';
+
 import type { InputModel } from '@patriarche/melkor';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import { CodeLanguage } from '@/lib/definition';
@@ -54,8 +54,6 @@ type Props = {
 };
 
 const props = defineProps<Props>();
-
-const { t } = useI18n();
 
 const slots = useSlots();
 

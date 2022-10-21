@@ -1,21 +1,17 @@
 <template>
   <div class="pux-ButtonView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.button.name') }}</h1>
-    </mk-wysiwyg-preview>
-
-    <mk-wysiwyg-preview>
-      <h2>{{ t('app.interactiveView') }}</h2>
+      <h1>{{ $t('component.button.name') }}</h1>
     </mk-wysiwyg-preview>
 
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/button.txt"
-      :primary-mode="componentProps.onPrimary === true"
+      :primary-mode="attributes.props.onPrimary === true"
       :template-variables="variables"
-      @props-change="handlePropsChange"
+      @change="handlePreviewChange"
     >
-      <mk-button v-bind="componentProps">
+      <mk-button v-bind="attributes.props">
         <mk-icon icon="desktop_windows" />
         {{ variables.label }}
         <mk-icon icon="arrow_forward" />
@@ -25,44 +21,47 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
+
 import { reactive, ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
-import { PropType, type ComponentProps, type PropsDefinition } from '@/lib/definition';
-
-const { t } = useI18n();
+import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
 
 const variables = {
   label: 'Button',
 };
 
-const definition: PropsDefinition = reactive({
-  outlined: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
-  },
-  onPrimary: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
-  },
-  disabled: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
-  },
-  text: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
+const definition: ComponentDefinition = reactive({
+  props: {
+    outlined: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    onPrimary: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    disabled: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    text: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
 });
 
-const componentProps = ref<ComponentProps>({});
+const attributes = ref<ComponentAttributes>({
+  props: {},
+  scss: {},
+});
 
-function handlePropsChange(newProps: ComponentProps) {
-  componentProps.value = newProps;
+function handlePreviewChange(newAttributes: ComponentAttributes) {
+  attributes.value = newAttributes;
 }
 
 </script>

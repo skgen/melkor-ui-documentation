@@ -1,7 +1,7 @@
 <template>
   <div class="pux-ThemeSelectorView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.themeSelector.name') }}</h1>
+      <h1>{{ $t('component.themeSelector.name') }}</h1>
     </mk-wysiwyg-preview>
     <AppDemoBlock>
       <mk-theme-selector />
@@ -77,10 +77,9 @@
 
 <script lang="ts" setup>
 import { ThemeScheme } from '@patriarche/melkor';
-import { useI18n } from 'vue-i18n';
+
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 
-const { t } = useI18n();
 </script>
 
 <style lang="scss">

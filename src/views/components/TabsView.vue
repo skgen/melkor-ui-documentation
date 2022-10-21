@@ -1,7 +1,7 @@
 <template>
   <div class="pux-TabsView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.tabs.name') }}</h1>
+      <h1>{{ $t('component.tabs.name') }}</h1>
     </mk-wysiwyg-preview>
     <AppDemoBlock>
       <mk-tabs v-model="index">
@@ -32,10 +32,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import AppDemoBlock from '@/components/AppDemoBlock.vue';
-import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+import AppDemoBlock from '@/components/AppDemoBlock.vue';
 
 const index = ref('1');
 </script>

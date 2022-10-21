@@ -1,10 +1,10 @@
 <template>
   <div class="pux-ModalView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('app.modals') }}</h1>
+      <h1>{{ $t('app.modals') }}</h1>
     </mk-wysiwyg-preview>
     <mk-wysiwyg-preview>
-      <h2>{{ t('component.view.name') }}</h2>
+      <h2>{{ $t('component.view.name') }}</h2>
       <h3>Fullscreen view</h3>
     </mk-wysiwyg-preview>
     <div>
@@ -50,7 +50,7 @@
     </div>
 
     <mk-wysiwyg-preview>
-      <h2>{{ t('component.modal.name') }}</h2>
+      <h2>{{ $t('component.modal.name') }}</h2>
       <h3>Fullscreen Modal</h3>
       <p>
         <strong>Modals</strong> are enhanced <strong>views</strong>,
@@ -280,10 +280,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { isValue } from '@patriarche/melkor';
 
-const { t } = useI18n();
+import { isValue } from '@patriarche/melkor';
 
 const allControls = ref(false);
 const view = ref(false);

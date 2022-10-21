@@ -7,11 +7,11 @@
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/io/input-number/template.txt"
-      @props-change="handlePropsChange"
+      @change="handlePreviewChange"
     >
       <mk-input-number
         v-model="inputState"
-        v-bind="componentProps"
+        v-bind="attributes.props"
       />
       <template #code-after>
         <AppAsyncCodeBlock
@@ -32,7 +32,7 @@ import {
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
-  PropType, type ComponentProps, CodeLanguage, type PropsDefinition,
+  AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
@@ -48,44 +48,53 @@ const inputState = ref<InputState<NumberInputValue>>(createInputState({
   value: 10,
 }));
 
-const definition: PropsDefinition = {
-  state: {
-    type: PropType.vModel,
-    required: true,
-    default: inputState.value,
-  },
-  validate: {
-    type: PropType.reference,
-    required: false,
-    default: validate,
-  },
-  name: {
-    type: PropType.string,
-    required: false,
-    default: 'number',
-  },
-  label: {
-    type: PropType.string,
-    required: false,
-    default: 'Input number',
-  },
-  hint: {
-    type: PropType.string,
-    required: false,
-    default: "I'm a number input",
-  },
-  fill: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
+const definition: ComponentDefinition = {
+  props: {
+    state: {
+      type: AttributeType.vModel,
+      required: true,
+      default: inputState.value,
+    },
+    validate: {
+      type: AttributeType.reference,
+      required: false,
+      default: validate,
+    },
+    name: {
+      type: AttributeType.string,
+      required: false,
+      default: 'number',
+    },
+    label: {
+      type: AttributeType.string,
+      required: false,
+      default: 'Input number',
+    },
+    hint: {
+      type: AttributeType.string,
+      required: false,
+      default: "I'm a number input",
+    },
+    fill: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
 };
 
-const componentProps = ref({});
+const attributes = ref<ComponentAttributes>({
+  props: {},
+  scss: {},
+});
 
-function handlePropsChange(newProps: ComponentProps) {
+function handlePreviewChange(newAttributes: ComponentAttributes) {
+  const newProps = newAttributes.props;
   const { state, ...otherProps } = newProps;
-  componentProps.value = otherProps;
+  attributes.value = {
+    scss: newAttributes.scss,
+    props: otherProps,
+  };
 }
 
 </script>

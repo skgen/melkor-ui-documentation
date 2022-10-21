@@ -1,7 +1,7 @@
 <template>
   <div class="mk-TooltipView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.tooltip.name') }}</h1>
+      <h1>{{ $t('component.tooltip.name') }}</h1>
     </mk-wysiwyg-preview>
     <AppDemoBlock>
       <mk-tooltip>
@@ -39,11 +39,9 @@
 </template>
 
 <script lang="ts" setup>
-import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+import AppDemoBlock from '@/components/AppDemoBlock.vue';
 
 const menu = ref(false);
 

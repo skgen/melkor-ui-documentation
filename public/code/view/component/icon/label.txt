@@ -1,3 +1,0 @@
-<span>
-  <mk-icon icon="headphones" /> {label}
-</span>

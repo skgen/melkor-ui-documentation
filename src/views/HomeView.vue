@@ -1,15 +1,12 @@
 <template>
   <div class="pux-HomeView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('app.welcome', { appName }) }}</h1>
+      <h1>{{ $t('app.welcome', { appName }) }}</h1>
     </mk-wysiwyg-preview>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
-
-const { t } = useI18n();
 
 const appName = import.meta.env.VITE_APP_NAME;
 

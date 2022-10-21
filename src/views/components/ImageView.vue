@@ -2,31 +2,27 @@
 <template>
   <div class="pux-ImageView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.image.name') }}</h1>
-    </mk-wysiwyg-preview>
-
-    <mk-wysiwyg-preview>
-      <h2>{{ t('app.interactiveView') }}</h2>
+      <h1>{{ $t('component.image.name') }}</h1>
     </mk-wysiwyg-preview>
 
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/image.txt"
-      @props-change="handlePropsChange"
+      @change="handlePreviewChange"
     >
       <mk-image
-        v-bind="componentProps"
+        v-bind="attributes.props"
         :ratio="[1,1]"
       />
     </AppSandboxPreview>
 
     <mk-wysiwyg-preview>
-      <h2>{{ t('app.examples') }}</h2>
+      <h2>{{ $t('app.examples') }}</h2>
     </mk-wysiwyg-preview>
 
     <div class="pux-ImageView-cell pux-ImageView-cover">
       <mk-wysiwyg-preview>
-        <h3>{{ t('view.image.default') }}</h3>
+        <h3>{{ $t('view.image.default') }}</h3>
       </mk-wysiwyg-preview>
       <AppDemoBlock>
         <mk-image src="/images/landscape.jpeg" />
@@ -70,49 +66,54 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
+
 import { reactive, ref } from 'vue';
-import { PropType, type ComponentProps, type PropsDefinition } from '@/lib/definition';
+import {
+  AttributeType, type ComponentAttributes, type ComponentDefinition,
+} from '@/lib/definition';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
-
-const { t } = useI18n();
 
 const imageSource = '/images/landscape.jpeg';
 
 // @todo Add ratio prop with array
-const definition: PropsDefinition = reactive({
-  src: {
-    type: PropType.string,
-    required: false,
-    default: imageSource,
-  },
-  alt: {
-    type: PropType.string,
-    required: false,
-    default: '',
-  },
-  title: {
-    type: PropType.string,
-    required: false,
-    default: '',
-  },
-  cover: {
-    type: PropType.boolean,
-    required: false,
-    default: true,
-  },
-  contain: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
+const definition: ComponentDefinition = reactive({
+  props: {
+    src: {
+      type: AttributeType.string,
+      required: false,
+      default: imageSource,
+    },
+    alt: {
+      type: AttributeType.string,
+      required: false,
+      default: '',
+    },
+    title: {
+      type: AttributeType.string,
+      required: false,
+      default: '',
+    },
+    cover: {
+      type: AttributeType.boolean,
+      required: false,
+      default: true,
+    },
+    contain: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
 });
 
-const componentProps = ref({});
+const attributes = ref<ComponentAttributes>({
+  props: {},
+  scss: {},
+});
 
-function handlePropsChange(newProps: ComponentProps) {
-  componentProps.value = newProps;
+function handlePreviewChange(newAttributes: ComponentAttributes) {
+  attributes.value = newAttributes;
 }
 
 const cells = [

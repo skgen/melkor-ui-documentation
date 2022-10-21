@@ -1,19 +1,15 @@
 <template>
   <div>
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.alert.name') }}</h1>
-    </mk-wysiwyg-preview>
-
-    <mk-wysiwyg-preview>
-      <h2>{{ t('app.interactiveView') }}</h2>
+      <h1>{{ $t('component.alert.name') }}</h1>
     </mk-wysiwyg-preview>
 
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/alert/template.txt"
-      @props-change="handlePropsChange"
+      @change="handlePreviewChange"
     >
-      <mk-alert v-bind="componentProps">
+      <mk-alert v-bind="attributes.props">
         {{ title }}
         <template #content>
           {{ content }}
@@ -28,7 +24,7 @@
     </AppSandboxPreview>
 
     <mk-wysiwyg-preview>
-      <h2>{{ t('app.examples') }}</h2>
+      <h2>{{ $t('app.examples') }}</h2>
     </mk-wysiwyg-preview>
 
     <AppDemoBlock>
@@ -79,53 +75,56 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
+
 import { reactive, ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import {
-  PropType, type ComponentProps, type PropsDefinition, CodeLanguage,
+  AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
-
-const { t } = useI18n();
 
 const title = 'Lorem ipsum dolor sit amet';
 const content = `consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`;
 
-const definition: PropsDefinition = reactive({
-  success: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
-  },
-  warning: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
-  },
-  error: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
-  },
-  info: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
-  },
-  icon: {
-    type: PropType.string,
-    required: false,
-    default: null,
+const definition: ComponentDefinition = reactive({
+  props: {
+    success: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    warning: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    error: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    info: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    icon: {
+      type: AttributeType.string,
+      required: false,
+      default: null,
+    },
   },
 });
 
-const componentProps = ref({});
+const attributes = ref<ComponentAttributes>({
+  props: {},
+  scss: {},
+});
 
-function handlePropsChange(newProps: ComponentProps) {
-  componentProps.value = newProps;
+function handlePreviewChange(newAttributes: ComponentAttributes) {
+  attributes.value = newAttributes;
 }
 
 </script>

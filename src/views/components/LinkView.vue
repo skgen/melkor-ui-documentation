@@ -1,20 +1,16 @@
 <template>
   <div>
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.link.name') }}</h1>
-    </mk-wysiwyg-preview>
-
-    <mk-wysiwyg-preview>
-      <h2>{{ t('app.interactiveView') }}</h2>
+      <h1>{{ $t('component.link.name') }}</h1>
     </mk-wysiwyg-preview>
 
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/link.txt"
       :template-variables="variables"
-      @props-change="handlePropsChange"
+      @change="handlePreviewChange"
     >
-      <mk-link v-bind="componentProps">
+      <mk-link v-bind="attributes.props">
         {{ variables.label }}
       </mk-link>
     </AppSandboxPreview>
@@ -22,39 +18,42 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
+
 import { reactive, ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
-import { PropType, type ComponentProps, type PropsDefinition } from '@/lib/definition';
-
-const { t } = useI18n();
+import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
 
 const variables = {
   label: 'Link label',
 };
 
-const definition: PropsDefinition = reactive({
-  to: {
-    type: PropType.string,
-    required: false,
-    default: '/',
-  },
-  asButton: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
-  },
-  asWrapper: {
-    type: PropType.boolean,
-    required: false,
-    default: false,
+const definition: ComponentDefinition = reactive({
+  props: {
+    to: {
+      type: AttributeType.string,
+      required: false,
+      default: '/',
+    },
+    asButton: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    asWrapper: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
 });
 
-const componentProps = ref({});
+const attributes = ref<ComponentAttributes>({
+  props: {},
+  scss: {},
+});
 
-function handlePropsChange(newProps: ComponentProps) {
-  componentProps.value = newProps;
+function handlePreviewChange(newAttributes: ComponentAttributes) {
+  attributes.value = newAttributes;
 }
 
 </script>

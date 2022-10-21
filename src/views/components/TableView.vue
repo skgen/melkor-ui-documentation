@@ -1,7 +1,7 @@
 <template>
   <div class="pux-TableView">
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.table.name') }}</h1>
+      <h1>{{ $t('component.table.name') }}</h1>
     </mk-wysiwyg-preview>
     <mk-table v-bind="table">
       <template #protein="{ data }">
@@ -54,12 +54,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
+
 import type { TableProps } from '@patriarche/melkor';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import { CodeLanguage } from '@/lib/definition';
-
-const { t } = useI18n();
 
 const table: TableProps = {
   headers: [

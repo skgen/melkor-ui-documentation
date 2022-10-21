@@ -1,11 +1,11 @@
 <template>
   <div>
     <mk-wysiwyg-preview>
-      <h1>{{ t('component.heading.name') }}</h1>
+      <h1>{{ $t('component.heading.name') }}</h1>
     </mk-wysiwyg-preview>
     <mk-wysiwyg-preview>
       <h2>
-        {{ t('view.heading.h1') }}
+        {{ $t('view.heading.h1') }}
       </h2>
     </mk-wysiwyg-preview>
     <AppDemoBlock>
@@ -15,7 +15,7 @@
     </AppDemoBlock>
     <mk-wysiwyg-preview>
       <h2>
-        {{ t('view.heading.h2') }}
+        {{ $t('view.heading.h2') }}
       </h2>
     </mk-wysiwyg-preview>
     <AppDemoBlock>
@@ -25,7 +25,7 @@
     </AppDemoBlock>
     <mk-wysiwyg-preview>
       <h2>
-        {{ t('view.heading.h3') }}
+        {{ $t('view.heading.h3') }}
       </h2>
     </mk-wysiwyg-preview>
     <AppDemoBlock>
@@ -35,7 +35,7 @@
     </AppDemoBlock>
     <mk-wysiwyg-preview>
       <h2>
-        {{ t('view.heading.h4') }}
+        {{ $t('view.heading.h4') }}
       </h2>
     </mk-wysiwyg-preview>
     <AppDemoBlock>
@@ -47,8 +47,7 @@
 </template>
 
 <script lang="ts" setup>
-import AppDemoBlock from '@/components/AppDemoBlock.vue';
-import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+import AppDemoBlock from '@/components/AppDemoBlock.vue';
+
 </script>
