@@ -1,0 +1,6 @@
+<mk-alert{props}>
+  {{ title }}
+  <template #content>
+    {{ content }}
+  </template>
+</mk-alert>
