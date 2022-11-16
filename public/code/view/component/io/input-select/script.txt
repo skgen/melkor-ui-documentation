@@ -1,0 +1,19 @@
+type SelectInputValue = { name: string; race: 'ainur' | 'elf' } | null;
+
+function validate(value: SelectInputValue) {
+  return value === null ? 'Required' : null;
+}
+
+const options: SelectInputOption<SelectInputValue>[] = [
+  { label: '-----', value: null },
+  { label: 'Melkor', value: { name: 'Melkor', race: 'ainur' } },
+  { label: 'Celebrimbor', value: { name: 'Celebrimbor', race: 'elf' } },
+  { label: 'Manwë', value: { name: 'Manwë', race: 'ainur' } },
+  { label: 'Glorfindel', value: { name: 'Glorfindel', race: 'elf' } },
+];
+
+const state = ref<InputState<SelectInputValue>>(
+  createInputState({
+    value: options[1].value,
+  }),
+);

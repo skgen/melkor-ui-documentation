@@ -6,7 +6,7 @@
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/link.txt"
+      template="/code/view/component/link/template.txt"
       :template-variables="variables"
       @change="handlePreviewChange"
     >

@@ -6,7 +6,7 @@
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/button.txt"
+      template="/code/view/component/button/template.txt"
       :primary-mode="attributes.props.onPrimary === true"
       :template-variables="variables"
       @change="handlePreviewChange"

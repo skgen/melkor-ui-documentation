@@ -4,7 +4,10 @@
   </mk-wysiwyg-preview>
   <div class="mk-AppSandboxPreview">
     <div class="mk-AppSandboxPreview-content">
-      <div class="mk-AppSandboxPreview-controllers">
+      <div
+        v-if="isValue(propsControllers) || isValue(scssControllers)"
+        class="mk-AppSandboxPreview-controllers"
+      >
         <template v-if="isValue(propsControllers)">
           <mk-wysiwyg-preview>
             <h3>Props</h3>
@@ -97,7 +100,7 @@ import {
 } from '@/lib/definition';
 
 type Props = {
-  definition: ComponentDefinition;
+  definition?: ComponentDefinition;
   template: string;
   scss?: string;
   templateVariables?: Record<string, any>;
@@ -142,8 +145,8 @@ function createControllers(def: AttributesDefinition) {
   return o;
 }
 
-const propsControllers = props.definition.props ? reactive(createControllers(props.definition.props)) : null;
-const scssControllers = props.definition.scss ? reactive(createControllers(props.definition.scss)) : null;
+const propsControllers = props.definition?.props ? reactive(createControllers(props.definition.props)) : null;
+const scssControllers = props.definition?.scss ? reactive(createControllers(props.definition.scss)) : null;
 
 function handlePropValueChange(key: string, newState: InputState<any>) {
   if (isValue(propsControllers)) {

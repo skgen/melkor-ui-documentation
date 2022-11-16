@@ -6,7 +6,7 @@
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/image.txt"
+      template="/code/view/component/image/template.txt"
       @change="handlePreviewChange"
     >
       <mk-image v-bind="attributes.props" />
@@ -68,7 +68,6 @@
 </template>
 
 <script lang="ts" setup>
-
 import { reactive, ref } from 'vue';
 import {
   AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,

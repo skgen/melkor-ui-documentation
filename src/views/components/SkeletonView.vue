@@ -6,7 +6,7 @@
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/skeleton.txt"
+      template="/code/view/component/skeleton/template.txt"
       @change="handlePreviewChange"
     >
       <mk-skeleton v-bind="attributes.props" />
