@@ -22,7 +22,6 @@ import TheSidebar from '@/components/TheSidebar.vue';
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
-    background-color: tls();
 
     &-content {
         display: flex;

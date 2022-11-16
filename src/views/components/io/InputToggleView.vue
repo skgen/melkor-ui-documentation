@@ -2,7 +2,7 @@
   <div>
     <AppInputTitlePreview
       i18n-key="input-toggle"
-      :state="inputState"
+      :state="state"
     />
     <AppSandboxPreview
       :definition="definition"
@@ -10,7 +10,7 @@
       @change="handlePreviewChange"
     >
       <mk-input-toggle
-        v-model="inputState"
+        v-model="state"
         v-bind="attributes.props"
       />
       <template #code-after>
@@ -40,7 +40,7 @@ function validate(value: string) {
   return value === 'Not toggled' ? 'Must be toggled' : null;
 }
 
-const inputState = ref<InputState<{ iAm: 'toggled' } | 'Not toggled'>>(
+const state = ref<InputState<{ iAm: 'toggled' } | 'Not toggled'>>(
   createInputState({ value: { iAm: 'toggled' } }),
 );
 
@@ -53,7 +53,7 @@ const definition: ComponentDefinition = {
     state: {
       type: AttributeType.vModel,
       required: true,
-      default: inputState.value,
+      default: state.value,
     },
     validate: {
       type: AttributeType.reference,
@@ -110,7 +110,7 @@ const attributes = ref<ComponentAttributes>({
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
   const newProps = newAttributes.props;
-  const { state, ...otherProps } = newProps;
+  const { state: newState, ...otherProps } = newProps;
   attributes.value = {
     scss: newAttributes.scss,
     props: otherProps,

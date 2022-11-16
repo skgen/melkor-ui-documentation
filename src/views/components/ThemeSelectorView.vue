@@ -7,86 +7,60 @@
       <mk-theme-selector />
     </AppDemoBlock>
     <AppDemoBlock>
-      <mk-wysiwyg-preview v-theme="{ scheme: ThemeScheme.light }">
-        <h2>Je suis un composant forcé en light theme sur le composant</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
-        </p>
-      </mk-wysiwyg-preview>
-    </AppDemoBlock>
-    <AppDemoBlock>
-      <mk-wysiwyg-preview v-theme="{ scheme: ThemeScheme.dark }">
-        <h2>Je suis un composant forcé en dark theme sur le composant</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
-        </p>
-      </mk-wysiwyg-preview>
-    </AppDemoBlock>
-    <AppDemoBlock
-      v-theme="{ scheme: ThemeScheme.light }"
-    >
       <mk-wysiwyg-preview>
-        <h2>Je suis un composant forcé en light theme via un block de context</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
-        </p>
+        <h2>I'm a component in the <code>app</code> theme context</h2>
+        <p>{{ lorem }}</p>
       </mk-wysiwyg-preview>
-      <mk-wysiwyg-preview>
-        <h2>Je suis un composant forcé en light theme via un block de context</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
-        </p>
-      </mk-wysiwyg-preview>
-    </AppDemoBlock>
-    <AppDemoBlock
-      v-theme="{ scheme: ThemeScheme.dark }"
-    >
-      <mk-wysiwyg-preview>
-        <h2>Je suis un composant forcé en dark theme via un block de context</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
-        </p>
-      </mk-wysiwyg-preview>
-      <mk-wysiwyg-preview>
-        <h2>Je suis un composant forcé en dark theme via un block de context</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
-        </p>
-      </mk-wysiwyg-preview>
+      <mk-theme-context :theme="ThemeScheme.light">
+        <mk-wysiwyg-preview>
+          <h2>I'm a component in a <code>light</code> theme context</h2>
+          <p>{{ lorem }}</p>
+        </mk-wysiwyg-preview>
+
+        <mk-theme-context :theme="ThemeScheme.dark">
+          <mk-wysiwyg-preview>
+            <h2>I'm a component in a <code>dark</code> theme context</h2>
+            <p>{{ lorem }}</p>
+            <mk-theme-context :theme="ThemeScheme.light">
+              <mk-wysiwyg-preview>
+                <h2>I'm a component in a <code>light</code> theme context inside a <code>dark</code> theme context</h2>
+                <p>{{ lorem }}</p>
+              </mk-wysiwyg-preview>
+            </mk-theme-context>
+            <mk-theme-context>
+              <mk-wysiwyg-preview>
+                <h2>I'm a component in the <code>app</code> theme context inside a <code>dark</code> theme context</h2>
+                <p>{{ lorem }}</p>
+              </mk-wysiwyg-preview>
+            </mk-theme-context>
+          </mk-wysiwyg-preview>
+        </mk-theme-context>
+      </mk-theme-context>
     </AppDemoBlock>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ThemeScheme } from '@patriarche/melkor';
-
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 
+const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.`;
 </script>
 
 <style lang="scss">
 .pux-ThemeSelectorView {
-    [data-theme] {
-        padding: 20px;
-        background-color: var(--app-background-color);
+    .pux-AppDemoBlock {
+        .mk-AppWysiwygPreview {
+            padding: var(--app-m-3);
+            background-color: var(--app-background-color);
+
+            & + .mk-AppWysiwygPreview {
+                margin-top: var(--app-m-3);
+            }
+        }
     }
 }
 </style>

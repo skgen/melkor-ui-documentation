@@ -8,6 +8,7 @@ export enum AttributeType {
   reference,
   function,
   vModel,
+  wysiwyg,
 }
 
 export type AttributeDefinition = {

@@ -2,7 +2,7 @@
   <div>
     <AppInputTitlePreview
       i18n-key="input-text"
-      :state="inputState"
+      :state="state"
     />
     <AppSandboxPreview
       :definition="definition"
@@ -10,7 +10,7 @@
       @change="handlePreviewChange"
     >
       <mk-input-text
-        v-model="inputState"
+        v-model="state"
         v-bind="attributes.props"
       />
       <template #code-after>
@@ -41,7 +41,7 @@ function validate(value: TextInputValue) {
   return value === null ? 'Required' : null;
 }
 
-const inputState = ref<InputState<TextInputValue>>(createInputState({
+const state = ref<InputState<TextInputValue>>(createInputState({
   value: 'Hello world',
 }));
 
@@ -50,7 +50,7 @@ const definition: ComponentDefinition = {
     state: {
       type: AttributeType.vModel,
       required: true,
-      default: inputState.value,
+      default: state.value,
     },
     validate: {
       type: AttributeType.reference,
@@ -87,7 +87,7 @@ const attributes = ref<ComponentAttributes>({
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
   const newProps = newAttributes.props;
-  const { state, ...otherProps } = newProps;
+  const { state: newState, ...otherProps } = newProps;
   attributes.value = {
     scss: newAttributes.scss,
     props: otherProps,

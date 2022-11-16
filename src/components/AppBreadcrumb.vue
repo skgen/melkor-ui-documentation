@@ -4,7 +4,15 @@
       to="/"
       class="pux-AppBreadcrumb-app"
     >
-      {{ appName }}<small>{{ appVersion }}</small>
+      <mk-image
+        src="/images/ring-outlined.png"
+        data-type="dark"
+      />
+      <mk-image
+        src="/images/ring-filled.png"
+        data-type="light"
+      />
+      <span>{{ appName }}<small>{{ appVersion }}</small></span>
     </mk-link>
     <mk-link
       v-for="link in props.navigation"
@@ -56,14 +64,39 @@ export type BreadcrumbEntry = {
     }
 
     &-app {
+        .mk-AppImage {
+            width: 30px;
+            margin: 0 var(--app-m-1) 0 0;
+
+            &[data-type="dark"][data-theme="light"] {
+                display: none;
+            }
+
+            &[data-type="dark"] {
+                filter: invert(1);
+            }
+
+            &[data-type="light"][data-theme="dark"] {
+                display: none;
+            }
+        }
+
         small {
             font-size: 1.2rem;
         }
 
         &.mk-AppLink {
-            align-items: baseline;
+            --mk-link-text-active-color: inherit;
+
+            align-items: center;
             font-size: 2rem;
             font-weight: 700;
+
+            span {
+                display: flex;
+                gap: var(--app-m-1);
+                align-items: baseline;
+            }
         }
     }
 

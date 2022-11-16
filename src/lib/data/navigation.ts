@@ -49,10 +49,6 @@ export const sidebar: NavigationLevel[] = [
     title: t('app.dataInputs'),
     children: [
       {
-        title: t('app.inputs'),
-        to: '/component/inputs',
-      },
-      {
         title: t('component.input-text.name'),
         to: '/component/input-text',
       },
@@ -76,6 +72,18 @@ export const sidebar: NavigationLevel[] = [
         title: t('component.input-file.name'),
         to: '/component/input-file',
       },
+      {
+        title: t('component.input-color.name'),
+        to: '/component/input-color',
+      },
+      {
+        title: t('component.input-select.name'),
+        to: '/component/input-select',
+      },
+      {
+        title: t('component.input-radio.name'),
+        to: '/component/input-radio',
+      },
       // {
       //   title: t('component.form.name'),
       //   to: '/component/form',
@@ -92,6 +100,10 @@ export const sidebar: NavigationLevel[] = [
       {
         title: t('component.icon.name'),
         to: '/component/icon',
+      },
+      {
+        title: t('component.wysiwygPreview.name'),
+        to: '/component/wysiwyg-preview',
       },
     ],
   },

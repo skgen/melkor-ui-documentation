@@ -2,7 +2,7 @@ function validate(value: string) {
   return value === 'Not toggled' ? 'Must be toggled' : null;
 }
 
-const inputState = ref<InputState<{ iAm: 'toggled' } | 'Not toggled'>>(
+const state = ref<InputState<{ iAm: 'toggled' } | 'Not toggled'>>(
   createInputState({ value: { iAm: 'toggled' } }),
 );
 

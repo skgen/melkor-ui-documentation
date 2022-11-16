@@ -29,7 +29,7 @@
 
     <AppDemoBlock>
       <mk-alert basic>
-        This is a basic — check it out!
+        This is a basic alert — check it out!
         <template #content>
           Curabitur ultrices dui eu nunc auctor pretium
         </template>

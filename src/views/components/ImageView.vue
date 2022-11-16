@@ -1,4 +1,3 @@
-<!-- eslint-disable max-len -->
 <template>
   <div class="pux-ImageView">
     <mk-wysiwyg-preview>
@@ -10,10 +9,13 @@
       template="/code/view/component/image.txt"
       @change="handlePreviewChange"
     >
-      <mk-image
-        v-bind="attributes.props"
-        :ratio="[1,1]"
-      />
+      <mk-image v-bind="attributes.props" />
+      <template #code-after>
+        <AppAsyncCodeBlock
+          file-path="/code/view/component/image/script.txt"
+          :language="CodeLanguage.typescript"
+        />
+      </template>
     </AppSandboxPreview>
 
     <mk-wysiwyg-preview>
@@ -69,20 +71,27 @@
 
 import { reactive, ref } from 'vue';
 import {
-  AttributeType, type ComponentAttributes, type ComponentDefinition,
+  AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
+import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 
 const imageSource = '/images/landscape.jpeg';
 
-// @todo Add ratio prop with array
+const ratio = [4, 3];
+
 const definition: ComponentDefinition = reactive({
   props: {
     src: {
       type: AttributeType.string,
       required: false,
       default: imageSource,
+    },
+    ratio: {
+      type: AttributeType.reference,
+      required: false,
+      default: ratio,
     },
     alt: {
       type: AttributeType.string,

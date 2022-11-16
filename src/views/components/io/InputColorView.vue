@@ -1,21 +1,21 @@
 <template>
   <div>
     <AppInputTitlePreview
-      i18n-key="input-password"
+      i18n-key="input-color"
       :state="state"
     />
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/io/input-password/template.txt"
+      template="/code/view/component/io/input-color/template.txt"
       @change="handlePreviewChange"
     >
-      <mk-input-password
+      <mk-input-color
         v-model="state"
         v-bind="attributes.props"
       />
       <template #code-after>
         <AppAsyncCodeBlock
-          file-path="/code/view/component/io/input-password/script.txt"
+          file-path="/code/view/component/io/input-color/script.txt"
           :language="CodeLanguage.typescript"
         />
       </template>
@@ -28,7 +28,7 @@ import { ref } from 'vue';
 import {
   createInputState,
   type InputState,
-  type PasswordInputValue,
+  type ColorInputValue,
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
@@ -37,12 +37,12 @@ import {
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
 
-function validate(value: PasswordInputValue) {
+function validate(value: ColorInputValue) {
   return value === null ? 'Required' : null;
 }
 
-const state = ref<InputState<PasswordInputValue>>(createInputState({
-  value: '@superSecretPass#',
+const state = ref<InputState<ColorInputValue>>(createInputState({
+  value: '#ff0000',
 }));
 
 const definition: ComponentDefinition = {
@@ -60,17 +60,17 @@ const definition: ComponentDefinition = {
     name: {
       type: AttributeType.string,
       required: false,
-      default: 'password',
+      default: 'text',
     },
     label: {
       type: AttributeType.string,
       required: false,
-      default: 'Input password',
+      default: 'Input text',
     },
     hint: {
       type: AttributeType.string,
       required: false,
-      default: "I'm a password input",
+      default: "I'm a text input",
     },
     fill: {
       type: AttributeType.boolean,

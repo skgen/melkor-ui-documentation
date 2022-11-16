@@ -1,21 +1,21 @@
 <template>
   <div>
     <AppInputTitlePreview
-      i18n-key="input-password"
+      i18n-key="input-select"
       :state="state"
     />
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/io/input-password/template.txt"
+      template="/code/view/component/io/input-select/template.txt"
       @change="handlePreviewChange"
     >
-      <mk-input-password
+      <mk-input-select
         v-model="state"
         v-bind="attributes.props"
       />
       <template #code-after>
         <AppAsyncCodeBlock
-          file-path="/code/view/component/io/input-password/script.txt"
+          file-path="/code/view/component/io/input-select/script.txt"
           :language="CodeLanguage.typescript"
         />
       </template>
@@ -28,7 +28,7 @@ import { ref } from 'vue';
 import {
   createInputState,
   type InputState,
-  type PasswordInputValue,
+  type SelectInputOption,
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
@@ -37,13 +37,25 @@ import {
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
 
-function validate(value: PasswordInputValue) {
+type SelectInputValue = { name: string; race: 'ainur' | 'elf' } | null;
+
+function validate(value: SelectInputValue) {
   return value === null ? 'Required' : null;
 }
 
-const state = ref<InputState<PasswordInputValue>>(createInputState({
-  value: '@superSecretPass#',
-}));
+const options: SelectInputOption<SelectInputValue>[] = [
+  { label: '-----', value: null },
+  { label: 'Melkor', value: { name: 'Melkor', race: 'ainur' } },
+  { label: 'Celebrimbor', value: { name: 'Celebrimbor', race: 'elf' } },
+  { label: 'Manwë', value: { name: 'Manwë', race: 'ainur' } },
+  { label: 'Glorfindel', value: { name: 'Glorfindel', race: 'elf' } },
+];
+
+const state = ref<InputState<SelectInputValue>>(
+  createInputState({
+    value: options[1].value,
+  }),
+);
 
 const definition: ComponentDefinition = {
   props: {
@@ -60,22 +72,27 @@ const definition: ComponentDefinition = {
     name: {
       type: AttributeType.string,
       required: false,
-      default: 'password',
+      default: 'select',
     },
     label: {
       type: AttributeType.string,
       required: false,
-      default: 'Input password',
+      default: 'Input select',
     },
     hint: {
       type: AttributeType.string,
       required: false,
-      default: "I'm a password input",
+      default: "I'm a select input",
     },
     fill: {
       type: AttributeType.boolean,
       required: false,
       default: false,
+    },
+    options: {
+      type: AttributeType.reference,
+      required: true,
+      default: options,
     },
   },
 };

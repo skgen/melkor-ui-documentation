@@ -2,7 +2,7 @@
   <div>
     <AppInputTitlePreview
       i18n-key="input-file"
-      :state="inputState"
+      :state="state"
     />
 
     <AppSandboxPreview
@@ -11,7 +11,7 @@
       @change="handlePreviewChange"
     >
       <mk-input-file
-        v-model="inputState"
+        v-model="state"
         v-bind="attributes.props"
       />
       <template #code-after>
@@ -42,7 +42,7 @@ function validate(value: FileInputValue) {
   return value.length <= 0 ? 'Required' : null;
 }
 
-const inputState = ref<InputState<FileInputValue>>(createInputState({
+const state = ref<InputState<FileInputValue>>(createInputState({
   value: [
     {
       name: 'Yuri',
@@ -59,7 +59,7 @@ const definition: ComponentDefinition = {
     state: {
       type: AttributeType.vModel,
       required: true,
-      default: inputState.value,
+      default: state.value,
     },
     validate: {
       type: AttributeType.reference,
@@ -91,7 +91,7 @@ const attributes = ref<ComponentAttributes>({
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
   const newProps = newAttributes.props;
-  const { state, ...otherProps } = newProps;
+  const { state: newState, ...otherProps } = newProps;
   attributes.value = {
     scss: newAttributes.scss,
     props: otherProps,

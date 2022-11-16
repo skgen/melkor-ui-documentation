@@ -48,6 +48,9 @@
         "heading": {
             "name": "Heading"
         },
+        "wysiwygPreview": {
+            "name": "Wysiwyg preview"
+        },
         "tabs": {
             "name": "Tabs"
         },
@@ -104,6 +107,18 @@
         "input-toggle": {
             "name": "Toggle input",
             "type": "toggle"
+        },
+        "input-color": {
+            "name": "Color input",
+            "type": "color"
+        },
+        "input-select": {
+            "name": "Select input",
+            "type": "select"
+        },
+        "input-radio": {
+            "name": "Radio input",
+            "type": "radio"
         }
     },
     "view": {

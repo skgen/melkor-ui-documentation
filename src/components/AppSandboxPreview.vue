@@ -123,6 +123,9 @@ function resolveInputName(type: AttributeType) {
   if (type === AttributeType.boolean) {
     return 'mk-input-toggle';
   }
+  if (type === AttributeType.wysiwyg) {
+    return 'mk-input-wysiwyg';
+  }
   return false;
 }
 
