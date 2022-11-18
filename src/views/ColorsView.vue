@@ -29,7 +29,10 @@
           />
         </div>
         <div class="pux-ColorsView-interactive-preview">
-          <AppColorPreview :color="nameInput.state.value" />
+          <AppColorPreview
+            v-if="nameInput.state.value"
+            :color="nameInput.state.value"
+          />
           <div class="pux-ColorsView-interactive-preview-code">
             <mk-wysiwyg-preview>
               <p>Raw</p>
@@ -111,7 +114,7 @@ const lightInput = reactive<NumberInputModel>({
   },
 });
 
-const light = computed(() => `${map(lightInput.state.value, 0, 100, 50, 100)}%`);
+const light = computed(() => (lightInput.state.value ? `${map(lightInput.state.value, 0, 100, 50, 100)}%` : 50));
 
 const cssAttribute = computed(() => `${nameInput.state.value}: ${toneInput.state.value} ${light.value};`);
 const cssAttributeNamed = computed(() => `${nameInput.state.value}: var(${toneNameInput.state.value}) ${light.value};`);
