@@ -1,0 +1,7 @@
+function validate(value: ColorInputValue) {
+  return value === null ? 'Required' : null;
+}
+
+const state = ref<InputState<ColorInputValue>>(createInputState({
+  value: '#ff0000',
+}));

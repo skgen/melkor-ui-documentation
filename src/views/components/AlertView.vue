@@ -7,19 +7,20 @@
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/alert/template.txt"
+      scss="/code/view/component/alert/scss.txt"
+      script="/code/view/component/alert/script.txt"
       @change="handlePreviewChange"
     >
-      <mk-alert v-bind="attributes.props">
-        {{ title }}
-        <template #content>
-          {{ content }}
-        </template>
-      </mk-alert>
-      <template #code-after>
-        <AppAsyncCodeBlock
-          file-path="/code/view/component/alert/script.txt"
-          :language="CodeLanguage.typescript"
-        />
+      <template #default="{ style }">
+        <mk-alert
+          v-bind="attributes.props"
+          :style="style"
+        >
+          {{ title }}
+          <template #content>
+            {{ content }}
+          </template>
+        </mk-alert>
       </template>
     </AppSandboxPreview>
 
@@ -76,19 +77,19 @@
 
 <script lang="ts" setup>
 
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
-import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import {
-  AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,
+  AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
+import { createScssControllersConfig } from '@/lib/utils';
 
 const title = 'Lorem ipsum dolor sit amet';
 const content = `consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`;
 
-const definition: ComponentDefinition = reactive({
+const definition: ComponentDefinition = {
   props: {
     success: {
       type: AttributeType.boolean,
@@ -116,7 +117,15 @@ const definition: ComponentDefinition = reactive({
       default: null,
     },
   },
-});
+  scss: createScssControllersConfig([
+    '--mk-alert-color',
+    '--mk-alert-background-color',
+    '--mk-alert-padding-x',
+    '--mk-alert-padding-y',
+    '--mk-alert-border-radius',
+    '--mk-alert-icon-size',
+  ]),
+};
 
 const attributes = ref<ComponentAttributes>({
   props: {},

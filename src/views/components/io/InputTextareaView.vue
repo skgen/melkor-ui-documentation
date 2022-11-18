@@ -7,16 +7,15 @@
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/io/input-textarea/template.txt"
+      scss="/code/view/component/io/input-textarea/scss.txt"
+      script="/code/view/component/io/input-textarea/script.txt"
       @change="handlePreviewChange"
     >
-      <mk-input-textarea
-        v-model="state"
-        v-bind="attributes.props"
-      />
-      <template #code-after>
-        <AppAsyncCodeBlock
-          file-path="/code/view/component/io/input-textarea/script.txt"
-          :language="CodeLanguage.typescript"
+      <template #default="{ style }">
+        <mk-input-textarea
+          v-model="state"
+          v-bind="attributes.props"
+          :style="style"
         />
       </template>
     </AppSandboxPreview>
@@ -32,10 +31,10 @@ import {
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
-  AttributeType, CodeLanguage, type ComponentDefinition, type ComponentAttributes,
+  AttributeType, type ComponentDefinition, type ComponentAttributes,
 } from '@/lib/definition';
-import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
+import { createScssControllersConfig } from '@/lib/utils';
 
 function validate(value: TextareaInputValue) {
   return value === null ? 'Required' : null;
@@ -83,6 +82,13 @@ const definition: ComponentDefinition = {
       default: 2,
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-input-textarea-padding-x',
+    '--mk-input-textarea-padding-y',
+    '--mk-input-textarea-border-radius',
+    '--mk-input-textarea-background-color',
+    '--mk-input-textarea-border-color',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

@@ -44,6 +44,7 @@ const router = createRouter({
         { path: 'input-color', component: () => import('@/views/components/io/InputColorView.vue') },
         { path: 'input-select', component: () => import('@/views/components/io/InputSelectView.vue') },
         { path: 'input-radio', component: () => import('@/views/components/io/InputRadioView.vue') },
+        { path: 'input-date', component: () => import('@/views/components/io/InputDateView.vue') },
       ],
     },
     {

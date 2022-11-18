@@ -7,16 +7,15 @@
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/io/input-select/template.txt"
+      scss="/code/view/component/io/input-select/scss.txt"
+      script="/code/view/component/io/input-select/script.txt"
       @change="handlePreviewChange"
     >
-      <mk-input-select
-        v-model="state"
-        v-bind="attributes.props"
-      />
-      <template #code-after>
-        <AppAsyncCodeBlock
-          file-path="/code/view/component/io/input-select/script.txt"
-          :language="CodeLanguage.typescript"
+      <template #default="{ style }">
+        <mk-input-select
+          v-model="state"
+          v-bind="attributes.props"
+          :style="style"
         />
       </template>
     </AppSandboxPreview>
@@ -32,10 +31,10 @@ import {
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
-  AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,
+  AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
-import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
+import { createScssControllersConfig } from '@/lib/utils';
 
 type SelectInputValue = { name: string; race: 'ainur' | 'elf' } | null;
 
@@ -95,6 +94,14 @@ const definition: ComponentDefinition = {
       default: options,
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-input-select-padding-x-left',
+    '--mk-input-select-padding-x-right',
+    '--mk-input-select-padding-y',
+    '--mk-input-select-border-radius',
+    '--mk-input-select-background-color',
+    '--mk-input-select-border-color',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

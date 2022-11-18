@@ -7,16 +7,15 @@
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/io/input-password/template.txt"
+      scss="/code/view/component/io/input-password/scss.txt"
+      script="/code/view/component/io/input-password/script.txt"
       @change="handlePreviewChange"
     >
-      <mk-input-password
-        v-model="state"
-        v-bind="attributes.props"
-      />
-      <template #code-after>
-        <AppAsyncCodeBlock
-          file-path="/code/view/component/io/input-password/script.txt"
-          :language="CodeLanguage.typescript"
+      <template #default="{ style }">
+        <mk-input-password
+          v-model="state"
+          v-bind="attributes.props"
+          :style="style"
         />
       </template>
     </AppSandboxPreview>
@@ -32,10 +31,10 @@ import {
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
-  AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,
+  AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
-import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
+import { createScssControllersConfig } from '@/lib/utils';
 
 function validate(value: PasswordInputValue) {
   return value === null ? 'Required' : null;
@@ -78,6 +77,13 @@ const definition: ComponentDefinition = {
       default: false,
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-input-password-padding-x',
+    '--mk-input-password-padding-y',
+    '--mk-input-password-border-radius',
+    '--mk-input-password-background-color',
+    '--mk-input-password-border-color',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

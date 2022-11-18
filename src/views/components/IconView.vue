@@ -67,8 +67,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
-
+import { ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
@@ -78,7 +77,7 @@ import {
 
 const iconPath = 'https://fonts.google.com/icons';
 
-const definition: ComponentDefinition = reactive({
+const definition: ComponentDefinition = {
   props: {
     icon: {
       type: AttributeType.string,
@@ -98,7 +97,7 @@ const definition: ComponentDefinition = reactive({
       default: 'currentColor',
     },
   },
-});
+};
 
 const attributes = ref<ComponentAttributes>({
   props: {},

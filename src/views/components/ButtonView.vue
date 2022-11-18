@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
 
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
 
@@ -30,7 +30,7 @@ const variables = {
   label: 'Button',
 };
 
-const definition: ComponentDefinition = reactive({
+const definition: ComponentDefinition = {
   props: {
     outlined: {
       type: AttributeType.boolean,
@@ -53,7 +53,7 @@ const definition: ComponentDefinition = reactive({
       default: false,
     },
   },
-});
+};
 
 const attributes = ref<ComponentAttributes>({
   props: {},

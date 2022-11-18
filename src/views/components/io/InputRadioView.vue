@@ -7,19 +7,18 @@
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/io/input-radio/template.txt"
+      scss="/code/view/component/io/input-radio/scss.txt"
+      script="/code/view/component/io/input-radio/script.txt"
+      :script-variables="{
+        orNull: attributes.props.nullable ? ' | null' : '',
+      }"
       @change="handlePreviewChange"
     >
-      <mk-input-radio
-        v-model="state"
-        v-bind="attributes.props"
-      />
-      <template #code-after>
-        <AppAsyncCodeBlock
-          file-path="/code/view/component/io/input-radio/script.txt"
-          :language="CodeLanguage.typescript"
-          :variables="{
-            orNull: attributes.props.nullable ? ' | null' : '',
-          }"
+      <template #default="{ style }">
+        <mk-input-radio
+          v-model="state"
+          v-bind="attributes.props"
+          :style="style"
         />
       </template>
     </AppSandboxPreview>
@@ -35,10 +34,10 @@ import {
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
-  AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,
+  AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
-import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
+import { createScssControllersConfig } from '@/lib/utils';
 
 type RadioInputValue = { name: string; race: 'ainur' | 'elf' } | null;
 
@@ -97,6 +96,14 @@ const definition: ComponentDefinition = {
       default: false,
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-input-radio-spacing',
+    '--mk-input-radio-size',
+    '--mk-input-radio-color-active',
+    '--mk-input-radio-border-color',
+    '--mk-input-radio-border-width',
+    '--mk-input-radio-border-width-active',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

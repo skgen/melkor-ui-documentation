@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
 
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
 
@@ -27,7 +27,7 @@ const variables = {
   label: 'Link label',
 };
 
-const definition: ComponentDefinition = reactive({
+const definition: ComponentDefinition = {
   props: {
     to: {
       type: AttributeType.string,
@@ -45,7 +45,7 @@ const definition: ComponentDefinition = reactive({
       default: false,
     },
   },
-});
+};
 
 const attributes = ref<ComponentAttributes>({
   props: {},

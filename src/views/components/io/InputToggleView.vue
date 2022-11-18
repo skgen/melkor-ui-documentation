@@ -7,16 +7,15 @@
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/io/input-toggle/template.txt"
+      script="/code/view/component/io/input-toggle/script.txt"
+      scss="/code/view/component/io/input-toggle/scss.txt"
       @change="handlePreviewChange"
     >
-      <mk-input-toggle
-        v-model="state"
-        v-bind="attributes.props"
-      />
-      <template #code-after>
-        <AppAsyncCodeBlock
-          file-path="/code/view/component/io/input-toggle/script.txt"
-          :language="CodeLanguage.typescript"
+      <template #default="{ style }">
+        <mk-input-toggle
+          v-model="state"
+          v-bind="attributes.props"
+          :style="style"
         />
       </template>
     </AppSandboxPreview>
@@ -31,10 +30,10 @@ import {
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
-  AttributeType, CodeLanguage, type ComponentDefinition, type ComponentAttributes,
+  AttributeType, type ComponentDefinition, type ComponentAttributes,
 } from '@/lib/definition';
-import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
+import { createScssControllersConfig } from '@/lib/utils';
 
 function validate(value: string) {
   return value === 'Not toggled' ? 'Must be toggled' : null;
@@ -100,7 +99,26 @@ const definition: ComponentDefinition = {
       required: false,
       default: 'Unchecked',
     },
+    checkedIcon: {
+      type: AttributeType.string,
+      required: false,
+      default: 'check',
+    },
+    uncheckedIcon: {
+      type: AttributeType.string,
+      required: false,
+      default: 'close',
+    },
   },
+  scss: createScssControllersConfig([
+    '--mk-input-toggle-color',
+    '--mk-input-toggle-color-active',
+    '--mk-input-toggle-spacing',
+    '--mk-input-toggle-size',
+    '--mk-input-toggle-padding',
+    '--mk-input-toggle-target-padding',
+    '--mk-input-toggle-icon-size',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

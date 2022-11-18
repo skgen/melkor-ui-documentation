@@ -1,18 +1,18 @@
 <template>
   <div>
     <AppInputTitlePreview
-      i18n-key="input-color"
+      i18n-key="input-date"
       :state="state"
     />
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/io/input-color/template.txt"
-      scss="/code/view/component/io/input-color/scss.txt"
-      script="/code/view/component/io/input-color/script.txt"
+      template="/code/view/component/io/input-date/template.txt"
+      scss="/code/view/component/io/input-date/scss.txt"
+      script="/code/view/component/io/input-date/script.txt"
       @change="handlePreviewChange"
     >
       <template #default="{ style }">
-        <mk-input-color
+        <mk-input-date
           v-model="state"
           v-bind="attributes.props"
           :style="style"
@@ -27,7 +27,7 @@ import { ref } from 'vue';
 import {
   createInputState,
   type InputState,
-  type ColorInputValue,
+  type DateInputValue,
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
@@ -36,12 +36,12 @@ import {
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
 import { createScssControllersConfig } from '@/lib/utils';
 
-function validate(value: ColorInputValue) {
+function validate(value: DateInputValue) {
   return value === null ? 'Required' : null;
 }
 
-const state = ref<InputState<ColorInputValue>>(createInputState({
-  value: '#ff0000',
+const state = ref<InputState<DateInputValue>>(createInputState({
+  value: new Date(),
 }));
 
 const definition: ComponentDefinition = {
@@ -59,31 +59,41 @@ const definition: ComponentDefinition = {
     name: {
       type: AttributeType.string,
       required: false,
-      default: 'text',
+      default: 'date',
     },
     label: {
       type: AttributeType.string,
       required: false,
-      default: 'Input text',
+      default: 'Input date',
     },
     hint: {
       type: AttributeType.string,
       required: false,
-      default: "I'm a text input",
+      default: "I'm a date input",
     },
     fill: {
       type: AttributeType.boolean,
       required: false,
       default: false,
     },
+    datetime: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    showTimezone: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
   scss: createScssControllersConfig([
-    '--mk-input-color-spacing',
-    '--mk-input-color-padding-x',
-    '--mk-input-color-padding-y',
-    '--mk-input-color-border-radius',
-    '--mk-input-color-background-color',
-    '--mk-input-color-border-color',
+    '--mk-input-date-spacing',
+    '--mk-input-date-padding-x',
+    '--mk-input-date-padding-y',
+    '--mk-input-date-border-radius',
+    '--mk-input-date-background-color',
+    '--mk-input-date-border-color',
   ]),
 };
 

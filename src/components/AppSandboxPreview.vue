@@ -74,7 +74,13 @@
         :variables="templateVars"
       />
       <AppAsyncCodeBlock
-        v-if="props.scss"
+        v-if="props.script"
+        :file-path="props.script"
+        :language="CodeLanguage.typescript"
+        :variables="scriptVars"
+      />
+      <AppAsyncCodeBlock
+        v-if="props.scss && scssVars.scss"
         :file-path="props.scss"
         :language="CodeLanguage.scss"
         :variables="scssVars"
@@ -92,6 +98,7 @@ import {
   createInputState, isString, isValue, type InputState,
 } from '@patriarche/melkor';
 import isBoolean from 'lodash/isBoolean';
+import { paramCase } from 'change-case';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import {
   type Attributes, type ComponentDefinition, AttributeType, type AttributesDefinition, type AttributesControllers,
@@ -102,9 +109,11 @@ import {
 type Props = {
   definition?: ComponentDefinition;
   template: string;
+  script?: string;
   scss?: string;
   templateVariables?: Record<string, any>;
   scssVariables?: Record<string, any>;
+  scriptVariables?: Record<string, any>;
   primaryMode?: boolean;
 };
 
@@ -174,17 +183,18 @@ const templateVars = computed(() => {
     for (const key of keys) {
       const controller = propsControllers[key];
       const { value } = controller.input;
+      const paramKey = paramCase(key);
       if (!(!isRealValue(value) && !controller.required)) {
         if (controller.type === AttributeType.vModel) {
           tProps.push(`v-model="${key}"`);
         } else if (controller.type === AttributeType.reference) {
-          tProps.push(`:${key}="${key}"`);
+          tProps.push(`:${paramKey}="${key}"`);
         } else if (controller.type === AttributeType.boolean) {
-          tProps.push(key);
+          tProps.push(paramKey);
         } else if (controller.type === AttributeType.number) {
-          tProps.push(`:${key}="${value}"`);
+          tProps.push(`:${paramKey}="${value}"`);
         } else {
-          tProps.push(`${key}="${value}"`);
+          tProps.push(`${paramKey}="${value}"`);
         }
       }
     }
@@ -218,8 +228,13 @@ const scssVars = computed(() => {
       variables.scss = `\n\t${tProps.join('\n\t')}\n`;
     }
   }
+  if (variables.scss === '') {
+    variables.scss = null;
+  }
   return variables;
 });
+
+const scriptVars = computed(() => props.scriptVariables);
 
 const scssStyle = computed(() => {
   let style = '';
@@ -237,7 +252,7 @@ const scssStyle = computed(() => {
       style = `${tProps.join(' ')}`;
     }
   }
-  return style;
+  return style === '' ? undefined : style;
 });
 
 function mapControllersValues(controllers: AttributesControllers | null) {
@@ -247,7 +262,7 @@ function mapControllersValues(controllers: AttributesControllers | null) {
   const o: Attributes = {};
   const keys = Object.keys(controllers);
   for (const key of keys) {
-    o[key] = controllers[key].input.value;
+    o[key] = controllers[key].input.value ?? undefined;
   }
   return o;
 }
@@ -284,6 +299,7 @@ onMounted(() => {
     &-content {
         display: flex;
         gap: var(--app-m-4);
+        align-items: flex-start;
     }
 
     &-controllers {
@@ -310,6 +326,8 @@ onMounted(() => {
     }
 
     &-preview {
+        position: sticky;
+        top: var(--app-m-2);
         display: flex;
         flex: 1 1 300px;
         flex-direction: column;

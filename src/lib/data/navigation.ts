@@ -84,6 +84,10 @@ export const sidebar: NavigationLevel[] = [
         title: t('component.input-radio.name'),
         to: '/component/input-radio',
       },
+      {
+        title: t('component.input-date.name'),
+        to: '/component/input-date',
+      },
       // {
       //   title: t('component.form.name'),
       //   to: '/component/form',

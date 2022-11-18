@@ -119,6 +119,10 @@
         "input-radio": {
             "name": "Radio input",
             "type": "radio"
+        },
+        "input-date": {
+            "name": "Date input",
+            "type": "date"
         }
     },
     "view": {

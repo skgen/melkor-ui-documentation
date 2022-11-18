@@ -206,7 +206,7 @@
 
 <script lang="ts" setup>
 
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 
@@ -214,7 +214,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 
-const definition: ComponentDefinition = reactive({
+const definition: ComponentDefinition = {
   props: {
     circle: {
       type: AttributeType.boolean,
@@ -234,10 +234,10 @@ const definition: ComponentDefinition = reactive({
     size: {
       type: AttributeType.string,
       required: false,
-      default: '',
+      default: null,
     },
   },
-});
+};
 
 const attributes = ref<ComponentAttributes>({
   props: {},

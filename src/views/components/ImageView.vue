@@ -7,13 +7,13 @@
     <AppSandboxPreview
       :definition="definition"
       template="/code/view/component/image/template.txt"
+      script="/code/view/component/image/script.txt"
       @change="handlePreviewChange"
     >
-      <mk-image v-bind="attributes.props" />
-      <template #code-after>
-        <AppAsyncCodeBlock
-          file-path="/code/view/component/image/script.txt"
-          :language="CodeLanguage.typescript"
+      <template #default="{ style }">
+        <mk-image
+          v-bind="attributes.props"
+          :style="style"
         />
       </template>
     </AppSandboxPreview>
@@ -68,19 +68,18 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import {
-  AttributeType, CodeLanguage, type ComponentAttributes, type ComponentDefinition,
+  AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
-import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 
 const imageSource = '/images/landscape.jpeg';
 
 const ratio = [4, 3];
 
-const definition: ComponentDefinition = reactive({
+const definition: ComponentDefinition = {
   props: {
     src: {
       type: AttributeType.string,
@@ -113,7 +112,7 @@ const definition: ComponentDefinition = reactive({
       default: false,
     },
   },
-});
+};
 
 const attributes = ref<ComponentAttributes>({
   props: {},
