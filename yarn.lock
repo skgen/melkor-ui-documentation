@@ -517,10 +517,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@patriarche/melkor@^0.7.1":
-  version "0.7.1"
-  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-0.7.1.tgz#0fec99bd1e13b614baeca2d4d7181f5a051301c4"
-  integrity sha1-D+yZvR4TthS67KLU1xgfWgUTAcQ=
+"@patriarche/melkor@^0.8.0":
+  version "0.8.0"
+  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-0.8.0.tgz#ec2938d910a3b2f430f7b01bc57f042360ec1663"
+  integrity sha1-7Ck42RCjsvQw97AbxX8EI2DsFmM=
   dependencies:
     "@tiptap/starter-kit" "^2.0.0-beta.202"
     "@tiptap/vue-3" "^2.0.0-beta.202"
