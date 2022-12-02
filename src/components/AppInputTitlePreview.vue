@@ -24,8 +24,9 @@
   </div>
 </template>
 
-<script lang="ts" setup>import type { InputState } from '@patriarche/melkor';
+<script lang="ts" setup>
 import { ref } from 'vue';
+import type { InputState } from '@patriarche/melkor';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import { CodeLanguage } from '@/lib/definition';
