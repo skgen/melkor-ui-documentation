@@ -1,8 +1,8 @@
 <template>
   <div class="pux-TableView">
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.table.name') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('component.table.name') }}
+    </AppPageTitle>
     <mk-table v-bind="table">
       <template #protein="{ data }">
         <div class="pux-TableView-pin">
@@ -54,9 +54,9 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-
 import type { TableProps } from '@patriarche/melkor';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 import { CodeLanguage } from '@/lib/definition';
 
 const table: TableProps = {

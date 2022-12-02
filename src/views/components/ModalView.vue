@@ -1,8 +1,8 @@
 <template>
   <div class="pux-ModalView">
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('app.modals') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('app.modals') }}
+    </AppPageTitle>
     <mk-wysiwyg-preview>
       <h2>{{ $t('component.view.name') }}</h2>
       <h3>Fullscreen view</h3>
@@ -280,8 +280,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-
 import { isValue } from '@patriarche/melkor';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 
 const allControls = ref(false);
 const view = ref(false);

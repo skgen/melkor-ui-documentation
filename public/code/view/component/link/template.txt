@@ -1,3 +1,0 @@
-<mk-link{props}>
-  {label}
-</mk-link>

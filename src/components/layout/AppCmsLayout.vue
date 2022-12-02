@@ -20,7 +20,6 @@ const props = defineProps<Props>();
 .pux-AppCmsLayout {
     position: relative;
     width: 100%;
-    max-width: 1200px;
     padding: 20px;
     margin: 0 auto;
 }

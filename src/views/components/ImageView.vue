@@ -1,13 +1,12 @@
 <template>
   <div class="pux-ImageView">
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.image.name') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('component.image.name') }}
+    </AppPageTitle>
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/image/template.txt"
-      script="/code/view/component/image/script.txt"
+      template="/code/view/components/tabs/template.hbs"
       @change="handlePreviewChange"
     >
       <template #default="{ style }">
@@ -73,6 +72,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 
 const imageSource = '/images/landscape.jpeg';
@@ -117,6 +117,7 @@ const definition: ComponentDefinition = {
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {

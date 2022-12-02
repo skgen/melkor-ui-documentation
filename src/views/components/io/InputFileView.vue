@@ -7,9 +7,9 @@
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/io/input-file/template.txt"
-      scss="/code/view/component/io/input-file/scss.txt"
-      script="/code/view/component/io/input-file/script.txt"
+      template="/code/view/components/io/input-file/template.hbs"
+      scss="/code/view/components/io/input-file/scss.hbs"
+      script="/code/view/components/io/input-file/script.hbs"
       @change="handlePreviewChange"
     >
       <template #default="{ style }">
@@ -35,7 +35,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
-import { createScssControllersConfig } from '@/lib/utils';
+import { createScssControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
 function validate(value: FileInputValue) {
   return value.length <= 0 ? 'Required' : null;
@@ -92,15 +92,11 @@ const definition: ComponentDefinition = {
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
-  const newProps = newAttributes.props;
-  const { state: newState, ...otherProps } = newProps;
-  attributes.value = {
-    scss: newAttributes.scss,
-    props: otherProps,
-  };
+  attributes.value = mapSandboxAttributesWithoutInputState(newAttributes);
 }
 
 </script>

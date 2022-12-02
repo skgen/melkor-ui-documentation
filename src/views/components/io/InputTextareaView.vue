@@ -6,9 +6,9 @@
     />
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/io/input-textarea/template.txt"
-      scss="/code/view/component/io/input-textarea/scss.txt"
-      script="/code/view/component/io/input-textarea/script.txt"
+      template="/code/view/components/io/input-textarea/template.hbs"
+      scss="/code/view/components/io/input-textarea/scss.hbs"
+      script="/code/view/components/io/input-textarea/script.hbs"
       @change="handlePreviewChange"
     >
       <template #default="{ style }">
@@ -34,14 +34,14 @@ import {
   AttributeType, type ComponentDefinition, type ComponentAttributes,
 } from '@/lib/definition';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
-import { createScssControllersConfig } from '@/lib/utils';
+import { createScssControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
 function validate(value: TextareaInputValue) {
   return value === null ? 'Required' : null;
 }
 
 const state = ref<InputState<TextareaInputValue>>(createInputState({
-  value: 'Hello world',
+  value: null,
 }));
 
 const definition: ComponentDefinition = {
@@ -76,10 +76,15 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
+    placeholder: {
+      type: AttributeType.string,
+      required: false,
+      default: 'The Ainur were angelic spirits created by Eru Ilúvatar at the Beginning.',
+    },
     rows: {
       type: AttributeType.number,
       required: false,
-      default: 2,
+      default: 4,
     },
   },
   scss: createScssControllersConfig([
@@ -88,21 +93,18 @@ const definition: ComponentDefinition = {
     '--mk-input-textarea-border-radius',
     '--mk-input-textarea-background-color',
     '--mk-input-textarea-border-color',
+    '--mk-input-textarea-placeholder-color',
   ]),
 };
 
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
-  const newProps = newAttributes.props;
-  const { state: newState, ...otherProps } = newProps;
-  attributes.value = {
-    scss: newAttributes.scss,
-    props: otherProps,
-  };
+  attributes.value = mapSandboxAttributesWithoutInputState(newAttributes);
 }
 
 </script>

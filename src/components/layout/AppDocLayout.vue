@@ -9,12 +9,11 @@
 
 <style lang="scss">
 .pux-AppDocLayout {
-    max-width: 1200px;
     margin: 0 auto;
 
     > * {
         > * {
-            margin: 16px 0;
+            margin: var(--app-m-4) 0;
         }
 
         > :first-child {

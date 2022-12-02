@@ -1,12 +1,13 @@
 <template>
   <div class="pux-HomeView">
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('app.welcome', { appName }) }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('app.welcome', { appName }) }}
+    </AppPageTitle>
   </div>
 </template>
 
 <script lang="ts" setup>
+import AppPageTitle from '@/components/AppPageTitle.vue';
 
 const appName = import.meta.env.VITE_APP_NAME;
 

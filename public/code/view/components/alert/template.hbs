@@ -1,0 +1,11 @@
+<mk-alert{{{props}}}>
+  {{title}}
+  <template #content>
+    {{content}}
+  </template>
+  {{#if slots.icon}}
+  <template #icon>
+    <mk-icon icon="wifi" />
+  </template>
+  {{/if}}
+</mk-alert>

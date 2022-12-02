@@ -9,13 +9,28 @@ const router = createRouter({
       component: () => import('@/views/HomeView.vue'),
     },
     {
-      path: '/colors',
-      component: () => import('@/views/ColorsView.vue'),
+      path: '/changelog',
+      name: 'changelog',
+      component: () => import('@/views/ChangelogView.vue'),
     },
     {
-      path: '/translations',
-      component: () => import('@/views/TranslationsView.vue'),
+      path: '/concept',
+      component: () => import('@/views/ComponentView.vue'),
+      children: [
+        {
+          path: 'theme',
+          component: () => import('@/views/concepts/ThemeView.vue'),
+        },
+        // {
+        //   path: 'translations',
+        //   component: () => import('@/views/TranslationsView.vue'),
+        // },
+      ],
     },
+    // {
+    //   path: '/colors',
+    //   component: () => import('@/views/ColorsView.vue'),
+    // },
     {
       path: '/component',
       component: () => import('@/views/ComponentView.vue'),
@@ -45,6 +60,7 @@ const router = createRouter({
         { path: 'input-select', component: () => import('@/views/components/io/InputSelectView.vue') },
         { path: 'input-radio', component: () => import('@/views/components/io/InputRadioView.vue') },
         { path: 'input-date', component: () => import('@/views/components/io/InputDateView.vue') },
+        { path: 'input-range', component: () => import('@/views/components/io/InputRangeView.vue') },
       ],
     },
     {

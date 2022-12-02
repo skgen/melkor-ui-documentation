@@ -15,7 +15,7 @@ app.use(createPinia());
 app.use(createMelkorUi({
   router,
   i18n,
-  debug: false,
+  debug: true,
 }));
 
 app.mount('#app');

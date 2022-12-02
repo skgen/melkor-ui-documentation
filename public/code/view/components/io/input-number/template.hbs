@@ -1,0 +1,11 @@
+{{#if hasSlots}}
+<mk-input-number{{{props}}}>
+  {{#if slots.icon}}
+  <template #icon>
+    <mk-icon icon="euro" />
+  </template>
+  {{/if}}
+</mk-input-number>
+{{else}}
+<mk-input-number{{{props}}}/>
+{{/if}}

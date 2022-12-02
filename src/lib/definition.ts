@@ -33,11 +33,13 @@ export type AttributesControllers = {
 export type ComponentDefinition = {
   props?: AttributesDefinition;
   scss?: AttributesDefinition;
+  slots?: AttributesDefinition;
 };
 
 export type ComponentAttributes = {
   props: Attributes;
   scss: Attributes;
+  slots: Attributes;
 };
 
 export type Attributes = {

@@ -1,6 +1,6 @@
 <template>
   <div
-    v-theme="{ scheme: ThemeScheme.dark }"
+    v-theme="{ theme: Theme.dark }"
     class="pux-AppCodeBlock"
     :data-language="mapping[props.language].lang"
     :data-copied="!!copied || undefined"
@@ -37,13 +37,14 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-scss';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
-import { copyToClipboard, isValue, ThemeScheme } from '@patriarche/melkor';
+import { copyToClipboard, Theme } from '@patriarche/melkor';
+import Handlebars from 'handlebars';
 import { CodeLanguage } from '@/lib/definition';
 
 type Props = {
   code: string;
   language?: CodeLanguage;
-  variables?: Record<string, string | number | boolean>;
+  variables?: Record<string, unknown>;
 };
 
 const props = withDefaults(defineProps<Props>(), {
@@ -81,17 +82,10 @@ const code = computed(() => {
     return props.code;
   }
 
-  let newCode = props.code;
-  const keys = Object.keys(props.variables);
-  for (const key of keys) {
-    if (isValue(props.variables[key])) {
-      const search = `{${key}}`;
-      const replace = props.variables[key].toString();
-      newCode = newCode.replaceAll(search, replace);
-    }
-  }
+  const hbsTemplate = Handlebars.compile(props.code);
+  const newCode = hbsTemplate(props.variables);
 
-  return newCode;
+  return newCode.trim();
 });
 
 const copied = ref<ReturnType<typeof setTimeout> | null>(null);

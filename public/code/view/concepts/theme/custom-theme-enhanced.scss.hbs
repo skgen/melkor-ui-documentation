@@ -1,0 +1,13 @@
+@import "@patriarche/melkor/style/mixins";
+
+@mixin lotr {
+    @include theme("lord-of-the-ring") {
+        @content;
+    }
+}
+
+... {
+    @include lotr {
+        background-color: gold;
+    }
+}

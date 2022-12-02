@@ -1,0 +1,23 @@
+{{#if hasSlots}}
+<mk-input-date{{{props}}}>
+  {{#if slots.icon}}
+  <template #icon>
+    <mk-icon icon="schedule" />
+  </template>
+  {{/if}}
+  {{#if slots.preview}}
+  <template #preview="{ datetime, value }">
+    <template v-if="value">
+      <template v-if="datetime">
+        {{{datetimeExpression}}}
+      </template>
+      <template v-else>
+        {{{dateExpression}}}
+      </template>
+    </template>
+  </template>
+  {{/if}}
+</mk-input-date>
+{{else}}
+<mk-input-date{{{props}}}/>
+{{/if}}

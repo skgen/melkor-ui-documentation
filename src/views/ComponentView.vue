@@ -13,6 +13,6 @@ import AppDocLayout from '@/components/layout/AppDocLayout.vue';
 <style lang="scss">
 .pux-ComponentView {
     flex: 1;
-    padding: 30px 50px;
+    padding: var(--app-m-5) var(--app-m-8);
 }
 </style>

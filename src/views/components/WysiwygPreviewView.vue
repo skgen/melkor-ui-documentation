@@ -1,42 +1,48 @@
 <template>
   <div>
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.wysiwygPreview.name') }}</h1>
-    </mk-wysiwyg-preview>
-
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/component/wysiwyg-preview/template.txt"
-      :template-variables="{
-        html: format(attributes.props.html as string)
-      }"
-      @change="handlePreviewChange"
-    >
-      <mk-wysiwyg-preview v-bind="attributes.props" />
-    </AppSandboxPreview>
+    <AppPageTitle>
+      {{ $t('component.wysiwygPreview.name') }}
+    </AppPageTitle>
+    <template v-if="initialized">
+      <AppSandboxPreview
+        :definition="definition"
+        template="/code/view/components/wysiwyg-preview/template.hbs"
+        :template-variables="{
+          html: format(attributes.props.html as string)
+        }"
+        @change="handlePreviewChange"
+      >
+        <mk-wysiwyg-preview v-bind="attributes.props" />
+      </AppSandboxPreview>
+      <mk-wysiwyg-preview>
+        <h2>{{ $t('app.examples') }}</h2>
+      </mk-wysiwyg-preview>
+      <AppDemoBlock>
+        <mk-wysiwyg-preview :html="sample" />
+      </AppDemoBlock>
+    </template>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
-// import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
+import AppDemoBlock from '@/components/AppDemoBlock.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
+import { createTemplate } from '@/lib/utils';
 
-// const content = ref('<p>Type in this editor to see changes mirrored in wysiwyg preview.</p>');
-
-// const content = ref<InputState<WysiwygInputValue>>(createInputState({
-//   value: '<p>Type in this editor to see changes mirrored in wysiwyg preview.</p>',
-// }));
+const initialized = ref(false);
+const sample = ref<string | null>(null);
 
 const definition: ComponentDefinition = {
   props: {
     html: {
       type: AttributeType.wysiwyg,
       required: true,
-      default: '<p>Type in this editor to see changes mirrored in wysiwyg preview.</p>',
+      default: null,
     },
   },
 };
@@ -44,6 +50,7 @@ const definition: ComponentDefinition = {
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
@@ -72,5 +79,24 @@ function format(html?: string) {
 
   return result.substring(1, result.length - 3);
 }
+
+onMounted(async () => {
+  if (!definition.props) {
+    return;
+  }
+  let render = await createTemplate('/code/view/components/wysiwyg-preview/sample.hbs');
+  sample.value = render({
+    title: 'The Lord of the Rings',
+    paragraph: `Sauron sends a great army against Gondor. Gandalf arrives at Minas Tirith to warn Denethor of the attack, 
+    while Théoden musters the Rohirrim to ride to Gondor's aid.`,
+  });
+  render = await createTemplate('/code/view/components/wysiwyg-preview/sample-interactive.hbs');
+  definition.props.html.default = render({
+    title: 'The Lord of the Rings',
+    paragraph: `Sauron sends a great army against Gondor. Gandalf arrives at Minas Tirith to warn Denethor of the attack, 
+    while Théoden musters the Rohirrim to ride to Gondor's aid.`,
+  });
+  initialized.value = true;
+});
 
 </script>

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.link.name') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('component.link.name') }}
+    </AppPageTitle>
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/link/template.txt"
+      template="/code/view/components/link/template.hbs"
       :template-variables="variables"
       @change="handlePreviewChange"
     >
@@ -18,9 +18,9 @@
 </template>
 
 <script lang="ts" setup>
-
 import { ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
 
 const variables = {
@@ -50,6 +50,7 @@ const definition: ComponentDefinition = {
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {

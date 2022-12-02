@@ -1,9 +1,9 @@
 <template>
   <div class="pux-ColorsView">
     <AppDocLayout>
-      <mk-wysiwyg-preview>
-        <h1>{{ $t('app.colors') }}</h1>
-      </mk-wysiwyg-preview>
+      <AppPageTitle>
+        {{ $t('app.colors') }}
+      </AppPageTitle>
       <div
         ref="colorExample"
         class="pux-ColorsView-interactive"
@@ -69,6 +69,7 @@ import {
   isValue, type NumberInputModel, type TextInputModel, createInputState,
 } from '@patriarche/melkor';
 import AppDocLayout from '@/components/layout/AppDocLayout.vue';
+import AppPageTitle from '@/components/layout/AppPageTitle.vue';
 import AppColorPreview from '@/components/AppColorPreview.vue';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import { CodeLanguage } from '@/lib/definition';

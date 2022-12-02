@@ -6,9 +6,9 @@
     />
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/io/input-password/template.txt"
-      scss="/code/view/component/io/input-password/scss.txt"
-      script="/code/view/component/io/input-password/script.txt"
+      template="/code/view/components/io/input-password/template.hbs"
+      scss="/code/view/components/io/input-password/scss.hbs"
+      script="/code/view/components/io/input-password/script.hbs"
       @change="handlePreviewChange"
     >
       <template #default="{ style }">
@@ -34,7 +34,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
-import { createScssControllersConfig } from '@/lib/utils';
+import { createScssControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
 function validate(value: PasswordInputValue) {
   return value === null ? 'Required' : null;
@@ -89,15 +89,11 @@ const definition: ComponentDefinition = {
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
-  const newProps = newAttributes.props;
-  const { state: newState, ...otherProps } = newProps;
-  attributes.value = {
-    scss: newAttributes.scss,
-    props: otherProps,
-  };
+  attributes.value = mapSandboxAttributesWithoutInputState(newAttributes);
 }
 
 </script>

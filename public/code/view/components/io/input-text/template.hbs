@@ -1,0 +1,11 @@
+{{#if hasSlots}}
+<mk-input-text{{{props}}}>
+  {{#if slots.icon}}
+  <template #icon>
+    <mk-icon icon="barcode_scanner" />
+  </template>
+  {{/if}}
+</mk-input-text>
+{{else}}
+<mk-input-text{{{props}}}/>
+{{/if}}

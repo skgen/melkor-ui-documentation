@@ -1,15 +1,23 @@
 <template>
   <div class="mk-SkeletonView">
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.skeleton.name') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('component.skeleton.name') }}
+    </AppPageTitle>
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/skeleton/template.txt"
+      template="/code/view/components/skeleton/template.hbs"
+      scss="/code/view/components/skeleton/scss.hbs"
       @change="handlePreviewChange"
     >
-      <mk-skeleton v-bind="attributes.props" />
+      <template
+        #default="{ style }"
+      >
+        <mk-skeleton
+          v-bind="attributes.props"
+          :style="style"
+        />
+      </template>
     </AppSandboxPreview>
 
     <mk-wysiwyg-preview>
@@ -209,10 +217,12 @@
 import { ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 
 import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
+import { createScssControllersConfig } from '@/lib/utils';
 
 const definition: ComponentDefinition = {
   props: {
@@ -237,11 +247,15 @@ const definition: ComponentDefinition = {
       default: null,
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-skeleton-rectangle-border-radius',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {

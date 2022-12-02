@@ -1,20 +1,22 @@
 <template>
   <div class="pux-TranslationsView">
     <AppDocLayout>
-      <mk-wysiwyg-preview>
-        <h1>{{ $t('app.translations') }}</h1>
-      </mk-wysiwyg-preview>
+      <AppPageTitle>
+        {{ $t('app.translations') }}
+      </AppPageTitle>
+      <mk-skeleton size="50px" />
     </AppDocLayout>
   </div>
 </template>
 
 <script lang="ts" setup>
 import AppDocLayout from '@/components/layout/AppDocLayout.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 </script>
 
 <style lang="scss">
 .pux-TranslationsView {
     flex: 1;
-    padding: 30px 50px;
+    padding: var(--app-m-5) var(--app-m-8);
 }
 </style>

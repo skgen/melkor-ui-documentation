@@ -6,11 +6,11 @@
     />
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/io/input-radio/template.txt"
-      scss="/code/view/component/io/input-radio/scss.txt"
-      script="/code/view/component/io/input-radio/script.txt"
+      template="/code/view/components/io/input-radio/template.hbs"
+      scss="/code/view/components/io/input-radio/scss.hbs"
+      script="/code/view/components/io/input-radio/script.hbs"
       :script-variables="{
-        orNull: attributes.props.nullable ? ' | null' : '',
+        nullable: attributes.props.nullable,
       }"
       @change="handlePreviewChange"
     >
@@ -37,7 +37,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
-import { createScssControllersConfig } from '@/lib/utils';
+import { createScssControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
 type RadioInputValue = { name: string; race: 'ainur' | 'elf' } | null;
 
@@ -109,15 +109,11 @@ const definition: ComponentDefinition = {
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
-  const newProps = newAttributes.props;
-  const { state: newState, ...otherProps } = newProps;
-  attributes.value = {
-    scss: newAttributes.scss,
-    props: otherProps,
-  };
+  attributes.value = mapSandboxAttributesWithoutInputState(newAttributes);
 }
 
 </script>

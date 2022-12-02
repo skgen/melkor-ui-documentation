@@ -1,5 +1,0 @@
-<mk-button{props}>
-  <mk-icon icon="desktop_windows" />
-  {label}
-  <mk-icon icon="arrow_forward" />
-</mk-button>

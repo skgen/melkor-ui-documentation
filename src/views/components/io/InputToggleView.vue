@@ -6,9 +6,9 @@
     />
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/io/input-toggle/template.txt"
-      script="/code/view/component/io/input-toggle/script.txt"
-      scss="/code/view/component/io/input-toggle/scss.txt"
+      template="/code/view/components/io/input-toggle/template.hbs"
+      script="/code/view/components/io/input-toggle/script.hbs"
+      scss="/code/view/components/io/input-toggle/scss.hbs"
       @change="handlePreviewChange"
     >
       <template #default="{ style }">
@@ -16,7 +16,20 @@
           v-model="state"
           v-bind="attributes.props"
           :style="style"
-        />
+        >
+          <template
+            v-if="attributes.slots['checked-icon']"
+            #checked-icon
+          >
+            <mk-icon icon="check" />
+          </template>
+          <template
+            v-if="attributes.slots['unchecked-icon']"
+            #unchecked-icon
+          >
+            <mk-icon icon="close" />
+          </template>
+        </mk-input-toggle>
       </template>
     </AppSandboxPreview>
   </div>
@@ -33,19 +46,20 @@ import {
   AttributeType, type ComponentDefinition, type ComponentAttributes,
 } from '@/lib/definition';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
-import { createScssControllersConfig } from '@/lib/utils';
+import { createScssControllersConfig, createSlotsControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
-function validate(value: string) {
+type ToggleInputValue = { iAm: 'toggled' } | 'Not toggled';
+
+function validate(value: ToggleInputValue) {
   return value === 'Not toggled' ? 'Must be toggled' : null;
 }
 
-const state = ref<InputState<{ iAm: 'toggled' } | 'Not toggled'>>(
+const state = ref<InputState<ToggleInputValue>>(
   createInputState({ value: { iAm: 'toggled' } }),
 );
 
-const checked = { iAm: 'toggled' };
-
-const unchecked = 'Not toggled';
+const checked: ToggleInputValue = { iAm: 'toggled' };
+const unchecked: ToggleInputValue = 'Not toggled';
 
 const definition: ComponentDefinition = {
   props: {
@@ -99,40 +113,37 @@ const definition: ComponentDefinition = {
       required: false,
       default: 'Unchecked',
     },
-    checkedIcon: {
-      type: AttributeType.string,
+    iconInBackground: {
+      type: AttributeType.boolean,
       required: false,
-      default: 'check',
-    },
-    uncheckedIcon: {
-      type: AttributeType.string,
-      required: false,
-      default: 'close',
+      default: false,
     },
   },
   scss: createScssControllersConfig([
-    '--mk-input-toggle-color',
     '--mk-input-toggle-color-active',
+    '--mk-input-toggle-color-on-active',
+    '--mk-input-toggle-background-color',
+    '--mk-input-toggle-color-on-background',
     '--mk-input-toggle-spacing',
     '--mk-input-toggle-size',
     '--mk-input-toggle-padding',
     '--mk-input-toggle-target-padding',
     '--mk-input-toggle-icon-size',
   ]),
+  slots: createSlotsControllersConfig([
+    'checked-icon',
+    'unchecked-icon',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
-  const newProps = newAttributes.props;
-  const { state: newState, ...otherProps } = newProps;
-  attributes.value = {
-    scss: newAttributes.scss,
-    props: otherProps,
-  };
+  attributes.value = mapSandboxAttributesWithoutInputState(newAttributes);
 }
 
 </script>

@@ -1,0 +1,10 @@
+function validate(value: RangeInputValue) {
+  if (value === null) {
+    return 'Required';
+  }
+  return value <= 5 ? 'Value must be more than 5' : null;
+}
+
+const state = ref<InputState<RangeInputValue>>(createInputState({
+  value: 10,
+}));

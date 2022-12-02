@@ -1,6 +1,3 @@
-Inputs
-
-
 * Remove css varibales override inside components => prefer overring properties instead of variables
 (n.b: only root variables for components config)
 
@@ -8,5 +5,8 @@ Inputs
 * Tooltip
 * Selecteur de theme (skin)
 * Tableau (fix + verif)
-* Input form range
 * Time input ?
+* Input checkbox
+
+* rework doc on HBS template on :
+  * wysiwyg preview

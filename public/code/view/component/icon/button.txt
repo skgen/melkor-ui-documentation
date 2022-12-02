@@ -1,3 +1,0 @@
-<mk-button>
-  <mk-icon icon="save" /> {label}
-</mk-button>  

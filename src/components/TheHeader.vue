@@ -2,8 +2,13 @@
   <div class="pux-TheHeader">
     <AppBreadcrumb :navigation="navigation" />
     <div class="pux-TheHeader-dashboard">
-      <mk-locale-selector />
-      <mk-theme-selector />
+      <mk-link to="/changelog">
+        {{ $t('view.changelog.title') }}
+      </mk-link>
+      <div class="pux-TheHeader-controllers">
+        <mk-locale-selector />
+        <mk-theme-selector />
+      </div>
     </div>
   </div>
 </template>
@@ -26,7 +31,12 @@ const navigation: BreadcrumbEntry[] = [];
 
     &-dashboard {
         display: flex;
+    }
+
+    &-controllers {
+        display: flex;
         gap: var(--app-m-1);
+        margin: 0 0 0 var(--app-m-3);
     }
 }
 </style>

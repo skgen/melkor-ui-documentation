@@ -1,7 +1,0 @@
-function validate(value: TextareaInputValue) {
-  return value === null ? 'Required' : null;
-}
-
-const state = ref<InputState<TextareaInputValue>>(createInputState({
-  value: 'Hello world',
-}));

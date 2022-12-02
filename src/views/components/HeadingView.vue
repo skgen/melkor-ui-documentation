@@ -1,8 +1,8 @@
 <template>
   <div>
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.heading.name') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('component.heading.name') }}
+    </AppPageTitle>
     <mk-wysiwyg-preview>
       <h2>
         {{ $t('view.heading.h1') }}
@@ -47,7 +47,6 @@
 </template>
 
 <script lang="ts" setup>
-
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
-
+import AppPageTitle from '@/components/AppPageTitle.vue';
 </script>

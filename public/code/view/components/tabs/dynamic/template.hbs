@@ -1,0 +1,20 @@
+<mk-tabs v-model="index">
+  <mk-tab
+    v-for="tab in tabs"
+    :key="tab.value"
+    :value="tab.value"
+  >
+    {{ vue.title }}
+  </mk-tab>
+</mk-tabs>
+<mk-layers v-model="index">
+  <mk-layer
+    v-for="tab in tabs"
+    :key="tab.value"
+    :value="tab.value"
+  >
+    <mk-wysiwyg-preview>
+      {{ vue.content }}
+    </mk-wysiwyg-preview>
+  </mk-layer>
+</mk-layers>

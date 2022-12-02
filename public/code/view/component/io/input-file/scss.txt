@@ -1,1 +1,0 @@
-.mk-AppInputFile {{scss}}

@@ -15,13 +15,17 @@ export const sidebar: NavigationLevel[] = [
     title: t('app.setup'),
     children: [
       {
-        title: t('app.translations'),
-        to: '/translations',
+        title: t('navigation.theme'),
+        to: '/concept/theme',
       },
-      {
-        title: t('app.colors'),
-        to: '/colors',
-      },
+      // {
+      //   title: t('app.translations'),
+      //   to: '/translations',
+      // },
+      // {
+      //   title: t('app.colors'),
+      //   to: '/colors',
+      // },
     ],
   },
   {
@@ -87,6 +91,10 @@ export const sidebar: NavigationLevel[] = [
       {
         title: t('component.input-date.name'),
         to: '/component/input-date',
+      },
+      {
+        title: t('component.input-range.name'),
+        to: '/component/input-range',
       },
       // {
       //   title: t('component.form.name'),

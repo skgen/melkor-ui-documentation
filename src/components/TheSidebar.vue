@@ -21,6 +21,7 @@ import { sidebar } from '@/lib/data/navigation';
     top: 0;
     height: 100vh;
     padding: 0 var(--app-m-4) var(--app-m-12);
+    overflow: auto;
     background-color: var(--app-background-color-soft);
     border-right: 1px solid var(--app-border-color);
 

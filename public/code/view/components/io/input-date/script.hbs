@@ -1,0 +1,7 @@
+function validate(value: DateInputValue) {
+  return value === null ? 'Required' : null;
+}
+
+const state = ref<InputState<DateInputValue>>(createInputState({
+  value: new Date(),
+}));

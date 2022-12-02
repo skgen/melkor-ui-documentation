@@ -1,13 +1,11 @@
 <template>
   <div class="pux-AppInputTitlePreview">
-    <mk-wysiwyg-preview>
-      <h1>
-        {{ $t(`component.${props.i18nKey}.name`) }}
-      </h1>
-      <mk-button @click="() => { modal = !modal; }">
-        {{ $t('app.viewState') }}
-      </mk-button>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t(`component.${props.i18nKey}.name`) }}
+    </AppPageTitle>
+    <mk-button @click="() => { modal = !modal; }">
+      {{ $t('app.viewState') }}
+    </mk-button>
 
     <mk-fullscreen-modal
       v-model="modal"
@@ -28,8 +26,8 @@
 
 <script lang="ts" setup>import type { InputState } from '@patriarche/melkor';
 import { ref } from 'vue';
-
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 import { CodeLanguage } from '@/lib/definition';
 
 type Props = {

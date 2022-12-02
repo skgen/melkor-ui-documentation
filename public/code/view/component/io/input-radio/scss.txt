@@ -1,1 +1,0 @@
-.mk-AppInputRadio {{scss}}

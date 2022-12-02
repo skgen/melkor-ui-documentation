@@ -1,6 +1,11 @@
 <template>
   <mk-wysiwyg-preview>
-    <h2>{{ $t('app.playground') }}</h2>
+    <h2 :id="props.anchor">
+      <template v-if="!$slots.title">
+        {{ $t('app.playground') }}
+      </template>
+      <slot name="title" />
+    </h2>
   </mk-wysiwyg-preview>
   <div class="mk-AppSandboxPreview">
     <div class="mk-AppSandboxPreview-content">
@@ -12,7 +17,7 @@
           <mk-wysiwyg-preview>
             <h3>Props</h3>
           </mk-wysiwyg-preview>
-          <ul>
+          <ul class="mk-AppSandboxPreview-controllers-list">
             <template
               v-for="(controller, index) in propsControllers"
               :key="index"
@@ -29,11 +34,32 @@
             </template>
           </ul>
         </template>
+        <template v-if="isValue(slotsControllers)">
+          <mk-wysiwyg-preview>
+            <h3>Slots</h3>
+          </mk-wysiwyg-preview>
+          <ul class="mk-AppSandboxPreview-controllers-list">
+            <template
+              v-for="(controller, index) in slotsControllers"
+              :key="index"
+            >
+              <li v-if="!!resolveInputName(controller.type)">
+                <component
+                  :is="resolveInputName(controller.type)"
+                  :label="controller.key"
+                  :model-value="controller.input"
+                  fill
+                  @update:model-value="(state: any) => handleSlotsValueChange(controller.key, state)"
+                />
+              </li>
+            </template>
+          </ul>
+        </template>
         <template v-if="isValue(scssControllers)">
           <mk-wysiwyg-preview>
             <h3>SCSS</h3>
           </mk-wysiwyg-preview>
-          <ul>
+          <ul class="mk-AppSandboxPreview-controllers-list">
             <template
               v-for="(controller, index) in scssControllers"
               :key="index"
@@ -98,12 +124,14 @@ import {
   createInputState, isString, isValue, type InputState,
 } from '@patriarche/melkor';
 import isBoolean from 'lodash/isBoolean';
-import { paramCase } from 'change-case';
+import { camelCase, paramCase } from 'change-case';
+import { isNumber } from 'lodash';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import {
   type Attributes, type ComponentDefinition, AttributeType, type AttributesDefinition, type AttributesControllers,
   CodeLanguage,
   type ComponentAttributes,
+  type AttributeValueType,
 } from '@/lib/definition';
 
 type Props = {
@@ -115,6 +143,8 @@ type Props = {
   scssVariables?: Record<string, any>;
   scriptVariables?: Record<string, any>;
   primaryMode?: boolean;
+  anchor?: string;
+  manuallyInjectedProps?: Record<string, any>;
 };
 
 type Emits = {
@@ -156,6 +186,25 @@ function createControllers(def: AttributesDefinition) {
 
 const propsControllers = props.definition?.props ? reactive(createControllers(props.definition.props)) : null;
 const scssControllers = props.definition?.scss ? reactive(createControllers(props.definition.scss)) : null;
+const slotsControllers = props.definition?.slots ? reactive(createControllers(props.definition.slots)) : null;
+
+function mapControllersValues(controllers: AttributesControllers | null) {
+  if (!isValue(controllers)) {
+    return {};
+  }
+  const o: Attributes = {};
+  const keys = Object.keys(controllers);
+  for (const key of keys) {
+    o[key] = controllers[key].input.value ?? undefined;
+  }
+  return o;
+}
+
+const propsAttributes = computed(() => mapControllersValues(propsControllers));
+
+const scssAttributes = computed(() => mapControllersValues(scssControllers));
+
+const slotsAttributes = computed(() => mapControllersValues(slotsControllers));
 
 function handlePropValueChange(key: string, newState: InputState<any>) {
   if (isValue(propsControllers)) {
@@ -166,6 +215,12 @@ function handlePropValueChange(key: string, newState: InputState<any>) {
 function handleScssValueChange(key: string, newState: InputState<any>) {
   if (isValue(scssControllers)) {
     scssControllers[key].input = newState;
+  }
+}
+
+function handleSlotsValueChange(key: string, newState: InputState<any>) {
+  if (isValue(slotsControllers)) {
+    slotsControllers[key].input = newState;
   }
 }
 
@@ -198,13 +253,43 @@ const templateVars = computed(() => {
         }
       }
     }
-    if (tProps.length === 0) {
+    if (props.manuallyInjectedProps) {
+      const injectedPropsKeys = Object.keys(props.manuallyInjectedProps);
+      for (const key of injectedPropsKeys) {
+        const paramKey = paramCase(key);
+        const value = props.manuallyInjectedProps[key];
+        if (isRealValue(value)) {
+          if (isBoolean(value)) {
+            tProps.push(paramKey);
+          } else if (isNumber(value)) {
+            tProps.push(`:${paramKey}="${value}"`);
+          } else {
+            tProps.push(`${paramKey}="${value}"`);
+          }
+        }
+      }
+    }
+    const propsLength = tProps.length;
+    if (propsLength === 0) {
       variables.props = '';
-    } else if (tProps.length === 1) {
+    } else if (propsLength === 1) {
       variables.props = ` ${tProps[0]}`;
     } else {
-      variables.props = `\n\t${tProps.join('\n\t')}\n`;
+      variables.props = `\n  ${tProps.join('\n  ')}\n`;
     }
+  }
+  if (isValue(slotsControllers)) {
+    variables.hasSlots = Object.values(slotsAttributes.value).reduce(
+      (acc: number, value) => (value === true ? acc + 1 : acc),
+      0,
+    ) > 0;
+    variables.slots = Object.entries(slotsAttributes.value).reduce(
+      (acc, [key, value]) => {
+        acc[camelCase(key)] = value;
+        return acc;
+      },
+      {} as Record<string, AttributeValueType>,
+    );
   }
 
   return variables;
@@ -225,7 +310,7 @@ const scssVars = computed(() => {
     if (tProps.length === 0) {
       variables.scss = '';
     } else {
-      variables.scss = `\n\t${tProps.join('\n\t')}\n`;
+      variables.scss = `    ${tProps.join('\n    ')}`;
     }
   }
   if (variables.scss === '') {
@@ -255,26 +340,15 @@ const scssStyle = computed(() => {
   return style === '' ? undefined : style;
 });
 
-function mapControllersValues(controllers: AttributesControllers | null) {
-  if (!isValue(controllers)) {
-    return {};
-  }
-  const o: Attributes = {};
-  const keys = Object.keys(controllers);
-  for (const key of keys) {
-    o[key] = controllers[key].input.value ?? undefined;
-  }
-  return o;
-}
-
-const propsAttributes = computed(() => mapControllersValues(propsControllers));
-
-const scssAttributes = computed(() => mapControllersValues(scssControllers));
-
-watch([propsAttributes, scssAttributes], ([newPropsAttributes, newScssAttributes]) => {
+watch([propsAttributes, scssAttributes, slotsAttributes], ([
+  newPropsAttributes,
+  newScssAttributes,
+  newSlotsAttributes,
+]) => {
   emit('change', {
     props: newPropsAttributes,
     scss: newScssAttributes,
+    slots: newSlotsAttributes,
   });
 });
 
@@ -282,6 +356,7 @@ onMounted(() => {
   emit('change', {
     props: propsAttributes.value,
     scss: scssAttributes.value,
+    slots: slotsAttributes.value,
   });
 });
 
@@ -308,7 +383,7 @@ onMounted(() => {
         flex-direction: column;
         gap: var(--app-m-2);
 
-        ul {
+        &-list {
             display: flex;
             flex: 1;
             flex-direction: column;

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.localeSelector.name') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('component.localeSelector.name') }}
+    </AppPageTitle>
 
-    <AppSandboxPreview template="/code/view/component/locale-selector/template.txt">
+    <AppSandboxPreview template="/code/view/components/locale-selector/template.hbs">
       <mk-locale-selector />
     </AppSandboxPreview>
   </div>
@@ -12,4 +12,5 @@
 
 <script lang="ts" setup>
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 </script>

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.alert.name') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('component.alert.name') }}
+    </AppPageTitle>
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/alert/template.txt"
-      scss="/code/view/component/alert/scss.txt"
-      script="/code/view/component/alert/script.txt"
+      template="/code/view/components/alert/template.hbs"
+      :template-variables="{ title, content }"
+      scss="/code/view/components/alert/scss.hbs"
       @change="handlePreviewChange"
     >
       <template #default="{ style }">
@@ -19,6 +19,12 @@
           {{ title }}
           <template #content>
             {{ content }}
+          </template>
+          <template
+            v-if="attributes.slots.icon"
+            #icon
+          >
+            <mk-icon icon="wifi" />
           </template>
         </mk-alert>
       </template>
@@ -79,11 +85,12 @@
 
 import { ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
-import { createScssControllersConfig } from '@/lib/utils';
+import { createScssControllersConfig, createSlotsControllersConfig } from '@/lib/utils';
 
 const title = 'Lorem ipsum dolor sit amet';
 const content = `consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -111,11 +118,6 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
-    icon: {
-      type: AttributeType.string,
-      required: false,
-      default: null,
-    },
   },
   scss: createScssControllersConfig([
     '--mk-alert-color',
@@ -125,11 +127,15 @@ const definition: ComponentDefinition = {
     '--mk-alert-border-radius',
     '--mk-alert-icon-size',
   ]),
+  slots: createSlotsControllersConfig([
+    'icon',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {

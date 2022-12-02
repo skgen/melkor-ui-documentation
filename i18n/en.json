@@ -18,6 +18,11 @@
             "fr": "French",
             "en": "English"
         },
+        "languages": {
+            "typescript": "Typescript",
+            "scss": "Scss",
+            "vue": "Vue"
+        },
         "setup": "Setup",
         "cta": "Interaction",
         "typography": "Typography",
@@ -31,6 +36,9 @@
         "colors": "Colors",
         "translations": "Translations",
         "viewState": "View State"
+    },
+    "navigation": {
+        "theme": "Theme(s)"
     },
     "component": {
         "button": {
@@ -123,9 +131,16 @@
         "input-date": {
             "name": "Date input",
             "type": "date"
+        },
+        "input-range": {
+            "name": "Range input",
+            "type": "range"
         }
     },
     "view": {
+        "changelog": {
+            "title": "Changelog"
+        },
         "input": {
             "inputType": "{inputType} input type ",
             "component": {
@@ -163,6 +178,40 @@
             "dynamic": "Dynamic icon size",
             "simpleLabel": "Simple label",
             "withButton": "Icon + Text inlined in a button"
-        }
+        },
+        "tabs": {
+            "static": {
+                "title": "Static example"
+            },
+            "dynamic": {
+                "title": "Dynamic example"
+            }
+        },
+        "theme": {
+            "title": "Dealing with themes",
+            "titles": {
+                "default": "Default Themes",
+                "dark": "Dark Theme",
+                "light":"Light Theme",
+                "custom": "Custom themes",
+                "usageInComponent": "Usage in a component"
+            },
+            "paragraph": {
+                "addCustomTheme": "First, you need to register your theme in plugin registration. Let's create a custom theme called {customTheme}.",
+                "customThemeName": "lord-of-the-ring",
+                "useCustomThemeInScss": "You can then use <code>scss</code> mixins to apply theme specific style.",
+                "useCustomThemeInScssBetter": "Or even better by abstracting your own mixin !",
+                "useCustomThemeInComponent": "If you want a component to be reactive to themes, you need to bind to it a directive called <code>v-theme</code>.",
+                "whereThemeIsRetreivedTip": "Theme bound to a component depends on the first upper {themeContextComponent} found, getting a fallback on application theme.",
+                "onCustomTheme": "Enable custom theme",
+                "offCustomTheme": "Disable custom theme"
+            }
+        },
+        "inputDate": {
+            "format": {
+                "hour": "hour",
+                "minute": "min."
+            }
+        } 
     }
 }

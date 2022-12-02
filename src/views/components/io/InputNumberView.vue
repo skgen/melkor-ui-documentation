@@ -6,9 +6,9 @@
     />
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/io/input-number/template.txt"
-      scss="/code/view/component/io/input-number/scss.txt"
-      script="/code/view/component/io/input-number/script.txt"
+      template="/code/view/components/io/input-number/template.hbs"
+      scss="/code/view/components/io/input-number/scss.hbs"
+      script="/code/view/components/io/input-number/script.hbs"
       @change="handlePreviewChange"
     >
       <template #default="{ style }">
@@ -16,7 +16,14 @@
           v-model="state"
           v-bind="attributes.props"
           :style="style"
-        />
+        >
+          <template
+            v-if="attributes.slots.icon"
+            #icon
+          >
+            <mk-icon icon="euro" />
+          </template>
+        </mk-input-number>
       </template>
     </AppSandboxPreview>
   </div>
@@ -34,7 +41,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
-import { createScssControllersConfig } from '@/lib/utils';
+import { createScssControllersConfig, createSlotsControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
 function validate(value: NumberInputValue) {
   if (value === null) {
@@ -79,6 +86,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
+    placeholder: {
+      type: AttributeType.string,
+      required: false,
+      default: '1337',
+    },
   },
   scss: createScssControllersConfig([
     '--mk-input-number-padding-x',
@@ -86,21 +98,23 @@ const definition: ComponentDefinition = {
     '--mk-input-number-border-radius',
     '--mk-input-number-background-color',
     '--mk-input-number-border-color',
+    '--mk-input-number-icon-color',
+    '--mk-input-number-icon-size',
+    '--mk-input-number-placeholder-color',
   ]),
+  slots: createSlotsControllersConfig(
+    ['icon'],
+  ),
 };
 
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
-  const newProps = newAttributes.props;
-  const { state: newState, ...otherProps } = newProps;
-  attributes.value = {
-    scss: newAttributes.scss,
-    props: otherProps,
-  };
+  attributes.value = mapSandboxAttributesWithoutInputState(newAttributes);
 }
 
 </script>

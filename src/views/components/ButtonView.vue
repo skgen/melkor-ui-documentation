@@ -1,12 +1,12 @@
 <template>
   <div class="pux-ButtonView">
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.button.name') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('component.button.name') }}
+    </AppPageTitle>
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/button/template.txt"
+      template="/code/view/components/button/template.hbs"
       :primary-mode="attributes.props.onPrimary === true"
       :template-variables="variables"
       @change="handlePreviewChange"
@@ -24,6 +24,7 @@
 
 import { ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
 
 const variables = {
@@ -58,6 +59,7 @@ const definition: ComponentDefinition = {
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {

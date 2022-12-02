@@ -1,0 +1,8 @@
+import { createMelkorUi, PluginOptions } from '@patriarche/melkor';
+
+const config: PluginOptions = {
+  ...
+  themes: ['{{customThemeName}}'],
+};
+
+app.use(createMelkorUi(config));

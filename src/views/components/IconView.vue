@@ -1,7 +1,10 @@
 <template>
   <div class="mk-IconView">
+    <AppPageTitle>
+      {{ $t('component.icon.name') }}
+    </AppPageTitle>
+
     <mk-wysiwyg-preview>
-      <h1>{{ $t('component.icon.name') }}</h1>
       <blockquote>
         <i18n-t
           keypath="view.icon.description"
@@ -22,8 +25,8 @@
 
     <AppSandboxPreview
       :definition="definition"
-      template="/code/view/component/icon/template.txt"
-      scss="/code/view/component/icon/scss.txt"
+      template="/code/view/components/icon/template.hbs"
+      scss="/code/view/components/icon/scss.hbs"
       @change="handlePreviewChange"
     >
       <template #default="{ style }">
@@ -42,9 +45,8 @@
       <p>{{ $t('view.icon.default') }}</p>
     </mk-wysiwyg-preview>
     <AppAsyncCodeBlock
-      file-path="/code/view/component/icon/default.txt"
+      file-path="/code/view/components/icon/default.hbs"
       :language="CodeLanguage.vue"
-      :variables="{ label: 'Save to disk' }"
     />
     <AppDemoBlock>
       <mk-icon icon="save" />
@@ -54,13 +56,13 @@
       <p>{{ $t('view.icon.withButton') }}</p>
     </mk-wysiwyg-preview>
     <AppAsyncCodeBlock
-      file-path="/code/view/component/icon/button.txt"
+      file-path="/code/view/components/icon/button.hbs"
       :language="CodeLanguage.vue"
-      :variables="{ label: 'Save to disk' }"
+      :variables="variables"
     />
     <AppDemoBlock>
       <mk-button>
-        <mk-icon icon="save" /> Save to disk
+        <mk-icon icon="save" /> {{ variables.label }}
       </mk-button>
     </AppDemoBlock>
   </div>
@@ -69,6 +71,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import {
@@ -76,6 +79,10 @@ import {
 } from '@/lib/definition';
 
 const iconPath = 'https://fonts.google.com/icons';
+
+const variables = {
+  label: 'Save to disk',
+};
 
 const definition: ComponentDefinition = {
   props: {
@@ -89,12 +96,12 @@ const definition: ComponentDefinition = {
     '--mk-icon-size': {
       type: AttributeType.string,
       required: false,
-      default: 'inherit',
+      default: null,
     },
     '--mk-icon-color': {
       type: AttributeType.string,
       required: false,
-      default: 'currentColor',
+      default: null,
     },
   },
 };
@@ -102,6 +109,7 @@ const definition: ComponentDefinition = {
 const attributes = ref<ComponentAttributes>({
   props: {},
   scss: {},
+  slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {

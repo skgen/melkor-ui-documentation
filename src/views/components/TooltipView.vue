@@ -1,8 +1,8 @@
 <template>
   <div class="mk-TooltipView">
-    <mk-wysiwyg-preview>
-      <h1>{{ $t('component.tooltip.name') }}</h1>
-    </mk-wysiwyg-preview>
+    <AppPageTitle>
+      {{ $t('component.tooltip.name') }}
+    </AppPageTitle>
     <AppDemoBlock>
       <mk-tooltip>
         <mk-link to="/">
@@ -40,8 +40,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
+import AppPageTitle from '@/components/AppPageTitle.vue';
 
 const menu = ref(false);
 

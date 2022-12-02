@@ -22,11 +22,12 @@ export default ({ mode }: { mode: string; }) => {
 
   const port = parseInt(process.env.VITE_APP_PORT, 10);
 
-  const libraryPath = fileURLToPath(new URL('../melkor-ui-package', import.meta.url));
+  const libraryPath = fileURLToPath(new URL('../melkor-ui-package/', import.meta.url));
+
   const libraryAlias = isDev ? [
     {
       find: /@patriarche\/melkor\/style\//,
-      replacement: resolve(libraryPath, './dist/scss/'),
+      replacement: `${resolve(libraryPath, './dist/scss')}/`,
     },
     {
       find: /@patriarche\/melkor\/style/,
