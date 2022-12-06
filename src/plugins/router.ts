@@ -61,6 +61,7 @@ const router = createRouter({
         { path: 'input-radio', component: () => import('@/views/components/io/InputRadioView.vue') },
         { path: 'input-date', component: () => import('@/views/components/io/InputDateView.vue') },
         { path: 'input-range', component: () => import('@/views/components/io/InputRangeView.vue') },
+        { path: 'input-checkbox', component: () => import('@/views/components/io/InputCheckboxView.vue') },
       ],
     },
     {

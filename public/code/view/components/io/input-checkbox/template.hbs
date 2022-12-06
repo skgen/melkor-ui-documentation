@@ -1,0 +1,11 @@
+{{#if hasSlots}}
+<mk-input-checkbox{{{props}}}>
+  {{#if slots.checkedIcon}}
+  <template #checked-icon>
+    <mk-icon icon="remove" />
+  </template>
+  {{/if}}
+</mk-input-checkbox>
+{{else}}
+<mk-input-checkbox{{{props}}}/>
+{{/if}}

@@ -135,6 +135,10 @@
         "input-range": {
             "name": "Range input",
             "type": "range"
+        },
+        "input-checkbox": {
+            "name": "Checkbox input",
+            "type": "checkbox"
         }
     },
     "view": {
@@ -212,6 +216,11 @@
                 "hour": "hour",
                 "minute": "min."
             }
-        } 
+        },
+        "inputCheckbox": {
+            "example": {
+                "title": "Example"
+            }
+        }
     }
 }
