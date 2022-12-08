@@ -3,9 +3,12 @@
     <AppPageTitle>
       {{ $t(`component.${props.i18nKey}.name`) }}
     </AppPageTitle>
-    <mk-button @click="() => { modal = !modal; }">
-      {{ $t('app.viewState') }}
-    </mk-button>
+    <div class="pux-AppInputTitlePreview-ctas">
+      <mk-button @click="() => { modal = !modal; }">
+        {{ $t('app.viewState') }}
+      </mk-button>
+      <slot name="ctas" />
+    </div>
 
     <mk-fullscreen-modal
       v-model="modal"
@@ -40,3 +43,12 @@ const props = defineProps<Props>();
 
 const modal = ref(false);
 </script>
+
+<style lang="scss">
+.pux-AppInputTitlePreview {
+    &-ctas {
+        display: flex;
+        gap: var(--app-m-1);
+    }
+}
+</style>

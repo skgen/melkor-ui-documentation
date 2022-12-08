@@ -81,7 +81,7 @@
 //
 // import { AppInputText, type FormInput, useForm } from '@patriarche/melkor';
 // import AppDemoBlock from '@/components/AppDemoBlock.vue';
-// import AppCmsLayout from '@/components/layout/AppCmsLayout.vue';
+// import AppCmsLayout from '@/components/layouts/AppCmsLayout.vue';
 // import AppCodeBlock, { CodeLanguage } from '@/components/AppCodeBlock.vue';
 // import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 // import AppCodeShowHide from '@/components/AppCodeShowHide.vue';

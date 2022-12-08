@@ -1,0 +1,15 @@
+function validate(value: InputValue) {
+  const errors = exportCheckboxTreeLevelErrorsAsArray(value);
+  if (!isEmpty(errors)) {
+    return `{{{errors.global}}}`;
+  }
+  return null;
+}
+
+function validateGandalf(value: typeof checked | typeof unchecked) {
+  return value === true ? null : `{{{errors.gandalf}}}`;
+}
+
+function validateSauron(value: typeof checked | typeof unchecked) {
+  return value === false ? null : `{{{errors.sauron}}}`;
+}

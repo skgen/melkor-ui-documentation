@@ -1,5 +1,51 @@
 <template>
-  <div class="pux-AppAsyncCodeBlockvue">
+  <div class="pux-AppAsyncCodeBlock">
+    <div
+      v-if="!code"
+      class="pux-AppAsyncCodeBlock-placeholder"
+    >
+      <mk-skeleton
+        height="10px"
+        width="30%"
+      />
+      <mk-skeleton
+        height="10px"
+        width="50%"
+      />
+      <mk-skeleton
+        height="10px"
+        width="20%"
+      />
+      <mk-skeleton
+        height="10px"
+        width="40%"
+      />
+      <mk-skeleton
+        height="10px"
+        width="10%"
+      />
+      <mk-skeleton
+        height="10px"
+        width="15%"
+      />
+      <mk-skeleton
+        height="10px"
+        width="5%"
+      />
+
+      <mk-skeleton
+        height="10px"
+        width="50%"
+      />
+      <mk-skeleton
+        height="10px"
+        width="55%"
+      />
+      <mk-skeleton
+        height="10px"
+        width="5%"
+      />
+    </div>
     <AppCodeBlock
       v-if="code"
       v-bind="props"
@@ -16,7 +62,7 @@ import type { CodeLanguage } from '@/lib/definition';
 type Props = {
   filePath: string;
   language?: CodeLanguage;
-  variables?: Record<string, string | number | boolean>;
+  variables?: Record<string, unknown>;
 };
 
 const props = defineProps<Props>();
@@ -36,3 +82,19 @@ onMounted(() => {
   fetchCodeBlock(props.filePath);
 });
 </script>
+
+<style lang="scss">
+.pux-AppAsyncCodeBlock {
+    &-placeholder {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: var(--app-m-1);
+        min-height: 48px;
+        padding: var(--app-m-2) var(--app-m-6) var(--app-m-2) var(--app-m-3);
+        overflow: hidden;
+        background: #2d2d2d;
+        border-radius: 8px;
+    }
+}
+</style>

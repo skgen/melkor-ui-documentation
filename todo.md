@@ -6,7 +6,10 @@
 * Selecteur de theme (skin)
 * Tableau (fix + verif)
 * Time input ?
-* Input checkbox
 
-* rework doc on HBS template on :
-  * wysiwyg preview
+
+Lib :
+
+(input file)
+- Ajouter erreur par fichier
+- Reflechir loader par fichier

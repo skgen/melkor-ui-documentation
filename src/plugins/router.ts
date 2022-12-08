@@ -62,6 +62,7 @@ const router = createRouter({
         { path: 'input-date', component: () => import('@/views/components/io/InputDateView.vue') },
         { path: 'input-range', component: () => import('@/views/components/io/InputRangeView.vue') },
         { path: 'input-checkbox', component: () => import('@/views/components/io/InputCheckboxView.vue') },
+        { path: 'input-checkbox-tree', component: () => import('@/views/components/io/InputCheckboxTreeView.vue') },
       ],
     },
     {
@@ -70,6 +71,16 @@ const router = createRouter({
       component: () => import('@/views/NotFoundView.vue'),
     },
   ],
+  scrollBehavior(to) {
+    if (to.hash) {
+      return {
+        top: 20,
+        el: to.hash,
+        behavior: 'smooth',
+      };
+    }
+    return { top: 0 };
+  },
 });
 
 export default router;

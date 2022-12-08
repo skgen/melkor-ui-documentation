@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import AppDocLayout from '@/components/layout/AppDocLayout.vue';
+import AppDocLayout from '@/components/layouts/AppDocLayout.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 </script>
 

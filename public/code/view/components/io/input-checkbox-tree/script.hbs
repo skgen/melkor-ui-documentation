@@ -1,0 +1,167 @@
+const checked = true;
+const unchecked = false;
+
+type InputValue = CheckboxTreeInputValue<typeof checked, typeof unchecked>;
+
+function validate(value: InputValue) {
+  const errors = exportCheckboxTreeLevelErrorsAsArray(value);
+  if (!isEmpty(errors)) {
+    return `{{{errors.global}}}`;
+  }
+  return null;
+}
+
+function validateGandalf(value: typeof checked | typeof unchecked) {
+  return value === true ? null : `{{{errors.gandalf}}}`;
+}
+
+function validateSauron(value: typeof checked | typeof unchecked) {
+  return value === false ? null : `{{{errors.sauron}}}`;
+}
+
+const state = ref<InputState<InputValue>>(
+  createInputState({
+    value: [
+      {
+        input: {
+          state: createInputState({ value: true }),
+          options: {
+            checkedLabel: 'Melkor',
+            checked,
+            unchecked,
+            name: 'melkor',
+          },
+        },
+      },
+      {
+        input: {
+          state: createInputState({ value: false }),
+          options: {
+            checkedLabel: 'Manwë',
+            checked,
+            unchecked,
+            name: 'manwe',
+          },
+        },
+      },
+      {
+        input: {
+          state: createInputState({ value: false }),
+          options: {
+            checkedLabel: 'Maiar',
+            checked,
+            unchecked,
+            name: 'maiar',
+          },
+        },
+        children: [
+          {
+            input: {
+              state: createInputState({ value: false }),
+              options: {
+                checkedLabel: 'Istari',
+                checked,
+                unchecked,
+                name: 'istari',
+              },
+            },
+            children: [
+              {
+                input: {
+                  state: createInputState({ value: true }),
+                  options: {
+                    checkedLabel: 'Gandalf',
+                    checked,
+                    unchecked,
+                    validate: validateGandalf,
+                    name: 'gandalf',
+                  },
+                },
+              },
+              {
+                input: {
+                  state: createInputState({ value: false }),
+                  options: {
+                    checkedLabel: 'Saruman',
+                    checked,
+                    unchecked,
+                    name: 'saruman',
+                  },
+                },
+              },
+              {
+                input: {
+                  state: createInputState({ value: false }),
+                  options: {
+                    checkedLabel: 'Radagast',
+                    checked,
+                    unchecked,
+                    name: 'radagast',
+                  },
+                },
+              },
+              {
+                input: {
+                  state: createInputState({ value: false }),
+                  options: {
+                    checkedLabel: 'Blue Wizards',
+                    checked,
+                    unchecked,
+                    name: 'blue wizards',
+                  },
+                },
+                children: [
+                  {
+                    input: {
+                      state: createInputState({ value: true }),
+                      options: {
+                        checkedLabel: 'Alatar',
+                        checked,
+                        unchecked,
+                        name: 'alatar',
+                      },
+                    },
+                  },
+                  {
+                    input: {
+                      state: createInputState({ value: false }),
+                      options: {
+                        checkedLabel: 'Pallando',
+                        checked,
+                        unchecked,
+                        name: 'pallando',
+                      },
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            input: {
+              state: createInputState({ value: false }),
+              options: {
+                checkedLabel: 'Sauron',
+                checked,
+                unchecked,
+                validate: validateSauron,
+                name: 'sauron',
+              },
+            },
+          },
+          {
+            input: {
+              state: createInputState({ value: true }),
+              options: {
+                checkedLabel: 'Eönwë',
+                checked,
+                unchecked,
+                name: 'eonwe',
+              },
+            },
+          },
+        ],
+      },
+    ],
+  }),
+);

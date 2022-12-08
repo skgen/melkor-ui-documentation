@@ -1,0 +1,18 @@
+<mk-button
+  :outlined="theme.theme !== Theme.dark"
+  @click="() => updateTheme(Theme.dark)"
+>
+  {{{dark}}}
+</mk-button>
+<mk-button
+  :outlined="theme.theme !== Theme.light"
+  @click="() => updateTheme(Theme.light)"
+>
+  {{{light}}}
+</mk-button>
+<mk-button
+  :outlined="theme.theme !== Theme.auto"
+  @click="() => updateTheme(Theme.auto)"
+>
+  {{{auto}}}
+</mk-button>

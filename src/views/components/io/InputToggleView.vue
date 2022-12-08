@@ -54,12 +54,12 @@ function validate(value: ToggleInputValue) {
   return value === 'Not toggled' ? 'Must be toggled' : null;
 }
 
-const state = ref<InputState<ToggleInputValue>>(
-  createInputState({ value: { iAm: 'toggled' } }),
-);
-
 const checked: ToggleInputValue = { iAm: 'toggled' };
 const unchecked: ToggleInputValue = 'Not toggled';
+
+const state = ref<InputState<ToggleInputValue>>(
+  createInputState({ value: checked }),
+);
 
 const definition: ComponentDefinition = {
   props: {

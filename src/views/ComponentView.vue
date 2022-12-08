@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import AppDocLayout from '@/components/layout/AppDocLayout.vue';
+import AppDocLayout from '@/components/layouts/AppDocLayout.vue';
 </script>
 
 <style lang="scss">

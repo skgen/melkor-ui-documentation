@@ -68,8 +68,8 @@ import {
 import {
   isValue, type NumberInputModel, type TextInputModel, createInputState,
 } from '@patriarche/melkor';
-import AppDocLayout from '@/components/layout/AppDocLayout.vue';
-import AppPageTitle from '@/components/layout/AppPageTitle.vue';
+import AppDocLayout from '@/components/layouts/AppDocLayout.vue';
+import AppPageTitle from '@/components/layouts/AppPageTitle.vue';
 import AppColorPreview from '@/components/AppColorPreview.vue';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import { CodeLanguage } from '@/lib/definition';

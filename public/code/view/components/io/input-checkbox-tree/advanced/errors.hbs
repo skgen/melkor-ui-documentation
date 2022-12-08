@@ -1,0 +1,19 @@
+watch(advancedState, (newState) => {
+  const level = findCheckboxTreeLevel(newState.value, 'maiar');
+  const checkedCount = countCheckedCheckboxTreeLevels(level.children);
+
+  level.input.state = validateInputState(level.input.state, () => {
+    if (checkedCount < {{{minCount}}}) {
+      return `{{{errors.maiar}}}`;
+    }
+    return null;
+  });
+
+  advancedState.value = validateInputState(advancedState.value, (value) => {
+    const errors = exportCheckboxTreeLevelErrorsAsArray(value);
+    if (!isEmpty(errors)) {
+      return `{{{errors.global}}}`;
+    }
+    return null;
+  });
+});

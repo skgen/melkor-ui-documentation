@@ -48,12 +48,12 @@ function validate(value: CheckboxInputValue) {
   return value === 'checked' ? null : 'Must be checked';
 }
 
-const state = ref<InputState<CheckboxInputValue>>(
-  createInputState({ value: { iAm: 'unchecked' } }),
-);
-
 const checked: CheckboxInputValue = 'checked';
 const unchecked: CheckboxInputValue = { iAm: 'unchecked' };
+
+const state = ref<InputState<CheckboxInputValue>>(
+  createInputState({ value: unchecked }),
+);
 
 const definition: ComponentDefinition = {
   props: {

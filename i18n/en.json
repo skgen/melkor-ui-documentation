@@ -139,6 +139,10 @@
         "input-checkbox": {
             "name": "Checkbox input",
             "type": "checkbox"
+        },
+        "input-checkbox-tree": {
+            "name": "Checkbox input tree",
+            "type": "checkbox"
         }
     },
     "view": {
@@ -194,11 +198,14 @@
         "theme": {
             "title": "Dealing with themes",
             "titles": {
-                "default": "Default Themes",
+                "apply": "Apply a theme manually",
+                "default": "Using default Themes in SCSS",
                 "dark": "Dark Theme",
                 "light":"Light Theme",
                 "custom": "Custom themes",
-                "usageInComponent": "Usage in a component"
+                "usageInComponent": "Use it in your component",
+                "definitionInTypescript": "Definition in Typescript",
+                "usageInScss": "Definition in SCSS"
             },
             "paragraph": {
                 "addCustomTheme": "First, you need to register your theme in plugin registration. Let's create a custom theme called {customTheme}.",
@@ -217,9 +224,16 @@
                 "minute": "min."
             }
         },
-        "inputCheckbox": {
-            "example": {
-                "title": "Example"
+        "inputCheckboxTree": {
+            "ctas": {
+                "viewValueAsStates": "View value as States",
+                "viewValueAsValues": "View value as Values"
+            },
+            "errors" : {
+                "global": "Your team doesn't fit the mission ...",
+                "gandalf": "You must take Gandalf, he's so strong !",
+                "sauron": "You can't take Sauron, he's a vilain !",
+                "maiar": "You need at least 3 Maiars in your quest !"
             }
         }
     }

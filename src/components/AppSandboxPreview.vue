@@ -139,12 +139,12 @@ type Props = {
   template: string;
   script?: string;
   scss?: string;
-  templateVariables?: Record<string, any>;
-  scssVariables?: Record<string, any>;
-  scriptVariables?: Record<string, any>;
+  templateVariables?: Record<string, unknown>;
+  scssVariables?: Record<string, unknown>;
+  scriptVariables?: Record<string, unknown>;
   primaryMode?: boolean;
   anchor?: string;
-  manuallyInjectedProps?: Record<string, any>;
+  manuallyInjectedProps?: Record<string, string | number | boolean>;
 };
 
 type Emits = {
@@ -379,7 +379,7 @@ onMounted(() => {
 
     &-controllers {
         display: flex;
-        flex: 2;
+        flex: 1;
         flex-direction: column;
         gap: var(--app-m-2);
 
@@ -404,7 +404,7 @@ onMounted(() => {
         position: sticky;
         top: var(--app-m-2);
         display: flex;
-        flex: 1 1 300px;
+        flex: 1;
         flex-direction: column;
         gap: var(--app-m-2);
     }

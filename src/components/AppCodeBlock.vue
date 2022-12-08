@@ -4,16 +4,23 @@
     class="pux-AppCodeBlock"
     :data-language="mapping[props.language].lang"
     :data-copied="!!copied || undefined"
+    :data-expanded="expanded"
   >
     <span class="pux-AppCodeBlock-language">
       {{ mapping[props.language].lang }}
     </span>
     <button
-      class="pux-AppCodeBlock-copy"
+      class="pux-AppCodeBlock-cta pux-AppCodeBlock-copy"
       @click="handleCopy"
     >
       <mk-icon icon="content_copy" />
-      <span class="pux-AppCodeBlock-copy-text">Copied</span>
+      <span class="pux-AppCodeBlock-cta-text">Copied</span>
+    </button>
+    <button
+      class="pux-AppCodeBlock-cta pux-AppCodeBlock-expand"
+      @click="handleExpand"
+    >
+      <mk-icon :icon="expanded ? 'remove' : 'add'" />
     </button>
     <div class="pux-AppCodeBlock-editor">
       <PrismEditor
@@ -89,6 +96,7 @@ const code = computed(() => {
 });
 
 const copied = ref<ReturnType<typeof setTimeout> | null>(null);
+const expanded = ref(false);
 
 function handleHighlight(codeToHighlight: string) {
   return highlight(codeToHighlight, languages[mapping[props.language].prisma], mapping[props.language].prisma);
@@ -102,6 +110,10 @@ function handleCopy() {
   copied.value = setTimeout(() => {
     copied.value = null;
   }, 2000);
+}
+
+function handleExpand() {
+  expanded.value = !expanded.value;
 }
 </script>
 
@@ -120,11 +132,7 @@ function handleCopy() {
         transition: opacity 128ms;
     }
 
-    &-copy {
-        position: absolute;
-        top: 4px;
-        right: 4px;
-        z-index: 1;
+    &-cta {
         width: 40px;
         height: 40px;
         padding: 0;
@@ -165,8 +173,24 @@ function handleCopy() {
         }
     }
 
+    &-copy {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        z-index: 1;
+    }
+
+    &-expand {
+        position: absolute;
+        top: 48px;
+        right: 4px;
+        z-index: 1;
+    }
+
     &-editor {
+        max-height: 400px;
         padding: var(--app-m-2) var(--app-m-6) var(--app-m-2) var(--app-m-3);
+        overflow: auto;
 
         /* you must provide font-family font-size line-height. Example: */
         font-family: "Fira code", "Fira Mono", Consolas, Menlo, Courier, monospace;
@@ -187,7 +211,8 @@ function handleCopy() {
                 opacity: 0;
             }
 
-            &-copy {
+            &-copy,
+            &-expand {
                 opacity: 1;
             }
         }
@@ -204,9 +229,17 @@ function handleCopy() {
                 border-radius: 0 4px 4px 0;
                 opacity: 1;
 
-                &-text {
+                .pux-AppCodeBlock-cta-text {
                     opacity: 1;
                 }
+            }
+        }
+    }
+
+    &[data-expanded="true"] {
+        .pux-AppCodeBlock {
+            &-editor {
+                max-height: none;
             }
         }
     }
