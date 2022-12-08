@@ -38,6 +38,7 @@ import V0_9_4 from '@/components/changelogs/TheV0-9-4.vue';
     p {
         .mk-AppIcon {
             color: var(--app-success-color);
+            transform: translate(0, 0.15em);
         }
     }
 }

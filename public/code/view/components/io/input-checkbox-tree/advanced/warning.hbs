@@ -1,0 +1,11 @@
+watch(advancedState, (newState, prevState) => {
+  let localState = { ...newState };
+
+  if (isEqual(localState, prevState)) {
+    return;
+  }
+
+  ...
+
+  advancedState.value = localState;
+});

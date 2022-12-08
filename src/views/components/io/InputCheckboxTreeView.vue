@@ -176,6 +176,19 @@
         <br>
         To handle it exclusively on the <code>input</code>, you can use both basic or advanced error handling.
       </blockquote>
+      <mk-alert info>
+        <p>
+          Two things to notice here:
+        </p>
+        <ul>
+          <li>We compare previous and new state values to prevent infinite loop as we potentially update part of the state in the watcher.</li>
+          <li>We spread the new state and reassign it at the end of the watcher to avoid triggering unnecessary watcher callbacks.</li>
+        </ul>
+      </mk-alert>
+      <AppAsyncCodeBlock
+        file-path="/code/view/components/io/input-checkbox-tree/advanced/warning.hbs"
+        :language="CodeLanguage.typescript"
+      />
     </mk-wysiwyg-preview>
 
     <mk-wysiwyg-preview>
@@ -261,6 +274,7 @@ import {
   countCheckedCheckboxTreeLevels,
 } from '@patriarche/melkor';
 import { useI18n } from 'vue-i18n';
+import isEqual from 'lodash/isEqual';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
   AttributeType, type ComponentDefinition, type ComponentAttributes,
@@ -534,8 +548,14 @@ const advancedState = ref<InputState<InputValue>>(
   }),
 );
 
-watch(advancedState, (newState) => {
-  const level = findCheckboxTreeLevel(newState.value, 'maiar');
+watch(advancedState, (newState, prevState) => {
+  let localState = { ...newState };
+
+  if (isEqual(localState, prevState)) {
+    return;
+  }
+
+  const level = findCheckboxTreeLevel(localState.value, 'maiar');
   if (level?.children) {
     const checkedCount = countCheckedCheckboxTreeLevels(level.children);
 
@@ -547,13 +567,15 @@ watch(advancedState, (newState) => {
     });
   }
 
-  advancedState.value = validateInputState(advancedState.value, (value) => {
+  localState = validateInputState(localState, (value) => {
     const errors = exportCheckboxTreeLevelErrorsAsArray(value);
     if (!isEmpty(errors)) {
       return t('view.inputCheckboxTree.errors.global');
     }
     return null;
   });
+
+  advancedState.value = localState;
 });
 
 const definition: ComponentDefinition = {
