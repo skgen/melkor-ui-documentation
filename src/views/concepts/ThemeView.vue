@@ -9,7 +9,7 @@
         <h2>
           {{ $t('view.theme.titles.apply') }}
         </h2>
-        <div>
+        <div v-if="theme">
           <div class="pux-ThemeView-split-x">
             <mk-button
               :outlined="theme.theme !== Theme.dark"
