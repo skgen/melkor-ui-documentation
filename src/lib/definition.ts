@@ -15,6 +15,7 @@ export type AttributeDefinition = {
   type: AttributeType;
   required: boolean;
   default: any;
+  placeholder?: string;
 };
 
 export type AttributeController<T = any> = AttributeDefinition & {
@@ -46,7 +47,7 @@ export type Attributes = {
   [key:string]: AttributeValueType;
 };
 
-export type AttributeValueType = string | number | boolean;
+export type AttributeValueType = string | number | boolean | null | undefined;
 
 export enum CodeLanguage {
   typescript = 'typescript',

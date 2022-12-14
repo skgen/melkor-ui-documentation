@@ -80,6 +80,16 @@ const definition: ComponentDefinition = {
       required: false,
       default: 'JPG, PNG, PDF - 3 Mo max.',
     },
+    disabled: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    fill: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
   scss: createScssControllersConfig([
     '--mk-input-file-border-color',

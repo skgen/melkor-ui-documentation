@@ -1,17 +1,21 @@
 <template>
   <div class="pux-TranslationsView">
-    <AppDocLayout>
-      <AppPageTitle>
-        {{ $t('app.translations') }}
-      </AppPageTitle>
-      <mk-skeleton size="50px" />
-    </AppDocLayout>
+    <AppPageTitle>
+      {{ $t('view.translations.title') }}
+    </AppPageTitle>
+
+    <AppAsyncCodeBlock
+      file-path="/code/view/translations/translations.json.hbs"
+      :language="CodeLanguage.json"
+      full-size
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-import AppDocLayout from '@/components/layouts/AppDocLayout.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
+import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
+import { CodeLanguage } from '@/lib/definition';
 </script>
 
 <style lang="scss">

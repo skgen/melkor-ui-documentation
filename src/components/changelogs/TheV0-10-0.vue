@@ -1,19 +1,19 @@
 <template>
-  <h2>v0.9.0</h2>
-  <h3>New components</h3>
+  <h2>
+    <mk-icon icon="task_alt" />
+    v0.10.0
+  </h2>
+  <h3>New component</h3>
   <p>
-    <mk-link to="/component/input-checkbox">
-      {{ $t('component.input-checkbox.name') }}
+    <mk-link to="/component/theme-toggle">
+      {{ $t('component.themeToggle.name') }}
     </mk-link>
   </p>
+  <h3>
+    Enhancements
+  </h3>
   <p>
-    <mk-link to="/component/input-checkbox-tree">
-      {{ $t('component.input-checkbox-tree.name') }}
-    </mk-link>
-  </p>
-  <h3>Enhancements</h3>
-  <p>
-    Added <code>errors</code> render on multiple components:
+    Added <code>disabled</code> render on multiple components:
   </p>
   <p>
     <ul>
@@ -85,20 +85,33 @@
     </ul>
   </p>
   <p>
-    Changed {{ appName }} tone colors logic from hexadecimal values to rgb based ones with opacity
-  </p>
-  <p>
-    Theme can now be updated manually thanks to <code>updateTheme</code> from the <code>useTheme</code> composable,
-    see <mk-link to="/concept/theme#updating">
-      {{ $t('view.theme.title') }}
-    </mk-link>
-  </p>
-  <p>
-    Input state validation has been extracted to a standalone method <code>validateInputState</code>
+    You can now drag & drop files in <mk-link to="/component/input-file">
+      {{ $t('component.input-file.name') }}
+    </mk-link> dropzone
   </p>
   <h3>Minor</h3>
   <p>
-    Fix an issue on checkables not getting the right next value
+    Moved all {{ appName }} <code>i18n</code> keys to <code>melkor</code> namespace, see <mk-link to="/translations">
+      {{ $t('view.translations.title') }}
+    </mk-link>
+  </p>
+  <p>
+    Change <mk-link to="/component/input-toggle">
+      {{ $t('component.input-toggle.name') }}
+    </mk-link> base background color to the same value regardless of active theme
+  </p>
+  <p>
+    <code>isEmpty</code> function now returns <code>true</code> if value is <code>null | undefined</code>
+  </p>
+  <p>
+    Added <mk-link to="https://www.npmjs.com/package/vue-router">
+      vue-router
+    </mk-link> & <mk-link to="https://www.npmjs.com/package/vue-i18n">
+      vue-i18n
+    </mk-link> as peer dependencies
+  </p>
+  <p>
+    Fix some typing issues
   </p>
 </template>
 

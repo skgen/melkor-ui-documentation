@@ -83,6 +83,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: "I'm a select input",
     },
+    disabled: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
     fill: {
       type: AttributeType.boolean,
       required: false,

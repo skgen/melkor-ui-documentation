@@ -6,6 +6,7 @@
           {{ $t('view.changelog.title') }}
         </AppPageTitle>
         <mk-wysiwyg-preview>
+          <V0_10_0 />
           <V0_9_4 />
           <V0_9_3 />
           <V0_9_2 />
@@ -27,6 +28,7 @@ import V0_9_1 from '@/components/changelogs/TheV0-9-1.vue';
 import V0_9_2 from '@/components/changelogs/TheV0-9-2.vue';
 import V0_9_3 from '@/components/changelogs/TheV0-9-3.vue';
 import V0_9_4 from '@/components/changelogs/TheV0-9-4.vue';
+import V0_10_0 from '@/components/changelogs/TheV0-10-0.vue';
 </script>
 
 <style lang="scss">

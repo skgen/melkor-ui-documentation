@@ -11,21 +11,59 @@ export type NavigationLevel = {
 };
 
 export const sidebar: NavigationLevel[] = [
+  // {
+  //   title: t('app.setup'),
+  //   children: [
+  //     {
+  //       title: t('navigation.theme'),
+  //       to: '/concept/theme',
+  //     },
+  //     // {
+  //     //   title: t('app.translations'),
+  //     //   to: '/translations',
+  //     // },
+  //     // {
+  //     //   title: t('app.colors'),
+  //     //   to: '/colors',
+  //     // },
+  //   ],
+  // },
   {
-    title: t('app.setup'),
+    title: t('navigation.theme.category'),
     children: [
       {
-        title: t('navigation.theme'),
+        title: t('view.theme.title'),
         to: '/concept/theme',
       },
-      // {
-      //   title: t('app.translations'),
-      //   to: '/translations',
-      // },
-      // {
-      //   title: t('app.colors'),
-      //   to: '/colors',
-      // },
+      {
+        title: t('component.themeToggle.name'),
+        to: '/component/theme-toggle',
+      },
+      {
+        title: t('component.themeSelector.name'),
+        to: '/component/theme-selector',
+      },
+      {
+        title: t('component.themeContext.name'),
+        to: '/component/theme-context',
+      },
+    ],
+  },
+  {
+    title: t('navigation.i18n.category'),
+    children: [
+      {
+        title: t('view.i18n.title'),
+        to: '/concept/i18n',
+      },
+      {
+        title: t('view.translations.title'),
+        to: '/translations',
+      },
+      {
+        title: t('component.localeSelector.name'),
+        to: '/component/locale-selector',
+      },
     ],
   },
   {
@@ -38,14 +76,6 @@ export const sidebar: NavigationLevel[] = [
       {
         title: t('component.link.name'),
         to: '/component/link',
-      },
-      {
-        title: t('component.localeSelector.name'),
-        to: '/component/locale-selector',
-      },
-      {
-        title: t('component.themeSelector.name'),
-        to: '/component/theme-selector',
       },
     ],
   },

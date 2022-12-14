@@ -85,6 +85,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: "I'm a radio input",
     },
+    disabled: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
     options: {
       type: AttributeType.reference,
       required: true,

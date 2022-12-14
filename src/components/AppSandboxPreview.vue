@@ -28,6 +28,7 @@
                   :label="controller.key"
                   :model-value="controller.input"
                   fill
+                  :placeholder="controller.placeholder"
                   @update:model-value="(state: any) => handlePropValueChange(controller.key, state)"
                 />
               </li>
@@ -47,6 +48,7 @@
                 <component
                   :is="resolveInputName(controller.type)"
                   :label="controller.key"
+                  :placeholder="controller.placeholder"
                   :model-value="controller.input"
                   fill
                   @update:model-value="(state: any) => handleSlotsValueChange(controller.key, state)"
@@ -68,6 +70,7 @@
                 <component
                   :is="resolveInputName(controller.type)"
                   :label="controller.key"
+                  :placeholder="controller.placeholder"
                   :model-value="controller.input"
                   fill
                   @update:model-value="(state: any) => handleScssValueChange(controller.key, state)"

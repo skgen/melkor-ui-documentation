@@ -6,8 +6,9 @@
         {{ $t('view.changelog.title') }}
       </mk-link>
       <div class="pux-TheHeader-controllers">
-        <mk-locale-selector />
-        <mk-theme-selector />
+        <mk-theme-toggle compact />
+        <!-- <mk-locale-selector /> -->
+        <!-- <mk-theme-selector /> -->
       </div>
     </div>
   </div>
@@ -31,11 +32,13 @@ const navigation: BreadcrumbEntry[] = [];
 
     &-dashboard {
         display: flex;
+        align-items: center;
     }
 
     &-controllers {
         display: flex;
         gap: var(--app-m-1);
+        align-items: center;
         margin: 0 0 0 var(--app-m-3);
     }
 }

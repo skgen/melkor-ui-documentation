@@ -82,6 +82,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: "I'm a checkbox input",
     },
+    disabled: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
     checked: {
       type: AttributeType.reference,
       required: false,

@@ -605,6 +605,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: 'Pick the best team you can',
     },
+    disabled: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
 };
 

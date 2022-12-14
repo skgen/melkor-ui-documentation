@@ -40,7 +40,6 @@
 
 <script lang="ts" setup>
 import { ref, useSlots } from 'vue';
-
 import type { InputModel } from '@patriarche/melkor';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import { CodeLanguage } from '@/lib/definition';

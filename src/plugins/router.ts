@@ -21,16 +21,16 @@ const router = createRouter({
           path: 'theme',
           component: () => import('@/views/concepts/ThemeView.vue'),
         },
-        // {
-        //   path: 'translations',
-        //   component: () => import('@/views/TranslationsView.vue'),
-        // },
+        {
+          path: 'i18n',
+          component: () => import('@/views/concepts/I18nView.vue'),
+        },
       ],
     },
-    // {
-    //   path: '/colors',
-    //   component: () => import('@/views/ColorsView.vue'),
-    // },
+    {
+      path: '/translations',
+      component: () => import('@/views/TranslationsView.vue'),
+    },
     {
       path: '/component',
       component: () => import('@/views/ComponentView.vue'),
@@ -39,6 +39,8 @@ const router = createRouter({
         { path: 'link', component: () => import('@/views/components/LinkView.vue') },
         { path: 'locale-selector', component: () => import('@/views/components/LocaleSelectorView.vue') },
         { path: 'theme-selector', component: () => import('@/views/components/ThemeSelectorView.vue') },
+        { path: 'theme-toggle', component: () => import('@/views/components/ThemeToggleView.vue') },
+        { path: 'theme-context', component: () => import('@/views/components/ThemeContextView.vue') },
         { path: 'heading', component: () => import('@/views/components/HeadingView.vue') },
         { path: 'wysiwyg-preview', component: () => import('@/views/components/WysiwygPreviewView.vue') },
         { path: 'tabs', component: () => import('@/views/components/TabsView.vue') },

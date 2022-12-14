@@ -15,19 +15,19 @@
               :outlined="theme.theme !== Theme.dark"
               @click="() => updateTheme(Theme.dark)"
             >
-              {{ $t('app.theme.dark') }}
+              {{ $t('melkor.theme.dark') }}
             </mk-button>
             <mk-button
               :outlined="theme.theme !== Theme.light"
               @click="() => updateTheme(Theme.light)"
             >
-              {{ $t('app.theme.light') }}
+              {{ $t('melkor.theme.light') }}
             </mk-button>
             <mk-button
               :outlined="theme.theme !== Theme.auto"
               @click="() => updateTheme(Theme.auto)"
             >
-              {{ $t('app.theme.auto') }}
+              {{ $t('melkor.theme.auto') }}
             </mk-button>
           </div>
         </div>
@@ -36,9 +36,9 @@
             file-path="/code/view/concepts/theme/apply.vue.hbs"
             :language="CodeLanguage.vue"
             :variables="{
-              dark: $t('app.theme.dark'),
-              light: $t('app.theme.light'),
-              auto: $t('app.theme.auto'),
+              dark: $t('melkor.theme.dark'),
+              light: $t('melkor.theme.light'),
+              auto: $t('melkor.theme.auto'),
             }"
           />
         </div>

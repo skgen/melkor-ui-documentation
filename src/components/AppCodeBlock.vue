@@ -4,7 +4,7 @@
     class="pux-AppCodeBlock"
     :data-language="mapping[props.language].lang"
     :data-copied="!!copied || undefined"
-    :data-expanded="expanded"
+    :data-expanded="expanded || props.fullSize || undefined"
   >
     <span class="pux-AppCodeBlock-language">
       {{ mapping[props.language].lang }}
@@ -17,6 +17,7 @@
       <span class="pux-AppCodeBlock-cta-text">Copied</span>
     </button>
     <button
+      v-if="!props.fullSize"
       class="pux-AppCodeBlock-cta pux-AppCodeBlock-expand"
       @click="handleExpand"
     >
@@ -52,6 +53,7 @@ type Props = {
   code: string;
   language?: CodeLanguage;
   variables?: Record<string, unknown>;
+  fullSize?: boolean;
 };
 
 const props = withDefaults(defineProps<Props>(), {

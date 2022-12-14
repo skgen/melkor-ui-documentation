@@ -5,10 +5,7 @@
                 "dragdrop": "Drag & drop or {search}",
                 "search": "browse"
             }
-        }
-    },
-    "app": {
-        "welcome": "Welcome on {appName} !",
+        },
         "theme": {
             "auto": "Sys-Theme",
             "light": "Light Theme",
@@ -17,7 +14,10 @@
         "i18n": {
             "fr": "French",
             "en": "English"
-        },
+        }
+    },
+    "app": {
+        "welcome": "Welcome on {appName} !",
         "languages": {
             "typescript": "Typescript",
             "scss": "Scss",
@@ -32,13 +32,20 @@
         "inputs": "Input list",
         "modals": "Alternative views",
         "playground": "Playground",
+        "example": "Example",
         "examples": "Examples",
+        "purpose": "Purpose",
         "colors": "Colors",
         "translations": "Translations",
         "viewState": "View State"
     },
     "navigation": {
-        "theme": "Theme(s)"
+        "theme": {
+            "category": "Theme(s)"
+        },
+        "i18n": {
+            "category": "I18n"
+        }
     },
     "component": {
         "button": {
@@ -49,6 +56,12 @@
         },
         "themeSelector": {
             "name": "Theme selector"
+        },
+        "themeToggle": {
+            "name": "Theme toggle"
+        },
+        "themeContext": {
+            "name": "Theme context"
         },
         "localeSelector": {
             "name": "Locale selector"
@@ -196,7 +209,7 @@
             }
         },
         "theme": {
-            "title": "Dealing with themes",
+            "title": "Using themes",
             "titles": {
                 "apply": "Apply a theme manually",
                 "default": "Using default Themes in SCSS",
@@ -217,6 +230,12 @@
                 "onCustomTheme": "Enable custom theme",
                 "offCustomTheme": "Disable custom theme"
             }
+        },
+        "i18n": {
+            "title": "I18n setup"
+        },
+        "translations": {
+            "title": "Translation keys"
         },
         "inputDate": {
             "format": {
