@@ -26,7 +26,6 @@
         "setup": "Setup",
         "cta": "Interaction",
         "typography": "Typography",
-        "layout": "Layout",
         "global": "Global",
         "dataInputs": "I/O Data",
         "inputs": "Input list",
@@ -34,10 +33,13 @@
         "playground": "Playground",
         "example": "Example",
         "examples": "Examples",
+        "sample": "Sample",
         "purpose": "Purpose",
         "colors": "Colors",
         "translations": "Translations",
-        "viewState": "View State"
+        "viewState": "View State",
+        "floatingViews": "Floating views",
+        "fullscreenViews": "Fullscreen views"
     },
     "navigation": {
         "theme": {
@@ -45,6 +47,12 @@
         },
         "i18n": {
             "category": "I18n"
+        },
+        "router": {
+            "category": "Router"
+        },
+        "setup": {
+            "category": "Getting started"
         }
     },
     "component": {
@@ -84,8 +92,8 @@
         "textInput": {
             "name": "Text input"
         },
-        "view": {
-            "name": "View"
+        "fullscreenView": {
+            "name": "Fullscreen View"
         },
         "modal": {
             "name": "Modal"
@@ -101,6 +109,9 @@
         },
         "tooltip": {
             "name": "Tooltip"
+        },
+        "menu": {
+            "name": "Menu"
         },
         "icon": {
             "name": "Icon"
@@ -159,6 +170,11 @@
         }
     },
     "view": {
+        "home": {
+            "titles": {
+                "intro": "Introduction"
+            }
+        },
         "changelog": {
             "title": "Changelog"
         },
@@ -209,8 +225,8 @@
             }
         },
         "theme": {
-            "title": "Using themes",
             "titles": {
+                "use": "Using themes",
                 "apply": "Apply a theme manually",
                 "default": "Using default Themes in SCSS",
                 "dark": "Dark Theme",
@@ -232,10 +248,18 @@
             }
         },
         "i18n": {
-            "title": "I18n setup"
+            "titles": {
+                "setup":"I18n setup",
+                "keys": "Translation keys"
+            },
+            "paragraph": {
+                "translatedSentence": "This sentence is translated in both English & French."
+            }
         },
-        "translations": {
-            "title": "Translation keys"
+        "router": {
+            "titles": {
+                "setup":"Router setup"
+            }
         },
         "inputDate": {
             "format": {
@@ -253,6 +277,55 @@
                 "gandalf": "You must take Gandalf, he's so strong !",
                 "sauron": "You can't take Sauron, he's a vilain !",
                 "maiar": "You need at least 3 Maiars in your quest !"
+            }
+        },
+        "setup": {
+            "titles": {
+                "setup": "Global setup"
+            }
+        },
+        "tooltip": {
+            "cta": {
+                "basic": "(Hover me) 1 Ring for what ?"
+            },
+            "paragraph": {
+                "basic": "1 Ring to rule them all"
+            }
+        },
+        "menu": {
+            "action": {
+                "open": "Discover me !",
+                "close": "Hide me ..."
+            },
+            "paragraph": {
+                "popinTitle": "Gandalf",
+                "popinContent": "He wore a tall pointed blue hat, a long grey cloak, and a silver scarf. He had a long white beard and bushy eyebrows that stuck out beyond the brim of his hat."
+            }
+        },
+        "link": {
+            "cta": "There and Back Again"
+        },
+        "fullscreenView": {
+            "title": {
+                "basicExample": {
+                    "1": "Glorfindel",
+                    "2": "Years of the Trees",
+                    "3": "First Age"
+                }
+            },
+            "paragraph": {
+                "basicExample": {
+                    "1": "Glorfindel was among the mightiest of the Elves, and was once the lord of the House of the Golden Flower in Gondolin. After his death in the First Age, he was re-embodied by the Valar to act as an emissary, and returned to Middle-earth millennia afterwards.",
+                    "2": "Glorfindel was born in Tirion sometime during the Noontide of Valinor, and was descended from a house of princes. He followed the House of Fingolfin during the Flight of the Ñoldor, but he took no part in the Kinslaying at Alqualondë.",
+                    "3": "In exile, Glorfindel fought in the Battle of the Lammoth, as he followed the House of Fingolfin, and was in the host of Turgon at the Dagor Aglareb. After the battle he followed Turgon to Gondolin, where he was appointed as the Lord of the House of the Golden Flower and one of the captains of the King. He was popular and well-loved by the Gondolindrim."
+                }
+            },
+            "cta": {
+                "basicExample": {
+                    "open": "Teach me some background ...",
+                    "close": "I'm done, close it !",
+                    "source": "Source"
+                }
             }
         }
     }

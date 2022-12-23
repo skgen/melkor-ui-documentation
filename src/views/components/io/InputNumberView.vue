@@ -4,28 +4,36 @@
       i18n-key="input-number"
       :state="state"
     />
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/io/input-number/template.hbs"
-      scss="/code/view/components/io/input-number/scss.hbs"
-      script="/code/view/components/io/input-number/script.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-input-number
-          v-model="state"
-          v-bind="attributes.props"
-          :style="style"
-        >
-          <template
-            v-if="attributes.slots.icon"
-            #icon
+
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/io/input-number/template.hbs"
+            scss="/code/view/components/io/input-number/scss.hbs"
+            script="/code/view/components/io/input-number/script.hbs"
+            @change="handlePreviewChange"
           >
-            <mk-icon icon="euro" />
-          </template>
-        </mk-input-number>
-      </template>
-    </AppSandboxPreview>
+            <template #default="{ style }">
+              <mk-input-number
+                v-model="state"
+                v-bind="attributes.props"
+                :style="style"
+              >
+                <template
+                  v-if="attributes.slots.icon"
+                  #icon
+                >
+                  <mk-icon icon="euro" />
+                </template>
+              </mk-input-number>
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

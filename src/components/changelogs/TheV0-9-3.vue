@@ -4,9 +4,9 @@
   </h2>
   <h3>Minor</h3>
   <p>
-    Fix typing issues leading to wrong type inferences
+    Fixed typing issues leading to wrong type inferences
   </p>
   <p>
-    Fix an issue on checkable inputs not getting default checked/unchecked value if none was provided
+    Fixed an issue on checkable inputs not getting default checked/unchecked value if none was provided
   </p>
 </template>

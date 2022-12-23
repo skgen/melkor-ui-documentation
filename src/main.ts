@@ -12,10 +12,12 @@ const app = createApp(App);
 
 app.use(createPinia());
 
-app.use(createMelkorUi({
+const mkui = createMelkorUi({
   router,
   i18n,
-  debug: false,
-}));
+  // debug: false,
+});
+
+app.use(mkui);
 
 app.mount('#app');

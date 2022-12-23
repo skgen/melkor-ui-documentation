@@ -5,7 +5,14 @@
     :data-language="mapping[props.language].lang"
     :data-copied="!!copied || undefined"
     :data-expanded="expanded || props.fullSize || undefined"
+    :data-filename="!isEmpty(props.filename) || undefined"
   >
+    <div
+      v-if="props.filename"
+      class="pux-AppCodeBlock-filename"
+    >
+      {{ props.filename }}
+    </div>
     <span class="pux-AppCodeBlock-language">
       {{ mapping[props.language].lang }}
     </span>
@@ -44,8 +51,9 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-scss';
+import 'prismjs/components/prism-bash';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
-import { copyToClipboard, Theme } from '@patriarche/melkor';
+import { copyToClipboard, Theme, isEmpty } from '@patriarche/melkor';
 import Handlebars from 'handlebars';
 import { CodeLanguage } from '@/lib/definition';
 
@@ -54,35 +62,41 @@ type Props = {
   language?: CodeLanguage;
   variables?: Record<string, unknown>;
   fullSize?: boolean;
+  filename?: string;
 };
 
 const props = withDefaults(defineProps<Props>(), {
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
   language: CodeLanguage.typescript,
   variables: undefined,
+  filename: undefined,
 });
 
 const mapping:
-{ [key in CodeLanguage]: { lang:string; prisma: string } } = {
+{ [key in CodeLanguage]: { lang:string; prism: string } } = {
   typescript: {
     lang: 'ts',
-    prisma: 'typescript',
+    prism: 'typescript',
   },
   json: {
     lang: 'json',
-    prisma: 'json',
+    prism: 'json',
   },
   template: {
     lang: 'template',
-    prisma: 'html',
+    prism: 'html',
   },
   vue: {
     lang: 'vue',
-    prisma: 'html',
+    prism: 'html',
   },
   scss: {
     lang: 'scss',
-    prisma: 'scss',
+    prism: 'scss',
+  },
+  bash: {
+    lang: 'bash',
+    prism: 'bash',
   },
 };
 
@@ -101,7 +115,7 @@ const copied = ref<ReturnType<typeof setTimeout> | null>(null);
 const expanded = ref(false);
 
 function handleHighlight(codeToHighlight: string) {
-  return highlight(codeToHighlight, languages[mapping[props.language].prisma], mapping[props.language].prisma);
+  return highlight(codeToHighlight, languages[mapping[props.language].prism], mapping[props.language].prism);
 }
 
 function handleCopy() {
@@ -121,10 +135,22 @@ function handleExpand() {
 
 <style lang="scss">
 .pux-AppCodeBlock {
+    $this: &;
+
     position: relative;
     min-height: 48px;
     overflow: hidden;
+    color: var(--c-grey-80);
     border-radius: 8px;
+
+    &-filename {
+        position: absolute;
+        padding: calc(var(--app-m-1) / 2) var(--app-m-1);
+        font-size: 13px;
+        font-weight: 700;
+        background: var(--c-grey-20);
+        border-bottom-right-radius: 8px;
+    }
 
     &-language {
         position: absolute;
@@ -198,8 +224,7 @@ function handleExpand() {
         font-family: "Fira code", "Fira Mono", Consolas, Menlo, Courier, monospace;
         font-size: 14px;
         line-height: 1.5;
-        color: #ccc;
-        background: #2d2d2d;
+        background: var(--c-grey-12);
 
         /* optional class for removing the outline */
         textarea:focus {
@@ -242,6 +267,14 @@ function handleExpand() {
         .pux-AppCodeBlock {
             &-editor {
                 max-height: none;
+            }
+        }
+    }
+
+    &[data-filename="true"] {
+        #{$this} {
+            &-editor {
+                padding-top: var(--app-m-5);
             }
         }
     }

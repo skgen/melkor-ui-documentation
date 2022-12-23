@@ -4,24 +4,32 @@
       i18n-key="input-radio"
       :state="state"
     />
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/io/input-radio/template.hbs"
-      scss="/code/view/components/io/input-radio/scss.hbs"
-      script="/code/view/components/io/input-radio/script.hbs"
-      :script-variables="{
-        nullable: attributes.props.nullable,
-      }"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-input-radio
-          v-model="state"
-          v-bind="attributes.props"
-          :style="style"
-        />
-      </template>
-    </AppSandboxPreview>
+
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/io/input-radio/template.hbs"
+            scss="/code/view/components/io/input-radio/scss.hbs"
+            script="/code/view/components/io/input-radio/script.hbs"
+            :script-variables="{
+              nullable: attributes.props.nullable,
+            }"
+            @change="handlePreviewChange"
+          >
+            <template #default="{ style }">
+              <mk-input-radio
+                v-model="state"
+                v-bind="attributes.props"
+                :style="style"
+              />
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

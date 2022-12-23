@@ -4,45 +4,53 @@
       i18n-key="input-date"
       :state="state"
     />
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/io/input-date/template.hbs"
-      :template-variables="{
-        datetimeExpression,
-        dateExpression
-      }"
-      scss="/code/view/components/io/input-date/scss.hbs"
-      script="/code/view/components/io/input-date/script.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-input-date
-          v-model="state"
-          v-bind="attributes.props"
-          :style="style"
-        >
-          <template
-            v-if="attributes.slots.icon"
-            #icon
+
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/io/input-date/template.hbs"
+            :template-variables="{
+              datetimeExpression,
+              dateExpression
+            }"
+            scss="/code/view/components/io/input-date/scss.hbs"
+            script="/code/view/components/io/input-date/script.hbs"
+            @change="handlePreviewChange"
           >
-            <mk-icon icon="schedule" />
-          </template>
-          <template
-            v-if="attributes.slots.preview"
-            #preview="{ datetime, value }"
-          >
-            <template v-if="value">
-              <template v-if="datetime">
-                {{ formatDate(value, `dd/LL/yyyy - Ho '${$t('view.inputDate.format.hour')}', m '${$t('view.inputDate.format.minute')}'`) }}
-              </template>
-              <template v-else>
-                {{ formatDate(value, 'dd/LL/yyyy') }}
-              </template>
+            <template #default="{ style }">
+              <mk-input-date
+                v-model="state"
+                v-bind="attributes.props"
+                :style="style"
+              >
+                <template
+                  v-if="attributes.slots.icon"
+                  #icon
+                >
+                  <mk-icon icon="schedule" />
+                </template>
+                <template
+                  v-if="attributes.slots.preview"
+                  #preview="{ datetime, value }"
+                >
+                  <template v-if="value">
+                    <template v-if="datetime">
+                      {{ formatDate(value, `dd/LL/yyyy - Ho '${$t('view.inputDate.format.hour')}', m '${$t('view.inputDate.format.minute')}'`) }}
+                    </template>
+                    <template v-else>
+                      {{ formatDate(value, 'dd/LL/yyyy') }}
+                    </template>
+                  </template>
+                </template>
+              </mk-input-date>
             </template>
-          </template>
-        </mk-input-date>
-      </template>
-    </AppSandboxPreview>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

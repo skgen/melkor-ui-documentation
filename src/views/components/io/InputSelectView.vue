@@ -4,21 +4,29 @@
       i18n-key="input-select"
       :state="state"
     />
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/io/input-select/template.hbs"
-      scss="/code/view/components/io/input-select/scss.hbs"
-      script="/code/view/components/io/input-select/script.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-input-select
-          v-model="state"
-          v-bind="attributes.props"
-          :style="style"
-        />
-      </template>
-    </AppSandboxPreview>
+
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/io/input-select/template.hbs"
+            scss="/code/view/components/io/input-select/scss.hbs"
+            script="/code/view/components/io/input-select/script.hbs"
+            @change="handlePreviewChange"
+          >
+            <template #default="{ style }">
+              <mk-input-select
+                v-model="state"
+                v-bind="attributes.props"
+                :style="style"
+              />
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

@@ -1,0 +1,13 @@
+<mk-menu{{{props}}}>
+  <mk-button @click="() => open = !open">
+    {{{label}}}
+  </mk-button>
+  <template #menu>
+      <div :style="{ maxWidth: '300px', padding: 'var(--app-m-3)' }">
+        <mk-wysiwyg-preview>
+          <h3>{{{title}}}</h3>
+          <blockquote>{{{paragraph}}}</blockquote>
+        </mk-wysiwyg-preview>
+      </div>
+  </template>
+</mk-menu>

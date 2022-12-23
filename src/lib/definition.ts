@@ -9,13 +9,17 @@ export enum AttributeType {
   function,
   vModel,
   wysiwyg,
+  select,
 }
 
 export type AttributeDefinition = {
   type: AttributeType;
   required: boolean;
   default: any;
-  placeholder?: string;
+  inputOptions?: { [key: string]: unknown };
+  renderOptions?: {
+    valueAsSelectLabel?: boolean;
+  };
 };
 
 export type AttributeController<T = any> = AttributeDefinition & {
@@ -47,7 +51,9 @@ export type Attributes = {
   [key:string]: AttributeValueType;
 };
 
-export type AttributeValueType = string | number | boolean | null | undefined;
+// It's intended as we can pass any type of props, not really meant to be strictly type checked
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type AttributeValueType = any;
 
 export enum CodeLanguage {
   typescript = 'typescript',
@@ -55,4 +61,5 @@ export enum CodeLanguage {
   template = 'template',
   vue = 'vue',
   scss = 'scss',
+  bash = 'bash',
 }

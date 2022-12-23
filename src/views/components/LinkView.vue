@@ -4,16 +4,26 @@
       {{ $t('component.link.name') }}
     </AppPageTitle>
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/link/template.hbs"
-      :template-variables="variables"
-      @change="handlePreviewChange"
-    >
-      <mk-link v-bind="attributes.props">
-        {{ variables.label }}
-      </mk-link>
-    </AppSandboxPreview>
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/link/template.hbs"
+            :template-variables="{
+              cta: $t('view.link.cta')
+            }"
+            @change="handlePreviewChange"
+          >
+            <mk-link v-bind="attributes.props">
+              <span>{{ $t('view.link.cta') }}</span>
+              <mk-icon icon="repeat" />
+            </mk-link>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 
@@ -22,10 +32,7 @@ import { ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
-
-const variables = {
-  label: 'Link label',
-};
+import { createScssControllersConfig } from '@/lib/utils';
 
 const definition: ComponentDefinition = {
   props: {
@@ -44,7 +51,17 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
+    underline: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
+  scss: createScssControllersConfig([
+    '--mk-link-text-color',
+    '--mk-link-text-color-active',
+    '--mk-link-gap',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

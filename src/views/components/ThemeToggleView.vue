@@ -4,19 +4,28 @@
       {{ $t('component.themeToggle.name') }}
     </AppPageTitle>
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/theme-toggle/template.hbs"
-      scss="/code/view/components/theme-toggle/scss.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-theme-toggle
-          v-bind="attributes.props"
-          :style="style"
-        />
-      </template>
-    </AppSandboxPreview>
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>
+          {{ $t('app.playground') }}
+        </h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/theme-toggle/template.hbs"
+            scss="/code/view/components/theme-toggle/scss.hbs"
+            @change="handlePreviewChange"
+          >
+            <template #default="{ style }">
+              <mk-theme-toggle
+                v-bind="attributes.props"
+                :style="style"
+              />
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

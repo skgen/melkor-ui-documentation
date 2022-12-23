@@ -18,18 +18,30 @@ const router = createRouter({
       component: () => import('@/views/ComponentView.vue'),
       children: [
         {
-          path: 'theme',
-          component: () => import('@/views/concepts/ThemeView.vue'),
+          path: 'setup',
+          component: () => import('@/views/concepts/setup/SetupView.vue'),
         },
         {
-          path: 'i18n',
-          component: () => import('@/views/concepts/I18nView.vue'),
+          path: 'using-theme',
+          component: () => import('@/views/concepts/theme/UsingThemeView.vue'),
+        },
+        {
+          path: 'custom-theme',
+          component: () => import('@/views/concepts/theme/CustomThemeView.vue'),
+        },
+        {
+          path: 'i18n-setup',
+          component: () => import('@/views/concepts/i18n/I18nSetupView.vue'),
+        },
+        {
+          path: 'i18n-keys',
+          component: () => import('@/views/concepts/i18n/I18nKeysView.vue'),
+        },
+        {
+          path: 'router-setup',
+          component: () => import('@/views/concepts/router/RouterSetupView.vue'),
         },
       ],
-    },
-    {
-      path: '/translations',
-      component: () => import('@/views/TranslationsView.vue'),
     },
     {
       path: '/component',
@@ -46,11 +58,12 @@ const router = createRouter({
         { path: 'tabs', component: () => import('@/views/components/TabsView.vue') },
         { path: 'table', component: () => import('@/views/components/TableView.vue') },
         { path: 'form', component: () => import('@/views/components/FormView.vue') },
-        { path: 'modal', component: () => import('@/views/components/ModalView.vue') },
+        { path: 'fullscreen-view', component: () => import('@/views/components/FullscreenViewView.vue') },
         { path: 'skeleton', component: () => import('@/views/components/SkeletonView.vue') },
         { path: 'alert', component: () => import('@/views/components/AlertView.vue') },
         { path: 'image', component: () => import('@/views/components/ImageView.vue') },
         { path: 'tooltip', component: () => import('@/views/components/TooltipView.vue') },
+        { path: 'menu', component: () => import('@/views/components/MenuView.vue') },
         { path: 'icon', component: () => import('@/views/components/IconView.vue') },
         { path: 'input-text', component: () => import('@/views/components/io/InputTextView.vue') },
         { path: 'input-number', component: () => import('@/views/components/io/InputNumberView.vue') },

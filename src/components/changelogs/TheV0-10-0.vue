@@ -13,7 +13,7 @@
     Enhancements
   </h3>
   <p>
-    Added <code>disabled</code> render on multiple components:
+    Added <code>disabled</code> prop on multiple components:
   </p>
   <p>
     <ul>
@@ -85,24 +85,32 @@
     </ul>
   </p>
   <p>
-    You can now drag & drop files in <mk-link to="/component/input-file">
+    Added drag & drop behavior in <mk-link to="/component/input-file">
       {{ $t('component.input-file.name') }}
     </mk-link> dropzone
   </p>
   <h3>Minor</h3>
+  <div>
+    <AppChangelogBreackingChange>
+      <p>
+        Moved all {{ appName }} <code>i18n</code> keys to <code>melkor</code> namespace, see <mk-link to="/translations">
+          {{ $t('view.i18n.titles.keys') }}
+        </mk-link>
+      </p>
+    </AppChangelogBreackingChange>
+  </div>
   <p>
-    Moved all {{ appName }} <code>i18n</code> keys to <code>melkor</code> namespace, see <mk-link to="/translations">
-      {{ $t('view.translations.title') }}
-    </mk-link>
-  </p>
-  <p>
-    Change <mk-link to="/component/input-toggle">
+    Changed <mk-link to="/component/input-toggle">
       {{ $t('component.input-toggle.name') }}
     </mk-link> base background color to the same value regardless of active theme
   </p>
-  <p>
-    <code>isEmpty</code> function now returns <code>true</code> if value is <code>null | undefined</code>
-  </p>
+  <div>
+    <AppChangelogWarningChange>
+      <p>
+        <code>isEmpty</code> function now returns <code>true</code> if value is <code>null | undefined</code>
+      </p>
+    </AppChangelogWarningChange>
+  </div>
   <p>
     Added <mk-link to="https://www.npmjs.com/package/vue-router">
       vue-router
@@ -111,10 +119,13 @@
     </mk-link> as peer dependencies
   </p>
   <p>
-    Fix some typing issues
+    Fixed some typing issues
   </p>
 </template>
 
 <script lang="ts" setup>
+import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
+import AppChangelogWarningChange from '@/components/AppChangelogWarningChange.vue';
+
 const appName = import.meta.env.VITE_APP_NAME;
 </script>

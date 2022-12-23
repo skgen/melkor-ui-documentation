@@ -42,219 +42,228 @@
       </template>
     </AppInputTitlePreview>
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/io/input-checkbox-tree/template.hbs"
-      script="/code/view/components/io/input-checkbox-tree/script.hbs"
-      :script-variables="{
-        errors: {
-          global: $t('view.inputCheckboxTree.errors.global'),
-          gandalf: $t('view.inputCheckboxTree.errors.gandalf'),
-          sauron: $t('view.inputCheckboxTree.errors.sauron'),
-          maiar: $t('view.inputCheckboxTree.errors.maiar'),
-        }
-      }"
-      @change="handlePreviewChange"
-    >
-      <mk-input-checkbox-tree
-        v-model="state"
-        v-bind="attributes.props"
-      />
-    </AppSandboxPreview>
-
     <mk-wysiwyg-preview>
-      <h2>Focus on basic error handling</h2>
-      <p>
-        Every level input in the tree can render a classic error, the same way as any other input in the library.
-        It's nothing more but a classic input !
-      </p>
-      <p>
-        <AppAsyncCodeBlock
-          file-path="/code/view/components/io/input-checkbox-tree/errors.hbs"
-          :language="CodeLanguage.typescript"
-          :variables="{
-            errors: {
-              global: $t('view.inputCheckboxTree.errors.global'),
-              gandalf: $t('view.inputCheckboxTree.errors.gandalf'),
-              sauron: $t('view.inputCheckboxTree.errors.sauron'),
-            }
-          }"
-        />
-      </p>
-    </mk-wysiwyg-preview>
-
-    <AppSandboxPreview
-      template="/code/view/components/io/input-checkbox-tree/advanced/template.hbs"
-      script="/code/view/components/io/input-checkbox-tree/advanced/script.hbs"
-      :script-variables="{
-        minCount,
-        errors: {
-          global: $t('view.inputCheckboxTree.errors.global'),
-          maiar: $t('view.inputCheckboxTree.errors.maiar'),
-        }
-      }"
-    >
-      <template #title>
-        Advanced example
-      </template>
-      <mk-input-checkbox-tree
-        v-model="advancedState"
-        label="Characters"
-        :hint="`Let's pick at least ${minCount} Maiars`"
-      />
-    </AppSandboxPreview>
-
-    <mk-wysiwyg-preview>
-      <h2>
-        Focus on advanced error handling
-      </h2>
-      <p>
-        If you want to generate a computed error on any tree level or the input itself,
-        based on the global state, you can do it with a simple watcher on the global state.
-        <br>
-        It is achieved in 4 steps here:
-      </p>
-      <p>
-        <ol>
-          <li>Find the level you want to target the children with <code>findCheckboxTreeLevel</code></li>
-          <li>Count how many children are actually checked with <code>countCheckedCheckboxTreeLevels</code></li>
-          <li>Revalidate the state of the level you want to put the computed error on with <code>validateInputState</code></li>
-          <li><strong>Revalidate the state of the input</strong> with <code>validateInputState</code></li>
-        </ol>
-      </p>
-      <blockquote>
-        Don't forget to validate the input state with <code>validateInputState</code>
-        because it also calculates other state properties, like <code>valid</code> property for example
-      </blockquote>
-      <p>
-        <AppAsyncCodeBlock
-          file-path="/code/view/components/io/input-checkbox-tree/advanced/errors.hbs"
-          :language="CodeLanguage.typescript"
-          :variables="{
-            minCount,
-            errors: {
-              global: $t('view.inputCheckboxTree.errors.global'),
-              maiar: $t('view.inputCheckboxTree.errors.maiar'),
-            }
-          }"
-        />
-      </p>
-      <p>
-        <mk-alert warning>
-          Don't mix a basic & an advanced error handling on the same tree level or the input,
-          it would result in an override of the basic error handling by the advanced one (as the watcher is always called last)
-        </mk-alert>
-      </p>
-      <p>
-        <mk-alert warning>
-          If you use advanced error handling on any tree level, use advanced error handling on input too,
-          it would otherwise end up in an out of sync error state on input.
-        </mk-alert>
-      </p>
-      <p>
-        Example of an out of sync sequence with input basic error handling instead of advanced one:
-      </p>
-      <p>
-        <ol>
-          <li><code>maiar</code> validation with basic error handling throught its validate option (detects an error)</li>
-          <li><code>input</code> validation with basic error handling throught its validate option (detects an error because of step 1)</li>
-          <li>
-            <code>maiar</code> validation with advanced error handling through the watcher
-            (detects no error because of different test than step 1 and doesn't pick up old error)
-          </li>
-          <li>
-            <code>input</code> state error is still on step 2 and out of sync
-            <br>
-            <code>input</code> has an error even tho none of the tree level has anymore.
-            <br>
-            <code>input</code> is <i>out of sync</i> with tree levels
-          </li>
-        </ol>
-      </p>
-      <blockquote>
-        The out of sync example above doesn't mean that it's impossible/bad to handle the error exclusively on the <code>input</code>.
-        <br>
-        To handle it exclusively on the <code>input</code>, you can use both basic or advanced error handling.
-      </blockquote>
-      <mk-alert info>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/io/input-checkbox-tree/template.hbs"
+            script="/code/view/components/io/input-checkbox-tree/script.hbs"
+            :script-variables="{
+              errors: {
+                global: $t('view.inputCheckboxTree.errors.global'),
+                gandalf: $t('view.inputCheckboxTree.errors.gandalf'),
+                sauron: $t('view.inputCheckboxTree.errors.sauron'),
+                maiar: $t('view.inputCheckboxTree.errors.maiar'),
+              }
+            }"
+            @change="handlePreviewChange"
+          >
+            <mk-input-checkbox-tree
+              v-model="state"
+              v-bind="attributes.props"
+            />
+          </AppSandboxPreview>
+        </div>
+      </section>
+      <section>
+        <h2>Focus on basic error handling</h2>
         <p>
-          Two things to notice here:
+          Every level input in the tree can render a classic error, the same way as any other input in the library.
+          It's nothing more but a classic input !
         </p>
-        <ul>
-          <li>We compare previous and new state values to prevent infinite loop as we potentially update part of the state in the watcher.</li>
-          <li>We spread the new state and reassign it at the end of the watcher to avoid triggering unnecessary watcher callbacks.</li>
-        </ul>
-      </mk-alert>
-      <AppAsyncCodeBlock
-        file-path="/code/view/components/io/input-checkbox-tree/advanced/warning.hbs"
-        :language="CodeLanguage.typescript"
-      />
-    </mk-wysiwyg-preview>
-
-    <mk-wysiwyg-preview>
-      <h2>
-        Utilities
-      </h2>
-      <p>
-        <code>countCheckboxTreeLevels</code> :
-        Counts how many TreeLevels exists in the collection
-      </p>
-      <p>
-        <code>countCheckedCheckboxTreeLevels</code> :
-        Counts how many TreeLevels are checked in the collection
-      </p>
-      <p>
-        <code>countUncheckedCheckboxTreeLevels</code> :
-        Counts how many TreeLevels are unchecked in the collection
-      </p>
-      <p>
-        <code>exportCheckboxTreeLevelData</code> :
-        Exports data in a flat literal object, from every tree level, in the format specified by the callback
-      </p>
-      <p>
-        <code>exportCheckboxTreeLevelErrors</code> :
-        Exports errors in a flat literal object, from every tree level, as string
-      </p>
-      <p>
-        <code>exportCheckboxTreeLevelErrorsAsArray</code> :
-        Exports errors in an array, from every tree level, as string
-      </p>
-      <p>
-        <code>exportCheckboxTreeLevelStates</code> :
-        Exports data in a flat literal object, from every tree level, as state
-      </p>
-      <p>
-        <code>exportCheckboxTreeLevelValues</code> :
-        Exports data in a flat literal object, from every tree level, as value
-      </p>
-      <p>
-        <code>findCheckboxTreeLevel</code> :
-        Finds tree level which <code>input.options.name</code> matches the one specified
-      </p>
-      <p>
-        <code>isAllCheckboxTreeLevelsChecked</code> :
-        Returns <code>true</code> if all tree levels are checked
-      </p>
-      <p>
-        <code>isAllCheckboxTreeLevelsUnchecked</code> :
-        Returns <code>true</code> if all tree levels are unchecked
-      </p>
-      <p>
-        <code>isSomeCheckboxTreeLevelsChecked</code> :
-        Returns <code>true</code> if at least 1 tree level is checked
-      </p>
-      <p>
-        <code>isSomeCheckboxTreeLevelsUnchecked</code>
-        Returns <code>true</code> if at least 1 tree level is unchecked
-      </p>
-      <p>
-        <code>checkAllCheckboxTreeLevels</code>
-        Update value of every tree levels, based on their own <code>input.options.checked</code>
-      </p>
-      <p>
-        <code>uncheckAllCheckboxTreeLevels</code>
-        Update value of every tree levels, based on their own <code>input.options.unchecked</code>
-      </p>
+        <div>
+          <AppAsyncCodeBlock
+            file-path="/code/view/components/io/input-checkbox-tree/errors.hbs"
+            :language="CodeLanguage.typescript"
+            :variables="{
+              errors: {
+                global: $t('view.inputCheckboxTree.errors.global'),
+                gandalf: $t('view.inputCheckboxTree.errors.gandalf'),
+                sauron: $t('view.inputCheckboxTree.errors.sauron'),
+              }
+            }"
+          />
+        </div>
+      </section>
+      <section>
+        <h2>Advanced example</h2>
+        <div>
+          <AppSandboxPreview
+            template="/code/view/components/io/input-checkbox-tree/advanced/template.hbs"
+            script="/code/view/components/io/input-checkbox-tree/advanced/script.hbs"
+            :script-variables="{
+              minCount,
+              errors: {
+                global: $t('view.inputCheckboxTree.errors.global'),
+                maiar: $t('view.inputCheckboxTree.errors.maiar'),
+              }
+            }"
+          >
+            <mk-input-checkbox-tree
+              v-model="advancedState"
+              label="Characters"
+              :hint="`Let's pick at least ${minCount} Maiars`"
+            />
+          </AppSandboxPreview>
+        </div>
+      </section>
+      <section>
+        <h2>
+          Focus on advanced error handling
+        </h2>
+        <p>
+          If you want to generate a computed error on any tree level or the input itself,
+          based on the global state, you can do it with a simple watcher on the global state.
+          <br>
+          It is achieved in 4 steps here:
+        </p>
+        <p>
+          <ol>
+            <li>Find the level you want to target the children with <code>findCheckboxTreeLevel</code></li>
+            <li>Count how many children are actually checked with <code>countCheckedCheckboxTreeLevels</code></li>
+            <li>Revalidate the state of the level you want to put the computed error on with <code>validateInputState</code></li>
+            <li><strong>Revalidate the state of the input</strong> with <code>validateInputState</code></li>
+          </ol>
+        </p>
+        <blockquote>
+          Don't forget to validate the input state with <code>validateInputState</code>
+          because it also calculates other state properties, like <code>valid</code> property for example
+        </blockquote>
+        <div>
+          <AppAsyncCodeBlock
+            file-path="/code/view/components/io/input-checkbox-tree/advanced/errors.hbs"
+            :language="CodeLanguage.typescript"
+            :variables="{
+              minCount,
+              errors: {
+                global: $t('view.inputCheckboxTree.errors.global'),
+                maiar: $t('view.inputCheckboxTree.errors.maiar'),
+              }
+            }"
+          />
+        </div>
+        <div>
+          <mk-alert warning>
+            Don't mix a basic & an advanced error handling on the same tree level or the input,
+            it would result in an override of the basic error handling by the advanced one (as the watcher is always called last)
+          </mk-alert>
+        </div>
+        <div>
+          <mk-alert warning>
+            If you use advanced error handling on any tree level, use advanced error handling on input too,
+            it would otherwise end up in an out of sync error state on input.
+          </mk-alert>
+        </div>
+        <p>
+          Example of an out of sync sequence with input basic error handling instead of advanced one:
+        </p>
+        <p>
+          <ol>
+            <li><code>maiar</code> validation with basic error handling throught its validate option (detects an error)</li>
+            <li><code>input</code> validation with basic error handling throught its validate option (detects an error because of step 1)</li>
+            <li>
+              <code>maiar</code> validation with advanced error handling through the watcher
+              (detects no error because of different test than step 1 and doesn't pick up old error)
+            </li>
+            <li>
+              <code>input</code> state error is still on step 2 and out of sync
+              <br>
+              <code>input</code> has an error even tho none of the tree level has anymore.
+              <br>
+              <code>input</code> is <em>out of sync</em> with tree levels
+            </li>
+          </ol>
+        </p>
+        <blockquote>
+          The out of sync example above doesn't mean that it's impossible/bad to handle the error exclusively on the <code>input</code>.
+          <br>
+          To handle it exclusively on the <code>input</code>, you can use both basic or advanced error handling.
+        </blockquote>
+        <div>
+          <mk-alert info>
+            <p>
+              Two things to notice here:
+            </p>
+            <ul>
+              <li>We compare previous and new state values to prevent infinite loop as we potentially update part of the state in the watcher.</li>
+              <li>We spread the new state and reassign it at the end of the watcher to avoid triggering unnecessary watcher callbacks.</li>
+            </ul>
+          </mk-alert>
+        </div>
+        <div>
+          <AppAsyncCodeBlock
+            file-path="/code/view/components/io/input-checkbox-tree/advanced/warning.hbs"
+            :language="CodeLanguage.typescript"
+          />
+        </div>
+      </section>
+      <section>
+        <h2>
+          Utilities
+        </h2>
+        <p>
+          <code>countCheckboxTreeLevels</code> :
+          Counts how many TreeLevels exists in the collection
+        </p>
+        <p>
+          <code>countCheckedCheckboxTreeLevels</code> :
+          Counts how many TreeLevels are checked in the collection
+        </p>
+        <p>
+          <code>countUncheckedCheckboxTreeLevels</code> :
+          Counts how many TreeLevels are unchecked in the collection
+        </p>
+        <p>
+          <code>exportCheckboxTreeLevelData</code> :
+          Exports data in a flat literal object, from every tree level, in the format specified by the callback
+        </p>
+        <p>
+          <code>exportCheckboxTreeLevelErrors</code> :
+          Exports errors in a flat literal object, from every tree level, as string
+        </p>
+        <p>
+          <code>exportCheckboxTreeLevelErrorsAsArray</code> :
+          Exports errors in an array, from every tree level, as string
+        </p>
+        <p>
+          <code>exportCheckboxTreeLevelStates</code> :
+          Exports data in a flat literal object, from every tree level, as state
+        </p>
+        <p>
+          <code>exportCheckboxTreeLevelValues</code> :
+          Exports data in a flat literal object, from every tree level, as value
+        </p>
+        <p>
+          <code>findCheckboxTreeLevel</code> :
+          Finds tree level which <code>input.options.name</code> matches the one specified
+        </p>
+        <p>
+          <code>isAllCheckboxTreeLevelsChecked</code> :
+          Returns <code>true</code> if all tree levels are checked
+        </p>
+        <p>
+          <code>isAllCheckboxTreeLevelsUnchecked</code> :
+          Returns <code>true</code> if all tree levels are unchecked
+        </p>
+        <p>
+          <code>isSomeCheckboxTreeLevelsChecked</code> :
+          Returns <code>true</code> if at least 1 tree level is checked
+        </p>
+        <p>
+          <code>isSomeCheckboxTreeLevelsUnchecked</code>
+          Returns <code>true</code> if at least 1 tree level is unchecked
+        </p>
+        <p>
+          <code>checkAllCheckboxTreeLevels</code>
+          Update value of every tree levels, based on their own <code>input.options.checked</code>
+        </p>
+        <p>
+          <code>uncheckAllCheckboxTreeLevels</code>
+          Update value of every tree levels, based on their own <code>input.options.unchecked</code>
+        </p>
+      </section>
     </mk-wysiwyg-preview>
   </div>
 </template>

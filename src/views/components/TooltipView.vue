@@ -3,48 +3,83 @@
     <AppPageTitle>
       {{ $t('component.tooltip.name') }}
     </AppPageTitle>
-    <AppDemoBlock>
-      <mk-tooltip>
-        <mk-link to="/">
-          Homepage Link
-        </mk-link>
-        <template #tooltip>
-          If you click me, you'll leave this page !
-        </template>
-      </mk-tooltip>
-    </AppDemoBlock>
-    <AppDemoBlock>
-      <mk-menu
-        v-model="menu"
-        auto-hide
-      >
-        <mk-button @click="() => menu = !menu">
-          {{ menu ? 'Close menu' : 'Open menu' }}
-        </mk-button>
-        <template #menu>
-          <div class="mk-TooltipView-menu">
-            <mk-wysiwyg-preview>
-              <p>I'm a menu</p>
 
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry.
-              </p>
-            </mk-wysiwyg-preview>
-          </div>
-        </template>
-      </mk-menu>
-    </AppDemoBlock>
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/tooltip/template.hbs"
+            :template-variables="{
+              cta: $t('view.tooltip.cta.basic'),
+              paragraph: $t('view.tooltip.paragraph.basic')
+            }"
+            @change="handlePreviewChange"
+          >
+            <template #default="{ style }">
+              <mk-wysiwyg-preview>
+                <mk-tooltip
+                  v-bind="attributes.props"
+                  :style="style"
+                >
+                  <mk-link as-button>
+                    {{ $t('view.tooltip.cta.basic') }}
+                  </mk-link>
+                  <template #tooltip>
+                    {{ $t('view.tooltip.paragraph.basic') }}
+                  </template>
+                </mk-tooltip>
+              </mk-wysiwyg-preview>
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import AppDemoBlock from '@/components/AppDemoBlock.vue';
+import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
+import {
+  AttributeType, type ComponentAttributes, type ComponentDefinition,
+} from '@/lib/definition';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 
-const menu = ref(false);
+const definition: ComponentDefinition = {
+  props: {
+    fill: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+      inputOptions: {
+        hint: 'Makes the trigger container fill its parent',
+      },
+    },
+  },
+  slots: {
+    tooltip: {
+      type: AttributeType.boolean,
+      required: false,
+      default: true,
+      inputOptions: {
+        disabled: true,
+        hint: 'A "required" slot, this is holding the content of the tooltip',
+      },
+    },
+  },
+};
 
+const attributes = ref<ComponentAttributes>({
+  props: {},
+  scss: {},
+  slots: {},
+});
+
+function handlePreviewChange(newAttributes: ComponentAttributes) {
+  attributes.value = newAttributes;
+}
 </script>
 
 <style lang="scss">

@@ -1,3 +1,9 @@
 {
-    
+    "view": {
+        "i18n": {
+            "paragraph": {
+                "translatedSentence": "Cette phrase est traduite en Anglais & en Français."
+            }
+        }
+    }
 }

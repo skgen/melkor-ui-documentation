@@ -26,7 +26,7 @@ module.exports = {
     {
       files: ['*.vue', '**/*.vue'],
       rules: {
-        'selector-class-pattern': ['((mk|pux)-[A-Z][a-zA-Z]+)|v-[\-a-z]', { resolveNestedSelectors: false }],
+        'selector-class-pattern': ['((mk|pux)-[A-Z][a-zA-Z0-9]+)|v-[\-a-z]', { resolveNestedSelectors: false }],
       },
     }
   ],

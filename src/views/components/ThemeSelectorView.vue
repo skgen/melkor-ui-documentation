@@ -4,9 +4,18 @@
       {{ $t('component.themeSelector.name') }}
     </AppPageTitle>
 
-    <AppSandboxPreview template="/code/view/components/theme-selector/template.hbs">
-      <mk-theme-selector />
-    </AppSandboxPreview>
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>
+          {{ $t('app.playground') }}
+        </h2>
+        <div>
+          <AppSandboxPreview template="/code/view/components/theme-selector/template.hbs">
+            <mk-theme-selector />
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

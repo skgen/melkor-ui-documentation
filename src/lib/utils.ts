@@ -25,7 +25,7 @@ export function createSlotsControllersConfig(variableNames: string[]): Attribute
 
 export function mapSandboxAttributesWithoutInputState(newAttributes: ComponentAttributes) {
   const newProps = newAttributes.props;
-  const { state: newState, ...otherProps } = newProps;
+  const { state, ...otherProps } = newProps;
   return {
     ...newAttributes,
     props: otherProps,

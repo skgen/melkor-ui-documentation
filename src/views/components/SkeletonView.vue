@@ -4,211 +4,219 @@
       {{ $t('component.skeleton.name') }}
     </AppPageTitle>
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/skeleton/template.hbs"
-      scss="/code/view/components/skeleton/scss.hbs"
-      @change="handlePreviewChange"
-    >
-      <template
-        #default="{ style }"
-      >
-        <mk-skeleton
-          v-bind="attributes.props"
-          :style="style"
-        />
-      </template>
-    </AppSandboxPreview>
-
     <mk-wysiwyg-preview>
-      <h2>{{ $t('app.examples') }}</h2>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/skeleton/template.hbs"
+            scss="/code/view/components/skeleton/scss.hbs"
+            @change="handlePreviewChange"
+          >
+            <template #default="{ style }">
+              <mk-skeleton
+                v-bind="attributes.props"
+                :style="style"
+              />
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+      <section>
+        <h2>{{ $t('app.examples') }}</h2>
+        <div>
+          <AppDemoBlock>
+            <div
+              class="mk-SkeletonView-rows"
+              data-gap="lg"
+            >
+              <div
+                class="mk-SkeletonView-cols"
+                data-gap="lg"
+              >
+                <div class="mk-SkeletonView-rows">
+                  <mk-skeleton height="20px" />
+                  <mk-skeleton height="20px" />
+                  <mk-skeleton height="20px" />
+                </div>
+                <mk-skeleton
+                  circle
+                  size="80px"
+                />
+                <div class="mk-SkeletonView-rows">
+                  <mk-skeleton height="80px" />
+                </div>
+              </div>
+              <div class="mk-SkeletonView-rows">
+                <mk-skeleton height="10px" />
+                <mk-skeleton height="10px" />
+                <mk-skeleton height="10px" />
+                <mk-skeleton height="10px" />
+                <mk-skeleton height="10px" />
+              </div>
+            </div>
+          </AppDemoBlock>
+        </div>
+        <div>
+          <AppDemoBlock>
+            <div
+              class="mk-SkeletonView-rows"
+              data-gap="lg"
+            >
+              <div
+                class="mk-SkeletonView-cols"
+                data-gap="lg"
+              >
+                <mk-skeleton size="80px" />
+                <div class="mk-SkeletonView-rows">
+                  <mk-skeleton height="40px" />
+                  <mk-skeleton
+                    height="10px"
+                    width="50%"
+                  />
+                </div>
+              </div>
+
+              <div class="mk-SkeletonView-rows">
+                <mk-skeleton height="10px" />
+                <mk-skeleton height="10px" />
+                <mk-skeleton height="10px" />
+              </div>
+            </div>
+          </AppDemoBlock>
+        </div>
+
+        <div>
+          <AppDemoBlock>
+            <div
+              class="mk-SkeletonView-rows"
+              data-gap="lg"
+            >
+              <div class="mk-SkeletonView-rows">
+                <mk-skeleton
+                  height="20px"
+                  width="40%"
+                />
+                <mk-skeleton height="5px" />
+              </div>
+              <div class="mk-SkeletonView-rows">
+                <div class="mk-SkeletonView-cols">
+                  <mk-skeleton
+                    height="15px"
+                    width="10%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="30%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                </div>
+                <div class="mk-SkeletonView-cols">
+                  <mk-skeleton
+                    height="15px"
+                    width="10%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="30%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                </div>
+                <div class="mk-SkeletonView-cols">
+                  <mk-skeleton
+                    height="15px"
+                    width="10%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="30%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                </div>
+                <div class="mk-SkeletonView-cols">
+                  <mk-skeleton
+                    height="15px"
+                    width="10%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="30%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                </div>
+                <div class="mk-SkeletonView-cols">
+                  <mk-skeleton
+                    height="15px"
+                    width="10%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="30%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                  <mk-skeleton
+                    height="15px"
+                    width="20%"
+                  />
+                </div>
+              </div>
+            </div>
+          </AppDemoBlock>
+        </div>
+      </section>
     </mk-wysiwyg-preview>
-
-    <AppDemoBlock>
-      <div
-        class="mk-SkeletonView-rows"
-        data-gap="lg"
-      >
-        <div
-          class="mk-SkeletonView-cols"
-          data-gap="lg"
-        >
-          <div class="mk-SkeletonView-rows">
-            <mk-skeleton height="20px" />
-            <mk-skeleton height="20px" />
-            <mk-skeleton height="20px" />
-          </div>
-          <mk-skeleton
-            circle
-            size="80px"
-          />
-          <div class="mk-SkeletonView-rows">
-            <mk-skeleton height="80px" />
-          </div>
-        </div>
-        <div class="mk-SkeletonView-rows">
-          <mk-skeleton height="10px" />
-          <mk-skeleton height="10px" />
-          <mk-skeleton height="10px" />
-          <mk-skeleton height="10px" />
-          <mk-skeleton height="10px" />
-        </div>
-      </div>
-    </AppDemoBlock>
-
-    <AppDemoBlock>
-      <div
-        class="mk-SkeletonView-rows"
-        data-gap="lg"
-      >
-        <div
-          class="mk-SkeletonView-cols"
-          data-gap="lg"
-        >
-          <mk-skeleton size="80px" />
-          <div class="mk-SkeletonView-rows">
-            <mk-skeleton height="40px" />
-            <mk-skeleton
-              height="10px"
-              width="50%"
-            />
-          </div>
-        </div>
-
-        <div class="mk-SkeletonView-rows">
-          <mk-skeleton height="10px" />
-          <mk-skeleton height="10px" />
-          <mk-skeleton height="10px" />
-        </div>
-      </div>
-    </AppDemoBlock>
-
-    <AppDemoBlock>
-      <div
-        class="mk-SkeletonView-rows"
-        data-gap="lg"
-      >
-        <div class="mk-SkeletonView-rows">
-          <mk-skeleton
-            height="20px"
-            width="40%"
-          />
-          <mk-skeleton height="5px" />
-        </div>
-        <div class="mk-SkeletonView-rows">
-          <div class="mk-SkeletonView-cols">
-            <mk-skeleton
-              height="15px"
-              width="10%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="30%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-          </div>
-          <div class="mk-SkeletonView-cols">
-            <mk-skeleton
-              height="15px"
-              width="10%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="30%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-          </div>
-          <div class="mk-SkeletonView-cols">
-            <mk-skeleton
-              height="15px"
-              width="10%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="30%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-          </div>
-          <div class="mk-SkeletonView-cols">
-            <mk-skeleton
-              height="15px"
-              width="10%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="30%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-          </div>
-          <div class="mk-SkeletonView-cols">
-            <mk-skeleton
-              height="15px"
-              width="10%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="30%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-            <mk-skeleton
-              height="15px"
-              width="20%"
-            />
-          </div>
-        </div>
-      </div>
-    </AppDemoBlock>
   </div>
 </template>
 

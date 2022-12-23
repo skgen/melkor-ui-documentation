@@ -4,28 +4,36 @@
       i18n-key="input-checkbox"
       :state="state"
     />
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/io/input-checkbox/template.hbs"
-      script="/code/view/components/io/input-checkbox/script.hbs"
-      scss="/code/view/components/io/input-checkbox/scss.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-input-checkbox
-          v-model="state"
-          v-bind="attributes.props"
-          :style="style"
-        >
-          <template
-            v-if="attributes.slots['checked-icon']"
-            #checked-icon
+
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/io/input-checkbox/template.hbs"
+            script="/code/view/components/io/input-checkbox/script.hbs"
+            scss="/code/view/components/io/input-checkbox/scss.hbs"
+            @change="handlePreviewChange"
           >
-            <mk-icon icon="remove" />
-          </template>
-        </mk-input-checkbox>
-      </template>
-    </AppSandboxPreview>
+            <template #default="{ style }">
+              <mk-input-checkbox
+                v-model="state"
+                v-bind="attributes.props"
+                :style="style"
+              >
+                <template
+                  v-if="attributes.slots['checked-icon']"
+                  #checked-icon
+                >
+                  <mk-icon icon="remove" />
+                </template>
+              </mk-input-checkbox>
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

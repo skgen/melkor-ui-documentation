@@ -84,13 +84,17 @@
       </li>
     </ul>
   </p>
-  <p>
-    Changed {{ appName }} tone colors logic from hexadecimal values to rgb based ones with opacity
-  </p>
+  <div>
+    <AppChangelogBreackingChange>
+      <p>
+        Changed {{ appName }} tone colors logic from hexadecimal values to rgb based ones with opacity
+      </p>
+    </AppChangelogBreackingChange>
+  </div>
   <p>
     Theme can now be updated manually thanks to <code>updateTheme</code> from the <code>useTheme</code> composable,
     see <mk-link to="/concept/theme#updating">
-      {{ $t('view.theme.title') }}
+      {{ $t('view.theme.titles.use') }}
     </mk-link>
   </p>
   <p>
@@ -98,10 +102,12 @@
   </p>
   <h3>Minor</h3>
   <p>
-    Fix an issue on checkables not getting the right next value
+    Fixed an issue on checkables not getting the right next value
   </p>
 </template>
 
 <script lang="ts" setup>
+import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
+
 const appName = import.meta.env.VITE_APP_NAME;
 </script>

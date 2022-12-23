@@ -4,81 +4,84 @@
       {{ $t('component.tabs.name') }}
     </AppPageTitle>
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/tabs/static/template.hbs"
-      :template-variables="{
-        vue: {
-          title: '{{ tab.title }}',
-          content: '{{ tab.content }}'
-        }
-      }"
-      script="/code/view/components/tabs/static/script.hbs"
-      anchor="static"
-      :manually-injected-props="{
-        vModel: 'index',
-      }"
-      @change="handlePreviewChange"
-    >
-      <template #title>
-        {{ $t('view.tabs.static.title') }}
-      </template>
-      <mk-tabs
-        v-model="index"
-        v-bind="attributes.props"
-      >
-        <mk-tab :value="1">
-          Tab 1
-        </mk-tab>
-        <mk-tab :value="2">
-          Tab 2
-        </mk-tab>
-      </mk-tabs>
-      <mk-layers v-model="index">
-        <mk-layer :value="1">
-          Layer 1
-        </mk-layer>
-        <mk-layer :value="2">
-          Layer 2
-        </mk-layer>
-      </mk-layers>
-    </AppSandboxPreview>
-
-    <AppSandboxPreview
-      template="/code/view/components/tabs/dynamic/template.hbs"
-      :template-variables="{
-        vue: {
-          title: '{{ tab.title }}',
-          content: '{{ tab.content }}'
-        }
-      }"
-      script="/code/view/components/tabs/dynamic/script.hbs"
-      anchor="dynamic"
-    >
-      <template #title>
-        {{ $t('view.tabs.dynamic.title') }}
-      </template>
-      <mk-tabs v-model="playgroundIndex">
-        <mk-tab
-          v-for="tab in tabs"
-          :key="tab.value"
-          :value="tab.value"
-        >
-          {{ tab.title }}
-        </mk-tab>
-      </mk-tabs>
-      <mk-layers v-model="playgroundIndex">
-        <mk-layer
-          v-for="tab in tabs"
-          :key="tab.value"
-          :value="tab.value"
-        >
-          <mk-wysiwyg-preview>
-            {{ tab.content }}
-          </mk-wysiwyg-preview>
-        </mk-layer>
-      </mk-layers>
-    </AppSandboxPreview>
+    <mk-wysiwyg-preview>
+      <section id="static">
+        <h2>{{ $t('view.tabs.static.title') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/tabs/static/template.hbs"
+            :template-variables="{
+              vue: {
+                title: '{{ tab.title }}',
+                content: '{{ tab.content }}'
+              }
+            }"
+            script="/code/view/components/tabs/static/script.hbs"
+            :manually-injected-props="{
+              vModel: 'index',
+            }"
+            @change="handlePreviewChange"
+          >
+            <mk-tabs
+              v-model="index"
+              v-bind="attributes.props"
+            >
+              <mk-tab :value="1">
+                Tab 1
+              </mk-tab>
+              <mk-tab :value="2">
+                Tab 2
+              </mk-tab>
+            </mk-tabs>
+            <mk-layers v-model="index">
+              <mk-layer :value="1">
+                Layer 1
+              </mk-layer>
+              <mk-layer :value="2">
+                Layer 2
+              </mk-layer>
+            </mk-layers>
+          </AppSandboxPreview>
+        </div>
+      </section>
+      <section id="dynamic">
+        <h2>{{ $t('view.tabs.dynamic.title') }}</h2>
+        <div>
+          <AppSandboxPreview
+            template="/code/view/components/tabs/dynamic/template.hbs"
+            :template-variables="{
+              vue: {
+                title: '{{ tab.title }}',
+                content: '{{ tab.content }}'
+              }
+            }"
+            script="/code/view/components/tabs/dynamic/script.hbs"
+          >
+            <mk-tabs v-model="playgroundIndex">
+              <mk-tab
+                v-for="tab in tabs"
+                :key="tab.value"
+                :value="tab.value"
+              >
+                {{ tab.title }}
+              </mk-tab>
+            </mk-tabs>
+            <mk-layers v-model="playgroundIndex">
+              <mk-layer
+                v-for="tab in tabs"
+                :key="tab.value"
+                :value="tab.value"
+              >
+                <mk-wysiwyg-preview>
+                  {{ tab.content }}
+                </mk-wysiwyg-preview>
+              </mk-layer>
+            </mk-layers>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

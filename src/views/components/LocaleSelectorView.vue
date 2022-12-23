@@ -3,10 +3,17 @@
     <AppPageTitle>
       {{ $t('component.localeSelector.name') }}
     </AppPageTitle>
-
-    <AppSandboxPreview template="/code/view/components/locale-selector/template.hbs">
-      <mk-locale-selector />
-    </AppSandboxPreview>
+    <mk-wysiwyg-preview>
+      <h2>{{ $t('app.playground') }}</h2>
+      <div>
+        <AppSandboxPreview template="/code/view/components/locale-selector/template.hbs">
+          <p>
+            <em>{{ $t('view.i18n.paragraph.translatedSentence') }}</em>
+          </p>
+          <mk-locale-selector />
+        </AppSandboxPreview>
+      </div>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

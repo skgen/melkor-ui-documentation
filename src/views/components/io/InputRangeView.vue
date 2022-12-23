@@ -4,21 +4,29 @@
       i18n-key="input-range"
       :state="state"
     />
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/io/input-range/template.hbs"
-      scss="/code/view/components/io/input-range/scss.hbs"
-      script="/code/view/components/io/input-range/script.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-input-range
-          v-model="state"
-          v-bind="attributes.props"
-          :style="style"
-        />
-      </template>
-    </AppSandboxPreview>
+
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/io/input-range/template.hbs"
+            scss="/code/view/components/io/input-range/scss.hbs"
+            script="/code/view/components/io/input-range/script.hbs"
+            @change="handlePreviewChange"
+          >
+            <template #default="{ style }">
+              <mk-input-range
+                v-model="state"
+                v-bind="attributes.props"
+                :style="style"
+              />
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

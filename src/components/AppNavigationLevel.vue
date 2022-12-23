@@ -5,7 +5,7 @@
     :data-deep="props.deep"
   >
     <mk-link :to="props.level.to">
-      {{ props.level.title }}
+      {{ $t(props.level.title) }}
     </mk-link>
     <div
       v-if="props.level.children"
@@ -57,15 +57,20 @@ const props = withDefaults(defineProps<Props>(), {
     &[data-deep="0"] {
         .mk-AppLink {
             font-size: 0.875rem;
+        }
+
+        > .mk-AppLink {
             font-weight: 400;
         }
     }
 
     &[data-deep="1"] {
-        .mk-AppLink {
-            font-weight: 300;
+        > .mk-AppLink {
+            &:not([data-active="true"]) {
+                font-weight: 300;
 
-            --mk-link-text-color: var(--app-text-color-soft);
+                --mk-link-text-color: var(--app-text-color-soft);
+            }
         }
     }
 }

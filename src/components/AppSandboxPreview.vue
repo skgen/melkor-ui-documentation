@@ -1,16 +1,8 @@
 <template>
-  <mk-wysiwyg-preview>
-    <h2 :id="props.anchor">
-      <template v-if="!$slots.title">
-        {{ $t('app.playground') }}
-      </template>
-      <slot name="title" />
-    </h2>
-  </mk-wysiwyg-preview>
   <div class="mk-AppSandboxPreview">
     <div class="mk-AppSandboxPreview-content">
       <div
-        v-if="isValue(propsControllers) || isValue(scssControllers)"
+        v-if="isValue(propsControllers) || isValue(slotsControllers) || isValue(scssControllers)"
         class="mk-AppSandboxPreview-controllers"
       >
         <template v-if="isValue(propsControllers)">
@@ -28,7 +20,7 @@
                   :label="controller.key"
                   :model-value="controller.input"
                   fill
-                  :placeholder="controller.placeholder"
+                  v-bind="controller.inputOptions"
                   @update:model-value="(state: any) => handlePropValueChange(controller.key, state)"
                 />
               </li>
@@ -48,9 +40,9 @@
                 <component
                   :is="resolveInputName(controller.type)"
                   :label="controller.key"
-                  :placeholder="controller.placeholder"
                   :model-value="controller.input"
                   fill
+                  v-bind="controller.inputOptions"
                   @update:model-value="(state: any) => handleSlotsValueChange(controller.key, state)"
                 />
               </li>
@@ -70,9 +62,9 @@
                 <component
                   :is="resolveInputName(controller.type)"
                   :label="controller.key"
-                  :placeholder="controller.placeholder"
                   :model-value="controller.input"
                   fill
+                  v-bind="controller.inputOptions"
                   @update:model-value="(state: any) => handleScssValueChange(controller.key, state)"
                 />
               </li>
@@ -124,7 +116,7 @@ import {
   computed, onMounted, reactive, watch,
 } from 'vue';
 import {
-  createInputState, isString, isValue, type InputState,
+  createInputState, isDef, isString, isValue, type InputState, type SelectInputOptions,
 } from '@patriarche/melkor';
 import isBoolean from 'lodash/isBoolean';
 import { camelCase, paramCase } from 'change-case';
@@ -146,7 +138,6 @@ type Props = {
   scssVariables?: Record<string, unknown>;
   scriptVariables?: Record<string, unknown>;
   primaryMode?: boolean;
-  anchor?: string;
   manuallyInjectedProps?: Record<string, string | number | boolean>;
 };
 
@@ -170,6 +161,9 @@ function resolveInputName(type: AttributeType) {
   }
   if (type === AttributeType.wysiwyg) {
     return 'mk-input-wysiwyg';
+  }
+  if (type === AttributeType.select) {
+    return 'mk-input-select';
   }
   return false;
 }
@@ -251,6 +245,14 @@ const templateVars = computed(() => {
           tProps.push(paramKey);
         } else if (controller.type === AttributeType.number) {
           tProps.push(`:${paramKey}="${value}"`);
+        } else if (controller.type === AttributeType.select) {
+          const selectOptions = controller.inputOptions as SelectInputOptions<unknown>;
+          const valueOption = selectOptions.options.find((option) => option.value === value);
+          if (controller.renderOptions?.valueAsSelectLabel && isDef(valueOption)) {
+            tProps.push(`:${paramKey}="${valueOption.label}"`);
+          } else {
+            tProps.push(`:${paramKey}="${value}"`);
+          }
         } else {
           tProps.push(`${paramKey}="${value}"`);
         }

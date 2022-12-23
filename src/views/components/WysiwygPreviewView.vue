@@ -3,24 +3,31 @@
     <AppPageTitle>
       {{ $t('component.wysiwygPreview.name') }}
     </AppPageTitle>
-    <template v-if="initialized">
-      <AppSandboxPreview
-        :definition="definition"
-        template="/code/view/components/wysiwyg-preview/template.hbs"
-        :template-variables="{
-          html: format(attributes.props.html as string)
-        }"
-        @change="handlePreviewChange"
-      >
-        <mk-wysiwyg-preview v-bind="attributes.props" />
-      </AppSandboxPreview>
-      <mk-wysiwyg-preview>
-        <h2>{{ $t('app.examples') }}</h2>
-      </mk-wysiwyg-preview>
-      <AppDemoBlock>
-        <mk-wysiwyg-preview :html="sample" />
-      </AppDemoBlock>
-    </template>
+    <mk-wysiwyg-preview v-if="initialized">
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/wysiwyg-preview/template.hbs"
+            :template-variables="{
+              html: format(attributes.props.html as string)
+            }"
+            @change="handlePreviewChange"
+          >
+            <mk-wysiwyg-preview v-bind="attributes.props" />
+          </AppSandboxPreview>
+        </div>
+      </section>
+      <section>
+        <h2>{{ $t('app.example') }}</h2>
+        <div>
+          <AppDemoBlock>
+            <mk-wysiwyg-preview :html="sample" />
+          </AppDemoBlock>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 
@@ -41,7 +48,7 @@ const definition: ComponentDefinition = {
   props: {
     html: {
       type: AttributeType.wysiwyg,
-      required: true,
+      required: false,
       default: null,
     },
   },

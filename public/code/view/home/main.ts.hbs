@@ -1,0 +1,12 @@
+import { createApp } from 'vue';
+import { createMelkorUi } from '@patriarche/melkor';
+import '@patriarche/melkor/style';
+import App from '@/App.vue';
+
+const app = createApp(App);
+
+const mkui = createMelkorUi();
+
+app.use(mkui);
+
+app.mount('#app');

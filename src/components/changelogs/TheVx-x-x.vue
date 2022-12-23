@@ -1,5 +1,5 @@
 <template>
-  <h2>x.x.x</h2>
+  <h2>vx.x.x</h2>
   <h3>New components</h3>
   <h3>Enhancements</h3>
   <h3>Minor</h3>

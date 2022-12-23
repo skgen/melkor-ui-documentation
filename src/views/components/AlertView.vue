@@ -4,80 +4,91 @@
       {{ $t('component.alert.name') }}
     </AppPageTitle>
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/alert/template.hbs"
-      :template-variables="{ title, content }"
-      scss="/code/view/components/alert/scss.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-alert
-          v-bind="attributes.props"
-          :style="style"
-        >
-          {{ title }}
-          <template #content>
-            {{ content }}
-          </template>
-          <template
-            v-if="attributes.slots.icon"
-            #icon
-          >
-            <mk-icon icon="wifi" />
-          </template>
-        </mk-alert>
-      </template>
-    </AppSandboxPreview>
-
     <mk-wysiwyg-preview>
-      <h2>{{ $t('app.examples') }}</h2>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/alert/template.hbs"
+            :template-variables="{ title, content }"
+            scss="/code/view/components/alert/scss.hbs"
+            @change="handlePreviewChange"
+          >
+            <template #default="{ style }">
+              <mk-alert
+                v-bind="attributes.props"
+                :style="style"
+              >
+                {{ title }}
+                <template #content>
+                  {{ content }}
+                </template>
+                <template
+                  v-if="attributes.slots.icon"
+                  #icon
+                >
+                  <mk-icon icon="wifi" />
+                </template>
+              </mk-alert>
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+      <section>
+        <h2>{{ $t('app.examples') }}</h2>
+        <div>
+          <AppDemoBlock>
+            <mk-alert basic>
+              This is a basic alert — check it out!
+              <template #content>
+                Curabitur ultrices dui eu nunc auctor pretium
+              </template>
+            </mk-alert>
+          </AppDemoBlock>
+        </div>
+        <div>
+          <AppDemoBlock>
+            <mk-alert error>
+              This is an error alert — check it out!
+              <template #content>
+                Curabitur ultrices dui eu nunc auctor pretium
+              </template>
+            </mk-alert>
+          </AppDemoBlock>
+        </div>
+        <div>
+          <AppDemoBlock>
+            <mk-alert warning>
+              This is a warning alert — check it out!
+              <template #content>
+                Curabitur ultrices dui eu nunc auctor pretium
+              </template>
+            </mk-alert>
+          </AppDemoBlock>
+        </div>
+        <div>
+          <AppDemoBlock>
+            <mk-alert info>
+              This is an info alert — check it out!
+              <template #content>
+                Curabitur ultrices dui eu nunc auctor pretium
+              </template>
+            </mk-alert>
+          </AppDemoBlock>
+        </div>
+        <div>
+          <AppDemoBlock>
+            <mk-alert success>
+              This is a success alert — check it out!
+              <template #content>
+                Curabitur ultrices dui eu nunc auctor pretium
+              </template>
+            </mk-alert>
+          </AppDemoBlock>
+        </div>
+      </section>
     </mk-wysiwyg-preview>
-
-    <AppDemoBlock>
-      <mk-alert basic>
-        This is a basic alert — check it out!
-        <template #content>
-          Curabitur ultrices dui eu nunc auctor pretium
-        </template>
-      </mk-alert>
-    </AppDemoBlock>
-
-    <AppDemoBlock>
-      <mk-alert error>
-        This is an error alert — check it out!
-        <template #content>
-          Curabitur ultrices dui eu nunc auctor pretium
-        </template>
-      </mk-alert>
-    </AppDemoBlock>
-
-    <AppDemoBlock>
-      <mk-alert warning>
-        This is a warning alert — check it out!
-        <template #content>
-          Curabitur ultrices dui eu nunc auctor pretium
-        </template>
-      </mk-alert>
-    </AppDemoBlock>
-
-    <AppDemoBlock>
-      <mk-alert info>
-        This is an info alert — check it out!
-        <template #content>
-          Curabitur ultrices dui eu nunc auctor pretium
-        </template>
-      </mk-alert>
-    </AppDemoBlock>
-
-    <AppDemoBlock>
-      <mk-alert success>
-        This is a success alert — check it out!
-        <template #content>
-          Curabitur ultrices dui eu nunc auctor pretium
-        </template>
-      </mk-alert>
-    </AppDemoBlock>
   </div>
 </template>
 

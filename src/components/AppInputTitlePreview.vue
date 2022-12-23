@@ -46,6 +46,8 @@ const modal = ref(false);
 
 <style lang="scss">
 .pux-AppInputTitlePreview {
+    margin-bottom: var(--app-m-3);
+
     &-ctas {
         display: flex;
         gap: var(--app-m-1);

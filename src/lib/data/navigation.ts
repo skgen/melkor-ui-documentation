@@ -1,9 +1,3 @@
-import i18n from '@/plugins/i18n';
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const { t } = i18n.global;
-
 export type NavigationLevel = {
   title: string;
   to?: string;
@@ -12,186 +6,212 @@ export type NavigationLevel = {
 
 export const sidebar: NavigationLevel[] = [
   // {
-  //   title: t('app.setup'),
+  //   title: 'app.setup',
   //   children: [
   //     {
-  //       title: t('navigation.theme'),
+  //       title: 'navigation.theme',
   //       to: '/concept/theme',
   //     },
   //     // {
-  //     //   title: t('app.translations'),
+  //     //   title: 'app.translations',
   //     //   to: '/translations',
   //     // },
   //     // {
-  //     //   title: t('app.colors'),
+  //     //   title: 'app.colors',
   //     //   to: '/colors',
   //     // },
   //   ],
   // },
   {
-    title: t('navigation.theme.category'),
+    title: 'navigation.setup.category',
     children: [
       {
-        title: t('view.theme.title'),
-        to: '/concept/theme',
+        title: 'view.home.titles.intro',
+        to: '/',
       },
       {
-        title: t('component.themeToggle.name'),
+        title: 'view.setup.titles.setup',
+        to: '/concept/setup',
+      },
+    ],
+  },
+  {
+    title: 'navigation.theme.category',
+    children: [
+      {
+        title: 'view.theme.titles.use',
+        to: '/concept/using-theme',
+      },
+      {
+        title: 'view.theme.titles.custom',
+        to: '/concept/custom-theme',
+      },
+      {
+        title: 'component.themeToggle.name',
         to: '/component/theme-toggle',
       },
       {
-        title: t('component.themeSelector.name'),
+        title: 'component.themeSelector.name',
         to: '/component/theme-selector',
       },
       {
-        title: t('component.themeContext.name'),
+        title: 'component.themeContext.name',
         to: '/component/theme-context',
       },
     ],
   },
   {
-    title: t('navigation.i18n.category'),
+    title: 'navigation.i18n.category',
     children: [
       {
-        title: t('view.i18n.title'),
-        to: '/concept/i18n',
+        title: 'view.i18n.titles.setup',
+        to: '/concept/i18n-setup',
       },
       {
-        title: t('view.translations.title'),
-        to: '/translations',
+        title: 'view.i18n.titles.keys',
+        to: '/concept/i18n-keys',
       },
       {
-        title: t('component.localeSelector.name'),
+        title: 'component.localeSelector.name',
         to: '/component/locale-selector',
       },
     ],
   },
   {
-    title: t('app.cta'),
+    title: 'navigation.router.category',
     children: [
       {
-        title: t('component.button.name'),
+        title: 'view.router.titles.setup',
+        to: '/concept/router-setup',
+      },
+    ],
+  },
+  {
+    title: 'app.cta',
+    children: [
+      {
+        title: 'component.button.name',
         to: '/component/button',
       },
       {
-        title: t('component.link.name'),
+        title: 'component.link.name',
         to: '/component/link',
       },
     ],
   },
   {
-    title: t('app.dataInputs'),
+    title: 'app.dataInputs',
     children: [
       {
-        title: t('component.input-text.name'),
+        title: 'component.input-text.name',
         to: '/component/input-text',
       },
       {
-        title: t('component.input-number.name'),
+        title: 'component.input-number.name',
         to: '/component/input-number',
       },
       {
-        title: t('component.input-password.name'),
+        title: 'component.input-password.name',
         to: '/component/input-password',
       },
       {
-        title: t('component.input-textarea.name'),
+        title: 'component.input-textarea.name',
         to: '/component/input-textarea',
       },
       {
-        title: t('component.input-toggle.name'),
+        title: 'component.input-toggle.name',
         to: '/component/input-toggle',
       },
       {
-        title: t('component.input-file.name'),
+        title: 'component.input-file.name',
         to: '/component/input-file',
       },
       {
-        title: t('component.input-color.name'),
+        title: 'component.input-color.name',
         to: '/component/input-color',
       },
       {
-        title: t('component.input-select.name'),
+        title: 'component.input-select.name',
         to: '/component/input-select',
       },
       {
-        title: t('component.input-radio.name'),
+        title: 'component.input-radio.name',
         to: '/component/input-radio',
       },
       {
-        title: t('component.input-date.name'),
+        title: 'component.input-date.name',
         to: '/component/input-date',
       },
       {
-        title: t('component.input-range.name'),
+        title: 'component.input-range.name',
         to: '/component/input-range',
       },
       {
-        title: t('component.input-checkbox.name'),
+        title: 'component.input-checkbox.name',
         to: '/component/input-checkbox',
       },
       {
-        title: t('component.input-checkbox-tree.name'),
+        title: 'component.input-checkbox-tree.name',
         to: '/component/input-checkbox-tree',
       },
       // {
-      //   title: t('component.form.name'),
+      //   title: 'component.form.name',
       //   to: '/component/form',
       // },
     ],
   },
   {
-    title: t('app.typography'),
+    title: 'app.global',
     children: [
       {
-        title: t('component.heading.name'),
-        to: '/component/heading',
+        title: 'component.alert.name',
+        to: '/component/alert',
       },
       {
-        title: t('component.icon.name'),
+        title: 'component.image.name',
+        to: '/component/image',
+      },
+      {
+        title: 'component.table.name',
+        to: '/component/table',
+      },
+      {
+        title: 'component.skeleton.name',
+        to: '/component/skeleton',
+      },
+      {
+        title: 'component.tabs.name',
+        to: '/component/tabs',
+      },
+      {
+        title: 'component.icon.name',
         to: '/component/icon',
       },
       {
-        title: t('component.wysiwygPreview.name'),
+        title: 'component.wysiwygPreview.name',
         to: '/component/wysiwyg-preview',
       },
     ],
   },
   {
-    title: t('app.global'),
+    title: 'app.floatingViews',
     children: [
       {
-        title: t('component.alert.name'),
-        to: '/component/alert',
+        title: 'component.menu.name',
+        to: '/component/menu',
       },
       {
-        title: t('component.image.name'),
-        to: '/component/image',
-      },
-      {
-        title: t('component.table.name'),
-        to: '/component/table',
+        title: 'component.tooltip.name',
+        to: '/component/tooltip',
       },
     ],
   },
   {
-    title: t('app.layout'),
+    title: 'app.fullscreenViews',
     children: [
       {
-        title: t('app.modals'),
-        to: '/component/modal',
-      },
-      {
-        title: t('component.skeleton.name'),
-        to: '/component/skeleton',
-      },
-      {
-        title: t('component.tabs.name'),
-        to: '/component/tabs',
-      },
-      {
-        title: t('component.tooltip.name'),
-        to: '/component/tooltip',
+        title: 'component.fullscreenView.name',
+        to: '/component/fullscreen-view',
       },
     ],
   },

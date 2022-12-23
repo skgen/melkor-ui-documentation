@@ -51,6 +51,7 @@
       v-bind="props"
       :code="code"
       :full-size="fullSize"
+      :filename="props.filename"
     />
   </div>
 </template>
@@ -65,6 +66,7 @@ type Props = {
   language?: CodeLanguage;
   variables?: Record<string, unknown>;
   fullSize?: boolean;
+  filename?: string;
 };
 
 const props = defineProps<Props>();

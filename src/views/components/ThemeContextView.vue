@@ -5,82 +5,88 @@
     </AppPageTitle>
 
     <mk-wysiwyg-preview>
-      <h2>{{ $t('app.purpose') }}</h2>
-      <p>
-        The <code>{{ $t('component.themeContext.name') }}</code> component purpose is to create a new scope of theme.
-      </p>
-      <p>
-        Any child will inherit the theme of the first upper <code>{{ $t('component.themeContext.name') }}</code>
-        it finds, with a fallback of the <code>app</code> theme.
-      </p>
-      <p>
-        A <code>{{ $t('component.themeContext.name') }}</code> with no theme specified results in a
-        <code>{{ $t('component.themeContext.name') }}</code> bound directly to the <code>app</code> theme.
-      </p>
-    </mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.purpose') }}</h2>
+        <p>
+          The <code>{{ $t('component.themeContext.name') }}</code> component purpose is to create a new scope of theme.
+        </p>
+        <p>
+          Any child will inherit the theme of the first upper <code>{{ $t('component.themeContext.name') }}</code>
+          it finds, with a fallback of the <code>app</code> theme.
+        </p>
+        <p>
+          A <code>{{ $t('component.themeContext.name') }}</code> with no theme specified results in a
+          <code>{{ $t('component.themeContext.name') }}</code> bound directly to the <code>app</code> theme.
+        </p>
+      </section>
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/theme-context/playground.vue.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default>
-        <mk-theme-context v-bind="attributes.props">
-          <mk-wysiwyg-preview>
-            <h2>
-              I'm a component following
-              <code v-if="isValue(attributes.props.theme)">
-                {{ attributes.props.theme }}
-              </code>
-              <code v-else>app</code>
-              theme
-            </h2>
-            <p>{{ lorem }}</p>
-          </mk-wysiwyg-preview>
-        </mk-theme-context>
-      </template>
-    </AppSandboxPreview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/theme-context/playground.vue.hbs"
+            @change="handlePreviewChange"
+          >
+            <mk-theme-context v-bind="attributes.props">
+              <mk-wysiwyg-preview>
+                <h2>
+                  I'm a component following
+                  <code v-if="isValue(attributes.props.theme)">
+                    {{ attributes.props.theme }}
+                  </code>
+                  <code v-else>app</code>
+                  theme
+                </h2>
+                <p>{{ lorem }}</p>
+              </mk-wysiwyg-preview>
+            </mk-theme-context>
+          </AppSandboxPreview>
+        </div>
+      </section>
 
-    <mk-wysiwyg-preview>
-      <h2>{{ $t('app.examples') }}</h2>
-    </mk-wysiwyg-preview>
-
-    <AppSandboxPreview
-      template="/code/view/components/theme-context/examples.vue.hbs"
-      :template-variables="{
-        lorem: '...'
-      }"
-    >
-      <mk-wysiwyg-preview>
-        <h2>I'm a component in the <code>app</code> theme context</h2>
-        <p>{{ lorem }}</p>
-      </mk-wysiwyg-preview>
-      <mk-theme-context :theme="Theme.light">
-        <mk-wysiwyg-preview>
-          <h2>I'm a component in a <code>light</code> theme context</h2>
-          <p>{{ lorem }}</p>
-        </mk-wysiwyg-preview>
-
-        <mk-theme-context :theme="Theme.dark">
-          <mk-wysiwyg-preview>
-            <h2>I'm a component in a <code>dark</code> theme context</h2>
-            <p>{{ lorem }}</p>
+      <section>
+        <h2>{{ $t('app.examples') }}</h2>
+        <div>
+          <AppSandboxPreview
+            template="/code/view/components/theme-context/examples.vue.hbs"
+            :template-variables="{
+              lorem: '...'
+            }"
+          >
+            <mk-wysiwyg-preview>
+              <h2>I'm a component in the <code>app</code> theme context</h2>
+              <p>{{ lorem }}</p>
+            </mk-wysiwyg-preview>
             <mk-theme-context :theme="Theme.light">
               <mk-wysiwyg-preview>
-                <h2>I'm a component in a <code>light</code> theme context inside a <code>dark</code> theme context</h2>
+                <h2>I'm a component in a <code>light</code> theme context</h2>
                 <p>{{ lorem }}</p>
               </mk-wysiwyg-preview>
+
+              <mk-theme-context :theme="Theme.dark">
+                <mk-wysiwyg-preview>
+                  <h2>I'm a component in a <code>dark</code> theme context</h2>
+                  <p>{{ lorem }}</p>
+                  <mk-theme-context :theme="Theme.light">
+                    <mk-wysiwyg-preview>
+                      <h2>I'm a component in a <code>light</code> theme context inside a <code>dark</code> theme context</h2>
+                      <p>{{ lorem }}</p>
+                    </mk-wysiwyg-preview>
+                  </mk-theme-context>
+                  <mk-theme-context>
+                    <mk-wysiwyg-preview>
+                      <h2>I'm a component in the <code>app</code> theme context inside a <code>dark</code> theme context</h2>
+                      <p>{{ lorem }}</p>
+                    </mk-wysiwyg-preview>
+                  </mk-theme-context>
+                </mk-wysiwyg-preview>
+              </mk-theme-context>
             </mk-theme-context>
-            <mk-theme-context>
-              <mk-wysiwyg-preview>
-                <h2>I'm a component in the <code>app</code> theme context inside a <code>dark</code> theme context</h2>
-                <p>{{ lorem }}</p>
-              </mk-wysiwyg-preview>
-            </mk-theme-context>
-          </mk-wysiwyg-preview>
-        </mk-theme-context>
-      </mk-theme-context>
-    </AppSandboxPreview>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 
@@ -109,7 +115,9 @@ const definition: ComponentDefinition = {
       type: AttributeType.string,
       required: false,
       default: null,
-      placeholder: 'light / dark, or any custom theme name defined in your app',
+      inputOptions: {
+        placeholder: 'light / dark, or any custom theme name defined in your app',
+      },
     },
   },
 };

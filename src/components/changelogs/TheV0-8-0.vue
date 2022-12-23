@@ -11,17 +11,21 @@
     </mk-link>
   </p>
   <h3>Enhancements</h3>
-  <p>
-    Improve <mk-link to="/component/input-toggle">
-      {{ $t('component.input-toggle.name') }}
-    </mk-link> icon customization.
-  </p>
-  <p>
-    <ul>
-      <li>Icons are specified threw new slots : <code>checked-icon</code> & <code>unchecked-icon</code></li>
-      <li>Icons can be placed in background with new prop : <code>iconInBackground</code></li>
-    </ul>
-  </p>
+  <div>
+    <AppChangelogBreackingChange>
+      <p>
+        Improved <mk-link to="/component/input-toggle">
+          {{ $t('component.input-toggle.name') }}
+        </mk-link> icon customization.
+      </p>
+      <p>
+        <ul>
+          <li>Icons are specified threw new slots : <code>checked-icon</code> & <code>unchecked-icon</code></li>
+          <li>Icons can be placed in background with new prop : <code>iconInBackground</code></li>
+        </ul>
+      </p>
+    </AppChangelogBreackingChange>
+  </div>
   <p>
     Added <code>preview</code> slot on <mk-link to="/component/input-date">
       {{ $t('component.input-date.name') }}
@@ -87,9 +91,9 @@
     </ul>
   </p>
   <p>
-    Improvement on themes handling, every component has a <code>data-theme="..."</code> on root DOM Element, see
+    Improved themes handling, every component has a <code>data-theme="..."</code> on root DOM Element, see
     <mk-link to="/concept/theme">
-      {{ $t('view.theme.title') }}
+      {{ $t('view.theme.titles.use') }}
     </mk-link>
   </p>
   <p>
@@ -98,24 +102,24 @@
     </mk-link> css variables and adapt component to <strong>{{ appName }}</strong> theme
   </p>
   <p>
-    Allow <mk-link to="/component/tabs">
+    Allowed <mk-link to="/component/tabs">
       {{ $t('component.tabs.name') }}
     </mk-link> to be collapsible on purpose with new prop : <code>collapsible</code>
   </p>
 
   <h3>Minor</h3>
   <p>
-    Improve <mk-link to="/component/tooltip">
-      Popins
-    </mk-link> & <mk-link to="/component/tooltip">
-      Menus
+    Improved <mk-link to="/component/tooltip">
+      {{ $t('component.tooltip.name') }}
+    </mk-link> & <mk-link to="/component/menu">
+      {{ $t('component.menu.name') }}
     </mk-link> consistency by wrapping them in a custom controlled DOM Element
   </p>
   <p>Cleaned css variables</p>
   <p>Switched Provide/Inject keys from basic strings to described Symbols</p>
   <p>CSS rendering is now overriden by CSS properties instead of CSS variables</p>
   <blockquote>
-    <p>Admitting we want to override the background color from <i>red</i> to <i>green</i>, and that we have css variables like :</p>
+    <p>Admitting we want to override the background color from <em>red</em> to <em>green</em>, and that we have css variables like :</p>
     <p><pre>--color: red;<br>--color-active: green;<br>background-color: var(--color);</pre></p>
     <p>Before :</p>
     <p><pre>&[data-active="true"] {<br>  --color: var(--color-active);<br>}</pre></p>
@@ -125,5 +129,7 @@
 </template>
 
 <script lang="ts" setup>
+import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
+
 const appName = import.meta.env.VITE_APP_NAME;
 </script>

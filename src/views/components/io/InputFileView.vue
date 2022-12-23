@@ -5,21 +5,28 @@
       :state="state"
     />
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/io/input-file/template.hbs"
-      scss="/code/view/components/io/input-file/scss.hbs"
-      script="/code/view/components/io/input-file/script.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-input-file
-          v-model="state"
-          v-bind="attributes.props"
-          :style="style"
-        />
-      </template>
-    </AppSandboxPreview>
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/io/input-file/template.hbs"
+            scss="/code/view/components/io/input-file/scss.hbs"
+            script="/code/view/components/io/input-file/script.hbs"
+            @change="handlePreviewChange"
+          >
+            <template #default="{ style }">
+              <mk-input-file
+                v-model="state"
+                v-bind="attributes.props"
+                :style="style"
+              />
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

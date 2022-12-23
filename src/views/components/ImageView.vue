@@ -4,65 +4,78 @@
       {{ $t('component.image.name') }}
     </AppPageTitle>
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/tabs/template.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-image
-          v-bind="attributes.props"
-          :style="style"
-        />
-      </template>
-    </AppSandboxPreview>
-
     <mk-wysiwyg-preview>
-      <h2>{{ $t('app.examples') }}</h2>
-    </mk-wysiwyg-preview>
-
-    <div class="pux-ImageView-cell pux-ImageView-cover">
-      <mk-wysiwyg-preview>
-        <h3>{{ $t('view.image.default') }}</h3>
-      </mk-wysiwyg-preview>
-      <AppDemoBlock>
-        <mk-image src="/images/landscape.jpeg" />
-      </AppDemoBlock>
-    </div>
-
-    <div
-      class="pux-ImageView-grid"
-    >
-      <div
-        v-for="(cell, index) in cells"
-        :key="index"
-        class="pux-ImageView-cell"
-      >
-        <mk-wysiwyg-preview>
-          <p>
-            <i18n-t
-              :keypath="`view.image.description.${cell.contain || cell.cover ? 'ratioAndFit' : 'ratio'}`"
-              scope="global"
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/image/template.hbs"
+            script="/code/view/components/image/script.hbs"
+            @change="handlePreviewChange"
+          >
+            <template #default="{ style }">
+              <mk-image
+                v-bind="attributes.props"
+                :style="style"
+              />
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+      <section>
+        <h2>{{ $t('app.examples') }}</h2>
+        <div>
+          <div class="pux-ImageView-cell pux-ImageView-cover">
+            <mk-wysiwyg-preview>
+              <p>{{ $t('view.image.default') }}</p>
+              <div>
+                <AppDemoBlock>
+                  <mk-image src="/images/landscape.jpeg" />
+                </AppDemoBlock>
+              </div>
+            </mk-wysiwyg-preview>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div>
+          <div class="pux-ImageView-grid">
+            <div
+              v-for="(cell, index) in cells"
+              :key="index"
+              class="pux-ImageView-cell"
             >
-              <template #ratio>
-                <code>{{ `${cell.ratio[0]}:${cell.ratio[1]}` }}</code>
-              </template>
-              <template #fit>
-                <code>{{ cell.contain ? 'contain' : 'cover' }}</code>
-              </template>
-            </i18n-t>
-          </p>
-        </mk-wysiwyg-preview>
-        <AppDemoBlock>
-          <mk-image
-            :src="imageSource"
-            :ratio="cell.ratio"
-            :cover="cell.cover"
-            :contain="cell.contain"
-          />
-        </AppDemoBlock>
-      </div>
-    </div>
+              <mk-wysiwyg-preview>
+                <p>
+                  <i18n-t
+                    :keypath="`view.image.description.${cell.contain || cell.cover ? 'ratioAndFit' : 'ratio'}`"
+                    scope="global"
+                  >
+                    <template #ratio>
+                      <code>{{ `${cell.ratio[0]}:${cell.ratio[1]}` }}</code>
+                    </template>
+                    <template #fit>
+                      <code>{{ cell.contain ? 'contain' : 'cover' }}</code>
+                    </template>
+                  </i18n-t>
+                </p>
+                <div>
+                  <AppDemoBlock>
+                    <mk-image
+                      :src="imageSource"
+                      :ratio="cell.ratio"
+                      :cover="cell.cover"
+                      :contain="cell.contain"
+                    />
+                  </AppDemoBlock>
+                </div>
+              </mk-wysiwyg-preview>
+            </div>
+          </div>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 
@@ -175,10 +188,6 @@ const cells = [
 
 <style lang="scss">
 .pux-ImageView {
-    > * {
-        margin: 32px 0;
-    }
-
     &-cover {
         width: 600px;
         max-width: 100%;
@@ -188,13 +197,7 @@ const cells = [
         display: grid;
         grid-template-rows: auto auto auto;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 32px;
-    }
-
-    &-cell {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+        gap: var(--app-m-4);
     }
 }
 </style>

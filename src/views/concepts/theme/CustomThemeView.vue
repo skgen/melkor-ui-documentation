@@ -1,84 +1,12 @@
 <template>
-  <div class="pux-ThemeView">
+  <div class="pux-CustomThemeView">
     <AppPageTitle>
-      {{ $t('view.theme.title') }}
+      {{ $t('view.theme.titles.custom') }}
     </AppPageTitle>
 
     <mk-wysiwyg-preview>
-      <section id="updating">
-        <h2>
-          {{ $t('view.theme.titles.apply') }}
-        </h2>
-        <div v-if="theme">
-          <div class="pux-ThemeView-split-x">
-            <mk-button
-              :outlined="theme.theme !== Theme.dark"
-              @click="() => updateTheme(Theme.dark)"
-            >
-              {{ $t('melkor.theme.dark') }}
-            </mk-button>
-            <mk-button
-              :outlined="theme.theme !== Theme.light"
-              @click="() => updateTheme(Theme.light)"
-            >
-              {{ $t('melkor.theme.light') }}
-            </mk-button>
-            <mk-button
-              :outlined="theme.theme !== Theme.auto"
-              @click="() => updateTheme(Theme.auto)"
-            >
-              {{ $t('melkor.theme.auto') }}
-            </mk-button>
-          </div>
-        </div>
-        <div>
-          <AppAsyncCodeBlock
-            file-path="/code/view/concepts/theme/apply.vue.hbs"
-            :language="CodeLanguage.vue"
-            :variables="{
-              dark: $t('melkor.theme.dark'),
-              light: $t('melkor.theme.light'),
-              auto: $t('melkor.theme.auto'),
-            }"
-          />
-        </div>
-        <div>
-          <AppAsyncCodeBlock
-            file-path="/code/view/concepts/theme/apply.ts.hbs"
-            :language="CodeLanguage.typescript"
-          />
-        </div>
-      </section>
-
       <section>
-        <h2>{{ $t('view.theme.titles.default') }}</h2>
-        <div>
-          <div class="pux-ThemeView-split-x">
-            <div class="pux-ThemeView-split-y">
-              <mk-wysiwyg-preview>
-                <h3>{{ $t('view.theme.titles.dark') }}</h3>
-              </mk-wysiwyg-preview>
-              <AppAsyncCodeBlock
-                file-path="/code/view/concepts/theme/dark-theme.scss.hbs"
-                :language="CodeLanguage.scss"
-              />
-            </div>
-            <div class="pux-ThemeView-split-y">
-              <mk-wysiwyg-preview>
-                <h3>{{ $t('view.theme.titles.light') }}</h3>
-              </mk-wysiwyg-preview>
-              <AppAsyncCodeBlock
-                file-path="/code/view/concepts/theme/light-theme.scss.hbs"
-                :language="CodeLanguage.scss"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>{{ $t('view.theme.titles.custom') }}</h2>
-        <h3>{{ $t('view.theme.titles.definitionInTypescript') }}</h3>
+        <h2>{{ $t('view.theme.titles.definitionInTypescript') }}</h2>
         <p>
           <i18n-t
             keypath="view.theme.paragraph.addCustomTheme"
@@ -96,10 +24,12 @@
             :variables="{ customThemeName: $t('view.theme.paragraph.customThemeName')}"
           />
         </div>
-        <h3>{{ $t('view.theme.titles.usageInScss') }}</h3>
+      </section>
+      <section>
+        <h2>{{ $t('view.theme.titles.usageInScss') }}</h2>
         <div>
-          <div class="pux-ThemeView-split-x">
-            <div class="pux-ThemeView-split-y">
+          <div class="pux-CustomThemeView-split-x">
+            <div class="pux-CustomThemeView-split-y">
               <mk-wysiwyg-preview>
                 <p v-html="$t('view.theme.paragraph.useCustomThemeInScss')" />
               </mk-wysiwyg-preview>
@@ -109,7 +39,7 @@
                 :variables="{ customThemeName: $t('view.theme.paragraph.customThemeName')}"
               />
             </div>
-            <div class="pux-ThemeView-split-y">
+            <div class="pux-CustomThemeView-split-y">
               <mk-wysiwyg-preview>
                 <p v-html="$t('view.theme.paragraph.useCustomThemeInScssBetter')" />
               </mk-wysiwyg-preview>
@@ -121,7 +51,9 @@
             </div>
           </div>
         </div>
-        <h3>{{ $t('view.theme.titles.usageInComponent') }}</h3>
+      </section>
+      <section>
+        <h2>{{ $t('view.theme.titles.usageInComponent') }}</h2>
         <p v-html="$t('view.theme.paragraph.useCustomThemeInComponent')" />
         <blockquote>
           <i18n-t
@@ -176,7 +108,6 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
 import { ref } from 'vue';
-import { useTheme, Theme } from '@patriarche/melkor';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
@@ -184,7 +115,6 @@ import AppThemeDemo from '@/components/AppThemeDemo.vue';
 import { CodeLanguage } from '@/lib/definition';
 
 const { t } = useI18n();
-const { updateTheme, theme } = useTheme();
 
 const customTheme = ref<string | null>(null);
 
@@ -194,7 +124,7 @@ function toggleCustomTheme() {
 </script>
 
 <style lang="scss">
-.pux-ThemeView {
+.pux-CustomThemeView {
     &-split-x {
         display: flex;
         flex: 1;

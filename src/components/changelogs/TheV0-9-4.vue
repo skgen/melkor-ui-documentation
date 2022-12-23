@@ -5,6 +5,6 @@
   </h2>
   <h3>Minor</h3>
   <p>
-    Fix typing issues leading to wrong type inferences
+    Fixed typing issues leading to wrong type inferences
   </p>
 </template>

@@ -11,8 +11,26 @@
 </template>
 
 <script lang="ts" setup>
+import { RouterView, useRouter } from 'vue-router';
+import { onMounted, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { persistLocale } from '@patriarche/melkor';
 import TheHeader from '@/components/TheHeader.vue';
 import TheSidebar from '@/components/TheSidebar.vue';
+
+const { locale } = useI18n();
+const router = useRouter();
+
+watch(router.currentRoute, (newRoute, oldRoute) => {
+  if (newRoute.path !== oldRoute.path) {
+    locale.value = import.meta.env.VITE_APP_DEFAULT_LOCALE;
+  }
+});
+
+onMounted(() => {
+  locale.value = import.meta.env.VITE_APP_DEFAULT_LOCALE;
+  persistLocale(locale.value);
+});
 </script>
 
 <style lang="scss">

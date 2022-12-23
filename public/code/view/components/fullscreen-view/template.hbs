@@ -1,0 +1,83 @@
+<mk-button @click="() => view = !view">
+  {{{open}}}
+</mk-button>
+<mk-fullscreen-view{{{props}}}>
+  {{#if slots.transition}}
+  <template #transition="{ active }">
+    <transition name="view-fade">
+      <div
+        v-if="active"
+        class="pux-ModalView-basicExample-content"
+      >
+        <mk-wysiwyg-preview>
+          <h2>
+            <div>
+              <span>
+                {{{t1}}}
+                <sup>
+                  <a
+                    href="https://lotr.fandom.com/wiki/Glorfindel"
+                    target="_blank"
+                  >
+                    {{{source}}}
+                  </a>
+                </sup>
+              </span>
+              <mk-link
+                as-button
+                @click="() => view = !view"
+              >
+                {{{close}}}
+              </mk-link>
+            </div>
+          </h2>
+          <p>...</p>
+          <h3>
+            {{{t2}}}
+          </h3>
+          <p>...</p>
+          <h3>
+            {{{t3}}}
+          </h3>
+          <p>...</p>
+        </mk-wysiwyg-preview>
+      </div>
+    </transition>
+  </template>
+  {{else}}
+  <div class="pux-FullscreenViewView-basicExample-content">
+    <mk-wysiwyg-preview>
+      <h2>
+        <div>
+          <span>
+            {{{t1}}}
+            <sup>
+              <a
+                href="https://lotr.fandom.com/wiki/Glorfindel"
+                target="_blank"
+              >
+                {{{source}}}
+              </a>
+            </sup>
+          </span>
+          <mk-link
+            as-button
+            @click="() => view = !view"
+          >
+            {{{close}}}
+          </mk-link>
+        </div>
+      </h2>
+      <p>...</p>
+      <h3>
+        {{{t2}}}
+      </h3>
+      <p>...</p>
+      <h3>
+        {{{t3}}}
+      </h3>
+      <p>...</p>
+    </mk-wysiwyg-preview>
+  </div>
+  {{/if}}
+</mk-fullscreen-view>

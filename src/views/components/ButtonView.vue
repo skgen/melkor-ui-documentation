@@ -4,19 +4,26 @@
       {{ $t('component.button.name') }}
     </AppPageTitle>
 
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/button/template.hbs"
-      :primary-mode="attributes.props.onPrimary === true"
-      :template-variables="variables"
-      @change="handlePreviewChange"
-    >
-      <mk-button v-bind="attributes.props">
-        <mk-icon icon="desktop_windows" />
-        {{ variables.label }}
-        <mk-icon icon="arrow_forward" />
-      </mk-button>
-    </AppSandboxPreview>
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/button/template.hbs"
+            :primary-mode="attributes.props.onPrimary === true"
+            :template-variables="variables"
+            @change="handlePreviewChange"
+          >
+            <mk-button v-bind="attributes.props">
+              <mk-icon icon="desktop_windows" />
+              {{ variables.label }}
+              <mk-icon icon="arrow_forward" />
+            </mk-button>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

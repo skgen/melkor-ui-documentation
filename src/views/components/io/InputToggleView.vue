@@ -4,34 +4,42 @@
       i18n-key="input-toggle"
       :state="state"
     />
-    <AppSandboxPreview
-      :definition="definition"
-      template="/code/view/components/io/input-toggle/template.hbs"
-      script="/code/view/components/io/input-toggle/script.hbs"
-      scss="/code/view/components/io/input-toggle/scss.hbs"
-      @change="handlePreviewChange"
-    >
-      <template #default="{ style }">
-        <mk-input-toggle
-          v-model="state"
-          v-bind="attributes.props"
-          :style="style"
-        >
-          <template
-            v-if="attributes.slots['checked-icon']"
-            #checked-icon
+
+    <mk-wysiwyg-preview>
+      <section>
+        <h2>{{ $t('app.playground') }}</h2>
+        <div>
+          <AppSandboxPreview
+            :definition="definition"
+            template="/code/view/components/io/input-toggle/template.hbs"
+            script="/code/view/components/io/input-toggle/script.hbs"
+            scss="/code/view/components/io/input-toggle/scss.hbs"
+            @change="handlePreviewChange"
           >
-            <mk-icon icon="check" />
-          </template>
-          <template
-            v-if="attributes.slots['unchecked-icon']"
-            #unchecked-icon
-          >
-            <mk-icon icon="close" />
-          </template>
-        </mk-input-toggle>
-      </template>
-    </AppSandboxPreview>
+            <template #default="{ style }">
+              <mk-input-toggle
+                v-model="state"
+                v-bind="attributes.props"
+                :style="style"
+              >
+                <template
+                  v-if="attributes.slots['checked-icon']"
+                  #checked-icon
+                >
+                  <mk-icon icon="check" />
+                </template>
+                <template
+                  v-if="attributes.slots['unchecked-icon']"
+                  #unchecked-icon
+                >
+                  <mk-icon icon="close" />
+                </template>
+              </mk-input-toggle>
+            </template>
+          </AppSandboxPreview>
+        </div>
+      </section>
+    </mk-wysiwyg-preview>
   </div>
 </template>
 

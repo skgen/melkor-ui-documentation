@@ -86,7 +86,8 @@ export type BreadcrumbEntry = {
         }
 
         &.mk-AppLink {
-            --mk-link-text-active-color: inherit;
+            --mk-link-text-color: inherit;
+            --mk-link-text-color-active: inherit;
 
             align-items: center;
             font-size: 2rem;
