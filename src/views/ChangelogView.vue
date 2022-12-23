@@ -66,8 +66,7 @@ const versions = [
     flex: 1;
     padding: var(--app-m-5) var(--app-m-8);
 
-    h2,
-    p {
+    h2 {
         .mk-AppIcon {
             color: var(--app-success-color);
             transform: translate(0, 0.15em);
