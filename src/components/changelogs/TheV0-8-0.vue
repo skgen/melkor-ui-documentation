@@ -120,16 +120,33 @@
   <p>CSS rendering is now overriden by CSS properties instead of CSS variables</p>
   <blockquote>
     <p>Admitting we want to override the background color from <em>red</em> to <em>green</em>, and that we have css variables like :</p>
-    <p><pre>--color: red;<br>--color-active: green;<br>background-color: var(--color);</pre></p>
+    <p>
+      <AppAsyncCodeBlock
+        file-path="/code/changelogs/v0.8.0/css-1.hbs"
+        :language="CodeLanguage.scss"
+      />
+    </p>
     <p>Before :</p>
-    <p><pre>&[data-active="true"] {<br>  --color: var(--color-active);<br>}</pre></p>
+    <p>
+      <AppAsyncCodeBlock
+        file-path="/code/changelogs/v0.8.0/css-2.hbs"
+        :language="CodeLanguage.scss"
+      />
+    </p>
     <p>Then :</p>
-    <p><pre>&[data-active="true"] {<br>  background-color: var(--color-active);<br>}</pre></p>
+    <p>
+      <AppAsyncCodeBlock
+        file-path="/code/changelogs/v0.8.0/css-3.hbs"
+        :language="CodeLanguage.scss"
+      />
+    </p>
   </blockquote>
 </template>
 
 <script lang="ts" setup>
+import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
+import { CodeLanguage } from '@/lib/definition';
 
 const appName = import.meta.env.VITE_APP_NAME;
 </script>
