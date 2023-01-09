@@ -53,7 +53,7 @@
         <p>Because <em>The Lord of the Rings</em> is the best universe ever, don't you think ?</p>
         <p>
           By the way, <mk-link to="https://lotr.fandom.com/wiki/Melkor">
-            if you don't who Melkor is
+            if you don't know who Melkor is
           </mk-link>.
         </p>
         <p>We ain't vilains, we just like badass characters, no harm.</p>
