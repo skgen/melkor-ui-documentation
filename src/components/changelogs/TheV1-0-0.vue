@@ -1,8 +1,7 @@
 <template>
-  <h2>
-    <mk-icon icon="task_alt" />
+  <AppChangelogVersion stable>
     v1.0.0
-  </h2>
+  </AppChangelogVersion>
   <h3>Enhancements</h3>
   <p>
     <code>i18n</code> & <code>router</code> plugin properties are no longer mandatory
@@ -159,6 +158,7 @@
 </template>
 
 <script lang="ts" setup>
+import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
 </script>

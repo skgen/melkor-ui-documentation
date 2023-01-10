@@ -1,7 +1,7 @@
 <template>
-  <h2>
-    <mk-icon icon="task_alt" /> v0.8.0
-  </h2>
+  <AppChangelogVersion stable>
+    v0.8.0
+  </AppChangelogVersion>
   <h3>There is a changelog !</h3>
   <p>Every release will have its changelog allowing for developers to track new features & bugfixes</p>
   <h3>New component</h3>
@@ -106,7 +106,6 @@
       {{ $t('component.tabs.name') }}
     </mk-link> to be collapsible on purpose with new prop : <code>collapsible</code>
   </p>
-
   <h3>Minor</h3>
   <p>
     Improved <mk-link to="/component/tooltip">
@@ -144,6 +143,7 @@
 </template>
 
 <script lang="ts" setup>
+import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
 import { CodeLanguage } from '@/lib/definition';

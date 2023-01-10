@@ -1,5 +1,7 @@
 <template>
-  <h2>v0.9.0</h2>
+  <AppChangelogVersion>
+    v0.9.0
+  </AppChangelogVersion>
   <h3>New components</h3>
   <p>
     <mk-link to="/component/input-checkbox">
@@ -107,6 +109,7 @@
 </template>
 
 <script lang="ts" setup>
+import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
 import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
 
 const appName = import.meta.env.VITE_APP_NAME;

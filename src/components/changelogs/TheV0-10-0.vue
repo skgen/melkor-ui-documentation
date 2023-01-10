@@ -1,8 +1,7 @@
 <template>
-  <h2>
-    <mk-icon icon="task_alt" />
+  <AppChangelogVersion stable>
     v0.10.0
-  </h2>
+  </AppChangelogVersion>
   <h3>New component</h3>
   <p>
     <mk-link to="/component/theme-toggle">
@@ -124,6 +123,7 @@
 </template>
 
 <script lang="ts" setup>
+import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
 import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
 import AppChangelogWarningChange from '@/components/AppChangelogWarningChange.vue';
 

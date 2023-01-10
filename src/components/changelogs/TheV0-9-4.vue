@@ -1,10 +1,13 @@
 <template>
-  <h2>
-    <mk-icon icon="task_alt" />
+  <AppChangelogVersion stable>
     v0.9.4
-  </h2>
+  </AppChangelogVersion>
   <h3>Minor</h3>
   <p>
     Fixed typing issues leading to wrong type inferences
   </p>
 </template>
+
+<script lang="ts" setup>
+import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
+</script>
