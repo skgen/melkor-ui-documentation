@@ -75,15 +75,15 @@ push:app:
     - export S3_BUCKET=${APP_PROJECT}-${APP_NAME}-${APP_INSTANCE}
     - aws s3 cp dist/. s3://${S3_BUCKET} --recursive
 
-# .deploy:
-#   stage: deploy
-#   extends: .s3
+.deploy:
+  stage: deploy
+  extends: .s3
 
-# deploy:app:
-#   extends: .deploy
-#   only:
-#     refs:
-#       - staging
-#       - tags
-#   script:
-#     - aws cloudfront create-invalidation --distribution-id ${CDN_DISTRIBUTION_ID} --paths '/*'
+deploy:app:
+  extends: .deploy
+  only:
+    refs:
+      - staging
+      - tags
+  script:
+    - aws cloudfront create-invalidation --distribution-id ${CDN_DISTRIBUTION_ID} --paths '/*'
