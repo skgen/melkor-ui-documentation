@@ -36,6 +36,17 @@
           />
         </p>
       </section>
+      <section>
+        <h2>Initializing Vue app</h2>
+        <p>To enable {{ appName }}, you need to wrap your app with <code>mkt-app</code> component</p>
+        <p>
+          <AppAsyncCodeBlock
+            file-path="/code/view/home/app.vue.hbs"
+            :language="CodeLanguage.vue"
+            full-size
+          />
+        </p>
+      </section>
     </mk-wysiwyg-preview>
   </div>
 </template>
