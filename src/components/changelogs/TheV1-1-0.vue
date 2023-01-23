@@ -8,13 +8,13 @@
       {{ $t('component.table.name') }}
     </mk-link> with new <code>hiddenKeys</code> prop
   </p>
-  <AppChangelogBreackingChange>
+  <AppChangelogBreakingChange>
     <p>
       Fixed <mk-link to="/component/table">
         {{ $t('component.table.name') }}
       </mk-link> <code>indexColumns</code> prop name to <code>indexRows</code>
     </p>
-  </AppChangelogBreackingChange>
+  </AppChangelogBreakingChange>
   <h3>Minor</h3>
   <AppChangelogWarningChange>
     <p>
@@ -27,6 +27,6 @@
 
 <script lang="ts" setup>
 import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
-import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
+import AppChangelogBreakingChange from '@/components/AppChangelogBreakingChange.vue';
 import AppChangelogWarningChange from '@/components/AppChangelogWarningChange.vue';
 </script>

@@ -87,11 +87,11 @@
     </ul>
   </p>
   <div>
-    <AppChangelogBreackingChange>
+    <AppChangelogBreakingChange>
       <p>
         Changed {{ appName }} tone colors logic from hexadecimal values to rgb based ones with opacity
       </p>
-    </AppChangelogBreackingChange>
+    </AppChangelogBreakingChange>
   </div>
   <p>
     Theme can now be updated manually thanks to <code>updateTheme</code> from the <code>useTheme</code> composable,
@@ -110,7 +110,7 @@
 
 <script lang="ts" setup>
 import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
-import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
+import AppChangelogBreakingChange from '@/components/AppChangelogBreakingChange.vue';
 
 const appName = import.meta.env.VITE_APP_NAME;
 </script>

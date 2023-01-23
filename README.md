@@ -33,7 +33,7 @@ yarn build
 ### Lint with [ESLint](https://eslint.org/) & [Stylelint](https://stylelint.io/)
 
 ```sh
-yarn lint
+yarn review
 ```
 
 ## Project Structure

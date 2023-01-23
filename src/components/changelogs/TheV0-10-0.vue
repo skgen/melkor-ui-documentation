@@ -90,13 +90,13 @@
   </p>
   <h3>Minor</h3>
   <div>
-    <AppChangelogBreackingChange>
+    <AppChangelogBreakingChange>
       <p>
         Moved all {{ appName }} <code>i18n</code> keys to <code>melkor</code> namespace, see <mk-link to="/translations">
           {{ $t('view.i18n.titles.keys') }}
         </mk-link>
       </p>
-    </AppChangelogBreackingChange>
+    </AppChangelogBreakingChange>
   </div>
   <p>
     Changed <mk-link to="/component/input-toggle">
@@ -124,7 +124,7 @@
 
 <script lang="ts" setup>
 import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
-import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
+import AppChangelogBreakingChange from '@/components/AppChangelogBreakingChange.vue';
 import AppChangelogWarningChange from '@/components/AppChangelogWarningChange.vue';
 
 const appName = import.meta.env.VITE_APP_NAME;

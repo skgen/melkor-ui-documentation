@@ -13,7 +13,7 @@
     to ensure child components will render on proper theme context
   </p>
   <div>
-    <AppChangelogBreackingChange>
+    <AppChangelogBreakingChange>
       <p>
         Improved <mk-link to="/component/table">
           {{ $t('component.table.name') }}
@@ -27,7 +27,7 @@
           <li>Simplified API (no more single prop  component)</li>
         </ul>
       </p>
-    </AppChangelogBreackingChange>
+    </AppChangelogBreakingChange>
   </div>
   <p>
     <mk-link to="/component/link">
@@ -63,7 +63,7 @@
     </mk-link> dispatching too many <code>hide</code> events internally
   </p>
   <div>
-    <AppChangelogBreackingChange>
+    <AppChangelogBreakingChange>
       <mk-wysiwyg-preview>
         <p>
           <mk-link to="/component/table">
@@ -78,7 +78,7 @@
           <AppCodeBlock code="{ x: number, y: number, key: number | string }" />
         </div>
       </mk-wysiwyg-preview>
-    </AppChangelogBreackingChange>
+    </AppChangelogBreakingChange>
   </div>
   <p>
     Fixed an issue on <mk-link to="/component/input-number">
@@ -160,5 +160,5 @@
 <script lang="ts" setup>
 import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
-import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
+import AppChangelogBreakingChange from '@/components/AppChangelogBreakingChange.vue';
 </script>

@@ -12,7 +12,7 @@
   </p>
   <h3>Enhancements</h3>
   <div>
-    <AppChangelogBreackingChange>
+    <AppChangelogBreakingChange>
       <p>
         Improved <mk-link to="/component/input-toggle">
           {{ $t('component.input-toggle.name') }}
@@ -24,7 +24,7 @@
           <li>Icons can be placed in background with new prop : <code>iconInBackground</code></li>
         </ul>
       </p>
-    </AppChangelogBreackingChange>
+    </AppChangelogBreakingChange>
   </div>
   <p>
     Added <code>preview</code> slot on <mk-link to="/component/input-date">
@@ -145,7 +145,7 @@
 <script lang="ts" setup>
 import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
-import AppChangelogBreackingChange from '@/components/AppChangelogBreakingChange.vue';
+import AppChangelogBreakingChange from '@/components/AppChangelogBreakingChange.vue';
 import { CodeLanguage } from '@/lib/definition';
 
 const appName = import.meta.env.VITE_APP_NAME;
