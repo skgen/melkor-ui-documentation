@@ -24,6 +24,7 @@
           </AppSandboxPreview>
         </div>
       </section>
+      <TableCustomSlotsExample />
     </mk-wysiwyg-preview>
   </div>
 </template>
@@ -36,6 +37,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
+import TableCustomSlotsExample from '@/views/components/partials/TableCustomSlotsExample.vue';
 
 type TableItemValue = {
   id: string;
@@ -47,13 +49,15 @@ type TableItemValue = {
   iron: string;
 };
 
-const headers: TableHeader<TableItemValue>[] = [
-  { text: 'Dessert (100g serving)', value: 'name' },
-  { text: 'Calories', value: 'calories' },
-  { text: 'Fat (g)', value: 'fat' },
-  { text: 'Carbs (g)', value: 'carbs' },
-  { text: 'Protein (g)', value: 'protein' },
-  { text: 'Iron (%)', value: 'iron' },
+type TableHeaderValue = string;
+
+const headers: TableHeader<TableItemValue, TableHeaderValue>[] = [
+  { value: 'Dessert (100g serving)', key: 'name' },
+  { value: 'Calories', key: 'calories' },
+  { value: 'Fat (g)', key: 'fat' },
+  { value: 'Carbs (g)', key: 'carbs' },
+  { value: 'Protein (g)', key: 'protein' },
+  { value: 'Iron (%)', key: 'iron' },
 ];
 
 const items = ref<TableItemValue[]>([

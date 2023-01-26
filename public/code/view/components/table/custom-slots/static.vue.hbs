@@ -1,0 +1,33 @@
+<mk-table
+  :headers="headers"
+  :items="items"
+>
+  <template #header-name="{ value, entry, pos }">
+    <mk-wysiwyg-preview>
+      <h3><code>#header-name</code> / {{ value }}</h3>
+      <p>
+        <pre><em>pos.x</em> : {{ pos.x }}</pre>
+      </p>
+      <p>
+        <pre><em>pos.y</em> : {{ pos.y }}</pre>
+      </p>
+      <p>
+        <pre><em>pos.key</em> : {{ pos.key }}</pre>
+      </p>
+      <p>
+        <pre>{{ entry }}</pre>
+      </p>
+    </mk-wysiwyg-preview>
+  </template>
+  <template #race="{ value, entry, pos }">
+    <mk-wysiwyg-preview>
+      <h3><code>#race</code> / {{ value }}</h3>
+      <p><code>pos.x</code> : {{ pos.x }}</p>
+      <p><code>pos.y</code> : {{ pos.y }}</p>
+      <p><code>pos.key</code> : {{ pos.key }}</p>
+      <p>
+        <pre>{{ entry }}</pre>
+      </p>
+    </mk-wysiwyg-preview>
+  </template>
+</mk-table>

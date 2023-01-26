@@ -24,13 +24,16 @@
       <span class="pux-AppCodeBlock-cta-text">Copied</span>
     </button>
     <button
-      v-if="!props.fullSize"
+      v-if="canExpand"
       class="pux-AppCodeBlock-cta pux-AppCodeBlock-expand"
       @click="handleExpand"
     >
       <mk-icon :icon="expanded ? 'remove' : 'add'" />
     </button>
-    <div class="pux-AppCodeBlock-editor">
+    <div
+      ref="editor"
+      class="pux-AppCodeBlock-editor"
+    >
       <PrismEditor
         v-model="code"
         :highlight="handleHighlight"
@@ -55,6 +58,7 @@ import 'prismjs/components/prism-bash';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
 import { copyToClipboard, Theme, isEmpty } from '@patriarche/melkor';
 import Handlebars from 'handlebars';
+import { useElementSize } from '@vueuse/core';
 import { CodeLanguage } from '@/lib/definition';
 
 type Props = {
@@ -100,6 +104,13 @@ const mapping:
   },
 };
 
+const maxHeightNum = 400;
+const maxHeight = computed(() => `${maxHeightNum}px`);
+
+const editor = ref<HTMLDivElement | null>(null);
+const { height } = useElementSize(editor);
+const canExpand = computed(() => !props.fullSize && height.value > maxHeightNum);
+
 const code = computed(() => {
   if (!props.variables) {
     return props.code;
@@ -141,7 +152,6 @@ function handleExpand() {
     min-height: 48px;
     overflow: hidden;
     color: var(--c-grey-80);
-    border-radius: 8px;
 
     &-filename {
         position: absolute;
@@ -149,6 +159,7 @@ function handleExpand() {
         font-size: 13px;
         font-weight: 700;
         background: var(--c-grey-20);
+        border-top-left-radius: 8px;
         border-bottom-right-radius: 8px;
     }
 
@@ -216,7 +227,7 @@ function handleExpand() {
     }
 
     &-editor {
-        max-height: 400px;
+        max-height: v-bind(maxHeight);
         padding: var(--app-m-2) var(--app-m-6) var(--app-m-2) var(--app-m-3);
         overflow: auto;
 
@@ -225,6 +236,7 @@ function handleExpand() {
         font-size: 14px;
         line-height: 1.5;
         background: var(--c-grey-12);
+        border-radius: 8px;
 
         /* optional class for removing the outline */
         textarea:focus {

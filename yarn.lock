@@ -510,10 +510,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@patriarche/melkor@^1.2.1":
-  version "1.2.1"
-  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-1.2.1.tgz#cf08dc9dcfe2cce37d0467b1aa23537d18abefbb"
-  integrity sha1-zwjcnc/izON9BGexqiNTfRir77s=
+"@patriarche/melkor@^1.3.0":
+  version "1.3.0"
+  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-1.3.0.tgz#a1c4c6e6c0784c9777fe5934380fd4fd2c85886c"
+  integrity sha1-ocTG5sB4TJd3/lk0OA/U/SyFiGw=
   dependencies:
     "@tiptap/core" "^2.0.0-beta.205"
     "@tiptap/starter-kit" "^2.0.0-beta.205"
@@ -1211,7 +1211,7 @@
   resolved "https://registry.yarnpkg.com/@vue/tsconfig/-/tsconfig-0.1.3.tgz#4a61dbd29783d01ddab504276dcf0c2b6988654f"
   integrity sha512-kQVsh8yyWPvHpb8gIc9l/HIDiiVUy1amynLNpCy8p+FoCiZXCo6fQos5/097MmnNZc9AtseDsCrfkhqCrJ8Olg==
 
-"@vueuse/core@^9.6.0":
+"@vueuse/core@^9.11.1", "@vueuse/core@^9.6.0":
   version "9.11.1"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-9.11.1.tgz#1552aef67144220da7e6b797372a194a9c7ff52e"
   integrity sha512-E/cizD1w9ILkq4axYjZrXLkKaBfzloaby2n3NMjUfd6yI/jkfTVgc6iwy/Cw2e++Ld4LphGbO+3MhzizvwUslQ==

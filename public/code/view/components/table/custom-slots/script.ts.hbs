@@ -1,0 +1,25 @@
+type TableItemValue = {
+  name: string;
+  race: string;
+  maxAge: number;
+};
+
+type TableHeaderValue = string;
+
+const headers: TableHeader<TableItemValue, TableHeaderValue>[] = [
+  { value: 'Hero name', key: 'name' },
+  { value: 'Race', key: 'race' },
+  { value: 'Max age', key: 'maxAge' },
+];
+
+const items = ref<TableItemValue[]>([
+  {
+    name: 'Melkor', race: 'Ainur', maxAge: Infinity,
+  },
+  {
+    name: 'Elrond', race: 'Elf', maxAge: Infinity,
+  },
+  {
+    name: 'Aragorn', race: 'Human', maxAge: 210,
+  },
+]);

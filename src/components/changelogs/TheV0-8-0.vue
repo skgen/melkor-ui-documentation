@@ -125,18 +125,18 @@
         :language="CodeLanguage.scss"
       />
     </p>
-    <p>Before :</p>
     <p>
       <AppAsyncCodeBlock
         file-path="/code/changelogs/v0.8.0/css-2.hbs"
         :language="CodeLanguage.scss"
+        filename="before"
       />
     </p>
-    <p>Then :</p>
     <p>
       <AppAsyncCodeBlock
         file-path="/code/changelogs/v0.8.0/css-3.hbs"
         :language="CodeLanguage.scss"
+        filename="then"
       />
     </p>
   </blockquote>
