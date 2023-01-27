@@ -60,7 +60,7 @@ const definition: ComponentDefinition = {
   props: {
     open: {
       type: AttributeType.vModel,
-      required: false,
+      required: true,
       default: open.value,
     },
     autoHide: {
