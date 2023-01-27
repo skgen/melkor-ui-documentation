@@ -17,7 +17,7 @@ const { theme } = useTheme();
 .pux-AppThemeDemo {
     width: 100px;
     height: 100px;
-    border: 10px solid var(--app-background-color-surface);
+    border: 10px solid var(--app-background-color-contrast);
 
     // border-radius: var(--app-border-radius);
     border-radius: 20px;
