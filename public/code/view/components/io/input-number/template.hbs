@@ -1,7 +1,12 @@
 {{#if hasSlots}}
 <mk-input-number{{{props}}}>
-  {{#if slots.icon}}
-  <template #icon>
+  {{#if slots.leadingIcon}}
+  <template #leading-icon>
+    <mk-icon icon="barcode_scanner" />
+  </template>
+  {{/if}}
+  {{#if slots.trailingIcon}}
+  <template #trailing-icon>
     <mk-icon icon="euro" />
   </template>
   {{/if}}

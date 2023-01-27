@@ -22,10 +22,16 @@
                 :style="style"
               >
                 <template
-                  v-if="attributes.slots.icon"
-                  #icon
+                  v-if="attributes.slots['leading-icon']"
+                  #leading-icon
                 >
                   <mk-icon icon="barcode_scanner" />
+                </template>
+                <template
+                  v-if="attributes.slots['trailing-icon']"
+                  #trailing-icon
+                >
+                  <mk-icon icon="euro" />
                 </template>
               </mk-input-text>
             </template>
@@ -112,7 +118,7 @@ const definition: ComponentDefinition = {
     '--mk-input-text-placeholder-color',
   ]),
   slots: createSlotsControllersConfig(
-    ['icon'],
+    ['leading-icon', 'trailing-icon'],
   ),
 };
 

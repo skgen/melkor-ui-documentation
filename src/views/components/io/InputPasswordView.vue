@@ -21,7 +21,20 @@
                 v-model="state"
                 v-bind="attributes.props"
                 :style="style"
-              />
+              >
+                <template
+                  v-if="attributes.slots['leading-icon']"
+                  #leading-icon
+                >
+                  <mk-icon icon="group" />
+                </template>
+                <template
+                  v-if="attributes.slots['trailing-icon']"
+                  #trailing-icon
+                >
+                  <mk-icon icon="verified_user" />
+                </template>
+              </mk-input-password>
             </template>
           </AppSandboxPreview>
         </div>
@@ -42,7 +55,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
-import { createScssControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
+import { createScssControllersConfig, createSlotsControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
 function validate(value: PasswordInputValue) {
   return value === null ? 'Required' : null;
@@ -97,6 +110,9 @@ const definition: ComponentDefinition = {
     '--mk-input-password-background-color',
     '--mk-input-password-border-color',
   ]),
+  slots: createSlotsControllersConfig(
+    ['leading-icon', 'trailing-icon'],
+  ),
 };
 
 const attributes = ref<ComponentAttributes>({

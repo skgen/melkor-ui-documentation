@@ -23,8 +23,14 @@
                 :style="style"
               >
                 <template
-                  v-if="attributes.slots.icon"
-                  #icon
+                  v-if="attributes.slots['leading-icon']"
+                  #leading-icon
+                >
+                  <mk-icon icon="barcode_scanner" />
+                </template>
+                <template
+                  v-if="attributes.slots['trailing-icon']"
+                  #trailing-icon
                 >
                   <mk-icon icon="euro" />
                 </template>
@@ -104,6 +110,21 @@ const definition: ComponentDefinition = {
       required: false,
       default: '1337',
     },
+    min: {
+      type: AttributeType.number,
+      required: false,
+      default: null,
+    },
+    max: {
+      type: AttributeType.number,
+      required: false,
+      default: null,
+    },
+    step: {
+      type: AttributeType.number,
+      required: false,
+      default: null,
+    },
   },
   scss: createScssControllersConfig([
     '--mk-input-number-padding-x',
@@ -116,7 +137,7 @@ const definition: ComponentDefinition = {
     '--mk-input-number-placeholder-color',
   ]),
   slots: createSlotsControllersConfig(
-    ['icon'],
+    ['leading-icon', 'trailing-icon'],
   ),
 };
 

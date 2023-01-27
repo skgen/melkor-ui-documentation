@@ -1,1 +1,16 @@
+{{#if hasSlots}}
+<mk-input-password{{{props}}}>
+  {{#if slots.leadingIcon}}
+  <template #leading-icon>
+    <mk-icon icon="group" />
+  </template>
+  {{/if}}
+  {{#if slots.trailingIcon}}
+  <template #trailing-icon>
+    <mk-icon icon="verified_user" />
+  </template>
+  {{/if}}
+</mk-input-password>
+{{else}}
 <mk-input-password{{{props}}}/>
+{{/if}}
