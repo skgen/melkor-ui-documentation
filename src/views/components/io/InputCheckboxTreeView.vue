@@ -228,12 +228,16 @@
           Exports errors in an array, from every tree level, as string
         </p>
         <p>
-          <code>exportCheckboxTreeLevelStates</code> :
+          <code>exportCheckboxTreeLevels</code> :
           Exports data in a flat literal object, from every tree level, as state
         </p>
         <p>
           <code>exportCheckboxTreeLevelValues</code> :
           Exports data in a flat literal object, from every tree level, as value
+        </p>
+        <p>
+          <code>exportFlatCheckboxTreeLevels</code> :
+          Exports data in a flat literal object, from every tree level, as level
         </p>
         <p>
           <code>findCheckboxTreeLevel</code> :
@@ -281,6 +285,7 @@ import {
   exportCheckboxTreeLevelErrorsAsArray,
   findCheckboxTreeLevel,
   countCheckedCheckboxTreeLevels,
+  exportCheckboxTreeLevels,
 } from '@patriarche/melkor';
 import { useI18n } from 'vue-i18n';
 import isEqual from 'lodash/isEqual';
@@ -408,7 +413,7 @@ const state = ref<InputState<InputValue>>(
                     checkedLabel: 'Blue Wizards',
                     checked,
                     unchecked,
-                    name: 'blue wizards',
+                    name: 'blue-wizards',
                   },
                 },
                 children: [
@@ -466,6 +471,11 @@ const state = ref<InputState<InputValue>>(
     ],
   }),
 );
+
+watch(state, (newState) => {
+  const levels = exportCheckboxTreeLevels(newState.value);
+  console.log(levels);
+});
 
 const advancedState = ref<InputState<InputValue>>(
   createInputState({
