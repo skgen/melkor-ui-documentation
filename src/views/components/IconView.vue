@@ -97,19 +97,34 @@ const definition: ComponentDefinition = {
     icon: {
       type: AttributeType.string,
       required: true,
-      default: 'menu',
+      default: 'settings',
       inputOptions: {
         hint: `Name of a ${t('view.icon.sourceName')} icon`,
       },
+    },
+    fill: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    round: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
     },
   },
   scss: {
     '--mk-icon-size': {
       type: AttributeType.string,
       required: false,
-      default: null,
+      default: '100px',
     },
     '--mk-icon-color': {
+      type: AttributeType.string,
+      required: false,
+      default: null,
+    },
+    '--mk-icon-weight': {
       type: AttributeType.string,
       required: false,
       default: null,

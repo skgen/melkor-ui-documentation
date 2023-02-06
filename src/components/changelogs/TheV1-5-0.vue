@@ -4,7 +4,7 @@
   </AppChangelogVersion>
   <h3>Enhancements</h3>
   <p>
-    Add new utility function <code>exportCheckboxTreeLevels</code> to <mk-link to="/component/input-checkbox-tree">
+    Added new utility function <code>exportCheckboxTreeLevels</code> to <mk-link to="/component/input-checkbox-tree">
       {{ $t('component.input-checkbox-tree.name') }}
     </mk-link>
   </p>

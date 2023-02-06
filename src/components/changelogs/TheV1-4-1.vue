@@ -4,7 +4,7 @@
   </AppChangelogVersion>
   <h3>Enhancements</h3>
   <AppChangelogBreakingChange>
-    <p>Reword all CSS <code>surface</code> logic to <code>contrast</code> logic</p>
+    <p>Reworded all CSS <code>surface</code> logic to <code>contrast</code> logic</p>
     <blockquote>
       <p>
         This is due to a personal misundertanding on <code>surface</code> logic from <code>Material design</code>.
