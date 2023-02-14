@@ -15,11 +15,16 @@
             :template-variables="variables"
             @change="handlePreviewChange"
           >
-            <mk-button v-bind="attributes.props">
-              <mk-icon icon="desktop_windows" />
-              {{ variables.label }}
-              <mk-icon icon="arrow_forward" />
-            </mk-button>
+            <template #default="{ style }">
+              <mk-button
+                v-bind="attributes.props"
+                :style="style"
+              >
+                <mk-icon icon="desktop_windows" />
+                {{ variables.label }}
+                <mk-icon icon="arrow_forward" />
+              </mk-button>
+            </template>
           </AppSandboxPreview>
         </div>
       </section>
@@ -33,6 +38,7 @@ import { ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
+import { createScssControllersConfig } from '@/lib/utils';
 
 const variables = {
   label: 'Button',
@@ -61,6 +67,19 @@ const definition: ComponentDefinition = {
       default: false,
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-button-padding-x',
+    '--mk-button-padding-y',
+    '--mk-button-bordered-padding-x',
+    '--mk-button-bordered-padding-y',
+    '--mk-button-spacing-content',
+    '--mk-button-background-color',
+    '--mk-button-text-color',
+    '--mk-button-hollowed-text-color',
+    '--mk-button-border-color',
+    '--mk-button-border-width',
+    '--mk-button-border-radius',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({
