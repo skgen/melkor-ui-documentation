@@ -16,10 +16,15 @@
             }"
             @change="handlePreviewChange"
           >
-            <mk-link v-bind="attributes.props">
-              <span>{{ $t('view.link.cta') }}</span>
-              <mk-icon icon="repeat" />
-            </mk-link>
+            <template #default="{ style }">
+              <mk-link
+                v-bind="attributes.props"
+                :style="style"
+              >
+                <span>{{ $t('view.link.cta') }}</span>
+                <mk-icon icon="repeat" />
+              </mk-link>
+            </template>
           </AppSandboxPreview>
         </div>
       </section>
@@ -61,6 +66,8 @@ const definition: ComponentDefinition = {
     '--mk-link-text-color',
     '--mk-link-text-color-active',
     '--mk-link-gap',
+    '--mk-link-font-size',
+    '--mk-link-line-height',
   ]),
 };
 
