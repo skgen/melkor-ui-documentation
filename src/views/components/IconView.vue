@@ -125,7 +125,12 @@ const definition: ComponentDefinition = {
       default: null,
     },
     '--mk-icon-weight': {
-      type: AttributeType.string,
+      type: AttributeType.number,
+      required: false,
+      default: null,
+    },
+    '--mk-icon-line-height': {
+      type: AttributeType.number,
       required: false,
       default: null,
     },
