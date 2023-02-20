@@ -26,11 +26,11 @@
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
-              <mk-button @click="() => view = !view">
+              <mk-button @click="() => open = !open">
                 {{ $t('view.fullscreenView.cta.basicExample.open') }}
               </mk-button>
               <mk-fullscreen-view
-                v-model="view"
+                v-model="open"
                 v-bind="attributes.props"
                 :style="style"
                 class="pux-FullscreenViewView-basicExample"
@@ -53,12 +53,17 @@
                             </a>
                           </sup>
                         </span>
-                        <mk-link
-                          as-button
-                          @click="() => view = !view"
-                        >
-                          {{ $t('view.fullscreenView.cta.basicExample.close') }}
-                        </mk-link>
+                        <mk-tooltip>
+                          <mk-link
+                            as-button
+                            @click="() => open = !open"
+                          >
+                            {{ $t('view.fullscreenView.cta.basicExample.close') }}
+                          </mk-link>
+                          <template #tooltip>
+                            {{ $t('view.tooltip.paragraph.basic') }}
+                          </template>
+                        </mk-tooltip>
                       </div>
                     </h2>
                     <p>
@@ -103,7 +108,7 @@
                             </span>
                             <mk-link
                               as-button
-                              @click="() => view = !view"
+                              @click="() => open = !open"
                             >
                               {{ $t('view.fullscreenView.cta.basicExample.close') }}
                             </mk-link>
@@ -420,11 +425,11 @@ import {
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import { createSlotsControllersConfig } from '@/lib/utils';
 
-const view = ref(false);
+const open = ref(false);
 
 const definition: ComponentDefinition = {
   props: {
-    view: {
+    open: {
       type: AttributeType.vModel,
       required: false,
       default: view.value,
