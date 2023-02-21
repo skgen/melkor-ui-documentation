@@ -10,3 +10,5 @@ Lib :
 
 (input file)
 - Reflechir loader par fichier
+  
+Doc: render css var config on button

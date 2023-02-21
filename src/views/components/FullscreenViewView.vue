@@ -432,7 +432,7 @@ const definition: ComponentDefinition = {
     open: {
       type: AttributeType.vModel,
       required: false,
-      default: view.value,
+      default: open.value,
     },
     centerX: {
       type: AttributeType.boolean,

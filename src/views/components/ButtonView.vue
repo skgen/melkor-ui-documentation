@@ -11,6 +11,7 @@
           <AppSandboxPreview
             :definition="definition"
             template="/code/view/components/button/template.hbs"
+            scss="/code/view/components/button/scss.hbs"
             :primary-mode="attributes.props.onPrimary === true"
             :template-variables="variables"
             @change="handlePreviewChange"
