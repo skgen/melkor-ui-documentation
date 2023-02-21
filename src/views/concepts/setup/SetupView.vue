@@ -17,6 +17,11 @@
       </section>
       <section>
         <h2>Add {{ appName }} to your app</h2>
+        <blockquote>
+          {{ appName }} integrates <mk-link to="https://www.npmjs.com/package/normalize.css">
+            normalize.css
+          </mk-link>, no need to import it in your project.
+        </blockquote>
         <p>
           <AppAsyncCodeBlock
             file-path="/code/view/home/main.ts.hbs"
