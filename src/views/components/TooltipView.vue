@@ -15,6 +15,7 @@
               cta: $t('view.tooltip.cta.basic'),
               paragraph: $t('view.tooltip.paragraph.basic')
             }"
+            scss="/code/view/components/tooltip/scss.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
@@ -46,6 +47,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppPageTitle from '@/components/AppPageTitle.vue';
+import { createScssControllersConfig } from '@/lib/utils';
 
 const definition: ComponentDefinition = {
   props: {
@@ -69,6 +71,16 @@ const definition: ComponentDefinition = {
       },
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-tooltip-text-color',
+    '--mk-tooltip-background-color',
+    '--mk-tooltip-background-opacity',
+    '--mk-tooltip-padding-x',
+    '--mk-tooltip-padding-y',
+    '--mk-tooltip-border-color',
+    '--mk-tooltip-border-radius',
+    '--mk-tooltip-border-width',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

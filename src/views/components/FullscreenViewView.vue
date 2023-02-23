@@ -454,6 +454,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
+    preventAutoClose: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
   slots: createSlotsControllersConfig([
     'transition',

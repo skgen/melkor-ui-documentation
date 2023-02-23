@@ -16,6 +16,7 @@
               title: $t('view.menu.paragraph.popinTitle'),
               paragraph: $t('view.menu.paragraph.popinContent'),
             }"
+            scss="/code/view/components/menu/scss.hbs"
             script="/code/view/components/menu/script.hbs"
             @change="handlePreviewChange"
           >
@@ -53,6 +54,7 @@ import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppPageTitle from '@/components/AppPageTitle.vue';
+import { createScssControllersConfig } from '@/lib/utils';
 
 const open = ref(false);
 
@@ -119,6 +121,13 @@ const definition: ComponentDefinition = {
       },
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-menu-text-color',
+    '--mk-menu-background-color',
+    '--mk-menu-border-width',
+    '--mk-menu-border-color',
+    '--mk-menu-border-radius',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({
