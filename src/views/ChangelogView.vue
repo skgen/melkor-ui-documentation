@@ -62,8 +62,10 @@ import V1_7_2 from '@/components/changelogs/TheV1-7-2.vue';
 import V1_7_3 from '@/components/changelogs/TheV1-7-3.vue';
 import V1_7_4 from '@/components/changelogs/TheV1-7-4.vue';
 import V1_8_0 from '@/components/changelogs/TheV1-8-0.vue';
+import V1_8_1 from '@/components/changelogs/TheV1-8-1.vue';
 
 const versions = [
+  V1_8_1,
   V1_8_0,
   V1_7_4,
   V1_7_3,

@@ -82,6 +82,7 @@ const definition: ComponentDefinition = {
     '--mk-button-border-radius',
     '--mk-button-font-size',
     '--mk-button-line-height',
+    '--mk-button-font-weight',
   ]),
 };
 
