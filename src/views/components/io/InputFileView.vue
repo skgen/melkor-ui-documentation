@@ -101,8 +101,8 @@ const definition: ComponentDefinition = {
   scss: createScssControllersConfig([
     '--mk-input-file-border-color',
     '--mk-input-file-dropzone-background-color',
-    '--mk-input-file-dropzone-border-width',
     '--mk-input-file-dropzone-border-radius',
+    '--mk-input-file-dropzone-border-width',
   ]),
 };
 

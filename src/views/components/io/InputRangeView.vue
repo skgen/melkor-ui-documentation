@@ -109,11 +109,11 @@ const definition: ComponentDefinition = {
     },
   },
   scss: createScssControllersConfig([
+    '--mk-input-range-color-active',
+    '--mk-input-range-thumb-border-width',
+    '--mk-input-range-thumb-size',
     '--mk-input-range-track-background-color',
     '--mk-input-range-track-height',
-    '--mk-input-range-thumb-size',
-    '--mk-input-range-thumb-border-width',
-    '--mk-input-range-color-active',
   ]),
 };
 

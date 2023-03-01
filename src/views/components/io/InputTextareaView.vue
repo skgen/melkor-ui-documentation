@@ -101,11 +101,14 @@ const definition: ComponentDefinition = {
     },
   },
   scss: createScssControllersConfig([
-    '--mk-input-textarea-padding-x',
-    '--mk-input-textarea-padding-y',
-    '--mk-input-textarea-border-radius',
     '--mk-input-textarea-background-color',
     '--mk-input-textarea-border-color',
+    '--mk-input-textarea-border-radius',
+    '--mk-input-textarea-border-width',
+    '--mk-input-textarea-color',
+    '--mk-input-textarea-font-size',
+    '--mk-input-textarea-padding-x',
+    '--mk-input-textarea-padding-y',
     '--mk-input-textarea-placeholder-color',
   ]),
 };

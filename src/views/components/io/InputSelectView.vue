@@ -108,12 +108,14 @@ const definition: ComponentDefinition = {
     },
   },
   scss: createScssControllersConfig([
+    '--mk-input-select-background-color',
+    '--mk-input-select-border-color',
+    '--mk-input-select-border-radius',
+    '--mk-input-select-border-width',
+    '--mk-input-select-color',
     '--mk-input-select-padding-x-left',
     '--mk-input-select-padding-x-right',
     '--mk-input-select-padding-y',
-    '--mk-input-select-border-radius',
-    '--mk-input-select-background-color',
-    '--mk-input-select-border-color',
   ]),
 };
 

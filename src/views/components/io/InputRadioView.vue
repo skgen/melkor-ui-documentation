@@ -110,12 +110,14 @@ const definition: ComponentDefinition = {
     },
   },
   scss: createScssControllersConfig([
-    '--mk-input-radio-spacing',
-    '--mk-input-radio-size',
-    '--mk-input-radio-color-active',
     '--mk-input-radio-border-color',
     '--mk-input-radio-border-width',
     '--mk-input-radio-border-width-active',
+    '--mk-input-radio-color',
+    '--mk-input-radio-color-active',
+    '--mk-input-radio-font-size',
+    '--mk-input-radio-size',
+    '--mk-input-radio-spacing',
   ]),
 };
 
