@@ -14,6 +14,7 @@
             :template-variables="{
               cta: $t('view.link.cta')
             }"
+            scss="/code/view/components/link/scss.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
@@ -65,7 +66,7 @@ const definition: ComponentDefinition = {
   scss: createScssControllersConfig([
     '--mk-link-text-color',
     '--mk-link-text-color-active',
-    '--mk-link-gap',
+    '--mk-link-spacing',
     '--mk-link-font-size',
     '--mk-link-line-height',
   ]),
