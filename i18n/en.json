@@ -347,6 +347,21 @@
                 "setup": "Components options",
                 "configuration": "Configuration"
             }
+        },
+        "table": {
+            "titles": {
+                "customTemplate": {
+                    "block": "Custom header/cell templates",
+                    "logic": "The logic",
+                    "static": "Static render",
+                    "dynamic": "Dynamic render"
+                },
+                "draggable": {
+                    "block": "Draggable",
+                    "basic": "Basic example",
+                    "custom": "Custom Handler"
+                }
+            }
         }
     }
 }

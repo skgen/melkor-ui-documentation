@@ -46,7 +46,7 @@ const props = defineProps<Props>();
 
         .mk-AppLink {
             &:not([data-wrapper="true"])[data-active="true"] {
-                color: var(--mk-link-text-color);
+                color: var(--app-text-color-soft);
                 cursor: default;
 
                 &:hover {

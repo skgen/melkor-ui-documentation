@@ -1,6 +1,6 @@
 <template>
   <h3 id="draggable-custom-handler">
-    Custom Handler draggable example
+    {{ $t('view.table.titles.draggable.custom') }}
   </h3>
   <div class="pux-TableCustomHandlerDraggableExample-demo">
     <AppDemoBlock>

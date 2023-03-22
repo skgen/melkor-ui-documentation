@@ -1,6 +1,6 @@
 <template>
   <h3 id="draggable-basic">
-    Basic draggable example
+    {{ $t('view.table.titles.draggable.basic') }}
   </h3>
   <div>
     <AppDemoBlock>

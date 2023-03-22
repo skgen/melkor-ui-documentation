@@ -3,9 +3,9 @@
     <div class="pux-App">
       <TheHeader />
       <div class="pux-App-main">
-        <AppAsideNavigationContextProvider>
+        <TheAsideNavigationContextProvider>
           <router-view />
-        </AppAsideNavigationContextProvider>
+        </TheAsideNavigationContextProvider>
       </div>
     </div>
   </mkt-app>
@@ -17,7 +17,7 @@ import { onMounted, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { persistLocale } from '@patriarche/melkor';
 import TheHeader from '@/components/TheHeader.vue';
-import AppAsideNavigationContextProvider from '@/components/contexts/AppAsideNavigationContextProvider.vue';
+import TheAsideNavigationContextProvider from '@/components/contexts/TheAsideNavigationContextProvider.vue';
 
 const { locale } = useI18n();
 const router = useRouter();

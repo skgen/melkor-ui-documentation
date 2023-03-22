@@ -6,9 +6,13 @@
 
     <mk-wysiwyg-preview>
       <section>
-        <h2 id="playground">
+        <h2
+          id="playground"
+          v-anchor
+        >
           {{ $t('app.playground') }}
         </h2>
+
         <div>
           <AppSandboxPreview
             :definition="definition"
@@ -30,7 +34,9 @@
       </section>
       <TableCustomSlotsExample />
       <section>
-        <h2>Draggable example</h2>
+        <h2>
+          {{ $t('view.table.titles.draggable.block') }}
+        </h2>
         <TableBasicDraggableExample />
         <TableCustomHandlerDraggableExample />
       </section>
@@ -41,6 +47,7 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 import type { TableHeader, TableKey } from '@patriarche/melkor';
+import { useI18n } from 'vue-i18n';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
@@ -51,40 +58,41 @@ import TableBasicDraggableExample from '@/views/components/partials/table/TableB
 import TableCustomHandlerDraggableExample from '@/views/components/partials/table/TableCustomHandlerDraggableExample.vue';
 import useAsideNavigationContext from '@/composables/useAsideNavigationContext';
 
+const { t } = useI18n();
 const { setNavigation } = useAsideNavigationContext();
 
 onMounted(() => {
   setNavigation([
     {
-      title: 'Playground',
+      title: t('app.playground'),
       to: '/component/table#playground',
     },
     {
-      title: 'Custom header/cell templates',
+      title: t('view.table.titles.customTemplate.block'),
       children: [
         {
-          title: 'The logic',
+          title: t('view.table.titles.customTemplate.logic'),
           to: '/component/table#custom-templates',
         },
         {
-          title: 'Static render',
+          title: t('view.table.titles.customTemplate.static'),
           to: '/component/table#custom-templates-static',
         },
         {
-          title: 'Dynamic render',
+          title: t('view.table.titles.customTemplate.dynamic'),
           to: '/component/table#custom-templates-dynamic',
         },
       ],
     },
     {
-      title: 'Draggable',
+      title: t('view.table.titles.draggable.block'),
       children: [
         {
-          title: 'Basic example',
+          title: t('view.table.titles.draggable.basic'),
           to: '/component/table#draggable-basic',
         },
         {
-          title: 'Custom Handler',
+          title: t('view.table.titles.draggable.custom'),
           to: '/component/table#draggable-custom-handler',
         },
       ],

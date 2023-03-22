@@ -94,10 +94,6 @@ const router = createRouter({
         { path: 'draggable', component: () => import('@/views/components/DraggableView.vue') },
       ],
     },
-    // {
-    //   path: '/feature',
-
-    // },
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',

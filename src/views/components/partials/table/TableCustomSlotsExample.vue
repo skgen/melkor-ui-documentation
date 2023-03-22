@@ -1,10 +1,15 @@
 <template>
   <section class="pux-TableCustomSlotsExample">
-    <h2 id="custom-templates">
-      Custom header/cell templates
+    <h2
+      id="custom-templates"
+      v-anchor
+    >
+      {{ $t('view.table.titles.customTemplate.block') }}
     </h2>
 
-    <h3>The logic</h3>
+    <h3>
+      {{ $t('view.table.titles.customTemplate.logic') }}
+    </h3>
     <p>
       To customize the render of a column cells, create a slot named after the <code>key</code> of that column.
     </p>
@@ -108,9 +113,13 @@
       </ul>
     </p>
 
-    <h3 id="custom-templates-static">
-      Static render
+    <h3
+      id="custom-templates-static"
+      v-anchor
+    >
+      {{ $t('view.table.titles.customTemplate.static') }}
     </h3>
+
     <div>
       <AppDemoBlock>
         <mk-table
@@ -154,9 +163,14 @@
         :language="CodeLanguage.vue"
       />
     </div>
-    <h3 id="custom-templates-dynamic">
-      Dynamic render
+
+    <h3
+      id="custom-templates-dynamic"
+      v-anchor
+    >
+      {{ $t('view.table.titles.customTemplate.dynamic') }}
     </h3>
+
     <div>
       <AppDemoBlock>
         <mk-table
