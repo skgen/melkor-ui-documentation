@@ -6,7 +6,9 @@
 
     <mk-wysiwyg-preview>
       <section>
-        <h2>{{ $t('app.playground') }}</h2>
+        <h2 id="playground">
+          {{ $t('app.playground') }}
+        </h2>
         <div>
           <AppSandboxPreview
             :definition="definition"
@@ -17,7 +19,9 @@
           >
             <template #default="{ style }">
               <mk-table
+                v-if="playgroundReady"
                 v-bind="attributes.props"
+                v-model:items="items"
                 :style="style"
               />
             </template>
@@ -25,19 +29,68 @@
         </div>
       </section>
       <TableCustomSlotsExample />
+      <section>
+        <h2>Draggable example</h2>
+        <TableBasicDraggableExample />
+        <TableCustomHandlerDraggableExample />
+      </section>
     </mk-wysiwyg-preview>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import type { TableHeader, TableKey } from '@patriarche/melkor';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
-import TableCustomSlotsExample from '@/views/components/partials/TableCustomSlotsExample.vue';
+import TableCustomSlotsExample from '@/views/components/partials/table/TableCustomSlotsExample.vue';
+import TableBasicDraggableExample from '@/views/components/partials/table/TableBasicDraggableExample.vue';
+import TableCustomHandlerDraggableExample from '@/views/components/partials/table/TableCustomHandlerDraggableExample.vue';
+import useAsideNavigationContext from '@/composables/useAsideNavigationContext';
+
+const { setNavigation } = useAsideNavigationContext();
+
+onMounted(() => {
+  setNavigation([
+    {
+      title: 'Playground',
+      to: '/component/table#playground',
+    },
+    {
+      title: 'Custom header/cell templates',
+      children: [
+        {
+          title: 'The logic',
+          to: '/component/table#custom-templates',
+        },
+        {
+          title: 'Static render',
+          to: '/component/table#custom-templates-static',
+        },
+        {
+          title: 'Dynamic render',
+          to: '/component/table#custom-templates-dynamic',
+        },
+      ],
+    },
+    {
+      title: 'Draggable',
+      children: [
+        {
+          title: 'Basic example',
+          to: '/component/table#draggable-basic',
+        },
+        {
+          title: 'Custom Handler',
+          to: '/component/table#draggable-custom-handler',
+        },
+      ],
+    },
+  ]);
+});
 
 type TableItemValue = {
   id: string;
@@ -96,10 +149,12 @@ const items = ref<TableItemValue[]>([
 const sortableKeys: TableKey<TableItemValue>[] = ['__index', 'calories', 'carbs'];
 const hiddenKeys: TableKey<TableItemValue>[] = ['id'];
 
+const playgroundReady = ref(false);
+
 const definition: ComponentDefinition = {
   props: {
     headers: {
-      type: AttributeType.reference,
+      type: AttributeType.vModel,
       required: false,
       default: headers,
     },
@@ -123,18 +178,39 @@ const definition: ComponentDefinition = {
       required: false,
       default: hiddenKeys,
     },
+    activeColumn: {
+      type: AttributeType.select,
+      required: false,
+      default: undefined,
+      inputOptions: {
+        options: [
+          { label: '-----', value: undefined },
+          { label: 'Index', value: '__index' },
+          ...headers.map((header) => ({ label: header.value, value: header.key })),
+        ],
+      },
+    },
+    draggable: {
+      type: AttributeType.reference,
+      required: false,
+      default: undefined,
+    },
   },
 };
 
 const attributes = ref<ComponentAttributes>({
-  props: {
-    items: items.value,
-  },
+  props: {},
   scss: {},
   slots: {},
 });
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
-  attributes.value = newAttributes;
+  const { items: newItems, ...otherProps } = newAttributes.props;
+  attributes.value = {
+    ...newAttributes,
+    props: otherProps,
+  };
+  items.value = newItems;
+  playgroundReady.value = true;
 }
 </script>

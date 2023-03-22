@@ -1,4 +1,4 @@
-/* we will explain what these classes do next! */
+@import "fonts";
 @import "@patriarche/melkor/style/mixins";
 
 .view-fade {
@@ -13,15 +13,25 @@
     }
 }
 
+.fade {
+    &-enter-active,
+    &-leave-active, {
+        transition: opacity var(--app-transition-duration-opacity);
+    }
+
+    &-enter-from,
+    &-leave-to {
+        opacity: 0;
+    }
+}
+
 * {
     @include light {
-        // --app-primary-tone-color: 0 204 109;
-        --app-primary-tone-color: 12 120 246;
-
-        // --app-primary-tone-color: 230 52 0;
+        --app-primary-tone-color: 66 184 131;
     }
 
     @include dark {
-        --app-primary-tone-color: 12 120 246;
+        --app-primary-tone-color: 66 184 131;
+        --app-background-color: var(--c-grey-3);
     }
 }

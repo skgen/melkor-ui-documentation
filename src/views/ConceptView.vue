@@ -1,18 +1,11 @@
 <template>
-  <div class="pux-ConceptView">
-    <AppDocLayout>
-      <RouterView />
-    </AppDocLayout>
-  </div>
+  <AppDocLayout>
+    <div class="pux-ConceptView">
+      <router-view />
+    </div>
+  </AppDocLayout>
 </template>
 
 <script lang="ts" setup>
 import AppDocLayout from '@/components/layouts/AppDocLayout.vue';
 </script>
-
-<style lang="scss">
-.pux-ConceptView {
-    flex: 1;
-    padding: var(--app-m-5) var(--app-m-8);
-}
-</style>

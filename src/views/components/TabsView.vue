@@ -36,10 +36,14 @@
             </mk-tabs>
             <mk-layers v-model="index">
               <mk-layer :value="1">
-                Layer 1
+                <div :style="{ padding: 'var(--app-m-2)', border: '1px solid var(--app-border-color)', margin: 'var(--app-m-2) 0 0 0' }">
+                  Layer 1
+                </div>
               </mk-layer>
               <mk-layer :value="2">
-                Layer 2
+                <div :style="{ padding: 'var(--app-m-2)', border: '1px solid var(--app-border-color)', margin: 'var(--app-m-2) 0 0 0' }">
+                  Layer 2
+                </div>
               </mk-layer>
             </mk-layers>
           </AppSandboxPreview>
@@ -139,16 +143,3 @@ const tabs = [
 const index = ref(1);
 const playgroundIndex = ref<TabsIndex>(tabs[0].value);
 </script>
-
-<style lang="scss">
-.pux-TabsView {
-    .mk-AppLayers {
-        margin: var(--app-m-2) 0 0 0;
-    }
-
-    .mk-AppLayer {
-        padding: var(--app-m-2);
-        border: 1px solid var(--app-border-color);
-    }
-}
-</style>

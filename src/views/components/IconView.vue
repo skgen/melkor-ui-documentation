@@ -107,7 +107,12 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
-    round: {
+    rounded: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    sharp: {
       type: AttributeType.boolean,
       required: false,
       default: false,

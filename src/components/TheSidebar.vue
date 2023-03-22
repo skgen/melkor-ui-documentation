@@ -28,6 +28,7 @@ import { sidebar } from '@/lib/data/navigation';
     &-nav {
         display: flex;
         flex-direction: column;
+        gap: var(--app-m-3);
         padding-top: var(--app-m-3);
     }
 }

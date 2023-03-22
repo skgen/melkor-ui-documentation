@@ -131,12 +131,13 @@ const definition: ComponentDefinition = {
     },
   },
   scss: createScssControllersConfig([
-    '--mk-alert-color',
     '--mk-alert-background-color',
+    '--mk-alert-border-radius',
+    '--mk-alert-border-width',
+    '--mk-alert-color',
+    '--mk-alert-icon-size',
     '--mk-alert-padding-x',
     '--mk-alert-padding-y',
-    '--mk-alert-border-radius',
-    '--mk-alert-icon-size',
   ]),
   slots: createSlotsControllersConfig([
     'icon',

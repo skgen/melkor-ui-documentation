@@ -30,7 +30,7 @@
         top: 0;
         top: 50%;
         right: calc(100% + 25px);
-        font-family: "Material Symbols Outlined", sans-serif;
+        font-family: "Material Symbols Rounded", sans-serif;
         font-size: 30px;
         font-variation-settings: "FILL" 1;
         line-height: 1;

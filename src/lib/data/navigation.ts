@@ -5,23 +5,6 @@ export type NavigationLevel = {
 };
 
 export const sidebar: NavigationLevel[] = [
-  // {
-  //   title: 'app.setup',
-  //   children: [
-  //     {
-  //       title: 'navigation.theme',
-  //       to: '/concept/theme',
-  //     },
-  //     // {
-  //     //   title: 'app.translations',
-  //     //   to: '/translations',
-  //     // },
-  //     // {
-  //     //   title: 'app.colors',
-  //     //   to: '/colors',
-  //     // },
-  //   ],
-  // },
   {
     title: 'navigation.setup.category',
     children: [
@@ -31,7 +14,11 @@ export const sidebar: NavigationLevel[] = [
       },
       {
         title: 'view.setup.titles.setup',
-        to: '/concept/setup',
+        to: '/config/setup',
+      },
+      {
+        title: 'view.componentsOptions.titles.setup',
+        to: '/config/components-options',
       },
     ],
   },
@@ -176,6 +163,10 @@ export const sidebar: NavigationLevel[] = [
         to: '/component/table',
       },
       {
+        title: 'component.tableCell.name',
+        to: '/component/table-cell',
+      },
+      {
         title: 'component.skeleton.name',
         to: '/component/skeleton',
       },
@@ -190,6 +181,14 @@ export const sidebar: NavigationLevel[] = [
       {
         title: 'component.wysiwygPreview.name',
         to: '/component/wysiwyg-preview',
+      },
+      {
+        title: 'component.infiniteScroll.name',
+        to: '/component/infinite-scroll',
+      },
+      {
+        title: 'component.pagination.name',
+        to: '/component/pagination',
       },
     ],
   },

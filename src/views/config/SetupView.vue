@@ -9,7 +9,7 @@
         <h2>Install package</h2>
         <p>
           <AppAsyncCodeBlock
-            file-path="/code/view/home/install.bash.hbs"
+            file-path="/code/view/config/setup/install.bash.hbs"
             :language="CodeLanguage.bash"
             full-size
           />
@@ -24,7 +24,7 @@
         </blockquote>
         <p>
           <AppAsyncCodeBlock
-            file-path="/code/view/home/main.ts.hbs"
+            file-path="/code/view/config/setup/main.ts.hbs"
             :language="CodeLanguage.typescript"
             full-size
           />
@@ -35,7 +35,7 @@
         <p>Debug mode enables log of various informations about the library if needed, such as the list of registered components</p>
         <p>
           <AppAsyncCodeBlock
-            file-path="/code/view/home/main-debug.ts.hbs"
+            file-path="/code/view/config/setup/main-debug.ts.hbs"
             :language="CodeLanguage.typescript"
             full-size
           />
@@ -46,7 +46,7 @@
         <p>To enable {{ appName }}, you need to wrap your app with <code>mkt-app</code> component</p>
         <p>
           <AppAsyncCodeBlock
-            file-path="/code/view/home/app.vue.hbs"
+            file-path="/code/view/config/setup/app.vue.hbs"
             :language="CodeLanguage.vue"
             full-size
           />

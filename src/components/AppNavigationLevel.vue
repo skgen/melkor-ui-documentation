@@ -46,17 +46,13 @@ const props = withDefaults(defineProps<Props>(), {
         padding-top: var(--app-m-2);
     }
 
-    &[data-group="true"] + & {
-        padding-top: var(--app-m-3);
-    }
-
     svg {
         width: 20px;
     }
 
     &[data-deep="0"] {
         .mk-AppLink {
-            font-size: 0.875rem;
+            --mk-link-font-size: 0.875rem;
         }
 
         > .mk-AppLink {
@@ -64,13 +60,23 @@ const props = withDefaults(defineProps<Props>(), {
         }
     }
 
+    &[data-deep="2"] {
+        > .mk-AppLink {
+            padding-left: var(--app-m-1);
+        }
+    }
+
     &[data-deep="1"] {
         > .mk-AppLink {
             &:not([data-active="true"]) {
-                font-weight: 300;
-
                 --mk-link-text-color: var(--app-text-color-soft);
+
+                font-weight: 300;
             }
+        }
+
+        > .pux-AppNavigationLevel-children {
+            padding-top: var(--app-m-1);
         }
     }
 }

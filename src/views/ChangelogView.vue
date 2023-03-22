@@ -65,8 +65,10 @@ import V1_8_0 from '@/components/changelogs/TheV1-8-0.vue';
 import V1_8_1 from '@/components/changelogs/TheV1-8-1.vue';
 import V1_9_0 from '@/components/changelogs/TheV1-9-0.vue';
 import V1_9_1 from '@/components/changelogs/TheV1-9-1.vue';
+import V1_10_0 from '@/components/changelogs/TheV1-10-0.vue';
 
 const versions = [
+  V1_10_0,
   V1_9_1,
   V1_9_0,
   V1_8_1,
@@ -97,9 +99,6 @@ const versions = [
 
 <style lang="scss">
 .pux-ChangelogView {
-    flex: 1;
-    padding: var(--app-m-5) var(--app-m-8);
-
     h2 {
         .mk-AppIcon {
             color: var(--app-success-color);

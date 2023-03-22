@@ -16,6 +16,7 @@ export type AttributeDefinition = {
   type: AttributeType;
   required: boolean;
   default: any;
+  componentDefault?: any;
   inputOptions?: { [key: string]: unknown };
   renderOptions?: {
     valueAsSelectLabel?: boolean;
@@ -35,10 +36,15 @@ export type AttributesControllers = {
   [key: string]: AttributeController;
 };
 
+export type EmitAttributesDefinition = {
+  [key: string]: string;
+};
+
 export type ComponentDefinition = {
   props?: AttributesDefinition;
   scss?: AttributesDefinition;
   slots?: AttributesDefinition;
+  emits?: EmitAttributesDefinition;
 };
 
 export type ComponentAttributes = {

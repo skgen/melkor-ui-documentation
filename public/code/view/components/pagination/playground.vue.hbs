@@ -1,0 +1,16 @@
+{{#if hasSlots}}
+<mk-pagination{{{props}}}>
+  {{#if slots.prevIcon}}
+  <template #prev-icon>
+    <mk-icon icon="arrow_back" />
+  </template>
+  {{/if}}
+  {{#if slots.nextIcon}}
+  <template #next-icon>
+    <mk-icon icon="arrow_forward" />
+  </template>
+  {{/if}}
+</mk-pagination>
+{{else}}
+<mk-pagination{{{props}}}/>
+{{/if}}

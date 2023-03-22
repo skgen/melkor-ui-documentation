@@ -1,16 +1,19 @@
 <template>
-  <div class="pux-NotFoundView">
-    <mk-image src="/images/gandalf.gif" />
-  </div>
+  <AppDocLayout>
+    <div class="pux-NotFoundView">
+      <mk-image src="/images/gandalf.gif" />
+    </div>
+  </AppDocLayout>
 </template>
 
 <script lang="ts" setup>
-// import AppPageLayout from '@/layout/AppPageLayout.vue';
+import AppDocLayout from '@/components/layouts/AppDocLayout.vue';
 </script>
 
 <style lang="scss">
 .pux-NotFoundView {
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
     width: 100%;

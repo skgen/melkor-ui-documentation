@@ -1,0 +1,14 @@
+<mk-table
+  v-model:items="items"
+  :headers="headers"
+  :draggable="draggableOptions"
+>
+  <template #drag>
+    <mk-button
+      outlined
+      data-custom-draggable-cta
+    >
+      <mk-icon icon="drag_indicator" />
+    </mk-button>
+  </template>
+</mk-table>

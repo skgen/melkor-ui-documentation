@@ -4,6 +4,41 @@
       {{ $t('component.link.name') }}
     </AppPageTitle>
 
+    <!-- <div>
+      <mk-link to="/">
+        /
+      </mk-link>
+      <mk-link
+        to="/"
+        exact
+      >
+        /
+      </mk-link>
+    </div>
+    <div>
+      <mk-link
+        to="/component"
+        exact-match
+      >
+        /component
+      </mk-link>
+    </div>
+    <div>
+      <mk-link to="/component/link">
+        /component/link
+      </mk-link>
+    </div>
+    <div>
+      <mk-link to="/component/link?test">
+        /component/link?test
+      </mk-link>
+    </div>
+    <div>
+      <mk-link to="/component/link#test ">
+        /component/link#test
+      </mk-link>
+    </div> -->
+
     <mk-wysiwyg-preview>
       <section>
         <h2>{{ $t('app.playground') }}</h2>
@@ -61,6 +96,21 @@ const definition: ComponentDefinition = {
       type: AttributeType.boolean,
       required: false,
       default: false,
+    },
+    exact: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    exactPath: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    debug: {
+      type: AttributeType.boolean,
+      required: false,
+      default: true,
     },
   },
   scss: createScssControllersConfig([

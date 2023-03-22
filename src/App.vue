@@ -2,9 +2,10 @@
   <mkt-app>
     <div class="pux-App">
       <TheHeader />
-      <div class="pux-App-content">
-        <TheSidebar />
-        <RouterView />
+      <div class="pux-App-main">
+        <AppAsideNavigationContextProvider>
+          <router-view />
+        </AppAsideNavigationContextProvider>
       </div>
     </div>
   </mkt-app>
@@ -16,7 +17,7 @@ import { onMounted, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { persistLocale } from '@patriarche/melkor';
 import TheHeader from '@/components/TheHeader.vue';
-import TheSidebar from '@/components/TheSidebar.vue';
+import AppAsideNavigationContextProvider from '@/components/contexts/AppAsideNavigationContextProvider.vue';
 
 const { locale } = useI18n();
 const router = useRouter();
@@ -41,9 +42,10 @@ onMounted(() => {
     width: 100%;
     min-height: 100vh;
 
-    &-content {
+    &-main {
         display: flex;
         flex: 1;
+        flex-direction: column;
     }
 }
 </style>

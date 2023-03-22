@@ -34,7 +34,6 @@
 </template>
 
 <script lang="ts" setup>
-
 import { ref } from 'vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
@@ -80,6 +79,7 @@ const definition: ComponentDefinition = {
     '--mk-button-border-color',
     '--mk-button-border-width',
     '--mk-button-border-radius',
+    '--mk-button-cursor',
     '--mk-button-font-size',
     '--mk-button-line-height',
     '--mk-button-font-weight',

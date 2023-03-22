@@ -39,7 +39,8 @@
         "translations": "Translations",
         "viewState": "View State",
         "floatingViews": "Floating views",
-        "fullscreenViews": "Fullscreen views"
+        "fullscreenViews": "Fullscreen views",
+        "features": "Features"
     },
     "navigation": {
         "theme": {
@@ -85,6 +86,9 @@
         },
         "table": {
             "name": "Table"
+        },
+        "tableCell": {
+            "name": "Table Cell"
         },
         "form": {
             "name": "Form"
@@ -167,8 +171,18 @@
         "input-checkbox-tree": {
             "name": "Checkbox input tree",
             "type": "checkbox"
+        },
+        "infiniteScroll": {
+            "name": "Infinite scroll"
+        },
+        "pagination": {
+            "name": "Pagination"
+        },
+        "draggable": {
+            "name": "Draggable"
         }
     },
+    "feature": {},
     "view": {
         "home": {
             "titles": {
@@ -230,7 +244,7 @@
                 "apply": "Apply a theme manually",
                 "default": "Using default Themes in SCSS",
                 "dark": "Dark Theme",
-                "light":"Light Theme",
+                "light": "Light Theme",
                 "custom": "Custom themes",
                 "usageInComponent": "Use it in your component",
                 "definitionInTypescript": "Definition in Typescript",
@@ -249,7 +263,7 @@
         },
         "i18n": {
             "titles": {
-                "setup":"I18n setup",
+                "setup": "I18n setup",
                 "keys": "Translation keys"
             },
             "paragraph": {
@@ -258,7 +272,7 @@
         },
         "router": {
             "titles": {
-                "setup":"Router setup"
+                "setup": "Router setup"
             }
         },
         "inputDate": {
@@ -272,7 +286,7 @@
                 "viewValueAsStates": "View value as States",
                 "viewValueAsValues": "View value as Values"
             },
-            "errors" : {
+            "errors": {
                 "global": "Your team doesn't fit the mission ...",
                 "gandalf": "You must take Gandalf, he's so strong !",
                 "sauron": "You can't take Sauron, he's a vilain !",
@@ -326,6 +340,12 @@
                     "close": "I'm done, close it !",
                     "source": "Source"
                 }
+            }
+        },
+        "componentsOptions": {
+            "titles": {
+                "setup": "Components options",
+                "configuration": "Configuration"
             }
         }
     }

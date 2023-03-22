@@ -14,13 +14,23 @@ const router = createRouter({
       component: () => import('@/views/ChangelogView.vue'),
     },
     {
-      path: '/concept',
-      component: () => import('@/views/ComponentView.vue'),
+      path: '/config',
+      component: () => import('@/views/ConfigView.vue'),
       children: [
         {
           path: 'setup',
-          component: () => import('@/views/concepts/setup/SetupView.vue'),
+          component: () => import('@/views/config/SetupView.vue'),
         },
+        {
+          path: 'components-options',
+          component: () => import('@/views/config/ComponentsOptionsView.vue'),
+        },
+      ],
+    },
+    {
+      path: '/concept',
+      component: () => import('@/views/ComponentView.vue'),
+      children: [
         {
           path: 'using-theme',
           component: () => import('@/views/concepts/theme/UsingThemeView.vue'),
@@ -57,6 +67,7 @@ const router = createRouter({
         { path: 'wysiwyg-preview', component: () => import('@/views/components/WysiwygPreviewView.vue') },
         { path: 'tabs', component: () => import('@/views/components/TabsView.vue') },
         { path: 'table', component: () => import('@/views/components/TableView.vue') },
+        { path: 'table-cell', component: () => import('@/views/components/TableCellView.vue') },
         { path: 'form', component: () => import('@/views/components/FormView.vue') },
         { path: 'fullscreen-view', component: () => import('@/views/components/FullscreenViewView.vue') },
         { path: 'skeleton', component: () => import('@/views/components/SkeletonView.vue') },
@@ -78,8 +89,15 @@ const router = createRouter({
         { path: 'input-range', component: () => import('@/views/components/io/InputRangeView.vue') },
         { path: 'input-checkbox', component: () => import('@/views/components/io/InputCheckboxView.vue') },
         { path: 'input-checkbox-tree', component: () => import('@/views/components/io/InputCheckboxTreeView.vue') },
+        { path: 'infinite-scroll', component: () => import('@/views/components/InfiniteScrollView.vue') },
+        { path: 'pagination', component: () => import('@/views/components/PaginationView.vue') },
+        { path: 'draggable', component: () => import('@/views/components/DraggableView.vue') },
       ],
     },
+    // {
+    //   path: '/feature',
+
+    // },
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',

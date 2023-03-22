@@ -6,6 +6,7 @@ import svgLoader from 'vite-svg-loader';
 import vueI18n from '@intlify/vite-plugin-vue-i18n';
 import { exit } from 'process';
 import { resolve } from 'path';
+import basicSsl from '@vitejs/plugin-basic-ssl';
 // @ts-ignore
 import melkorPackage from './node_modules/@patriarche/melkor/package.json';
 
@@ -40,14 +41,21 @@ export default ({ mode }: { mode: string; }) => {
   ] : [];
 
   return defineConfig({
-    build: {
-      outDir: 'dist'
-    },
     server: {
       port,
+      https: true,
     },
     preview: {
       port,
+    },
+    build: {
+      rollupOptions: {
+        output: [
+          {
+            assetFileNames: "assets/[name]-[hash][extname]",
+          },
+        ],
+      },
     },
     plugins: [
       vue(), 
@@ -57,6 +65,7 @@ export default ({ mode }: { mode: string; }) => {
         include: fileURLToPath(new URL('./i18n/**', import.meta.url)),
         globalSFCScope: true,
       }),
+      basicSsl(),
     ],
     resolve: {
       dedupe: ['vue'],

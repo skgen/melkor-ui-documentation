@@ -1,0 +1,14 @@
+{{{comment}}}
+
+// list, loading & range are supposed to be used in template
+const {
+  list, loading, append, range, canAppend,
+} = useMockList({
+  pageMax: 5,
+});
+
+function handleInfinite(direction: VerticalDirection) {
+  if (direction === VerticalDirection.bottom) {
+    append();
+  }
+}

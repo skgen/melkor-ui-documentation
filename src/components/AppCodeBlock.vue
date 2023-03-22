@@ -31,10 +31,10 @@
       <mk-icon :icon="expanded ? 'remove' : 'add'" />
     </button>
     <div
-      ref="editor"
       class="pux-AppCodeBlock-editor"
     >
       <PrismEditor
+        ref="editor"
         v-model="code"
         :highlight="handleHighlight"
         readonly
@@ -107,7 +107,7 @@ const mapping:
 const maxHeightNum = 400;
 const maxHeight = computed(() => `${maxHeightNum}px`);
 
-const editor = ref<HTMLDivElement | null>(null);
+const editor = ref<HTMLElement | null>(null);
 const { height } = useElementSize(editor);
 const canExpand = computed(() => !props.fullSize && height.value > maxHeightNum);
 
@@ -231,8 +231,8 @@ function handleExpand() {
         padding: var(--app-m-2) var(--app-m-6) var(--app-m-2) var(--app-m-3);
         overflow: auto;
 
-        /* you must provide font-family font-size line-height. Example: */
-        font-family: "Fira code", "Fira Mono", Consolas, Menlo, Courier, monospace;
+        // Meslo vs Source Code based on current emotions
+        font-family: "MesloLGS NF", "Source Code Pro", monospace;
         font-size: 14px;
         line-height: 1.5;
         background: var(--c-grey-12);
