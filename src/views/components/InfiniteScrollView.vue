@@ -215,29 +215,33 @@ function handleInfinite(direction: VerticalDirection) {
 
     [data-debug="true"] {
         .mk-AppInfiniteScroll {
-            > div:first-child,
-            > div:last-child {
-                position: relative;
+            > div {
+                &:empty {
+                    &:first-child,
+                    &:last-child {
+                        position: relative;
 
-                &::before {
-                    position: absolute;
-                    left: 0;
-                    width: 100%;
-                    content: "";
-                }
-            }
+                        &::before {
+                            position: absolute;
+                            left: 0;
+                            width: 100%;
+                            content: "";
+                        }
+                    }
 
-            > div:first-child {
-                &::before {
-                    top: var(--pux-infinite-loading-debug-distance);
-                    border-top: 1px solid blue;
-                }
-            }
+                    &:first-child {
+                        &::before {
+                            top: var(--pux-infinite-loading-debug-distance);
+                            border-top: 1px solid blue;
+                        }
+                    }
 
-            > div:last-child {
-                &::before {
-                    bottom: var(--pux-infinite-loading-debug-distance);
-                    border-top: 1px solid red;
+                    &:last-child {
+                        &::before {
+                            bottom: var(--pux-infinite-loading-debug-distance);
+                            border-top: 1px solid red;
+                        }
+                    }
                 }
             }
         }
