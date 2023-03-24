@@ -1,6 +1,6 @@
 <template>
   <AppChangelogVersion stable>
-    v1.10.1
+    v1.11.0
   </AppChangelogVersion>
 
   <h3>Enhancements</h3>
