@@ -26,7 +26,7 @@
         </div>
         <mk-wysiwyg-preview>
           <section
-            v-for="(version, index) in versions"
+            v-for="(version, index) in versionsComponents"
             :key="index"
           >
             <component :is="version" />
@@ -38,63 +38,41 @@
 </template>
 
 <script lang="ts" setup>
+import { defineAsyncComponent } from 'vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import AppDocLayout from '@/components/layouts/AppDocLayout.vue';
-import V0_8_0 from '@/components/changelogs/TheV0-8-0.vue';
-import V0_9_0 from '@/components/changelogs/TheV0-9-0.vue';
-import V0_9_1 from '@/components/changelogs/TheV0-9-1.vue';
-import V0_9_2 from '@/components/changelogs/TheV0-9-2.vue';
-import V0_9_3 from '@/components/changelogs/TheV0-9-3.vue';
-import V0_9_4 from '@/components/changelogs/TheV0-9-4.vue';
-import V0_10_0 from '@/components/changelogs/TheV0-10-0.vue';
-import V1_0_0 from '@/components/changelogs/TheV1-0-0.vue';
-import V1_1_0 from '@/components/changelogs/TheV1-1-0.vue';
-import V1_2_0 from '@/components/changelogs/TheV1-2-0.vue';
-import V1_2_1 from '@/components/changelogs/TheV1-2-1.vue';
-import V1_3_0 from '@/components/changelogs/TheV1-3-0.vue';
-import V1_4_0 from '@/components/changelogs/TheV1-4-0.vue';
-import V1_4_1 from '@/components/changelogs/TheV1-4-1.vue';
-import V1_5_0 from '@/components/changelogs/TheV1-5-0.vue';
-import V1_6_0 from '@/components/changelogs/TheV1-6-0.vue';
-import V1_7_0 from '@/components/changelogs/TheV1-7-0.vue';
-import V1_7_1 from '@/components/changelogs/TheV1-7-1.vue';
-import V1_7_2 from '@/components/changelogs/TheV1-7-2.vue';
-import V1_7_3 from '@/components/changelogs/TheV1-7-3.vue';
-import V1_7_4 from '@/components/changelogs/TheV1-7-4.vue';
-import V1_8_0 from '@/components/changelogs/TheV1-8-0.vue';
-import V1_8_1 from '@/components/changelogs/TheV1-8-1.vue';
-import V1_9_0 from '@/components/changelogs/TheV1-9-0.vue';
-import V1_9_1 from '@/components/changelogs/TheV1-9-1.vue';
-import V1_10_0 from '@/components/changelogs/TheV1-10-0.vue';
 
 const versions = [
-  V1_10_0,
-  V1_9_1,
-  V1_9_0,
-  V1_8_1,
-  V1_8_0,
-  V1_7_4,
-  V1_7_3,
-  V1_7_2,
-  V1_7_1,
-  V1_7_0,
-  V1_6_0,
-  V1_5_0,
-  V1_4_1,
-  V1_4_0,
-  V1_3_0,
-  V1_2_1,
-  V1_2_0,
-  V1_1_0,
-  V1_0_0,
-  V0_10_0,
-  V0_9_4,
-  V0_9_3,
-  V0_9_2,
-  V0_9_1,
-  V0_9_0,
-  V0_8_0,
+  '1.10.1',
+  '1.10.0',
+  '1.9.1',
+  '1.9.0',
+  '1.8.1',
+  '1.8.0',
+  '1.7.4',
+  '1.7.3',
+  '1.7.2',
+  '1.7.1',
+  '1.7.0',
+  '1.6.0',
+  '1.5.0',
+  '1.4.1',
+  '1.4.0',
+  '1.3.0',
+  '1.2.1',
+  '1.2.0',
+  '1.1.0',
+  '1.0.0',
+  '0.10.0',
+  '0.9.4',
+  '0.9.3',
+  '0.9.2',
+  '0.9.1',
+  '0.9.0',
+  '0.8.0',
 ];
+
+const versionsComponents = versions.map((v) => defineAsyncComponent(() => import(`@/components/changelogs/TheV${v}.vue`)));
 </script>
 
 <style lang="scss">

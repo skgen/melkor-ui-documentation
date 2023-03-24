@@ -66,6 +66,16 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
+    light: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
+    wide: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
   scss: createScssControllersConfig([
     '--mk-button-padding-x',
@@ -83,6 +93,11 @@ const definition: ComponentDefinition = {
     '--mk-button-font-size',
     '--mk-button-line-height',
     '--mk-button-font-weight',
+    '--mk-button-wide-font-size',
+    '--mk-button-wide-bordered-padding-x',
+    '--mk-button-wide-bordered-padding-y',
+    '--mk-button-wide-padding-x',
+    '--mk-button-wide-padding-y',
   ]),
 };
 
