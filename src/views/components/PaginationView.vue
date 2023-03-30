@@ -64,7 +64,7 @@ const definition: ComponentDefinition = {
     page: {
       type: AttributeType.vModel,
       required: true,
-      default: page,
+      default: page.value,
     },
     range: {
       type: AttributeType.reference,

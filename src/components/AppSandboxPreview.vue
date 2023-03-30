@@ -279,12 +279,12 @@ const templateVars = computed(() => {
       const controller = propsControllers[key];
       const { value } = controller.input;
       const paramKey = paramCase(key);
-      if (isRealValue(value) && !isDefaultComponentValue(controller)) {
-        if (controller.type === AttributeType.vModel) {
-          tProps.push(`v-model="${key}"`);
-        } else if (controller.type === AttributeType.reference) {
-          tProps.push(`:${paramKey}="${key}"`);
-        } else if (controller.type === AttributeType.boolean) {
+      if (controller.type === AttributeType.vModel) {
+        tProps.push(`v-model="${key}"`);
+      } else if (controller.type === AttributeType.reference) {
+        tProps.push(`:${paramKey}="${key}"`);
+      } else if (isRealValue(value) && !isDefaultComponentValue(controller)) {
+        if (controller.type === AttributeType.boolean) {
           tProps.push(paramKey);
         } else if (controller.type === AttributeType.number) {
           tProps.push(`:${paramKey}="${value}"`);

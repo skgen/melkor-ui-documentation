@@ -10,14 +10,14 @@
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/menu/template.hbs"
+            template="/code/view/components/menu/playground.vue.hbs"
             :template-variables="{
               label: open ? $t('view.menu.action.close') : $t('view.menu.action.open'),
               title: $t('view.menu.paragraph.popinTitle'),
               paragraph: $t('view.menu.paragraph.popinContent'),
             }"
-            scss="/code/view/components/menu/scss.hbs"
-            script="/code/view/components/menu/script.hbs"
+            scss="/code/view/components/menu/playground.scss.hbs"
+            script="/code/view/components/menu/playground.ts.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">

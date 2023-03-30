@@ -10,7 +10,7 @@
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/fullscreen-view/template.hbs"
+            template="/code/view/components/fullscreen-view/playground.vue.hbs"
             :manually-injected-props="{
               class: 'pux-FullscreenViewView-basicExample'
             }"
@@ -22,7 +22,7 @@
               t2: $t('view.fullscreenView.title.basicExample.2'),
               t3: $t('view.fullscreenView.title.basicExample.3'),
             }"
-            script="/code/view/components/fullscreen-view/script.hbs"
+            script="/code/view/components/fullscreen-view/playground.ts.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">

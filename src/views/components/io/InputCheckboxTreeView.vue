@@ -602,7 +602,7 @@ const definition: ComponentDefinition = {
     state: {
       type: AttributeType.vModel,
       required: true,
-      default: state,
+      default: state.value,
     },
     validate: {
       type: AttributeType.reference,
