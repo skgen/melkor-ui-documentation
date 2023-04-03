@@ -1,4 +1,4 @@
-<mk-button @click="() => view = !view">
+<mk-button @click="() => open = !open">
   {{{open}}}
 </mk-button>
 <mk-fullscreen-view{{{props}}}>
@@ -25,7 +25,7 @@
               </span>
               <mk-link
                 as-button
-                @click="() => view = !view"
+                @click="() => open = !open"
               >
                 {{{close}}}
               </mk-link>
@@ -62,7 +62,7 @@
           </span>
           <mk-link
             as-button
-            @click="() => view = !view"
+            @click="() => open = !open"
           >
             {{{close}}}
           </mk-link>

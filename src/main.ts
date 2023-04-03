@@ -6,7 +6,7 @@ import '@style/main.scss';
 import router from '@/plugins/router';
 import i18n from '@/plugins/i18n';
 import App from '@/App.vue';
-import { listenToScroll } from './features/scroll';
+import { listenToScroll } from '@/features/scroll';
 
 const app = createApp(App);
 
