@@ -22,12 +22,17 @@
             </template>
           </i18n-t>
         </blockquote>
-        <h2>{{ $t('app.playground') }}</h2>
+        <h2
+          id="playground"
+          v-anchor
+        >
+          {{ $t('app.playground') }}
+        </h2>
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/icon/template.hbs"
-            scss="/code/view/components/icon/scss.hbs"
+            template="/code/view/components/icon/playground.vue.hbs"
+            scss="/code/view/components/icon/playground.scss.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
@@ -40,11 +45,16 @@
         </div>
       </section>
       <section>
-        <h2>{{ $t('app.examples') }}</h2>
+        <h2
+          id="examples"
+          v-anchor
+        >
+          {{ $t('app.examples') }}
+        </h2>
         <p>{{ $t('view.icon.default') }}</p>
         <div>
           <AppAsyncCodeBlock
-            file-path="/code/view/components/icon/default.hbs"
+            file-path="/code/view/components/icon/default.vue.hbs"
             :language="CodeLanguage.vue"
           />
         </div>
@@ -56,7 +66,7 @@
         <p>{{ $t('view.icon.withButton') }}</p>
         <div>
           <AppAsyncCodeBlock
-            file-path="/code/view/components/icon/button.hbs"
+            file-path="/code/view/components/icon/button.vue.hbs"
             :language="CodeLanguage.vue"
             :variables="variables"
           />
@@ -67,6 +77,21 @@
               <mk-icon icon="save" /> {{ variables.label }}
             </mk-button>
           </AppDemoBlock>
+        </div>
+      </section>
+      <section>
+        <h2
+          id="get-icons"
+          v-anchor
+        >
+          {{ $t('view.icon.getIcons') }}
+        </h2>
+
+        <div>
+          <AppAsyncCodeBlock
+            file-path="/code/view/components/icon/icons.ts.hbs"
+            :language="CodeLanguage.typescript"
+          />
         </div>
       </section>
     </mk-wysiwyg-preview>
@@ -102,6 +127,24 @@ const definition: ComponentDefinition = {
         hint: `Name of a ${t('view.icon.sourceName')} icon`,
       },
     },
+    // icon: {
+    //   type: AttributeType.select,
+    //   required: false,
+    //   default: null,
+    //   inputOptions: {
+    //     options: (() => Object.entries(getIcons()).map(([key, icons]) => [
+    //       {
+    //         label: key,
+    //         value: key,
+    //         disabled: true,
+    //       },
+    //       ...icons.map((i) => ({
+    //         label: i,
+    //         value: i,
+    //       })),
+    //     ]).flat())(),
+    //   },
+    // },
     fill: {
       type: AttributeType.boolean,
       required: false,

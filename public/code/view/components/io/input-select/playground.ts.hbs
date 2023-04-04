@@ -5,10 +5,10 @@ function validate(value: SelectInputValue) {
 }
 
 const options: SelectInputOption<SelectInputValue>[] = [
-  { label: '-----', value: null },
+  { label: '-----', value: null, disabled: true },
   { label: 'Melkor', value: { name: 'Melkor', race: 'ainur' } },
   { label: 'Celebrimbor', value: { name: 'Celebrimbor', race: 'elf' } },
-  { label: 'Manwë', value: { name: 'Manwë', race: 'ainur' } },
+  { label: 'Manwë', value: { name: 'Manwë', race: 'ainur' }, disabled: true },
   { label: 'Glorfindel', value: { name: 'Glorfindel', race: 'elf' } },
 ];
 

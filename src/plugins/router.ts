@@ -92,6 +92,7 @@ const router = createRouter({
         { path: 'infinite-scroll', component: () => import('@/views/components/InfiniteScrollView.vue') },
         { path: 'pagination', component: () => import('@/views/components/PaginationView.vue') },
         { path: 'draggable', component: () => import('@/views/components/DraggableView.vue') },
+        { path: 'media-query', component: () => import('@/views/components/MediaQueryView.vue') },
       ],
     },
     {

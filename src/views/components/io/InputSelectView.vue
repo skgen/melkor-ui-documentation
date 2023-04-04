@@ -11,9 +11,9 @@
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/io/input-select/template.hbs"
-            scss="/code/view/components/io/input-select/scss.hbs"
-            script="/code/view/components/io/input-select/script.hbs"
+            template="/code/view/components/io/input-select/playground.vue.hbs"
+            scss="/code/view/components/io/input-select/playground.scss.hbs"
+            script="/code/view/components/io/input-select/playground.ts.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
@@ -51,10 +51,10 @@ function validate(value: SelectInputValue) {
 }
 
 const options: SelectInputOption<SelectInputValue>[] = [
-  { label: '-----', value: null },
+  { label: '-----', value: null, disabled: true },
   { label: 'Melkor', value: { name: 'Melkor', race: 'ainur' } },
   { label: 'Celebrimbor', value: { name: 'Celebrimbor', race: 'elf' } },
-  { label: 'Manwë', value: { name: 'Manwë', race: 'ainur' } },
+  { label: 'Manwë', value: { name: 'Manwë', race: 'ainur' }, disabled: true },
   { label: 'Glorfindel', value: { name: 'Glorfindel', race: 'elf' } },
 ];
 

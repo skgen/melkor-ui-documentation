@@ -190,6 +190,10 @@ export const sidebar: NavigationLevel[] = [
         title: 'component.pagination.name',
         to: '/component/pagination',
       },
+      {
+        title: 'component.mediaQuery.name',
+        to: '/component/media-query',
+      },
     ],
   },
   {

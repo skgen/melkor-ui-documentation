@@ -31,7 +31,7 @@
               <p>{{ $t('view.image.default') }}</p>
               <div>
                 <AppDemoBlock>
-                  <mk-image src="/images/landscape.jpeg" />
+                  <mk-image :src="imageSource" />
                 </AppDemoBlock>
               </div>
             </mk-wysiwyg-preview>
@@ -88,7 +88,7 @@ import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 
-const imageSource = '/images/landscape.jpeg';
+const imageSource = '/images/moria-baraddur.jpeg';
 
 const ratio = [4, 3];
 

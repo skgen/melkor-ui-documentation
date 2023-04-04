@@ -180,6 +180,9 @@
         },
         "draggable": {
             "name": "Draggable"
+        },
+        "mediaQuery": {
+            "name": "Media Query"
         }
     },
     "feature": {},
@@ -228,7 +231,8 @@
             "sized": "Icon set to {size}",
             "dynamic": "Dynamic icon size",
             "simpleLabel": "Simple label",
-            "withButton": "Icon + Text inlined in a button"
+            "withButton": "Icon + Text inlined in a button",
+            "getIcons": "Getting the list of icons"
         },
         "tabs": {
             "static": {
