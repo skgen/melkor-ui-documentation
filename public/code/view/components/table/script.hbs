@@ -8,7 +8,9 @@ type TableItemValue = {
   iron: string;
 };
 
-const headers: TableHeader<TableItemValue>[] = [
+type TableHeaderValue = string;
+
+const headers: TableHeader<TableItemValue, TableHeaderValue>[] = [
   { value: 'Dessert (100g serving)', key: 'name' },
   { value: 'Calories', key: 'calories' },
   { value: 'Fat (g)', key: 'fat' },
