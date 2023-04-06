@@ -133,6 +133,7 @@ const definition: ComponentDefinition = {
     '--mk-input-number-border-width',
     '--mk-input-number-color',
     '--mk-input-number-font-size',
+    '--mk-input-number-line-height',
     '--mk-input-number-icon-color',
     '--mk-input-number-icon-size',
     '--mk-input-number-padding-x',

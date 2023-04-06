@@ -141,6 +141,10 @@ export const sidebar: NavigationLevel[] = [
         title: 'component.input-checkbox-tree.name',
         to: '/component/input-checkbox-tree',
       },
+      {
+        title: 'component.inputIcon.name',
+        to: '/component/input-icon',
+      },
       // {
       //   title: 'component.form.name',
       //   to: '/component/form',

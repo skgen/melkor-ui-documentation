@@ -139,6 +139,7 @@ const definition: ComponentDefinition = {
     '--mk-input-date-border-width',
     '--mk-input-date-color',
     '--mk-input-date-font-size',
+    '--mk-input-date-line-height',
     '--mk-input-date-icon-color',
     '--mk-input-date-icon-size',
     '--mk-input-date-padding-x',

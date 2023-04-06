@@ -110,6 +110,7 @@ const definition: ComponentDefinition = {
     '--mk-input-password-border-width',
     '--mk-input-password-color',
     '--mk-input-password-font-size',
+    '--mk-input-password-line-height',
     '--mk-input-password-icon-color',
     '--mk-input-password-icon-size',
     '--mk-input-password-padding-x',

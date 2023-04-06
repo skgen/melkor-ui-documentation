@@ -99,32 +99,40 @@
     <div class="mk-AppSandboxPreview-code">
       <slot name="code-before" />
 
-      <mk-wysiwyg-preview v-if="props.template">
+      <mk-wysiwyg-preview v-if="props.template || props.script || (props.scss && scssVars.scss) || $slots['code-after']">
         <h3>Code</h3>
         <blockquote>
           If a prop doesnt show up, it's either a:
           <code>false</code> / <code>null</code> / <code>undefined</code> / <strong>component default</strong> value.
         </blockquote>
+
+        <div v-if="props.template">
+          <AppAsyncCodeBlock
+
+            :file-path="props.template"
+            :language="CodeLanguage.template"
+            :variables="templateVars"
+          />
+        </div>
+        <div v-if="props.script">
+          <AppAsyncCodeBlock
+
+            :file-path="props.script"
+            :language="CodeLanguage.typescript"
+            :variables="scriptVars"
+          />
+        </div>
+        <div v-if="props.scss && scssVars.scss">
+          <AppAsyncCodeBlock
+            :file-path="props.scss"
+            :language="CodeLanguage.scss"
+            :variables="scssVars"
+          />
+        </div>
+        <div v-if="$slots['code-after']">
+          <slot name="code-after" />
+        </div>
       </mk-wysiwyg-preview>
-      <AppAsyncCodeBlock
-        v-if="props.template"
-        :file-path="props.template"
-        :language="CodeLanguage.template"
-        :variables="templateVars"
-      />
-      <AppAsyncCodeBlock
-        v-if="props.script"
-        :file-path="props.script"
-        :language="CodeLanguage.typescript"
-        :variables="scriptVars"
-      />
-      <AppAsyncCodeBlock
-        v-if="props.scss && scssVars.scss"
-        :file-path="props.scss"
-        :language="CodeLanguage.scss"
-        :variables="scssVars"
-      />
-      <slot name="code-after" />
     </div>
   </div>
 </template>
@@ -477,6 +485,7 @@ defineExpose({
             display: flex;
             gap: var(--app-m-1);
             align-items: center;
+            margin: 0;
         }
     }
 

@@ -124,6 +124,7 @@ const definition: ComponentDefinition = {
     '--mk-input-checkbox-color-active',
     '--mk-input-checkbox-color-on-active',
     '--mk-input-checkbox-font-size',
+    '--mk-input-checkbox-line-height',
     '--mk-input-checkbox-icon-size',
     '--mk-input-checkbox-size',
     '--mk-input-checkbox-spacing',

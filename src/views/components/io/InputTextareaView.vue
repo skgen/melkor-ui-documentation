@@ -107,6 +107,7 @@ const definition: ComponentDefinition = {
     '--mk-input-textarea-border-width',
     '--mk-input-textarea-color',
     '--mk-input-textarea-font-size',
+    '--mk-input-textarea-line-height',
     '--mk-input-textarea-padding-x',
     '--mk-input-textarea-padding-y',
     '--mk-input-textarea-placeholder-color',

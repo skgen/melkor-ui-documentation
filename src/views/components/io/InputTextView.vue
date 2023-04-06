@@ -114,6 +114,7 @@ const definition: ComponentDefinition = {
     '--mk-input-text-border-width',
     '--mk-input-text-color',
     '--mk-input-text-font-size',
+    '--mk-input-text-line-height',
     '--mk-input-text-icon-color',
     '--mk-input-text-icon-size',
     '--mk-input-text-padding-x',

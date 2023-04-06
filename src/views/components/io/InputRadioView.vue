@@ -116,6 +116,7 @@ const definition: ComponentDefinition = {
     '--mk-input-radio-color',
     '--mk-input-radio-color-active',
     '--mk-input-radio-font-size',
+    '--mk-input-radio-line-height',
     '--mk-input-radio-size',
     '--mk-input-radio-spacing',
   ]),

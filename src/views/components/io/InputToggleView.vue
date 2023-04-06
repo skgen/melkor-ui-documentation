@@ -139,6 +139,7 @@ const definition: ComponentDefinition = {
     '--mk-input-toggle-color-on-active',
     '--mk-input-toggle-color-on-background',
     '--mk-input-toggle-font-size',
+    '--mk-input-toggle-line-height',
     '--mk-input-toggle-icon-size',
     '--mk-input-toggle-padding',
     '--mk-input-toggle-spacing',

@@ -1,23 +1,22 @@
 <template>
   <div>
     <AppInputTitlePreview
-      i18n-key="input-select"
+      i18n-key="inputIcon"
       :state="state"
     />
-
     <mk-wysiwyg-preview>
       <section>
         <h2>{{ $t('app.playground') }}</h2>
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/io/input-select/playground.vue.hbs"
-            scss="/code/view/components/io/input-select/playground.scss.hbs"
-            script="/code/view/components/io/input-select/playground.ts.hbs"
+            template="/code/view/components/io/input-icon/playground.vue.hbs"
+            scss="/code/view/components/io/input-icon/playground.scss.hbs"
+            script="/code/view/components/io/input-icon/playground.ts.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
-              <mk-input-select
+              <mk-input-icon
                 v-model="state"
                 v-bind="attributes.props"
                 :style="style"
@@ -35,7 +34,7 @@ import { ref } from 'vue';
 import {
   createInputState,
   type InputState,
-  type SelectInputOption,
+  type IconInputValue,
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
@@ -44,25 +43,13 @@ import {
 import AppInputTitlePreview from '@/components/AppInputTitlePreview.vue';
 import { createScssControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
-type SelectInputValue = { name: string; race: 'ainur' | 'elf' } | null;
-
-function validate(value: SelectInputValue) {
+function validate(value: IconInputValue) {
   return value === null ? 'Required' : null;
 }
 
-const options: SelectInputOption<SelectInputValue>[] = [
-  { label: '-----', value: null, disabled: true },
-  { label: 'Melkor', value: { name: 'Melkor', race: 'ainur' } },
-  { label: 'Celebrimbor', value: { name: 'Celebrimbor', race: 'elf' } },
-  { label: 'Manwë', value: { name: 'Manwë', race: 'ainur' }, disabled: true },
-  { label: 'Glorfindel', value: { name: 'Glorfindel', race: 'elf' } },
-];
-
-const state = ref<InputState<SelectInputValue>>(
-  createInputState({
-    value: options[1].value,
-  }),
-);
+const state = ref<InputState<IconInputValue>>(createInputState({
+  value: null,
+}));
 
 const definition: ComponentDefinition = {
   props: {
@@ -79,17 +66,17 @@ const definition: ComponentDefinition = {
     name: {
       type: AttributeType.string,
       required: false,
-      default: 'select',
+      default: 'icon',
     },
     label: {
       type: AttributeType.string,
       required: false,
-      default: 'Input select',
+      default: 'Input icon',
     },
     hint: {
       type: AttributeType.string,
       required: false,
-      default: "I'm a select input",
+      default: "I'm an icon input",
     },
     disabled: {
       type: AttributeType.boolean,
@@ -101,24 +88,22 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
-    options: {
-      type: AttributeType.reference,
-      required: true,
-      default: options,
-    },
   },
   scss: createScssControllersConfig([
-    '--mk-input-select-background-color',
-    '--mk-input-select-border-color',
-    '--mk-input-select-border-radius',
-    '--mk-input-select-border-width',
-    '--mk-input-select-color',
-    '--mk-input-select-font-size',
-    '--mk-input-select-line-height',
-    '--mk-input-select-icon-size',
-    '--mk-input-select-padding-x-left',
-    '--mk-input-select-padding-x-right',
-    '--mk-input-select-padding-y',
+    '--mk-input-icon-background-color',
+    '--mk-input-icon-border-color',
+    '--mk-input-icon-border-radius',
+    '--mk-input-icon-border-width',
+    '--mk-input-icon-font-size',
+    '--mk-input-icon-line-height',
+    '--mk-input-icon-color',
+    '--mk-input-icon-icon-size',
+    '--mk-input-icon-padding-x-left',
+    '--mk-input-icon-padding-x-right',
+    '--mk-input-icon-padding-y',
+    '--mk-input-icon-options-distance',
+    '--mk-input-icon-option-background-color',
+    '--mk-input-icon-option-background-color-hover',
   ]),
 };
 

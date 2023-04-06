@@ -1,0 +1,7 @@
+function validate(value: IconInputValue) {
+  return value === null ? 'Required' : null;
+}
+
+const state = ref<InputState<IconInputValue>>(createInputState({
+  value: null,
+}));

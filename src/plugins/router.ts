@@ -84,6 +84,7 @@ const router = createRouter({
         { path: 'input-file', component: () => import('@/views/components/io/InputFileView.vue') },
         { path: 'input-color', component: () => import('@/views/components/io/InputColorView.vue') },
         { path: 'input-select', component: () => import('@/views/components/io/InputSelectView.vue') },
+        { path: 'input-icon', component: () => import('@/views/components/io/InputIconView.vue') },
         { path: 'input-radio', component: () => import('@/views/components/io/InputRadioView.vue') },
         { path: 'input-date', component: () => import('@/views/components/io/InputDateView.vue') },
         { path: 'input-range', component: () => import('@/views/components/io/InputRangeView.vue') },
