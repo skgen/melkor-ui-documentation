@@ -162,7 +162,7 @@ const playgroundReady = ref(false);
 const definition: ComponentDefinition = {
   props: {
     headers: {
-      type: AttributeType.vModel,
+      type: AttributeType.reference,
       required: false,
       default: headers,
     },
