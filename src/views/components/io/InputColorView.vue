@@ -11,9 +11,9 @@
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/io/input-color/template.hbs"
-            scss="/code/view/components/io/input-color/scss.hbs"
-            script="/code/view/components/io/input-color/script.hbs"
+            template="/code/view/components/io/input-color/playground.vue.hbs"
+            scss="/code/view/components/io/input-color/playground.scss.hbs"
+            script="/code/view/components/io/input-color/playground.ts.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
@@ -100,6 +100,11 @@ const definition: ComponentDefinition = {
       type: AttributeType.string,
       required: false,
       default: '#ff0000',
+    },
+    cancelable: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
     },
   },
   scss: createScssControllersConfig([

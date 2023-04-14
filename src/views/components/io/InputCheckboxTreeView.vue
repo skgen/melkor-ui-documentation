@@ -285,7 +285,6 @@ import {
   exportCheckboxTreeLevelErrorsAsArray,
   findCheckboxTreeLevel,
   countCheckedCheckboxTreeLevels,
-  exportCheckboxTreeLevels,
 } from '@patriarche/melkor';
 import { useI18n } from 'vue-i18n';
 import isEqual from 'lodash/isEqual';
@@ -471,11 +470,6 @@ const state = ref<InputState<InputValue>>(
     ],
   }),
 );
-
-watch(state, (newState) => {
-  const levels = exportCheckboxTreeLevels(newState.value);
-  console.log(levels);
-});
 
 const advancedState = ref<InputState<InputValue>>(
   createInputState({

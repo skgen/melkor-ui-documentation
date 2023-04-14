@@ -1,0 +1,16 @@
+{{#if hasSlots}}
+<mk-toggle{{{props}}}>
+  {{#if slots.checkedIcon}}
+  <template #checked-icon>
+    <mk-icon icon="check" />
+  </template>
+  {{/if}}
+  {{#if slots.uncheckedIcon}}
+  <template #unchecked-icon>
+    <mk-icon icon="close" />
+  </template>
+  {{/if}}
+</mk-toggle>
+{{else}}
+<mk-toggle{{{props}}}/>
+{{/if}}

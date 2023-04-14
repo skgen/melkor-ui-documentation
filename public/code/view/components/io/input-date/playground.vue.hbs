@@ -17,6 +17,11 @@
     </template>
   </template>
   {{/if}}
+  {{#if slots.cancel}}
+  <template #cancel>
+    <mk-icon icon="delete_forever" />
+  </template>
+  {{/if}}
 </mk-input-date>
 {{else}}
 <mk-input-date{{{props}}}/>

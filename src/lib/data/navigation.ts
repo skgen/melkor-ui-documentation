@@ -1,8 +1,4 @@
-export type NavigationLevel = {
-  title: string;
-  to?: string;
-  children?: NavigationLevel[];
-};
+import type { NavigationLevel } from '@/features/navigation';
 
 export const sidebar: NavigationLevel[] = [
   {
@@ -83,6 +79,23 @@ export const sidebar: NavigationLevel[] = [
       {
         title: 'component.link.name',
         to: '/component/link',
+      },
+    ],
+  },
+  {
+    title: 'app.checkables',
+    children: [
+      {
+        title: 'component.checkbox.name',
+        to: '/component/checkbox',
+      },
+      {
+        title: 'component.radio.name',
+        to: '/component/radio',
+      },
+      {
+        title: 'component.toggle.name',
+        to: '/component/toggle',
       },
     ],
   },

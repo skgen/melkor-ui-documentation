@@ -61,7 +61,8 @@
         "viewState": "View State",
         "floatingViews": "Floating views",
         "fullscreenViews": "Fullscreen views",
-        "features": "Features"
+        "features": "Features",
+        "checkables": "Checkables"
     },
     "navigation": {
         "theme": {
@@ -208,6 +209,15 @@
         },
         "mediaQuery": {
             "name": "Media Query"
+        },
+        "checkbox": {
+            "name": "Checkbox"
+        },
+        "radio": {
+            "name": "Radio"
+        },
+        "toggle": {
+            "name": "Toggle"
         }
     },
     "feature": {},

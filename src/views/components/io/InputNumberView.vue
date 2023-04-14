@@ -11,9 +11,9 @@
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/io/input-number/template.hbs"
-            scss="/code/view/components/io/input-number/scss.hbs"
-            script="/code/view/components/io/input-number/script.hbs"
+            template="/code/view/components/io/input-number/playground.vue.hbs"
+            scss="/code/view/components/io/input-number/playground.scss.hbs"
+            script="/code/view/components/io/input-number/playground.ts.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
@@ -33,6 +33,12 @@
                   #trailing-icon
                 >
                   <mk-icon icon="euro" />
+                </template>
+                <template
+                  v-if="attributes.slots['cancel']"
+                  #cancel
+                >
+                  <mk-icon icon="delete_forever" />
                 </template>
               </mk-input-number>
             </template>
@@ -110,6 +116,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: '1337',
     },
+    cancelable: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
     min: {
       type: AttributeType.number,
       required: false,
@@ -141,9 +152,11 @@ const definition: ComponentDefinition = {
     '--mk-input-number-placeholder-color',
     '--mk-input-number-spacing',
   ]),
-  slots: createSlotsControllersConfig(
-    ['leading-icon', 'trailing-icon'],
-  ),
+  slots: createSlotsControllersConfig([
+    'leading-icon',
+    'trailing-icon',
+    'cancel',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

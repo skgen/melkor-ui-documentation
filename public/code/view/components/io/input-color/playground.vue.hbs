@@ -5,6 +5,11 @@
     <mk-icon icon="invert_colors" />
   </template>
   {{/if}}
+  {{#if slots.cancel}}
+  <template #icon>
+    <mk-icon icon="delete_forever" />
+  </template>
+  {{/if}}
 </mk-input-color>
 {{else}}
 <mk-input-color{{{props}}}/>

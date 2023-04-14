@@ -10,6 +10,11 @@
     <mk-icon icon="verified_user" />
   </template>
   {{/if}}
+  {{#if slots.cancel}}
+  <template #cancel>
+    <mk-icon icon="delete_forever" />
+  </template>
+  {{/if}}
 </mk-input-password>
 {{else}}
 <mk-input-password{{{props}}}/>

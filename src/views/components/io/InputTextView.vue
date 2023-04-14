@@ -10,9 +10,9 @@
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/io/input-text/template.hbs"
-            scss="/code/view/components/io/input-text/scss.hbs"
-            script="/code/view/components/io/input-text/script.hbs"
+            template="/code/view/components/io/input-text/playground.vue.hbs"
+            scss="/code/view/components/io/input-text/playground.scss.hbs"
+            script="/code/view/components/io/input-text/playground.ts.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
@@ -32,6 +32,12 @@
                   #trailing-icon
                 >
                   <mk-icon icon="euro" />
+                </template>
+                <template
+                  v-if="attributes.slots['cancel']"
+                  #cancel
+                >
+                  <mk-icon icon="delete_forever" />
                 </template>
               </mk-input-text>
             </template>
@@ -106,6 +112,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: 'Melkor',
     },
+    cancelable: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
   scss: createScssControllersConfig([
     '--mk-input-text-background-color',
@@ -122,9 +133,11 @@ const definition: ComponentDefinition = {
     '--mk-input-text-placeholder-color',
     '--mk-input-text-spacing',
   ]),
-  slots: createSlotsControllersConfig(
-    ['leading-icon', 'trailing-icon'],
-  ),
+  slots: createSlotsControllersConfig([
+    'leading-icon',
+    'trailing-icon',
+    'cancel',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

@@ -10,6 +10,11 @@
     <mk-icon icon="euro" />
   </template>
   {{/if}}
+  {{#if slots.cancel}}
+  <template #cancel>
+    <mk-icon icon="delete_forever" />
+  </template>
+  {{/if}}
 </mk-input-number>
 {{else}}
 <mk-input-number{{{props}}}/>

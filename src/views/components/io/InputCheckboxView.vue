@@ -117,18 +117,10 @@ const definition: ComponentDefinition = {
     },
   },
   scss: createScssControllersConfig([
-    '--mk-input-checkbox-border-color',
-    '--mk-input-checkbox-border-radius',
-    '--mk-input-checkbox-border-width',
     '--mk-input-checkbox-color',
-    '--mk-input-checkbox-color-active',
-    '--mk-input-checkbox-color-on-active',
     '--mk-input-checkbox-font-size',
     '--mk-input-checkbox-line-height',
-    '--mk-input-checkbox-icon-size',
-    '--mk-input-checkbox-size',
     '--mk-input-checkbox-spacing',
-    '--mk-input-checkbox-target-padding',
   ]),
   slots: createSlotsControllersConfig([
     'checked-icon',

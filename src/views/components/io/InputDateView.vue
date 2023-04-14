@@ -11,13 +11,13 @@
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/io/input-date/template.hbs"
+            template="/code/view/components/io/input-date/playground.vue.hbs"
             :template-variables="{
               datetimeExpression,
               dateExpression
             }"
-            scss="/code/view/components/io/input-date/scss.hbs"
-            script="/code/view/components/io/input-date/script.hbs"
+            scss="/code/view/components/io/input-date/playground.scss.hbs"
+            script="/code/view/components/io/input-date/playground.ts.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
@@ -44,6 +44,12 @@
                       {{ formatDate(value, 'dd/LL/yyyy') }}
                     </template>
                   </template>
+                </template>
+                <template
+                  v-if="attributes.slots['cancel']"
+                  #cancel
+                >
+                  <mk-icon icon="delete_forever" />
                 </template>
               </mk-input-date>
             </template>
@@ -121,6 +127,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
+    cancelable: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
     datetime: {
       type: AttributeType.boolean,
       required: false,
@@ -149,6 +160,7 @@ const definition: ComponentDefinition = {
   slots: createSlotsControllersConfig([
     'icon',
     'preview',
+    'cancel',
   ]),
 };
 

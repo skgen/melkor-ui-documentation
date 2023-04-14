@@ -94,6 +94,9 @@ const router = createRouter({
         { path: 'pagination', component: () => import('@/views/components/PaginationView.vue') },
         { path: 'draggable', component: () => import('@/views/components/DraggableView.vue') },
         { path: 'media-query', component: () => import('@/views/components/MediaQueryView.vue') },
+        { path: 'checkbox', component: () => import('@/views/components/checkables/CheckboxView.vue') },
+        { path: 'radio', component: () => import('@/views/components/checkables/RadioView.vue') },
+        { path: 'toggle', component: () => import('@/views/components/checkables/ToggleView.vue') },
       ],
     },
     {

@@ -11,9 +11,9 @@
         <div>
           <AppSandboxPreview
             :definition="definition"
-            template="/code/view/components/io/input-password/template.hbs"
-            scss="/code/view/components/io/input-password/scss.hbs"
-            script="/code/view/components/io/input-password/script.hbs"
+            template="/code/view/components/io/input-password/playground.vue.hbs"
+            scss="/code/view/components/io/input-password/playground.scss.hbs"
+            script="/code/view/components/io/input-password/playground.ts.hbs"
             @change="handlePreviewChange"
           >
             <template #default="{ style }">
@@ -33,6 +33,12 @@
                   #trailing-icon
                 >
                   <mk-icon icon="verified_user" />
+                </template>
+                <template
+                  v-if="attributes.slots['cancel']"
+                  #cancel
+                >
+                  <mk-icon icon="delete_forever" />
                 </template>
               </mk-input-password>
             </template>
@@ -102,6 +108,11 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
+    cancelable: {
+      type: AttributeType.boolean,
+      required: false,
+      default: false,
+    },
   },
   scss: createScssControllersConfig([
     '--mk-input-password-background-color',
@@ -118,7 +129,11 @@ const definition: ComponentDefinition = {
     '--mk-input-password-spacing',
   ]),
   slots: createSlotsControllersConfig(
-    ['leading-icon', 'trailing-icon'],
+    [
+      'leading-icon',
+      'trailing-icon',
+      'cancel',
+    ],
   ),
 };
 
