@@ -15,7 +15,12 @@
             }"
             @change="handlePreviewChange"
           >
-            <mk-wysiwyg-preview v-bind="attributes.props" />
+            <template #default="{ style }">
+              <mk-wysiwyg-preview
+                v-bind="attributes.props"
+                :style="style"
+              />
+            </template>
           </AppSandboxPreview>
         </div>
       </section>
@@ -39,7 +44,7 @@ import AppPageTitle from '@/components/AppPageTitle.vue';
 import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
-import { createTemplate } from '@/lib/utils';
+import { createScssControllersConfig, createTemplate } from '@/lib/utils';
 
 const initialized = ref(false);
 const sample = ref<string | null>(null);
@@ -52,6 +57,21 @@ const definition: ComponentDefinition = {
       default: null,
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-wysiwyg-preview-background-color',
+    '--mk-wysiwyg-preview-background-color-soft',
+    '--mk-wysiwyg-preview-background-color-highlight',
+    '--mk-wysiwyg-preview-border-color',
+    '--mk-wysiwyg-preview-border-color-soft',
+    '--mk-wysiwyg-preview-font-family',
+    '--mk-wysiwyg-preview-font-size',
+    '--mk-wysiwyg-preview-line-height',
+    '--mk-wysiwyg-preview-text-color',
+    '--mk-wysiwyg-preview-text-color-accent',
+    '--mk-wysiwyg-preview-text-color-soft',
+    '--mk-wysiwyg-preview-background-color-attention',
+    '--mk-wysiwyg-preview-text-color-attention',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({

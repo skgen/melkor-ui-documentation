@@ -83,7 +83,7 @@
       </div>
       <div class="mk-AppSandboxPreview-preview">
         <mk-wysiwyg-preview>
-          <h3 class="mk-AppSandboxPreview-preview-title">
+          <h3>
             Render
             <slot name="preview-title" />
           </h3>
@@ -481,7 +481,7 @@ defineExpose({
         flex-direction: column;
         gap: var(--app-m-2);
 
-        &-title {
+        h3 {
             display: flex;
             gap: var(--app-m-1);
             align-items: center;

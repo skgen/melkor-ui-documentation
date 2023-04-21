@@ -53,8 +53,7 @@ const definition: ComponentDefinition = {
     '--mk-theme-toggle-spacing',
     '--mk-theme-toggle-size',
     '--mk-theme-toggle-padding',
-    '--mk-theme-toggle-target-padding',
-    '--mk-theme-toggle-icon-siz',
+    '--mk-theme-toggle-icon-size',
   ]),
 };
 
