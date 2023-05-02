@@ -18,7 +18,7 @@
             :template-tabs-depth="2"
             @change="handlePreviewChange"
           >
-            <template #preview-title>
+            <template #preview-toolbar>
               <div class="pux-InfiniteScrollView-preview">
                 <div class="pux-InfiniteScrollView-preview-cta">
                   <mk-button
@@ -197,12 +197,8 @@ function handleInfinite(direction: VerticalDirection) {
         justify-content: space-between;
 
         &-cta {
-            position: absolute;
-            top: 50%;
-            left: 0;
             display: flex;
             align-items: center;
-            transform: translate(0, -50%);
         }
 
         .pux-AppSpinner {

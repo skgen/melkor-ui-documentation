@@ -60,7 +60,7 @@
           <p>We ain't vilains, we just like badass characters, no harm.</p>
           <h2>Still here ?</h2>
           <p>
-            If you're not already gone, you might want to <mk-link to="/concept/setup">
+            If you're not already gone, you might want to <mk-link to="/config/setup">
               try it out
             </mk-link>.
           </p>

@@ -1,6 +1,9 @@
 <template>
   <div class="mk-AppSandboxPreview">
-    <div class="mk-AppSandboxPreview-content">
+    <div
+      class="mk-AppSandboxPreview-content"
+      :data-is-viewport-active="!!viewportState.value ?? undefined"
+    >
       <div
         v-if="isValue(propsControllers) || isValue(slotsControllers) || isValue(scssControllers)"
         class="mk-AppSandboxPreview-controllers"
@@ -82,17 +85,40 @@
         </template>
       </div>
       <div class="mk-AppSandboxPreview-preview">
-        <mk-wysiwyg-preview>
-          <h3>
-            Render
-            <slot name="preview-title" />
-          </h3>
-        </mk-wysiwyg-preview>
+        <div class="mk-AppSandboxPreview-preview-title">
+          <mk-wysiwyg-preview>
+            <h3>
+              Render
+            </h3>
+          </mk-wysiwyg-preview>
+          <div class="mk-AppSandboxPreview-preview-viewport">
+            <mk-input-radio
+              v-model="viewportState"
+              :options="viewportOptions"
+              nullable
+            />
+          </div>
+        </div>
+        <div
+          v-if="$slots['preview-toolbar']"
+          class="mk-AppSandboxPreview-preview-toolbar"
+        >
+          <slot name="preview-toolbar" />
+        </div>
         <div
           class="mk-AppSandboxPreview-component"
           :data-primary="props.primaryMode || undefined"
         >
-          <slot :style="scssStyle" />
+          <div class="mk-AppSandboxPreview-viewport">
+            <span
+              v-if="viewportState.value"
+              :style="{ maxWidth: viewportState.value ? `${viewportState.value}px` : undefined }"
+              class="mk-AppSandboxPreview-viewport-scale"
+            > {{ '<=' }} {{ viewportState.value }}px</span>
+            <div :style="{ maxWidth: viewportState.value ? `${viewportState.value}px` : undefined }">
+              <slot :style="scssStyle" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -139,10 +165,10 @@
 
 <script lang="ts" setup>
 import {
-  computed, onMounted, reactive, watch,
+  computed, onMounted, reactive, ref, watch,
 } from 'vue';
 import {
-  createInputState, isDef, isString, isValue, type InputState, type SelectInputOptions,
+  createInputState, isDef, isString, isValue, type InputState, type SelectInputOptions, type RadioInputOption,
 } from '@patriarche/melkor';
 import isBoolean from 'lodash/isBoolean';
 import { camelCase, paramCase } from 'change-case';
@@ -216,6 +242,20 @@ function createControllers(def: AttributesDefinition) {
 const propsControllers = props.definition?.props ? reactive(createControllers(props.definition.props)) : null;
 const scssControllers = props.definition?.scss ? reactive(createControllers(props.definition.scss)) : null;
 const slotsControllers = props.definition?.slots ? reactive(createControllers(props.definition.slots)) : null;
+
+type ViewportInputValue = number | null;
+
+const viewportOptions: RadioInputOption<ViewportInputValue>[] = [
+  { label: 'L', value: 1024 },
+  { label: 'M', value: 768 },
+  { label: 'S', value: 360 },
+];
+
+const viewportState = ref<InputState<ViewportInputValue>>(
+  createInputState({
+    value: null,
+  }),
+);
 
 const anyInteractablePropsController = computed(() => {
   if (!isValue(propsControllers)) {
@@ -437,6 +477,8 @@ defineExpose({
 
 <style lang="scss">
 .mk-AppSandboxPreview {
+    $this: &;
+
     display: flex;
     flex-direction: column;
     gap: var(--app-m-4);
@@ -448,6 +490,21 @@ defineExpose({
         display: flex;
         gap: var(--app-m-4);
         align-items: flex-start;
+
+        &[data-is-viewport-active="true"] {
+            flex-direction: column-reverse;
+            align-items: stretch;
+
+            #{$this} {
+                &-preview {
+                    position: static;
+                }
+
+                &-viewport {
+                    padding-top: var(--app-m-5);
+                }
+            }
+        }
     }
 
     &-controllers {
@@ -465,7 +522,7 @@ defineExpose({
             background-color: var(--app-background-color);
             border: 3px dashed var(--app-border-color);
             border-radius: 8px;
-            transition: border-color var(--app-transition-duration-border);
+            transition: border-color var(--app-transition-duration-background);
 
             &:hover {
                 border-color: var(--app-primary-color);
@@ -481,11 +538,60 @@ defineExpose({
         flex-direction: column;
         gap: var(--app-m-2);
 
-        h3 {
+        &-title {
+            display: flex;
+            gap: var(--app-m-2);
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &-viewport {
             display: flex;
             gap: var(--app-m-1);
             align-items: center;
-            margin: 0;
+
+            .mk-AppInputRadio {
+                &-options {
+                    display: flex;
+                    gap: var(--app-m-2);
+                }
+
+                &-input {
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    &-viewport {
+        position: relative;
+
+        &-scale {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            font-size: 12px;
+
+            // font-weight: 500;
+            color: var(--app-border-color);
+            text-align: center;
+            user-select: none;
+
+            &::after {
+                display: block;
+                width: 100%;
+                height: 8px;
+                margin-top: var(--app-m-1);
+                content: "";
+                border: 1px dashed var(--app-border-color);
+                border-bottom: none;
+            }
+        }
+
+        > div {
+            overflow: auto;
         }
     }
 
@@ -495,7 +601,7 @@ defineExpose({
         background-color: var(--app-background-color);
         border: 3px dashed var(--app-border-color);
         border-radius: 8px;
-        transition: border-color var(--app-transition-duration-border);
+        transition: border-color var(--app-transition-duration-background);
 
         &:hover {
             border-color: var(--app-primary-color);
