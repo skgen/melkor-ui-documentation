@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { NavigationLevel } from '@/lib/data/navigation';
+import type { NavigationLevel } from '@/features/navigation';
 
 type Props = {
   deep?: number;
