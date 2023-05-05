@@ -1,20 +1,11 @@
 import { createApp } from 'vue';
-import { createMelkorUi } from '@patriarche/melkor';
-import '@patriarche/melkor/style';
-import '@style/main.scss';
 
-import router from '@/plugins/router';
-import i18n from '@/plugins/i18n';
+import mkui from '@/plugins/melkor';
 import App from '@/App.vue';
+import '@style/main.scss';
 import { listenToScroll } from '@/features/scroll';
 
 const app = createApp(App);
-
-const mkui = createMelkorUi({
-  router,
-  i18n,
-  // debug: true,
-});
 
 app.use(mkui);
 

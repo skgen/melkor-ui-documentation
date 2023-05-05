@@ -1,4 +1,5 @@
 import { fileURLToPath, URL } from 'url';
+import fs from 'node:fs';
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -7,8 +8,6 @@ import vueI18n from '@intlify/vite-plugin-vue-i18n';
 import { exit } from 'process';
 import { resolve } from 'path';
 import basicSsl from '@vitejs/plugin-basic-ssl';
-// @ts-ignore
-import melkorPackage from './node_modules/@patriarche/melkor/package.json';
 
 // https://vitejs.dev/config/
 export default ({ mode }: { mode: string; }) => {
@@ -23,7 +22,8 @@ export default ({ mode }: { mode: string; }) => {
 
   const port = parseInt(process.env.VITE_APP_PORT, 10);
 
-  const libraryPath = fileURLToPath(new URL('../melkor-ui-package/', import.meta.url));
+  const libraryPath = process.env.VITE_APP_MELKOR_ROOT_PATH as string;
+  const packageJson = JSON.parse(fs.readFileSync(resolve(libraryPath, 'package.json'), { encoding: 'utf-8' }));
 
   const libraryAlias = isDev ? [
     {
@@ -87,7 +87,7 @@ export default ({ mode }: { mode: string; }) => {
     },
     define: {
       __APP__: {
-        version: melkorPackage.version
+        version: packageJson.version
       },
       __VUE_I18N_FULL_INSTALL__: true,
       __VUE_I18N_LEGACY_API__: false,
