@@ -22,7 +22,7 @@ export default ({ mode }: { mode: string; }) => {
 
   const port = parseInt(process.env.VITE_APP_PORT, 10);
 
-  const libraryPath = process.env.VITE_APP_MELKOR_ROOT_PATH as string;
+  const libraryPath = isDev ? process.env.VITE_APP_MELKOR_ROOT_PATH as string : './node_modules/@patriarche/melkor';
   const packageJson = JSON.parse(fs.readFileSync(resolve(libraryPath, 'package.json'), { encoding: 'utf-8' }));
 
   const libraryAlias = isDev ? [

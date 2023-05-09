@@ -6,11 +6,21 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@style": ["./src/assets/scss/*"],
-      "@patriarche/melkor": ["../melkor-ui-package/dist/@types/index.d.ts"],
-      "@patriarche/melkor/style": ["../melkor-ui-package/dist/style.css"],
-      "@patriarche/melkor/style/*": ["../melkor-ui-package/dist/scss/*"],
+      "@/*": [
+        "./src/*"
+      ],
+      "@style": [
+        "./src/assets/scss/*"
+      ],
+      "@patriarche/melkor": [
+        "../melkor-ui-package/dist/@types/index.d.ts"
+      ],
+      "@patriarche/melkor/style": [
+        "../melkor-ui-package/dist/style.css"
+      ],
+      "@patriarche/melkor/style/*": [
+        "../melkor-ui-package/dist/scss/*"
+      ],
     },
     "lib": [
       "DOM",
@@ -19,9 +29,9 @@
     ],
   },
   "include": [
-    "env.d.ts", 
-    "src/**/*.ts", 
-    "src/**/*.d.ts", 
+    "env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
     "src/**/*.vue",
   ],
   "exclude": [
