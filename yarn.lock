@@ -538,10 +538,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@patriarche/melkor@1.16.1":
-  version "1.16.1"
-  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-1.16.1.tgz#dbc6c2b4ce50345066ad396ce9aa6ea39e6ebbdf"
-  integrity sha1-28bCtM5QNFBmrTls6apuo55uu98=
+"@patriarche/melkor@1.16.2":
+  version "1.16.2"
+  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-1.16.2.tgz#5daccb18b886bf80c35bac47e6e9ccf4430cc3d0"
+  integrity sha1-XazLGLiGv4DDW6xH5unM9EMMw9A=
   dependencies:
     "@tiptap/core" "2.0.0-beta.220"
     "@tiptap/pm" "2.0.0-beta.220"
@@ -553,6 +553,7 @@
     filesize "^9.0.11"
     floating-vue "^2.0.0-beta.20"
     lodash "^4.17.21"
+    nanoid "^4.0.2"
     normalize.css "^8.0.1"
     pinia "^2.0.16"
     prosemirror-commands "^1.3.1"
@@ -3583,6 +3584,11 @@ nanoid@^3.3.6:
   version "3.3.6"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
+
+nanoid@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-4.0.2.tgz#140b3c5003959adbebf521c170f282c5e7f9fb9e"
+  integrity sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==
 
 natural-compare-lite@^1.4.0:
   version "1.4.0"

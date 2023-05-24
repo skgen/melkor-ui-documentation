@@ -1,7 +1,7 @@
 import { fileURLToPath, URL } from 'url';
 import fs from 'node:fs';
 import { defineConfig, loadEnv } from 'vite';
-import vue from '@vitejs/plugin-vue'
+import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
 import vueI18n from '@intlify/vite-plugin-vue-i18n';
