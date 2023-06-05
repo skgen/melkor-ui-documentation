@@ -14,7 +14,7 @@
     "test:unit": "vitest --environment jsdom"
   },
   "dependencies": {
-    "@patriarche/melkor": "1.16.2",
+    "@patriarche/melkor": "1.17.0",
     "@vueuse/core": "^9.11.1",
     "change-case": "^4.1.2",
     "handlebars": "^4.7.7",
