@@ -1,0 +1,35 @@
+<mk-input-select-x
+  v-model="state"
+  v-model:search="search"
+  :options="options"
+>
+  <template #values="{ selection }">
+    <template v-if="!loaded && !loading">
+      Select to load data
+    </template>
+    <template v-else-if="!loaded && loading">
+      Loading ...
+    </template>
+    <template v-else>
+      {{ selection.map((entry: Character ) => entry.name).join(', ') }}
+    </template>
+  </template>
+  <template #option-label="{ option }">
+    {{ option.value.name }}
+  </template>
+  <template #options-empty>
+    <template v-if="!loaded && loading">
+      Loading ...
+    </template>
+    <template v-else>
+      No result
+    </template>
+  </template>
+  <template #options-header>
+    <template v-if="loaded && loading">
+      <mk-menu-entry>
+        <small><em>Loading new options ...</em></small>
+      </mk-menu-entry>
+    </template>
+  </template>
+</mk-input-select-x>

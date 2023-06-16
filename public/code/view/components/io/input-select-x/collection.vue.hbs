@@ -1,0 +1,11 @@
+<mk-input-select-x
+  v-model="state"
+  :options="options"
+>
+  <template #option-label="{ option }">
+    {{ option.value.name }}
+  </template>
+  <template #values="{ selection }">
+    {{ selection.map((entry: Character) => entry.name).join(', ') }}
+  </template>
+</mk-input-select-x>

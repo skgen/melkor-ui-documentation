@@ -1,0 +1,57 @@
+
+
+{{#if hasSlots}}
+<mk-input-select-x{{{props}}}>
+  {{#if slots.value}}
+  <template #value="{ selection }">
+    <strong>
+      \{{ selection }}
+    </strong>
+  </template>
+  {{/if}}
+  {{#if slots.option}}
+  <template #option="{ option, selected, interactive, index }">
+    <strong>#\{{ index }}</strong>
+    <span>\{{ option.value }}</span>
+    <template v-if="selected">
+      <mk-icon icon="arrow_back" />
+    </template>
+  </template>
+  {{/if}}
+  {{#if slots.optionLabel}}
+  <template #option-label="{ option, selected, interactive, index }">
+    <em>\{{ option.value }}</em>
+  </template>
+  {{/if}}
+  {{#if slots.optionIcon}}
+  <template #option-icon="{ option, selected, interactive, index }">
+    <mk-radio :checked="selected" />
+  </template>
+  {{/if}}
+  {{#if slots.optionsEmpty}}
+  <template #options-empty>
+    <strong>There is no option to select !</strong>
+  </template>
+  {{/if}}   
+  {{#if slots.optionsHeader}}
+  <template #options-header>
+    <mk-menu-entry v-if="search.value">
+      <mk-wysiwyg-preview>
+        <em>Current results for <strong>{{ search.value }}</strong> :</em>
+      </mk-wysiwyg-preview>
+    </mk-menu-entry>
+  </template>
+  {{/if}}   
+  {{#if slots.optionsFooter}}
+  <template #options-footer>
+    <mk-menu-entry>
+      <mk-button outlined>
+        Add an option <mk-icon icon="add" />
+      </mk-button>
+    </mk-menu-entry>
+  </template>
+  {{/if}}   
+</mk-input-select-x>
+{{else}}
+<mk-input-select-x{{{props}}}/>
+{{/if}}

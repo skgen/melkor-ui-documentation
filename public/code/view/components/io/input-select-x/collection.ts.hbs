@@ -1,0 +1,16 @@
+type Character = { name: string; race: 'ainur' | 'elf' };
+type SelectXInputOptionValue = Character;
+type SelectXInputValue = SelectXInputOptionValue[];
+
+const options: SelectXInputOption<SelectXInputOptionValue>[] = [
+  { value: { name: 'Melkor', race: 'ainur' } },
+  { value: { name: 'Celebrimbor', race: 'elf' } },
+  { value: { name: 'Manwë', race: 'ainur' }, disabled: true },
+  { value: { name: 'Glorfindel', race: 'elf' } },
+];
+
+const state = ref<InputState<SelectXInputValue>>(
+  createInputState({
+    value: [options[1].value, options[2].value],
+  }),
+);

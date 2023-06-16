@@ -1,0 +1,20 @@
+<mk-input-select-x
+  v-model="state"
+  :options="options"
+>
+  <template #option-label="{ option }">
+    {{ option.value.name }}
+  </template>
+  <template #values="{ selection }">
+    <div
+      v-for="(entry, index) of selection"
+      :key="index"
+      class="..."
+    >
+      <span>{{ entry.name }}</span>
+      <button @click.stop="() => handleRemove(entry)">
+        <mk-icon icon="close" />
+      </button>
+    </div>
+  </template>
+</mk-input-select-x>

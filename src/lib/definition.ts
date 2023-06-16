@@ -8,6 +8,7 @@ export enum AttributeType {
   reference,
   function,
   vModel,
+  vModelKey,
   wysiwyg,
   select,
 }

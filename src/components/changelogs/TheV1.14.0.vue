@@ -31,27 +31,27 @@
     <ul>
       <li>
         <mk-link to="/component/input-text">
-          {{ $t('component.input-text.name') }}
+          {{ $t('component.inputText.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-number">
-          {{ $t('component.input-number.name') }}
+          {{ $t('component.inputNumber.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-password">
-          {{ $t('component.input-password.name') }}
+          {{ $t('component.inputPassword.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-color">
-          {{ $t('component.input-color.name') }}
+          {{ $t('component.inputColor.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-data">
-          {{ $t('component.input-date.name') }}
+          {{ $t('component.inputDate.name') }}
         </mk-link>
       </li>
     </ul>
@@ -74,17 +74,17 @@
       <ul>
         <li>
           <mk-link to="/component/input-checkbox">
-            {{ $t('component.input-checkbox.name') }}
+            {{ $t('component.inputCheckbox.name') }}
           </mk-link>
         </li>
         <li>
           <mk-link to="/component/input-radio">
-            {{ $t('component.input-radio.name') }}
+            {{ $t('component.inputRadio.name') }}
           </mk-link>
         </li>
         <li>
           <mk-link to="/component/input-toggle">
-            {{ $t('component.input-toggle.name') }}
+            {{ $t('component.inputToggle.name') }}
           </mk-link>
         </li>
       </ul>
@@ -93,7 +93,7 @@
   <h3>Minor</h3>
   <p>
     Fixed a bug on <mk-link to="/component/input-checkbox-tree">
-      {{ $t('component.input-checkbox-tree.name') }}
+      {{ $t('component.inputCheckboxTree.name') }}
     </mk-link> where <code>disabled</code> inheritance wouldn't work as expected
   </p>
 </template>

@@ -7,7 +7,7 @@
   <h3>New component</h3>
   <p>
     <mk-link to="/component/input-range">
-      {{ $t('component.input-range.name') }}
+      {{ $t('component.inputRange.name') }}
     </mk-link>
   </p>
   <h3>Enhancements</h3>
@@ -15,7 +15,7 @@
     <AppChangelogBreakingChange>
       <p>
         Improved <mk-link to="/component/input-toggle">
-          {{ $t('component.input-toggle.name') }}
+          {{ $t('component.inputToggle.name') }}
         </mk-link> icon customization.
       </p>
       <p>
@@ -28,7 +28,7 @@
   </div>
   <p>
     Added <code>preview</code> slot on <mk-link to="/component/input-date">
-      {{ $t('component.input-date.name') }}
+      {{ $t('component.inputDate.name') }}
     </mk-link> to customize the render of previewed date
   </p>
   <p>
@@ -43,22 +43,22 @@
       </li>
       <li>
         <mk-link to="/component/input-text">
-          {{ $t('component.input-text.name') }}
+          {{ $t('component.inputText.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-number">
-          {{ $t('component.input-number.name') }}
+          {{ $t('component.inputNumber.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-color">
-          {{ $t('component.input-color.name') }}
+          {{ $t('component.inputColor.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-date">
-          {{ $t('component.input-date.name') }}
+          {{ $t('component.inputDate.name') }}
         </mk-link>
       </li>
     </ul>
@@ -70,22 +70,22 @@
     <ul>
       <li>
         <mk-link to="/component/input-text">
-          {{ $t('component.input-text.name') }}
+          {{ $t('component.inputText.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-number">
-          {{ $t('component.input-number.name') }}
+          {{ $t('component.inputNumber.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-color">
-          {{ $t('component.input-color.name') }}
+          {{ $t('component.inputColor.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-textarea">
-          {{ $t('component.input-textarea.name') }}
+          {{ $t('component.inputTextarea.name') }}
         </mk-link>
       </li>
     </ul>

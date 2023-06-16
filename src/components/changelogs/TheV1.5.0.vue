@@ -5,7 +5,7 @@
   <h3>Enhancements</h3>
   <p>
     Added new utility function <code>exportCheckboxTreeLevels</code> to <mk-link to="/component/input-checkbox-tree">
-      {{ $t('component.input-checkbox-tree.name') }}
+      {{ $t('component.inputCheckboxTree.name') }}
     </mk-link>
   </p>
   <h3>Minor</h3>

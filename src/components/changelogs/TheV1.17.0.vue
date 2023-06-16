@@ -3,15 +3,17 @@
     v1.17.0
   </AppChangelogVersion>
   <h3>Enhancements</h3>
-  <AppChangelogBreakingChange>
-    <AppChangelogCommit sha="a7f3d18a32149d58db7866d70767a44dca405e98">
-      <p>
-        Normalized <code>i18n</code> keys, check diff on <mk-link to="/concept/i18n-keys">
-          {{ $t('view.i18n.titles.keys') }}
-        </mk-link>
-      </p>
-    </AppChangelogCommit>
-  </AppChangelogBreakingChange>
+  <div>
+    <AppChangelogBreakingChange>
+      <AppChangelogCommit sha="a7f3d18a32149d58db7866d70767a44dca405e98">
+        <p>
+          Normalized <code>i18n</code> keys, check diff on <mk-link to="/concept/i18n-keys">
+            {{ $t('view.i18n.titles.keys') }}
+          </mk-link>
+        </p>
+      </AppChangelogCommit>
+    </AppChangelogBreakingChange>
+  </div>
 </template>
 
 <script lang="ts" setup>

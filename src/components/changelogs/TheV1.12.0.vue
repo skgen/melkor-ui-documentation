@@ -17,7 +17,7 @@
   </p>
   <p>
     Enhanced <mk-link to="/component/input-select">
-      {{ $t('component.input-select.name') }}
+      {{ $t('component.inputSelect.name') }}
     </mk-link> <code>options</code> prop with new attribute <code>disabled</code>
   </p><h3>Minor</h3>
 </template>

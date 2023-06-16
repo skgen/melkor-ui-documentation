@@ -25,6 +25,9 @@
                 "home": "Home",
                 "brand": "Brand",
                 "others": "others"
+            },
+            "AppInputSelectX": {
+                "emptyOptions": "No options available"
             }
         },
         "theme": {
@@ -142,55 +145,59 @@
         "icon": {
             "name": "Icon"
         },
-        "input-text": {
+        "inputText": {
             "name": "Text input",
             "type": "file"
         },
-        "input-number": {
+        "inputNumber": {
             "name": "Number input",
             "type": "number"
         },
-        "input-password": {
+        "inputPassword": {
             "name": "Password input",
             "type": "password"
         },
-        "input-file": {
+        "inputFile": {
             "name": "File input",
             "type": "file"
         },
-        "input-textarea": {
+        "inputTextarea": {
             "name": "Textarea input",
             "type": "textarea"
         },
-        "input-toggle": {
+        "inputToggle": {
             "name": "Toggle input",
             "type": "toggle"
         },
-        "input-color": {
+        "inputColor": {
             "name": "Color input",
             "type": "color"
         },
-        "input-select": {
+        "inputSelect": {
             "name": "Select input",
             "type": "select"
         },
-        "input-radio": {
+        "inputSelectX": {
+            "name": "Select X input",
+            "type": "select-x"
+        },
+        "inputRadio": {
             "name": "Radio input",
             "type": "radio"
         },
-        "input-date": {
+        "inputDate": {
             "name": "Date input",
             "type": "date"
         },
-        "input-range": {
+        "inputRange": {
             "name": "Range input",
             "type": "range"
         },
-        "input-checkbox": {
+        "inputCheckbox": {
             "name": "Checkbox input",
             "type": "checkbox"
         },
-        "input-checkbox-tree": {
+        "inputCheckboxTree": {
             "name": "Checkbox input tree",
             "type": "checkbox"
         },

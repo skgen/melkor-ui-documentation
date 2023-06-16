@@ -10,17 +10,17 @@
       <ul>
         <li>
           <mk-link to="/component/input-text">
-            {{ $t('component.input-text.name') }}
+            {{ $t('component.inputText.name') }}
           </mk-link>
         </li>
         <li>
           <mk-link to="/component/input-number">
-            {{ $t('component.input-number.name') }}
+            {{ $t('component.inputNumber.name') }}
           </mk-link>
         </li>
         <li>
           <mk-link to="/component/input-password">
-            {{ $t('component.input-password.name') }}
+            {{ $t('component.inputPassword.name') }}
           </mk-link>
         </li>
       </ul>

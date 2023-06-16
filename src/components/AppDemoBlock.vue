@@ -31,6 +31,9 @@ const slots = useSlots();
 
 <style lang="scss">
 .pux-AppDemoBlock {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-m-1);
     padding: var(--app-m-3);
     border: 3px dashed var(--app-border-color);
     border-radius: 8px;

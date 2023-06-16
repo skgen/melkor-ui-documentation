@@ -1,0 +1,24 @@
+type SelectXInputValue = string;
+
+function validate(value: SelectXInputValue) {
+  return value === 'Glorfindel' ? 'You can\'t select Glorfindel' : null;
+}
+
+const options: SelectXInputOption<SelectXInputValue>[] = [
+  { value: 'Melkor' },
+  { value: 'Celebrimbor' },
+  { value: 'Manwë', disabled: true },
+  { value: 'Glorfindel' },
+];
+
+const state = ref<InputState<SelectXInputValue>>(
+  createInputState({
+    value: options[1].value,
+  }),
+);
+
+const search = ref<InputState<TextInputValue>>(
+  createInputState({
+    value: null,
+  }),
+);

@@ -1,0 +1,90 @@
+type Character = {
+  id: string;
+  name: string;
+  race: 'ainur' | 'elf';
+};
+
+// Api call simulation
+
+async function getCharacters(search?: string): Promise<Character[]> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const data: Character[] = [
+        { id: 'mel', name: 'Melkor', race: 'ainur' },
+        { id: 'cel', name: 'Celebrimbor', race: 'elf' },
+        { id: 'man', name: 'Manwë', race: 'ainur' },
+        { id: 'glo', name: 'Glorfindel', race: 'elf' },
+      ];
+      if (!search) {
+        resolve(data);
+        return;
+      }
+      const filtered = data.filter((character) => character.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
+      resolve(filtered);
+    }, 1000);
+  });
+}
+
+// Input Logic
+
+type SelectXInputOptionValue = Character | null;
+type SelectXInputValue = SelectXInputOptionValue[];
+
+const characterIdsFromProps = ['mel', 'man'];
+const characters = ref<Character[]>([]);
+const loading = ref(false);
+const loaded = ref(false);
+
+const options = computed<SelectXInputOption<SelectXInputOptionValue>[]>(
+  () => characters.value
+    .map((character) => ({
+      value: character,
+    })),
+);
+
+const state = ref<InputState<SelectXInputValue>>(
+  createInputState({
+    value: [],
+  }),
+);
+
+const search = ref<InputState<TextInputValue>>(
+  createInputState({
+    value: null,
+  }),
+);
+
+async function fetchCharacters() {
+  loading.value = true;
+  const data = await getCharacters(search.value.value ?? undefined);
+  loading.value = false;
+  return data;
+}
+
+// We use Lodash debounce to prevent from spamming fetch
+// This is for demo, in production you should also cancel pending requests before fetching again
+const debouncedFetchCharacters = debounce(async () => {
+  characters.value = await fetchCharacters();
+  if (!loaded.value) {
+    loaded.value = true;
+  }
+}, 300);
+
+watch([search, () => state.value.focused], async ([newSearch, newFocus], [oldSearch]) => {
+  // We fetch data for the first time
+  const firstTimeFetch = !loaded.value && newFocus;
+  // When search changes & we are focus
+  const focusedAndSearchChanged = oldSearch.value !== newSearch.value && newFocus;
+
+  if (firstTimeFetch || focusedAndSearchChanged) {
+    debouncedFetchCharacters();
+  }
+});
+
+// When loaded we map our ids to the state thanks to the fetched data
+watch(loaded, () => {
+  state.value = validateInputState({
+    ...state.value,
+    value: characters.value.filter((character) => characterIdsFromProps.includes(character.id)),
+  });
+});

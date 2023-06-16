@@ -103,55 +103,59 @@ export const sidebar: NavigationLevel[] = [
     title: 'app.dataInputs',
     children: [
       {
-        title: 'component.input-text.name',
+        title: 'component.inputText.name',
         to: '/component/input-text',
       },
       {
-        title: 'component.input-number.name',
+        title: 'component.inputNumber.name',
         to: '/component/input-number',
       },
       {
-        title: 'component.input-password.name',
+        title: 'component.inputPassword.name',
         to: '/component/input-password',
       },
       {
-        title: 'component.input-textarea.name',
+        title: 'component.inputTextarea.name',
         to: '/component/input-textarea',
       },
       {
-        title: 'component.input-toggle.name',
+        title: 'component.inputToggle.name',
         to: '/component/input-toggle',
       },
       {
-        title: 'component.input-file.name',
+        title: 'component.inputFile.name',
         to: '/component/input-file',
       },
       {
-        title: 'component.input-color.name',
+        title: 'component.inputColor.name',
         to: '/component/input-color',
       },
       {
-        title: 'component.input-select.name',
+        title: 'component.inputSelect.name',
         to: '/component/input-select',
       },
       {
-        title: 'component.input-radio.name',
+        title: 'component.inputSelectX.name',
+        to: '/component/input-select-x',
+      },
+      {
+        title: 'component.inputRadio.name',
         to: '/component/input-radio',
       },
       {
-        title: 'component.input-date.name',
+        title: 'component.inputDate.name',
         to: '/component/input-date',
       },
       {
-        title: 'component.input-range.name',
+        title: 'component.inputRange.name',
         to: '/component/input-range',
       },
       {
-        title: 'component.input-checkbox.name',
+        title: 'component.inputCheckbox.name',
         to: '/component/input-checkbox',
       },
       {
-        title: 'component.input-checkbox-tree.name',
+        title: 'component.inputCheckboxTree.name',
         to: '/component/input-checkbox-tree',
       },
       {

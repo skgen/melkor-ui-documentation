@@ -22,7 +22,7 @@
           <ul>
             <li>
               <mk-link to="/component/input-file">
-                {{ $t('component.input-file.name') }}
+                {{ $t('component.inputFile.name') }}
               </mk-link>
             </li>
           </ul>

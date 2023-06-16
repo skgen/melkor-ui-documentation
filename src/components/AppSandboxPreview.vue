@@ -43,7 +43,10 @@
           <mk-wysiwyg-preview>
             <h3>Slots</h3>
           </mk-wysiwyg-preview>
-          <ul class="mk-AppSandboxPreview-controllers-list">
+          <ul
+            v-if="anyInteractablePropsController"
+            class="mk-AppSandboxPreview-controllers-list"
+          >
             <template
               v-for="(controller, index) in slotsControllers"
               :key="index"
@@ -65,7 +68,10 @@
           <mk-wysiwyg-preview>
             <h3>SCSS</h3>
           </mk-wysiwyg-preview>
-          <ul class="mk-AppSandboxPreview-controllers-list">
+          <ul
+            v-if="anyInteractableScssController"
+            class="mk-AppSandboxPreview-controllers-list"
+          >
             <template
               v-for="(controller, index) in scssControllers"
               :key="index"
@@ -82,6 +88,12 @@
               </li>
             </template>
           </ul>
+          <div
+            v-else
+            class="mk-AppSandboxPreview-controllers-list"
+          >
+            No interactable scss variable !
+          </div>
         </template>
       </div>
       <div class="mk-AppSandboxPreview-preview">
@@ -134,7 +146,6 @@
 
         <div v-if="props.template">
           <AppAsyncCodeBlock
-
             :file-path="props.template"
             :language="CodeLanguage.template"
             :variables="templateVars"
@@ -197,6 +208,7 @@ type Props = {
 
 type Emits = {
   (event: 'change', value: ComponentAttributes): void;
+  (event: 'change:slots', newSlots: Attributes, oldSlots: Attributes): void;
 };
 
 const props = defineProps<Props>();
@@ -219,7 +231,7 @@ function resolveInputName(type: AttributeType) {
   if (type === AttributeType.select) {
     return 'mk-input-select';
   }
-  return false;
+  return null;
 }
 
 function createControllers(def: AttributesDefinition) {
@@ -267,6 +279,13 @@ const anyInteractablePropsController = computed(() => {
     }
   }
   return false;
+});
+
+const anyInteractableScssController = computed(() => {
+  if (!isValue(scssControllers) || Object.keys(scssControllers).length === 0) {
+    return false;
+  }
+  return true;
 });
 
 function mapControllersValues(controllers: AttributesControllers | null) {
@@ -329,6 +348,8 @@ const templateVars = computed(() => {
       const paramKey = paramCase(key);
       if (controller.type === AttributeType.vModel) {
         tProps.push(`v-model="${key}"`);
+      } else if (controller.type === AttributeType.vModelKey) {
+        tProps.push(`v-model:${paramKey}="${key}"`);
       } else if (controller.type === AttributeType.reference) {
         tProps.push(`:${paramKey}="${key}"`);
       } else if (isRealValue(value) && !isDefaultComponentValue(controller)) {
@@ -459,6 +480,10 @@ watch([propsAttributes, scssAttributes, slotsAttributes], ([
   });
 });
 
+watch(slotsAttributes, (newSlotsAttributes, oldSlotsAttributes) => {
+  emit('change:slots', newSlotsAttributes, oldSlotsAttributes);
+});
+
 onMounted(() => {
   emit('change', {
     props: propsAttributes.value,
@@ -560,6 +585,12 @@ defineExpose({
                     padding: 0;
                 }
             }
+        }
+
+        &-toolbar {
+            display: flex;
+            gap: var(--app-m-1);
+            align-items: center;
         }
     }
 

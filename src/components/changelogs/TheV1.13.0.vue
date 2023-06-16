@@ -21,47 +21,47 @@
     <ul>
       <li>
         <mk-link to="/component/input-text">
-          {{ $t('component.input-text.name') }}
+          {{ $t('component.inputText.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-number">
-          {{ $t('component.input-number.name') }}
+          {{ $t('component.inputNumber.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-password">
-          {{ $t('component.input-password.name') }}
+          {{ $t('component.inputPassword.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-textarea">
-          {{ $t('component.input-textarea.name') }}
+          {{ $t('component.inputTextarea.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-toggle">
-          {{ $t('component.input-toggle.name') }}
+          {{ $t('component.inputToggle.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-color">
-          {{ $t('component.input-color.name') }}
+          {{ $t('component.inputColor.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-select">
-          {{ $t('component.input-select.name') }}
+          {{ $t('component.inputSelect.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-date">
-          {{ $t('component.input-date.name') }}
+          {{ $t('component.inputDate.name') }}
         </mk-link>
       </li>
       <li>
         <mk-link to="/component/input-checkbox">
-          {{ $t('component.input-checkbox.name') }}
+          {{ $t('component.inputCheckbox.name') }}
         </mk-link>
       </li>
     </ul>
