@@ -17,12 +17,32 @@
       </section>
       <section>
         <h2>Which is where for what ?</h2>
-        <h3><code>melkor.component.inputFile.[...]</code></h3>
+        <h3><code>melkor.component.AppInputFile.[...]</code></h3>
         <p>
           <ul>
             <li>
               <mk-link to="/component/input-file">
                 {{ $t('component.inputFile.name') }}
+              </mk-link>
+            </li>
+          </ul>
+        </p>
+        <h3><code>melkor.component.AppInputIcon.[...]</code></h3>
+        <p>
+          <ul>
+            <li>
+              <mk-link to="/component/input-icon">
+                {{ $t('component.inputIcon.name') }}
+              </mk-link>
+            </li>
+          </ul>
+        </p>
+        <h3><code>melkor.component.AppInputSelectX.[...]</code></h3>
+        <p>
+          <ul>
+            <li>
+              <mk-link to="/component/input-select-x">
+                {{ $t('component.inputSelectX.name') }}
               </mk-link>
             </li>
           </ul>
