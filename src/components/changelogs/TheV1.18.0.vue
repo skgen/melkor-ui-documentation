@@ -1,5 +1,5 @@
 <template>
-  <AppChangelogVersion stable>
+  <AppChangelogVersion>
     v1.18.0
   </AppChangelogVersion>
   <h3>New components</h3>
@@ -13,16 +13,6 @@
     </AppChangelogCommit>
   </div>
   <h3>Enhancements</h3>
-  <div>
-    <AppChangelogWarningChange>
-      <AppChangelogCommit sha="cf17fac7fea774bb868f368b5c89dcdb672f8e3d">
-        <p>
-          Added <code>focused</code> property in <code>InputState</code> definition
-        </p>
-        <blockquote>This state model update could trigger watchers plugged on existing states due to focus/blur behavior</blockquote>
-      </AppChangelogCommit>
-    </AppChangelogWarningChange>
-  </div>
   <div>
     <AppChangelogCommit sha="cf17fac7fea774bb868f368b5c89dcdb672f8e3d">
       <p>
@@ -71,5 +61,4 @@
 <script lang="ts" setup>
 import AppChangelogVersion from '@/components/AppChangelogVersion.vue';
 import AppChangelogCommit from '@/components/AppChangelogCommit.vue';
-import AppChangelogWarningChange from '@/components/AppChangelogWarningChange.vue';
 </script>

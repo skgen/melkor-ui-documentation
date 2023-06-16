@@ -1,5 +1,5 @@
 <template>
-  <AppChangelogVersion stable>
+  <AppChangelogVersion>
     v1.19.0
   </AppChangelogVersion>
   <h3>Enhancements</h3>
