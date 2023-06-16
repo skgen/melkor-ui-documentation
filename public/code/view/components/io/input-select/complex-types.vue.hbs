@@ -1,0 +1,14 @@
+<mk-input-select
+  v-model="state"
+  :options="options"
+  :validate="validate"
+>
+  <template #option="{ option }">
+    <template v-if="!option.value">
+      -----
+    </template>
+    <template v-else>
+      {{ option.value.name }}
+    </template>
+  </template>
+</mk-input-select>

@@ -1,1 +1,11 @@
+{{#if hasSlots}}
+<mk-input-select{{{props}}}>
+  {{#if slots.option}}
+  <template #option="{ option, index }">
+    #\{{ index }} \{{ option.value }}
+  </template>
+  {{/if}}
+</mk-input-select>
+{{else}}
 <mk-input-select{{{props}}}/>
+{{/if}}

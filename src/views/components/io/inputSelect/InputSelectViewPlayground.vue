@@ -17,7 +17,14 @@
             v-model="state"
             v-bind="attributes.props"
             :style="style"
-          />
+          >
+            <template
+              v-if="attributes.slots['option']"
+              #option="{ option, index }"
+            >
+              #{{ index }} {{ option.value }}
+            </template>
+          </mk-input-select>
         </template>
       </AppSandboxPreview>
     </div>
@@ -36,20 +43,19 @@ import AppInputStatePreview from '@/components/AppInputStatePreview.vue';
 import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
 } from '@/lib/definition';
-import { createScssControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
+import { createScssControllersConfig, createSlotsControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
-type SelectInputValue = { name: string; race: 'ainur' | 'elf' } | null;
+type SelectInputValue = string;
 
 function validate(value: SelectInputValue) {
-  return value === null ? 'Required' : null;
+  return value === 'Melkor' ? 'Can\'t select Melkor' : null;
 }
 
 const options: SelectInputOption<SelectInputValue>[] = [
-  { label: '-----', value: null, disabled: true },
-  { label: 'Melkor', value: { name: 'Melkor', race: 'ainur' } },
-  { label: 'Celebrimbor', value: { name: 'Celebrimbor', race: 'elf' } },
-  { label: 'Manwë', value: { name: 'Manwë', race: 'ainur' }, disabled: true },
-  { label: 'Glorfindel', value: { name: 'Glorfindel', race: 'elf' } },
+  { value: 'Melkor' },
+  { value: 'Celebrimbor' },
+  { value: 'Manwë', disabled: true },
+  { value: 'Glorfindel' },
 ];
 
 const state = ref<InputState<SelectInputValue>>(
@@ -113,6 +119,9 @@ const definition: ComponentDefinition = {
     '--mk-input-select-padding-x-left',
     '--mk-input-select-padding-x-right',
     '--mk-input-select-padding-y',
+  ]),
+  slots: createSlotsControllersConfig([
+    'option',
   ]),
 };
 
