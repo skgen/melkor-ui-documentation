@@ -66,7 +66,6 @@ function validate(value: NumberInputValue) {
 
 const state = ref<InputState<NumberInputValue>>(createInputState({
   value: 10,
-  focused: true,
 }));
 
 const definition: ComponentDefinition = {

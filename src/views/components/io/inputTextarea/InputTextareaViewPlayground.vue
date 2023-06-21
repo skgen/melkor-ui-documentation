@@ -44,7 +44,6 @@ function validate(value: TextareaInputValue) {
 
 const state = ref<InputState<TextareaInputValue>>(createInputState({
   value: null,
-  focused: true,
 }));
 
 const definition: ComponentDefinition = {

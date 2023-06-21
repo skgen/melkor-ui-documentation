@@ -63,7 +63,6 @@ function validate(value: TextInputValue) {
 
 const state = ref<InputState<TextInputValue>>(createInputState({
   value: 'Hello world',
-  focused: true,
 }));
 
 const definition: ComponentDefinition = {

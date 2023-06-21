@@ -199,9 +199,13 @@ const definition: ComponentDefinition = {
       },
     },
     draggable: {
-      type: AttributeType.reference,
+      type: AttributeType.boolean,
       required: false,
       default: undefined,
+      inputOptions: {
+        disabled: true,
+        hint: 'For Draggable example, check section below',
+      },
     },
   },
 };

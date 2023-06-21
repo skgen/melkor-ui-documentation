@@ -64,7 +64,6 @@ function validate(value: PasswordInputValue) {
 
 const state = ref<InputState<PasswordInputValue>>(createInputState({
   value: '@superSecretPass#',
-  focused: true,
 }));
 
 const definition: ComponentDefinition = {
