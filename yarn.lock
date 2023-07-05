@@ -538,10 +538,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@patriarche/melkor@1.19.2":
-  version "1.19.2"
-  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-1.19.2.tgz#8619a4845e86fe89daaec69ce2874898c8e3fdf3"
-  integrity sha1-hhmkhF6G/onarsac4odImMjj/fM=
+"@patriarche/melkor@1.20.0":
+  version "1.20.0"
+  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-1.20.0.tgz#8c8169e6bbb303f1cc612db786f722c80bdc9b4d"
+  integrity sha1-jIFp5ruzA/HMYS23hvciyAvcm00=
   dependencies:
     "@tiptap/core" "2.0.0-beta.220"
     "@tiptap/pm" "2.0.0-beta.220"

@@ -5,7 +5,7 @@
 >
   <template #values="{ selection }">
     <template v-if="!loaded && !loading">
-      Select to load data
+      Search something to load data
     </template>
     <template v-else-if="!loaded && loading">
       Loading ...
@@ -22,7 +22,7 @@
       Loading ...
     </template>
     <template v-else>
-      No result
+      No result yet
     </template>
   </template>
   <template #options-header>

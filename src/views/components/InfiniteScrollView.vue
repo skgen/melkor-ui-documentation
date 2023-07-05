@@ -139,12 +139,13 @@ const definition: ComponentDefinition = {
         hint: `In case both top and bottom triggers are visible after first render
     , mainAutoloadDirection will help the component to infer which direction to trigger by default`,
         options: [
-          { label: 'VerticalDirection.bottom', value: VerticalDirection.bottom },
-          { label: 'VerticalDirection.top', value: VerticalDirection.top },
+          { value: null },
+          { value: VerticalDirection.bottom },
+          { value: VerticalDirection.top },
         ],
       },
       renderOptions: {
-        valueAsSelectLabel: true,
+        enumKey: (v) => `VerticalDirection.${VerticalDirection[v]}`,
       },
     },
   },

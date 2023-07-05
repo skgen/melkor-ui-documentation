@@ -32,3 +32,31 @@ export function listenToScroll(callback: (evt: Event) => void) {
     }
   };
 }
+
+let scrolling = false;
+
+let deferNotScrolling: number | null = null;
+
+export function isScrolling() {
+  return scrolling;
+}
+
+let lastScroll: number | null = null;
+
+listenToScroll(() => {
+  scrolling = true;
+  if (lastScroll !== null) {
+    // const diff = Date.now() - lastScroll;
+    // if (diff > 100) {
+    //   console.log(`Scroll freq: ${diff}`);
+    // }
+  }
+  lastScroll = Date.now();
+  if (deferNotScrolling != null) {
+    clearTimeout(deferNotScrolling);
+  }
+  deferNotScrolling = window.setTimeout(() => {
+    scrolling = false;
+    lastScroll = null;
+  }, 500);
+});

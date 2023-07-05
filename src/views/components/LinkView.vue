@@ -3,43 +3,12 @@
     <AppPageTitle>
       {{ $t('component.link.name') }}
     </AppPageTitle>
-
-    <!-- <div>
-      <mk-link to="/">
-        /
-      </mk-link>
-      <mk-link
-        to="/"
-        exact
-      >
-        /
-      </mk-link>
-    </div>
-    <div>
-      <mk-link
-        to="/component"
-        exact-match
-      >
-        /component
-      </mk-link>
-    </div>
-    <div>
-      <mk-link to="/component/link">
-        /component/link
-      </mk-link>
-    </div>
-    <div>
-      <mk-link to="/component/link?test">
-        /component/link?test
-      </mk-link>
-    </div>
-    <div>
-      <mk-link to="/component/link#test ">
-        /component/link#test
-      </mk-link>
-    </div> -->
-
     <mk-wysiwyg-preview>
+      <section>
+        <mk-button @click="toggleHash">
+          toggle hash
+        </mk-button>
+      </section>
       <section>
         <h2>{{ $t('app.playground') }}</h2>
         <div>
@@ -64,23 +33,37 @@
           </AppSandboxPreview>
         </div>
       </section>
+      <section>
+        <h2>Links examples</h2>
+        <div
+          v-for="link of examples"
+          :key="link"
+        >
+          <mk-link :to="link">
+            {{ link }}
+          </mk-link>
+        </div>
+      </section>
     </mk-wysiwyg-preview>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { LinkMatchStrategy } from '@patriarche/melkor';
+import { useRoute } from 'vue-router';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
 import { createScssControllersConfig } from '@/lib/utils';
+import router from '@/plugins/router';
 
 const definition: ComponentDefinition = {
   props: {
     to: {
       type: AttributeType.string,
       required: false,
-      default: '/',
+      default: '/component',
     },
     asButton: {
       type: AttributeType.boolean,
@@ -97,20 +80,20 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
-    exact: {
-      type: AttributeType.boolean,
-      required: false,
-      default: false,
-    },
-    exactPath: {
-      type: AttributeType.boolean,
-      required: false,
-      default: false,
-    },
-    debug: {
-      type: AttributeType.boolean,
-      required: false,
-      default: true,
+    matchStrategy: {
+      type: AttributeType.select,
+      required: true,
+      default: LinkMatchStrategy.exactPathWithHash,
+      inputOptions: {
+        options: [
+          { value: LinkMatchStrategy.shallowPath },
+          { value: LinkMatchStrategy.exactPath },
+          { value: LinkMatchStrategy.exactPathWithHash },
+        ],
+      },
+      renderOptions: {
+        enumKey: (v) => `LinkMatchStrategy.${LinkMatchStrategy[v]}`,
+      },
     },
   },
   scss: createScssControllersConfig([
@@ -130,6 +113,33 @@ const attributes = ref<ComponentAttributes>({
 
 function handlePreviewChange(newAttributes: ComponentAttributes) {
   attributes.value = newAttributes;
+}
+
+const examples = [
+  '/component',
+  '/component#anchor',
+  '/component?param=1',
+  '/component/link',
+  '/component/link#anchor',
+  '/component/link?param=1',
+  '/component/link/deeper',
+];
+
+const hash = ref(false);
+const route = useRoute();
+function toggleHash() {
+  if (hash.value) {
+    router.replace({
+      ...route,
+      hash: undefined,
+    });
+  } else {
+    router.replace({
+      ...route,
+      hash: '#toto',
+    });
+  }
+  hash.value = !hash.value;
 }
 
 </script>

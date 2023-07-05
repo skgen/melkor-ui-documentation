@@ -1,12 +1,13 @@
 <template>
-  <section class="pux-TableCustomSlotsExample">
-    <h2
-      id="custom-templates"
-      v-anchor
+  <section>
+    <AppHashTrigger
+      v-slot="{ hash }"
+      hash="custom-templates"
     >
-      {{ $t('view.table.titles.customTemplate.block') }}
-    </h2>
-
+      <h2 :id="hash">
+        {{ $t('view.table.titles.customTemplate.block') }}
+      </h2>
+    </AppHashTrigger>
     <h3>
       {{ $t('view.table.titles.customTemplate.logic') }}
     </h3>
@@ -113,12 +114,14 @@
       </ul>
     </p>
 
-    <h3
-      id="custom-templates-static"
-      v-anchor
+    <AppHashTrigger
+      v-slot="{ hash }"
+      hash="custom-templates-static"
     >
-      {{ $t('view.table.titles.customTemplate.static') }}
-    </h3>
+      <h3 :id="hash">
+        {{ $t('view.table.titles.customTemplate.static') }}
+      </h3>
+    </AppHashTrigger>
 
     <div>
       <AppDemoBlock>
@@ -157,6 +160,7 @@
         </mk-table>
       </AppDemoBlock>
     </div>
+
     <div>
       <AppAsyncCodeBlock
         file-path="/code/view/components/table/custom-slots/static.vue.hbs"
@@ -164,12 +168,14 @@
       />
     </div>
 
-    <h3
-      id="custom-templates-dynamic"
-      v-anchor
+    <AppHashTrigger
+      v-slot="{ hash }"
+      hash="custom-templates-dynamic"
     >
-      {{ $t('view.table.titles.customTemplate.dynamic') }}
-    </h3>
+      <h3 :id="hash">
+        {{ $t('view.table.titles.customTemplate.dynamic') }}
+      </h3>
+    </AppHashTrigger>
 
     <div>
       <AppDemoBlock>
@@ -232,6 +238,7 @@ import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import AppCodeBlock from '@/components/AppCodeBlock.vue';
 import { CodeLanguage } from '@/lib/definition';
+import AppHashTrigger from '@/components/AppHashTrigger.vue';
 
 type TableItemValue = {
   name: string;

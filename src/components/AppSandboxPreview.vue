@@ -28,7 +28,16 @@
                   fill
                   v-bind="controller.inputOptions"
                   @update:model-value="(state: any) => handlePropValueChange(controller.key, state)"
-                />
+                >
+                  <template
+                    v-if="resolveInputName(controller.type) === 'mk-input-select' && controller.renderOptions?.enumKey"
+                    #option="{ option }"
+                  >
+                    <template v-if="!isNil(option.value)">
+                      {{ controller.renderOptions?.enumKey(option.value) }}
+                    </template>
+                  </template>
+                </component>
               </li>
             </template>
           </ul>
@@ -178,6 +187,7 @@
 import {
   computed, onMounted, reactive, ref, watch,
 } from 'vue';
+import isNil from 'lodash/isNil';
 import {
   createInputState, isDef, isString, isValue, type InputState, type SelectInputOptions, type RadioInputOption,
 } from '@patriarche/melkor';
@@ -231,7 +241,7 @@ function resolveInputName(type: AttributeType) {
   if (type === AttributeType.select) {
     return 'mk-input-select';
   }
-  return null;
+  return '';
 }
 
 function createControllers(def: AttributesDefinition) {
@@ -360,8 +370,8 @@ const templateVars = computed(() => {
         } else if (controller.type === AttributeType.select) {
           const selectOptions = controller.inputOptions as SelectInputOptions<unknown>;
           const valueOption = selectOptions.options.find((option) => option.value === value);
-          if (controller.renderOptions?.valueAsSelectLabel && isDef(valueOption)) {
-            tProps.push(`:${paramKey}="${valueOption.label}"`);
+          if (controller.renderOptions?.enumKey && isDef(valueOption)) {
+            tProps.push(`:${paramKey}="${controller.renderOptions?.enumKey(valueOption.value)}"`);
           } else {
             tProps.push(`:${paramKey}="${value}"`);
           }

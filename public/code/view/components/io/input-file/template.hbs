@@ -1,1 +1,16 @@
+{{#if hasSlots}}
+<mk-input-file{{{props}}}>
+  {{#if slots.file}}
+  <template #file="{ file, index, onDelete }">
+    <mk-button
+      outlined
+      @click="onDelete"
+    >
+      \{{ index }} - \{{ file.name }} <mk-icon icon="delete" />
+    </mk-button>
+  </template>
+  {{/if}}
+</mk-input-time>
+{{else}}
 <mk-input-file{{{props}}}/>
+{{/if}}

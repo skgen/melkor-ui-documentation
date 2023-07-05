@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { isScrolling } from '@/features/scroll';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -88,6 +89,7 @@ const router = createRouter({
         { path: 'input-icon', component: () => import('@/views/components/io/inputIcon/InputIconView.vue') },
         { path: 'input-radio', component: () => import('@/views/components/io/inputRadio/InputRadioView.vue') },
         { path: 'input-date', component: () => import('@/views/components/io/inputDate/InputDateView.vue') },
+        { path: 'input-time', component: () => import('@/views/components/io/inputTime/InputTimeView.vue') },
         { path: 'input-range', component: () => import('@/views/components/io/inputRange/InputRangeView.vue') },
         { path: 'input-checkbox', component: () => import('@/views/components/io/inputCheckbox/InputCheckboxView.vue') },
         { path: 'input-checkbox-tree', component: () => import('@/views/components/io/inputCheckboxTree/InputCheckboxTreeView.vue') },
@@ -107,11 +109,13 @@ const router = createRouter({
     },
   ],
   scrollBehavior(to) {
+    if (isScrolling()) {
+      return {};
+    }
     if (to.hash) {
       return {
         top: 20,
         el: to.hash,
-        behavior: 'smooth',
       };
     }
     return { top: 0 };

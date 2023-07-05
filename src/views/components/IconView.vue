@@ -22,12 +22,15 @@
             </template>
           </i18n-t>
         </blockquote>
-        <h2
-          id="playground"
-          v-anchor
+        <AppHashTrigger
+          v-slot="{ hash }"
+          hash="playground"
         >
-          {{ $t('app.playground') }}
-        </h2>
+          <h2 :id="hash">
+            {{ $t('app.playground') }}
+          </h2>
+        </AppHashTrigger>
+
         <div>
           <AppSandboxPreview
             :definition="definition"
@@ -45,12 +48,14 @@
         </div>
       </section>
       <section>
-        <h2
-          id="examples"
-          v-anchor
+        <AppHashTrigger
+          v-slot="{ hash }"
+          hash="examples"
         >
-          {{ $t('app.examples') }}
-        </h2>
+          <h2 :id="hash">
+            {{ $t('app.examples') }}
+          </h2>
+        </AppHashTrigger>
         <p>{{ $t('view.icon.default') }}</p>
         <div>
           <AppAsyncCodeBlock
@@ -80,13 +85,14 @@
         </div>
       </section>
       <section>
-        <h2
-          id="get-icons"
-          v-anchor
+        <AppHashTrigger
+          v-slot="{ hash }"
+          hash="get-examples"
         >
-          {{ $t('view.icon.getIcons') }}
-        </h2>
-
+          <h2 :id="hash">
+            {{ $t('view.icon.getIcons') }}
+          </h2>
+        </AppHashTrigger>
         <div>
           <AppAsyncCodeBlock
             file-path="/code/view/components/icon/icons.ts.hbs"
@@ -108,6 +114,7 @@ import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import {
   CodeLanguage, AttributeType, type ComponentDefinition, type ComponentAttributes,
 } from '@/lib/definition';
+import AppHashTrigger from '@/components/AppHashTrigger.vue';
 
 const iconPath = 'https://fonts.google.com/icons';
 

@@ -1,7 +1,12 @@
 <template>
-  <h3 id="draggable-custom-handler">
-    {{ $t('view.table.titles.draggable.custom') }}
-  </h3>
+  <AppHashTrigger
+    v-slot="{ hash }"
+    hash="draggable-custom-handler"
+  >
+    <h3 :id="hash">
+      {{ $t('view.table.titles.draggable.custom') }}
+    </h3>
+  </AppHashTrigger>
   <div>
     <AppDemoBlock>
       <mk-table
@@ -40,6 +45,7 @@ import { ref } from 'vue';
 import AppDemoBlock from '@/components/AppDemoBlock.vue';
 import AppAsyncCodeBlock from '@/components/AppAsyncCodeBlock.vue';
 import { CodeLanguage } from '@/lib/definition';
+import AppHashTrigger from '@/components/AppHashTrigger.vue';
 
 type TableItemValue = {
   drag?: never;

@@ -1,0 +1,31 @@
+// New time of now
+const now = new Time();
+
+// New time with hour
+const simplestTime = new Time('20');
+
+// New time with hours:minutes
+const simpleTime = new Time('20:30');
+
+// New time with hours:minutes:seconds
+const complexTime = new Time('20:30:40');
+
+// New time with hours:minutes:seconds.milliseconds
+const completeTime = new Time('20:30:40.500');
+
+// Format to ISO 8601
+const asString = now.toISOString();
+
+// Transform into a date
+// It easiens formatting, the "date" aka year/month/day can be put appart
+const asDate = now.toDate();
+
+const time = new Time('10:30');
+// Time is 10:30 AM
+
+time.setMinutes(70);
+// Time is 11:10 AM
+// Why ?
+// => replaced 30 minutes with 70 minutes
+// => deduced minutes > 1 hour
+// => added 1 hour, and set minutes to remaining 10 minutes

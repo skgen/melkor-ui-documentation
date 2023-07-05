@@ -6,7 +6,7 @@
     <InputSelectXViewPlayground />
     <InputSelectXViewCollection />
     <InputSelectXViewCollectionAdvanced />
-    <InputSelectXViewAsyncFocus />
+    <InputSelectXViewAsyncSearch />
   </mk-wysiwyg-preview>
 </template>
 
@@ -14,6 +14,6 @@
 import InputSelectXViewPlayground from '@/views/components/io/inputSelectX/InputSelectXViewPlayground.vue';
 import InputSelectXViewCollection from '@/views/components/io/inputSelectX/InputSelectXViewCollection.vue';
 import InputSelectXViewCollectionAdvanced from '@/views/components/io/inputSelectX/InputSelectXViewCollectionAdvanced.vue';
-import InputSelectXViewAsyncFocus from '@/views/components/io/inputSelectX/InputSelectXViewAsyncFocus.vue';
+import InputSelectXViewAsyncSearch from '@/views/components/io/inputSelectX/InputSelectXViewAsyncSearch.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 </script>

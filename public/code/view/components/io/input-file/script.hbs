@@ -9,7 +9,9 @@ const state = ref<InputState<FileInputValue>>(createInputState({
       url: 'https://patriarche-ux.fr/wp-content/uploads/2022/01/yuri-patriarche-ux-official.jpg',
       size: null,
       type: 0,
-      file: null,
+      rawFile: null,
     },
   ],
 }));
+
+const accept = ['image/jpg', '.gif'];

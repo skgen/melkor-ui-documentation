@@ -1,0 +1,7 @@
+function validate(value: TimeInputValue) {
+  return value === null ? 'Required' : null;
+}
+
+const state = ref<InputState<TimeInputValue>>(createInputState({
+  value: new Time(),
+}));

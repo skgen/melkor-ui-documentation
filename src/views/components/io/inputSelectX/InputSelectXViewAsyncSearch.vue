@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2>Async loading on focus <small>(concrete example)</small></h2>
+    <h2>Async loading on search <small>(concrete example)</small></h2>
     <div>
       <AppInputStatePreview :state="state" />
     </div>
@@ -14,7 +14,7 @@
           >
             <template #values="{ selection }">
               <template v-if="!loaded && !loading">
-                Select to load data
+                Search something to load data
               </template>
               <template v-else-if="!loaded && loading">
                 Loading ...
@@ -31,7 +31,7 @@
                 Loading ...
               </template>
               <template v-else>
-                No result
+                No result yet
               </template>
             </template>
             <template #options-header>
@@ -47,13 +47,13 @@
     </div>
     <div>
       <AppAsyncCodeBlock
-        file-path="/code/view/components/io/input-select-x/async-focus.vue.hbs"
+        file-path="/code/view/components/io/input-select-x/async-search.vue.hbs"
         :language="CodeLanguage.vue"
       />
     </div>
     <div>
       <AppAsyncCodeBlock
-        file-path="/code/view/components/io/input-select-x/async-focus.ts.hbs"
+        file-path="/code/view/components/io/input-select-x/async-search.ts.hbs"
       />
     </div>
   </section>
@@ -146,11 +146,11 @@ const debouncedFetchCharacters = debounce(async () => {
   }
 }, 300);
 
-watch([search, () => state.value.focused], async ([newSearch, newFocus], [oldSearch]) => {
+watch(search, (newSearch, oldSearch) => {
   // We fetch data for the first time
-  const firstTimeFetch = !loaded.value && newFocus;
-  // When search changes & we are focus
-  const focusedAndSearchChanged = oldSearch.value !== newSearch.value && newFocus;
+  const firstTimeFetch = !loaded.value;
+  // When search changes
+  const focusedAndSearchChanged = oldSearch.value !== newSearch.value;
 
   if (firstTimeFetch || focusedAndSearchChanged) {
     debouncedFetchCharacters();

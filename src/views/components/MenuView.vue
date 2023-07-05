@@ -49,6 +49,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { FloatingPlacement } from '@patriarche/melkor';
+import { camelCase } from 'change-case';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
@@ -87,26 +88,26 @@ const definition: ComponentDefinition = {
       default: null,
       inputOptions: {
         options: [
-          { label: '-----', value: undefined },
-          { label: 'FloatingPlacement.auto', value: FloatingPlacement.auto },
-          { label: 'FloatingPlacement.autoStart', value: FloatingPlacement.autoStart },
-          { label: 'FloatingPlacement.autoEnd', value: FloatingPlacement.autoEnd },
-          { label: 'FloatingPlacement.top', value: FloatingPlacement.top },
-          { label: 'FloatingPlacement.topStart', value: FloatingPlacement.topStart },
-          { label: 'FloatingPlacement.topEnd', value: FloatingPlacement.topEnd },
-          { label: 'FloatingPlacement.right', value: FloatingPlacement.right },
-          { label: 'FloatingPlacement.rightStart', value: FloatingPlacement.rightStart },
-          { label: 'FloatingPlacement.rightEnd', value: FloatingPlacement.rightEnd },
-          { label: 'FloatingPlacement.bottom', value: FloatingPlacement.bottom },
-          { label: 'FloatingPlacement.bottomStart', value: FloatingPlacement.bottomStart },
-          { label: 'FloatingPlacement.bottomEnd', value: FloatingPlacement.bottomEnd },
-          { label: 'FloatingPlacement.left', value: FloatingPlacement.left },
-          { label: 'FloatingPlacement.leftStart', value: FloatingPlacement.leftStart },
-          { label: 'FloatingPlacement.leftEnd', value: FloatingPlacement.leftEnd },
+          { value: null },
+          { value: FloatingPlacement.auto },
+          { value: FloatingPlacement.autoStart },
+          { value: FloatingPlacement.autoEnd },
+          { value: FloatingPlacement.top },
+          { value: FloatingPlacement.topStart },
+          { value: FloatingPlacement.topEnd },
+          { value: FloatingPlacement.right },
+          { value: FloatingPlacement.rightStart },
+          { value: FloatingPlacement.rightEnd },
+          { value: FloatingPlacement.bottom },
+          { value: FloatingPlacement.bottomStart },
+          { value: FloatingPlacement.bottomEnd },
+          { value: FloatingPlacement.left },
+          { value: FloatingPlacement.leftStart },
+          { value: FloatingPlacement.leftEnd },
         ],
       },
       renderOptions: {
-        valueAsSelectLabel: true,
+        enumKey: (v) => `FloatingPlacement.${camelCase(v)}`,
       },
     },
   },

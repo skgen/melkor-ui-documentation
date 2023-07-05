@@ -7,42 +7,50 @@
     <div>
       <AppSandboxPreview
         :definition="definition"
-        template="/code/view/components/io/input-file/template.hbs"
-        scss="/code/view/components/io/input-file/scss.hbs"
-        script="/code/view/components/io/input-file/script.hbs"
+        template="/code/view/components/io/input-time/playground.vue.hbs"
+        scss="/code/view/components/io/input-time/playground.scss.hbs"
+        script="/code/view/components/io/input-time/playground.ts.hbs"
         @change="handlePreviewChange"
       >
         <template #default="{ style }">
-          <mk-input-file
+          <mk-input-time
             v-model="state"
             v-bind="attributes.props"
             :style="style"
           >
             <template
-              v-if="attributes.slots['file']"
-              #file="{ file, index, onDelete }"
+              v-if="attributes.slots.icon"
+              #icon
             >
-              <mk-button
-                outlined
-                @click="onDelete"
-              >
-                {{ index }} - {{ file.name }} <mk-icon icon="delete" />
-              </mk-button>
+              <mk-icon icon="hourglass_empty" />
             </template>
-          </mk-input-file>
+            <template
+              v-if="attributes.slots.preview"
+              #preview="{ value }"
+            >
+              <template v-if="value">
+                {{ value.toISOString() }}
+              </template>
+            </template>
+            <template
+              v-if="attributes.slots['cancel']"
+              #cancel
+            >
+              <mk-icon icon="delete_forever" />
+            </template>
+          </mk-input-time>
         </template>
       </AppSandboxPreview>
     </div>
   </section>
 </template>
-
 <script lang="ts" setup>
 import { ref } from 'vue';
 import {
   createInputState,
   type InputState,
-  type FileInputValue,
-  FileType,
+  type TimeInputValue,
+  Time,
 } from '@patriarche/melkor';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import AppInputStatePreview from '@/components/AppInputStatePreview.vue';
@@ -51,23 +59,13 @@ import {
 } from '@/lib/definition';
 import { createScssControllersConfig, createSlotsControllersConfig, mapSandboxAttributesWithoutInputState } from '@/lib/utils';
 
-function validate(value: FileInputValue) {
-  return value.length <= 0 ? 'Required' : null;
+function validate(value: TimeInputValue) {
+  return value === null ? 'Required' : null;
 }
 
-const state = ref<InputState<FileInputValue>>(createInputState({
-  value: [
-    {
-      name: 'Yuri',
-      url: 'https://patriarche-ux.fr/wp-content/uploads/2022/01/yuri-patriarche-ux-official.jpg',
-      size: null,
-      type: FileType.image,
-      rawFile: null,
-    },
-  ],
+const state = ref<InputState<TimeInputValue>>(createInputState({
+  value: new Time(),
 }));
-
-const accept = ['image/jpg', '.gif'];
 
 const definition: ComponentDefinition = {
   props: {
@@ -84,17 +82,17 @@ const definition: ComponentDefinition = {
     name: {
       type: AttributeType.string,
       required: false,
-      default: 'file',
+      default: 'time',
     },
     label: {
       type: AttributeType.string,
       required: false,
-      default: 'Input file',
+      default: 'Input time',
     },
     hint: {
       type: AttributeType.string,
       required: false,
-      default: 'JPG, GIF - 3 Mo max.',
+      default: "I'm a time input",
     },
     disabled: {
       type: AttributeType.boolean,
@@ -106,35 +104,30 @@ const definition: ComponentDefinition = {
       required: false,
       default: false,
     },
-    multiple: {
+    cancelable: {
       type: AttributeType.boolean,
       required: false,
       default: false,
     },
-    max: {
-      type: AttributeType.number,
-      required: false,
-      default: null,
-    },
-    accept: {
-      type: AttributeType.reference,
-      required: false,
-      default: accept,
-    },
-    maxSize: {
-      type: AttributeType.number,
-      required: false,
-      default: null,
-    },
   },
   scss: createScssControllersConfig([
-    '--mk-input-file-border-color',
-    '--mk-input-file-dropzone-background-color',
-    '--mk-input-file-dropzone-border-radius',
-    '--mk-input-file-dropzone-border-width',
+    '--mk-input-time-background-color',
+    '--mk-input-time-border-color',
+    '--mk-input-time-border-radius',
+    '--mk-input-time-border-width',
+    '--mk-input-time-color',
+    '--mk-input-time-font-size',
+    '--mk-input-time-line-height',
+    '--mk-input-time-icon-color',
+    '--mk-input-time-icon-size',
+    '--mk-input-time-padding-x',
+    '--mk-input-time-padding-y',
+    '--mk-input-time-spacing',
   ]),
   slots: createSlotsControllersConfig([
-    'file',
+    'icon',
+    'preview',
+    'cancel',
   ]),
 };
 

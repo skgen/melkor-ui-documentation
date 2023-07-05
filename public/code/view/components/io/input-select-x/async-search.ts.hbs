@@ -70,11 +70,11 @@ const debouncedFetchCharacters = debounce(async () => {
   }
 }, 300);
 
-watch([search, () => state.value.focused], async ([newSearch, newFocus], [oldSearch]) => {
+watch(search, (newSearch, oldSearch) => {
   // We fetch data for the first time
-  const firstTimeFetch = !loaded.value && newFocus;
-  // When search changes & we are focus
-  const focusedAndSearchChanged = oldSearch.value !== newSearch.value && newFocus;
+  const firstTimeFetch = !loaded.value;
+  // When search changes
+  const focusedAndSearchChanged = oldSearch.value !== newSearch.value;
 
   if (firstTimeFetch || focusedAndSearchChanged) {
     debouncedFetchCharacters();

@@ -4,7 +4,10 @@
     :data-group="!!props.level.children"
     :data-deep="props.deep"
   >
-    <mk-link :to="props.level.to">
+    <mk-link
+      :to="props.level.to"
+      :match-strategy="props.linkMatchStrategy"
+    >
       {{ $t(props.level.title) }}
     </mk-link>
     <div
@@ -16,21 +19,25 @@
         :key="child.title"
         :level="child"
         :deep="props.deep + 1"
+        :link-match-strategy="props.linkMatchStrategy"
       />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import type { LinkMatchStrategy } from '@patriarche/melkor';
 import type { NavigationLevel } from '@/features/navigation';
 
 type Props = {
   deep?: number;
   level: NavigationLevel;
+  linkMatchStrategy?: LinkMatchStrategy;
 };
 
 const props = withDefaults(defineProps<Props>(), {
   deep: 0,
+  linkMatchStrategy: undefined,
 });
 </script>
 

@@ -8,12 +8,14 @@
         v-for="(level, index) in props.navigation"
         :key="index"
         :level="level"
+        :link-match-strategy="LinkMatchStrategy.exactPathWithHash"
       />
     </nav>
   </aside>
 </template>
 
 <script lang="ts" setup>
+import { LinkMatchStrategy } from '@patriarche/melkor';
 import type { NavigationLevel } from '@/features/navigation';
 import AppNavigationLevel from '@/components/AppNavigationLevel.vue';
 
@@ -43,18 +45,6 @@ const props = defineProps<Props>();
         flex-direction: column;
         gap: var(--app-m-3);
         padding-top: var(--app-m-3);
-
-        .mk-AppLink {
-            &:not([data-wrapper="true"])[data-active="true"] {
-                color: var(--app-text-color-soft);
-                cursor: default;
-
-                &:hover {
-                    color: var(--mk-link-text-color-active);
-                    cursor: pointer;
-                }
-            }
-        }
     }
 }
 </style>

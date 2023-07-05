@@ -1,0 +1,23 @@
+{{#if hasSlots}}
+<mk-input-time{{{props}}}>
+  {{#if slots.icon}}
+  <template #icon>
+    <mk-icon icon="hourglass_empty" />
+  </template>
+  {{/if}}
+  {{#if slots.preview}}
+  <template #preview="{ value }">
+    <template v-if="value">
+      \{{ value.toISOString() }}
+    </template>
+  </template>
+  {{/if}}
+  {{#if slots.cancel}}
+  <template #cancel>
+    <mk-icon icon="delete_forever" />
+  </template>
+  {{/if}}
+</mk-input-time>
+{{else}}
+<mk-input-time{{{props}}}/>
+{{/if}}

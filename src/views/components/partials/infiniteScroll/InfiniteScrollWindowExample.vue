@@ -1,5 +1,5 @@
 <template>
-  <section class="pux-InfiniteScrollWindowExample">
+  <section>
     <h2>Page Infinite scroll</h2>
     <h3>The logic</h3>
     <p>

@@ -80,7 +80,7 @@ function validate(value: DateInputValue) {
 }
 
 const state = ref<InputState<DateInputValue>>(createInputState({
-  value: new Date(),
+  value: new Date('2023-07-01'),
 }));
 
 const definition: ComponentDefinition = {

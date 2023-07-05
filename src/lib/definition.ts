@@ -20,7 +20,7 @@ export type AttributeDefinition = {
   componentDefault?: any;
   inputOptions?: { [key: string]: unknown };
   renderOptions?: {
-    valueAsSelectLabel?: boolean;
+    enumKey: (v: any) => string;
   };
 };
 

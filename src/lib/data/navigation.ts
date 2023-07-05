@@ -147,6 +147,10 @@ export const sidebar: NavigationLevel[] = [
         to: '/component/input-date',
       },
       {
+        title: 'component.inputTime.name',
+        to: '/component/input-time',
+      },
+      {
         title: 'component.inputRange.name',
         to: '/component/input-range',
       },

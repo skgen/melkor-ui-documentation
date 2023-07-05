@@ -6,12 +6,14 @@
 
     <mk-wysiwyg-preview>
       <section>
-        <h2
-          id="playground"
-          v-anchor
+        <AppHashTrigger
+          v-slot="{ hash }"
+          hash="playground"
         >
-          {{ $t('app.playground') }}
-        </h2>
+          <h2 :id="hash">
+            {{ $t('app.playground') }}
+          </h2>
+        </AppHashTrigger>
 
         <div>
           <AppSandboxPreview
@@ -47,7 +49,6 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 import type { TableHeader, TableKey } from '@patriarche/melkor';
-import { useI18n } from 'vue-i18n';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import {
   AttributeType, type ComponentAttributes, type ComponentDefinition,
@@ -57,43 +58,44 @@ import TableCustomSlotsExample from '@/views/components/partials/table/TableCust
 import TableBasicDraggableExample from '@/views/components/partials/table/TableBasicDraggableExample.vue';
 import TableCustomHandlerDraggableExample from '@/views/components/partials/table/TableCustomHandlerDraggableExample.vue';
 import useAsideNavigationContext from '@/composables/useAsideNavigationContext';
+import { createScssControllersConfig } from '@/lib/utils';
+import AppHashTrigger from '@/components/AppHashTrigger.vue';
 
-const { t } = useI18n();
 const { setNavigation } = useAsideNavigationContext();
 
 onMounted(() => {
   setNavigation([
     {
-      title: t('app.playground'),
-      to: '/component/table#playground',
+      title: 'app.playground',
+      to: '#playground',
     },
     {
-      title: t('view.table.titles.customTemplate.block'),
+      title: 'view.table.titles.customTemplate.block',
       children: [
         {
-          title: t('view.table.titles.customTemplate.logic'),
-          to: '/component/table#custom-templates',
+          title: 'view.table.titles.customTemplate.logic',
+          to: '#custom-templates',
         },
         {
-          title: t('view.table.titles.customTemplate.static'),
-          to: '/component/table#custom-templates-static',
+          title: 'view.table.titles.customTemplate.static',
+          to: '#custom-templates-static',
         },
         {
-          title: t('view.table.titles.customTemplate.dynamic'),
-          to: '/component/table#custom-templates-dynamic',
+          title: 'view.table.titles.customTemplate.dynamic',
+          to: '#custom-templates-dynamic',
         },
       ],
     },
     {
-      title: t('view.table.titles.draggable.block'),
+      title: 'view.table.titles.draggable.block',
       children: [
         {
-          title: t('view.table.titles.draggable.basic'),
-          to: '/component/table#draggable-basic',
+          title: 'view.table.titles.draggable.basic',
+          to: '#draggable-basic',
         },
         {
-          title: t('view.table.titles.draggable.custom'),
-          to: '/component/table#draggable-custom-handler',
+          title: 'view.table.titles.draggable.custom',
+          to: '#draggable-custom-handler',
         },
       ],
     },
@@ -208,6 +210,9 @@ const definition: ComponentDefinition = {
       },
     },
   },
+  scss: createScssControllersConfig([
+    '--mk-table-background-color',
+  ]),
 };
 
 const attributes = ref<ComponentAttributes>({
