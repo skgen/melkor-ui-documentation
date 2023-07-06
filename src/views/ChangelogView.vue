@@ -44,6 +44,7 @@ import AppDocLayout from '@/components/layouts/AppDocLayout.vue';
 
 const versions = [
   '1.20.0',
+  '1.19.2',
   '1.19.1',
   '1.19.0',
   '1.18.0',
