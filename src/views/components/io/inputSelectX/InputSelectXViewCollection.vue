@@ -10,6 +10,7 @@
           <mk-input-select-x
             v-model="state"
             :options="options"
+            cancelable
           >
             <template #option-label="{ option }">
               {{ option.value.name }}
