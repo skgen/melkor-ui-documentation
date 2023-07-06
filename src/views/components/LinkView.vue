@@ -46,12 +46,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { LinkMatchStrategy } from '@patriarche/melkor';
-import { useRoute } from 'vue-router';
 import AppSandboxPreview from '@/components/AppSandboxPreview.vue';
 import AppPageTitle from '@/components/AppPageTitle.vue';
 import { AttributeType, type ComponentAttributes, type ComponentDefinition } from '@/lib/definition';
 import { createScssControllersConfig } from '@/lib/utils';
-import router from '@/plugins/router';
 
 const definition: ComponentDefinition = {
   props: {
@@ -119,22 +117,4 @@ const examples = [
   '/component/link?param=1',
   '/component/link/deeper',
 ];
-
-const hash = ref(false);
-const route = useRoute();
-function toggleHash() {
-  if (hash.value) {
-    router.replace({
-      ...route,
-      hash: undefined,
-    });
-  } else {
-    router.replace({
-      ...route,
-      hash: '#toto',
-    });
-  }
-  hash.value = !hash.value;
-}
-
 </script>
