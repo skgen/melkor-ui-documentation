@@ -5,11 +5,6 @@
     </AppPageTitle>
     <mk-wysiwyg-preview>
       <section>
-        <mk-button @click="toggleHash">
-          toggle hash
-        </mk-button>
-      </section>
-      <section>
         <h2>{{ $t('app.playground') }}</h2>
         <div>
           <AppSandboxPreview
@@ -83,7 +78,7 @@ const definition: ComponentDefinition = {
     matchStrategy: {
       type: AttributeType.select,
       required: true,
-      default: LinkMatchStrategy.exactPathWithHash,
+      default: LinkMatchStrategy.exactPath,
       inputOptions: {
         options: [
           { value: LinkMatchStrategy.shallowPath },
