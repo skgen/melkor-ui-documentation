@@ -1,6 +1,6 @@
 <template>
   <div class="pux-AppInputStatePreview">
-    <div class="pux-AppInputTitlePreview-ctas">
+    <div class="pux-AppInputStatePreview-ctas">
       <mk-button @click="() => { modal = !modal; }">
         <slot name="default">
           {{ $t('app.viewState') }}
