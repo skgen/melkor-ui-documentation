@@ -1,7 +1,6 @@
 <template>
   <mkt-app>
     <div class="pux-App">
-      {{ JSON.stringify(dataStore.value, null, 2) }}
       <TheHeader />
       <div class="pux-App-main">
         <TheAsideNavigationContextProvider>
@@ -19,11 +18,9 @@ import { useI18n } from 'vue-i18n';
 import { persistLocale } from '@patriarche/melkor';
 import TheHeader from '@/components/TheHeader.vue';
 import TheAsideNavigationContextProvider from '@/components/contexts/TheAsideNavigationContextProvider.vue';
-import { useDataStore } from '@/stores/data';
 
 const { locale } = useI18n();
 const router = useRouter();
-const dataStore = useDataStore();
 
 watch(router.currentRoute, (newRoute, oldRoute) => {
   if (newRoute.path !== oldRoute.path) {
