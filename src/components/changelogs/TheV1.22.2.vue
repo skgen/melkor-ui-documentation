@@ -3,7 +3,7 @@
     v1.22.2
   </AppChangelogVersion>
   <h3>Minor</h3>
-  <p>
+  <div>
     <AppChangelogCommit sha="c04d860fabc765b7cd80abd1503fcb95e680b148">
       <p>
         Fixed an issue on <mk-link to="/component/input-date">
@@ -13,7 +13,7 @@
         </mk-link> where label wrapper was rendered even if no <code>label</code> was provided, resulting in shifted layout
       </p>
     </AppChangelogCommit>
-  </p>
+  </div>
 </template>
 
 <script lang="ts" setup>

@@ -1,45 +1,4 @@
 {
-    "melkor": {
-        "component": {
-            "AppInputFile": {
-                "dragdrop": "Drag & drop or {search}",
-                "search": "browse"
-            },
-            "AppInputIcon": {
-                "uIActions": "UI actions",
-                "social": "Social",
-                "commonActions": "Common actions",
-                "communication": "Communication",
-                "photo&Image": "Photo & image",
-                "business&Payments": "Business & payments",
-                "maps": "Maps",
-                "textFormatting": "Text formatting",
-                "audio&Video": "Audio & video",
-                "transportation": "Transportation",
-                "activities": "Activities",
-                "hardware": "Hardware",
-                "android": "Android",
-                "privacy&Security": "Privacy & security",
-                "travel": "Travel",
-                "household": "Household",
-                "home": "Home",
-                "brand": "Brand",
-                "others": "others"
-            },
-            "AppInputSelectX": {
-                "emptyOptions": "No options available"
-            }
-        },
-        "theme": {
-            "auto": "Sys-Theme",
-            "light": "Light Theme",
-            "dark": "Dark Theme"
-        },
-        "i18n": {
-            "fr": "French",
-            "en": "English"
-        }
-    },
     "app": {
         "welcome": "Welcome on {appName} !",
         "languages": {
@@ -73,9 +32,6 @@
         },
         "i18n": {
             "category": "I18n"
-        },
-        "router": {
-            "category": "Router"
         },
         "setup": {
             "category": "Getting started"
@@ -313,16 +269,10 @@
         },
         "i18n": {
             "titles": {
-                "setup": "I18n setup",
-                "keys": "Translation keys"
+                "setup": "I18n setup"
             },
             "paragraph": {
                 "translatedSentence": "This sentence is translated in both English & French."
-            }
-        },
-        "router": {
-            "titles": {
-                "setup": "Router setup"
             }
         },
         "inputDate": {

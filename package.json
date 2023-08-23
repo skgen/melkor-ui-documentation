@@ -14,9 +14,10 @@
     "test:unit": "vitest --environment jsdom"
   },
   "dependencies": {
-    "@patriarche/melkor": "1.22.2",
+    "@patriarche/melkor": "1.23.0",
     "@vueuse/core": "^9.11.1",
     "change-case": "^4.1.2",
+    "date-fns": "^2.30.0",
     "handlebars": "^4.7.7",
     "lodash": "^4.17.21",
     "pinia": "^2.0.16",
@@ -29,7 +30,6 @@
     "vue-router": "^4.1.2"
   },
   "devDependencies": {
-    "@intlify/vite-plugin-vue-i18n": "^6.0.1",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/jsdom": "^16.2.14",
     "@types/lodash": "^4.14.185",

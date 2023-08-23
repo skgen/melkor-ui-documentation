@@ -44,14 +44,6 @@ const router = createRouter({
           path: 'i18n-setup',
           component: () => import('@/views/concepts/i18n/I18nSetupView.vue'),
         },
-        {
-          path: 'i18n-keys',
-          component: () => import('@/views/concepts/i18n/I18nKeysView.vue'),
-        },
-        {
-          path: 'router-setup',
-          component: () => import('@/views/concepts/router/RouterSetupView.vue'),
-        },
       ],
     },
     {

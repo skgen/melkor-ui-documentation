@@ -19,6 +19,19 @@ export const sidebar: NavigationLevel[] = [
     ],
   },
   {
+    title: 'navigation.i18n.category',
+    children: [
+      {
+        title: 'view.i18n.titles.setup',
+        to: '/concept/i18n-setup',
+      },
+      {
+        title: 'component.localeSelector.name',
+        to: '/component/locale-selector',
+      },
+    ],
+  },
+  {
     title: 'navigation.theme.category',
     children: [
       {
@@ -40,32 +53,6 @@ export const sidebar: NavigationLevel[] = [
       {
         title: 'component.themeContext.name',
         to: '/component/theme-context',
-      },
-    ],
-  },
-  {
-    title: 'navigation.i18n.category',
-    children: [
-      {
-        title: 'view.i18n.titles.setup',
-        to: '/concept/i18n-setup',
-      },
-      {
-        title: 'view.i18n.titles.keys',
-        to: '/concept/i18n-keys',
-      },
-      {
-        title: 'component.localeSelector.name',
-        to: '/component/locale-selector',
-      },
-    ],
-  },
-  {
-    title: 'navigation.router.category',
-    children: [
-      {
-        title: 'view.router.titles.setup',
-        to: '/concept/router-setup',
       },
     ],
   },

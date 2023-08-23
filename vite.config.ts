@@ -4,7 +4,6 @@ import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
-import vueI18n from '@intlify/vite-plugin-vue-i18n';
 import { exit } from 'process';
 import { resolve } from 'path';
 import basicSsl from '@vitejs/plugin-basic-ssl';
@@ -35,6 +34,14 @@ export default ({ mode }: { mode: string; }) => {
       replacement: resolve(libraryPath, './dist/style.css', ),
     },
     {
+      find: /@patriarche\/melkor\/i18n\/en/,
+      replacement: resolve(libraryPath, './dist/i18n/en.json'),
+    },
+    {
+      find: /@patriarche\/melkor\/i18n\/fr/,
+      replacement: resolve(libraryPath, './dist/i18n/fr.json'),
+    },
+    {
       find: /@patriarche\/melkor/,
       replacement: resolve(libraryPath, './dist/index.mjs'),
     },
@@ -61,10 +68,6 @@ export default ({ mode }: { mode: string; }) => {
       vue(), 
       vueJsx(), 
       svgLoader(), 
-      vueI18n({
-        include: fileURLToPath(new URL('./i18n/**', import.meta.url)),
-        globalSFCScope: true,
-      }),
       basicSsl(),
     ],
     resolve: {
@@ -77,6 +80,10 @@ export default ({ mode }: { mode: string; }) => {
         {
           find: /@\//,
           replacement: fileURLToPath(new URL('./src/', import.meta.url)),
+        },
+        {
+          find: /@i18n\//,
+          replacement: fileURLToPath(new URL('./i18n/', import.meta.url)),
         },
         {
           find: /@style\//,

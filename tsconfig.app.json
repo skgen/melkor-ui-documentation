@@ -9,6 +9,9 @@
       "@/*": [
         "./src/*"
       ],
+      "@i18n": [
+        "./i18n/*"
+      ],
       "@style": [
         "./src/assets/scss/*"
       ],
@@ -33,6 +36,7 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.vue",
+    "i18n/*.json"
   ],
   "exclude": [
     "src/**/__tests__/*",

@@ -12,26 +12,8 @@
           </mk-link> for translations
         </blockquote>
         <p>
-          Why inject <code>i18n</code> instance in {{ appName }} ?
-        </p>
-        <p>
-          No <em>wizard mutations</em> nor any <em>dark magic</em>, just to :
-        </p>
-        <p>
-          <ul>
-            <li>
-              Provide library translations through an easy, and documented API
-            </li>
-          </ul>
-        </p>
-        <p>
           <code>melkor</code> namespaced keys are used within {{ appName }} components
           to provide developers an easy access to translate core components
-        </p>
-        <p>
-          You can see every key used in {{ appName }} through a <code>json</code> format in <mk-link to="/concept/i18n-keys">
-            {{ $t('view.i18n.titles.keys') }}
-          </mk-link>
         </p>
         <p>
           To add your own translation keys, just do as you would with <mk-link to="https://www.npmjs.com/package/vue-i18n">

@@ -1,13 +1,17 @@
 import { createI18n } from 'vue-i18n';
 import { createMelkorUi, getPersistedLocale } from '@patriarche/melkor';
+import melkorEn from '@patriarche/melkor/i18n/en';
+import melkorFr from '@patriarche/melkor/i18n/fr';
 import App from '@/App.vue';
+
+...
 
 const messages = {
   en: {
-    melkor: { ... },
+    ...melkorEn,
   },
   fr: {
-    melkor: { ... },
+    ...melkorFr
   },
 };
 
@@ -16,6 +20,4 @@ const i18n = createI18n({
   messages,
 });
 
-const mkuiPlugin = () => createMelkorUi({
-  i18n,
-});
+...

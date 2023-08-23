@@ -23,6 +23,12 @@
           </mk-link>, no need to import it in your project.
         </blockquote>
         <p>
+          <mk-alert warning>
+            {{ appName }} depends on <code>pinia</code>, <code>vue-i18n</code> & <code>vue-router</code>,
+            make sure to initialize them before initalizing <code>{{ appName }}</code>
+          </mk-alert>
+        </p>
+        <p>
           <AppAsyncCodeBlock
             file-path="/code/view/config/setup/main.ts.hbs"
             :language="CodeLanguage.typescript"
