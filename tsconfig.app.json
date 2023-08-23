@@ -4,16 +4,17 @@
     "strict": true,
     "composite": true,
     "jsx": "preserve",
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./src/*"
+        "src/*"
       ],
-      "@i18n": [
-        "./i18n/*"
+      "@i18n/*": [
+        "i18n/*"
       ],
       "@style": [
-        "./src/assets/scss/*"
+        "src/assets/scss/*"
       ],
       "@patriarche/melkor": [
         "../melkor-ui-package/dist/@types/index.d.ts"
@@ -23,6 +24,12 @@
       ],
       "@patriarche/melkor/style/*": [
         "../melkor-ui-package/dist/scss/*"
+      ],
+      "@patriarche/melkor/i18n/en": [
+        "../melkor-ui-package/dist/i18n/en.json"
+      ],
+      "@patriarche/melkor/i18n/fr": [
+        "../melkor-ui-package/dist/i18n/fr.json"
       ],
     },
     "lib": [

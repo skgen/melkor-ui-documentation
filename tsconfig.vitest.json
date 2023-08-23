@@ -3,10 +3,20 @@
   "exclude": [],
   "compilerOptions": {
     "composite": true,
-    "types": ["node", "jsdom", "@intlify/vite-plugin-vue-i18n/client"],
+    "types": [
+      "node",
+      "jsdom"
+    ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@style": ["./src/assets/scss/*"],
+      "@/*": [
+        "src/*"
+      ],
+      "@i18n/*": [
+        "i18n/*"
+      ],
+      "@style": [
+        "src/assets/scss/*"
+      ],
     },
   }
 }
