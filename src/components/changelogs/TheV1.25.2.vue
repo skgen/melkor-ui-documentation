@@ -1,6 +1,6 @@
 <template>
   <AppChangelogVersion stable>
-    v1.25.1
+    v1.25.2
   </AppChangelogVersion>
   <h3>Enhancements</h3>
   <AppChangelogBreakingChange>
@@ -29,7 +29,12 @@
     </AppChangelogCommit>
   </div>
   <div>
-    <AppChangelogCommit :sha="['c182fffb0b948e8ae9325f9fee6b131a351891f2', '7bd8705aad5f08766618980460e47dc7c6a7935e']">
+    <AppChangelogCommit
+      :sha="[
+        'c182fffb0b948e8ae9325f9fee6b131a351891f2',
+        '7bd8705aad5f08766618980460e47dc7c6a7935e',
+        'fed557121c75c33f4345df1b3a23289624e71e55']"
+    >
       <p>
         Fixed overall input heights
       </p>
