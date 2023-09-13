@@ -6,8 +6,10 @@
   <div>
     <AppChangelogBreakingChange>
       <AppChangelogCommit sha="54ba91cf4f9dafc79339623ef1e58c3343fa012e">
-        Hyphenated <code>update:modelValue</code> to <code>update:model-value</code> in <code>emit</code> parameter from <code>useInput</code>
-        hook to improve generic type inference
+        <p>
+          Hyphenated <code>update:modelValue</code> to <code>update:model-value</code> in <code>emit</code> parameter from <code>useInput</code>
+          hook to improve generic type inference
+        </p>
       </AppChangelogCommit>
     </AppChangelogBreakingChange>
   </div>

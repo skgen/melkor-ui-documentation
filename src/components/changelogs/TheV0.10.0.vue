@@ -92,8 +92,8 @@
   <div>
     <AppChangelogBreakingChange>
       <p>
-        Moved all {{ appName }} <code>i18n</code> keys to <code>melkor</code> namespace, see <mk-link to="/translations">
-          {{ $t('view.i18n.titles.keys') }}
+        Moved all {{ appName }} <code>i18n</code> keys to <code>melkor</code> namespace, see <mk-link to="/concept/i18n/setup">
+          {{ $t('view.i18n.titles.setup') }}
         </mk-link>
       </p>
     </AppChangelogBreakingChange>
