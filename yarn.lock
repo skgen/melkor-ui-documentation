@@ -505,10 +505,10 @@
   resolved "https://registry.yarnpkg.com/@one-ini/wasm/-/wasm-0.1.1.tgz#6013659736c9dbfccc96e8a9c2b3de317df39323"
   integrity sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==
 
-"@patriarche/melkor@1.25.2":
-  version "1.25.2"
-  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-1.25.2.tgz#51280cb59bbf7ea00eae16d8bfe10ab151e265ef"
-  integrity sha1-USgMtZu/fqAOrhbYv+EKsVHiZe8=
+"@patriarche/melkor@1.25.4":
+  version "1.25.4"
+  resolved "https://gitlab.com/api/v4/projects/39947419/packages/npm/@patriarche/melkor/-/@patriarche/melkor-1.25.4.tgz#e9d1d5ece1d5265d519b7af08ba83e79e38dfb2d"
+  integrity sha1-6dHV7OHVJl1Rm3rwi6g+eeON+y0=
   dependencies:
     "@tiptap/core" "2.1.7"
     "@tiptap/pm" "2.1.7"
