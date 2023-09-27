@@ -43,6 +43,7 @@ import AppPageTitle from '@/components/AppPageTitle.vue';
 import AppDocLayout from '@/components/layouts/AppDocLayout.vue';
 
 const versions = [
+  '1.25.5',
   '1.25.4',
   '1.25.2',
   '1.24.0',
